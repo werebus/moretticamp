@@ -1,0 +1,14 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: matt
+  password:
+
+development:
+  <<: *default
+  database: moretticamp_development
+
+test:
+  <<: *default
+  database: moretticamp_development
