@@ -3,7 +3,7 @@
     <div class="row">
       <div class="small-12 column">
         <% if current_user.admin %>
-          <%=f.collection_select(:user_id, User.all, :id, :first_name,  label: "Schedule For") %>
+          <%=f.collection_select(:user_id, User.all, :id, :full_name,  label: "Schedule For") %>
         <% end %>
       </div>
     </div>
