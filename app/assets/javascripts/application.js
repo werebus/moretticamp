@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require foundation
 //= require fullcalendar
+//= require foundation-datepicker
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

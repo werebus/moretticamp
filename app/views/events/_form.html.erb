@@ -3,34 +3,26 @@
     <div class="row">
       <div class="small-12 column">
         <% if current_user.admin %>
-          <label>Schedule For
-            <%=f.collection_select(:user_id, User.all, :id, :first_name) %>
-          </label>
+          <%=f.collection_select(:user_id, User.all, :id, :first_name,  label: "Schedule For") %>
         <% end %>
       </div>
     </div>
     <div class="row">
       <div class="small-6 column">
-        <label>First Date
-          <%=f.text_field :start_date %>
-        </label>
+        <%=f.text_field :start_date, label: "First Date", class: "date-pick" %>
       </div>
       <div class="small-6 column">
-        <label>Last Date
-          <%=f.text_field :end_date %>
-        </label>
+          <%=f.text_field :end_date, label: "Last Date", class: "date-pick" %>
       </div>
     </div>
     <div class="row">
       <div class="small-12 column">
-        <label>Notes
-          <%=f.text_area :description %>
-        </label>
+        <%=f.text_area :description, label: "Notes" %>
       </div>
     </div>
     <div class="row">
       <div class= "small-12 column">
-        <a href="#" class="button expand" id="submit_button">Save</a>
+        <%=f.submit class: "button expand" %>
       </div>
     </div>
   </div>

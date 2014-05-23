@@ -4,7 +4,5 @@
 $(document).ready ->
   $('#calendar').fullCalendar
     events: '/events.json'
-
-$('#submit_button').on 'click', (e)->
-  e.preventDefault()
-  $(this).closest('form').submit()
+  $('.date-pick').fdatepicker
+    format: "yyyy-mm-dd"
