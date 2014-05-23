@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Il Campo Moretti" %></title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -12,6 +12,18 @@
   </head>
 
   <body>
+    <div class="row">
+      <div class="large-9 columns">
+        <h1>Il Campo Moretti</h1>
+      </div>
+      <div class="large-3 columns">
+        <ul class="inline-list right">
+          <li><%=link_to current_user.full_name, "#" %></li>
+          <li><%=link_to "Logout", destroy_user_session_path %></li>
+        </ul>
+      </div>
+    </div>
+      
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
