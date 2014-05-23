@@ -1,17 +1,37 @@
 <%= form_for(@event) do |f| %>
-  <% if @event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
-
-      <ul>
-      <% @event.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <div class="panel">
+    <div class="row">
+      <div class="small-12 column">
+        <% if current_user.admin %>
+          <label>Schedule For
+            <%=f.collection_select(:user_id, User.all, :id, :first_name) %>
+          </label>
+        <% end %>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit %>
+    <div class="row">
+      <div class="small-6 column">
+        <label>First Date
+          <%=f.text_field :start_date %>
+        </label>
+      </div>
+      <div class="small-6 column">
+        <label>Last Date
+          <%=f.text_field :end_date %>
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-12 column">
+        <label>Notes
+          <%=f.text_area :description %>
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class= "small-12 column">
+        <a href="#" class="button expand" id="submit_button">Save</a>
+      </div>
+    </div>
   </div>
 <% end %>
