@@ -19,13 +19,20 @@
       <div class="large-3 columns">
         <ul class="inline-list right">
           <li><%=link_to current_user.full_name, "#" %></li>
-          <li><%=link_to "Logout", destroy_user_session_path %></li>
+          <li><%=link_to "Logout", destroy_user_session_path, method: :delete %></li>
         </ul>
       </div>
     </div>
-      
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <div class="row">
+      <div class="large-8 small-centered columns">
+        <% if notice.present? %>
+          <div class="alert-box success radius"><%= notice %></div>
+        <% end %>
+        <% if alert.present? %>
+          <div class="alert-box alert radius"><%= alert %></div>
+        <% end %>
+      </div>
+    </div>
 
     <%= yield %>
     <%= javascript_include_tag "application" %>
