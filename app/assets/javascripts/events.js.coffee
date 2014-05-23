@@ -4,5 +4,3 @@
 $(document).ready ->
   $('#calendar').fullCalendar
     events: '/events.json'
-  $('.date-pick').fdatepicker
-    format: "yyyy-mm-dd"

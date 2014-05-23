@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="small-8 columns small-centered">
+    <div class="row">
+      <div class="small-12 columns">
+        <h1>Editing <%= resource_name.to_s.humanize %></h1>
+      </div>
+    </div>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <div class="panel">
+        <div class="row">
+          <div class="small-12 column">
+            <%= f.email_field :email, autofocus: true %>
+          </div>
+        </div>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div class="row">
+            <div class="small-12 column">
+              <div data-alert class="alert-box info">
+                Currently waiting confirmation for: <%= resource.unconfirmed_email %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <div class="row">
+          <div class="small-6 column">
+            <%= f.password_field :password, autocomplete: "off" %>
+          </div>
+          <div class="small-6 column">
+            <%= f.password_field :password_confirmation, autocomplete: "off", label: "Confirm Password" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="small-12 column">
+            <%= f.password_field :current_password, autocomplete: "off", label: "Current Password" %>
+            <small data-for="user_current_password" class="label-note hide">We need your current password to confirm your changes</small>
+          </div>
+        </div>
+        <div class="row">
+          <div class="small-12 column">
+            <%= f.submit "Update", class: "button expand" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <div class="row">
+      <div class="small-12 column text-right">
+        <%= link_to "Back", :back %>
+      </div>
+    </div>
+  </div>
+</div>
