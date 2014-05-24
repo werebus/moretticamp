@@ -29,7 +29,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 # Devise for auth
-gem 'devise'
+gem 'devise', '>= 2.0.0'
+gem 'devise_invitable', '~> 1.3.4'
 
 # Calendar View
 gem 'fullcalendar-rails'

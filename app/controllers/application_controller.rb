@@ -8,10 +8,10 @@ class ApplicationController < ActionController::Base
   protected
 
   def layout_except_login
-    if devise_controller? && resource_name == :user && action_name == 'new'
-      "login"
-    else
+    if user_signed_in?
       "application"
+    else
+      "login"
     end
   end
 end
