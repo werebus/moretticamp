@@ -13,18 +13,18 @@
 
   <body>
     <div class="row">
-      <div class="large-9 columns">
+      <div class="medium-9 columns">
         <h1>Il Campo Moretti</h1>
       </div>
-      <div class="large-3 columns">
-        <ul class="inline-list right">
+      <div class="medium-3 columns">
+        <ul class="inline-list">
           <li><%=link_to current_user.full_name, edit_user_registration_path %></li>
           <li><%=link_to "Logout", destroy_user_session_path, method: :delete %></li>
         </ul>
       </div>
     </div>
     <div class="row">
-      <div class="large-8 small-centered columns">
+      <div class="medium-8 medium-centered columns">
         <% if notice.present? %>
           <div data-alert class="alert-box success">
             <%= notice %>
