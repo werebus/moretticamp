@@ -34,3 +34,6 @@ gem 'devise_invitable', '~> 1.3.4'
 
 # Calendar View
 gem 'fullcalendar-rails'
+
+# Clipboard
+gem 'zeroclipboard-rails'
