@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//wereb.us//moretti.camp//EN
+CALSCALE:GREGORIAN
+TZID:US-Eastern
+METHOD:PUBLISH
+<% @events.each do |event| %>
+BEGIN:VEVENT
+UID:<%= event.id %>@moretti.camp
+DTSTART;VALUE=DATE:<%= time_for_ical(event.start_date) %>
+DTEND;VALUE=DATE:<%= time_for_ical(event.end_date + 1.day) %>
+SUMMARY:<%= event.user.first_name %>
+DESCRIPTION:<%= event.description %>
+LAST-MODIFIED:<%= time_for_ical(event.updated_at) %>
+STATUS:CONFIRMED
+END:VEVENT
+<% end %>
+END:VCALENDAR

@@ -2,6 +2,8 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :require_ownership, only: [:edit, :update, :destroy]
 
+  skip_before_action :authenticate_user!, only: :feed
+
   # GET /events
   # GET /events.json
   def index
@@ -67,6 +69,15 @@ class EventsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def feed
+    if params[:format] == "ics" && (user_signed_in? || User.where(calendar_access_token: params[:token]).any?)
+      @events = Event.all
+      render action: 'index'
+    else
+      render file: 'public/401.html', layout: false, status: 401
     end
   end
 
