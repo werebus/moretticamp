@@ -12,6 +12,10 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+  def feed_url
+    "http://moretti.camp/feed/#{calendar_access_token}.ics"
+  end
+
   private
 
   def generate_calendar_access_token

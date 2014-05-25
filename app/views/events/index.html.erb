@@ -2,12 +2,13 @@
   <div class="medium-2 medium-push-10 columns">
     <%= link_to 'New Event', new_event_path %>
     <div class="row collapse">
+      <label>Calendar Feed</label>
       <% if current_user.calendar_access_token.present? %>
         <div class="small-9 medium-12 large-9 columns">
-          <%= text_field_tag :access_token, current_user.calendar_access_token, disabled: true %>
+          <%= text_field_tag :access_token, current_user.feed_url, disabled: true %>
         </div>
         <div class="small-3 hide-for-medium-only columns">
-          <a href="#" class="postfix button clip" data-clipboard-text="<%= current_user.calendar_access_token %>">
+          <a href="#" class="postfix button clip" data-clipboard-text="<%= current_user.feed_url %>">
             <i class="fa fa-clipboard"></i>
           </a>
         </div>
