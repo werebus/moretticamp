@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def require_admin
+    redirect_to events_path unless current_user.admin
+  end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:account_update).concat [:first_name, :last_name, :calendar_access_token]
   end
