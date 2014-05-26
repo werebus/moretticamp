@@ -37,6 +37,7 @@ gem 'spring',        group: :development
 # Devise for auth
 gem 'devise', '>= 2.0.0'
 gem 'devise_invitable', '~> 1.3.4'
+gem 'omniauth-google'
 
 # Calendar View
 gem 'fullcalendar-rails'

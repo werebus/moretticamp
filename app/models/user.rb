@@ -1,8 +1,9 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, and :omniauthable
-  devise :invitable, :database_authenticatable, :recoverable, :registerable,
-    :rememberable, :timeoutable, :trackable, :validatable
+  # :confirmable, and :lockable
+  devise :invitable, :database_authenticatable, :omniauthable, :recoverable,
+    :registerable, :rememberable, :timeoutable, :trackable, :validatable,
+    :omniauth_providers => [:google]
 
   has_many :events
 
@@ -16,6 +17,9 @@ class User < ActiveRecord::Base
     "http://moretti.camp/feed/#{calendar_access_token}.ics"
   end
 
+  def self.find_for_oath(auth)
+    where(auth.slice(:provider, :uid)).first
+  end
   private
 
   def generate_calendar_access_token
