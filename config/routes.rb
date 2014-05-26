@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
 
   authenticated :user do
-      root :to => 'events#index', :as => :authenticated_root
+    root :to => 'events#index', :as => :authenticated_root
   end
   root :to => redirect('/users/sign_in')
 
