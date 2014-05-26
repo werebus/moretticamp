@@ -6,7 +6,7 @@ set :repo_url, 'https://github.com/werebus/moretticamp.git'
 
 set :deploy_to, '/srv/moretticamp'
 
-set :log_level, :info
+set :log_level, :debug
 
 set :pty, true
 
