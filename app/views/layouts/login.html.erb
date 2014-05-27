@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Please Login</title>
+    <title>Il Campo Moretti</title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -12,7 +12,25 @@
   </head>
 
   <body>
-    <%= yield %>
-    <%= javascript_include_tag "application" %>
+    <div id="pusher" class="show-for-medium-up"></div>
+    <div id="login-form" class="row">
+      <div class="small-8 small-centered columns panel">
+        <% if notice.present? %>
+          <div data-alert class="alert-box success">
+            <%= notice %>
+            <a href="#" class="close">&times;</a>
+          </div>
+        <% end %>
+        <% if alert.present? %>
+          <div data-alert class="alert-box alert">
+            <%= alert %>
+            <a href="#" class="close">&times;</a>
+          </div>
+        <% end %>
+        <%= yield %>
+        <%= javascript_include_tag "application" %>
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
   </body>
 </html>
