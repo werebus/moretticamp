@@ -2,25 +2,12 @@ Rails.application.routes.draw do
   resources :events
   resources :seasons
 
-  if Rails.env.production?
-    scope :protocol => 'https://', :constraints => { :protocol => 'https://' } do
-      devise_for :users, skip: [:registrations],
-        controllers: {omniauth_callbacks: 'users/omniauth_callbacks',
-                      invitations: 'users/invitations'}
-      as :user do
-        get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
-        put 'users' => 'devise/registrations#update', :as => 'user_registration'
-      end
-    end
-  else
-    devise_for :users, skip: [:registrations],
-      controllers: {omniauth_callbacks: 'users/omniauth_callbacks',
-                    invitations: 'users/invitations'}
-
-    as :user do
-      get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
-      put 'users' => 'devise/registrations#update', :as => 'user_registration'
-    end
+  devise_for :users, skip: [:registrations],
+    controllers: {omniauth_callbacks: 'users/omniauth_callbacks',
+                  invitations: 'users/invitations'}
+  as :user do
+    get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
+    put 'users' => 'devise/registrations#update', :as => 'user_registration'
   end
 
   authenticated :user do
