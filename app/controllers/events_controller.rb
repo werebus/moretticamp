@@ -8,15 +8,17 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @season = Season.current_or_next
-    @date = [@season.start_date, Date.today].max
-    @include_today = (@season.date_range.include? Date.today)
+    if @season
+      @date = [@season.start_date, Date.today].max
+      @include_today = (@season.date_range.include? Date.today)
 
-    if params[:start] && params[:end]
-      start_time = Time.at(params[:start].to_i)
-      end_time = Time.at(params[:end].to_i)
-      @events = Event.between(start_time, end_time)
-    else
-      @events = Event.all
+      if params[:start] && params[:end]
+        start_time = Time.at(params[:start].to_i)
+        end_time = Time.at(params[:end].to_i)
+        @events = Event.between(start_time, end_time)
+      else
+        @events = Event.all
+      end
     end
   end
 

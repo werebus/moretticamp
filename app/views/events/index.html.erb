@@ -18,11 +18,18 @@
     </div>
   </div>
   <div class="medium-10 medium-pull-2 columns">
-    <div id="calendar"
-      <%= 'data-today=true' if @include_today %>
-      data-date="<%= @date + 5.hours %>"
-      data-start-date="<%=@season.start_date + 5.hours %>"
-      data-end-date="<%=@season.end_date + 5.hours %>">
-    </div>
+    <% if @season %>
+      <div id="calendar"
+        <%= 'data-today=true' if @include_today %>
+        data-date="<%= @date + 5.hours %>"
+        data-start-date="<%=@season.start_date + 5.hours %>"
+        data-end-date="<%=@season.end_date + 5.hours %>">
+      </div>
+    <% else %>
+      <div class="callout panel">
+        <h5>Season Not Open</h5>
+        <p>The dates for the next camp "season" aren't defined yet.  Stay tuned.</p>
+      </div>
+    <% end %>
   </div>
 </div>
