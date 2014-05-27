@@ -38,6 +38,7 @@ gem 'pry', group: :development
 gem 'devise', '>= 2.0.0'
 gem 'devise_invitable', '~> 1.3.4'
 gem 'omniauth-google-oauth2'
+gem 'omniauth-facebook'
 
 # Calendar View
 gem 'fullcalendar-rails'
