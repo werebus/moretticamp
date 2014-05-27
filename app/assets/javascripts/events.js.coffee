@@ -4,7 +4,10 @@
 $(document).ready ->
   d = new Date( $('#calendar').data('date') )
   $('#calendar').fullCalendar
-    events: '/events.json',
+    eventSources: [
+      '/events.json',
+      '/seasons.json'
+    ]
     year: d.getFullYear(),
     month: d.getMonth(),
     date: d.getDate(),

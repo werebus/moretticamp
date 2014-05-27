@@ -1,11 +1,12 @@
 class SeasonsController < ApplicationController
   before_action :set_season, only: [:show, :edit, :update, :destroy]
-  before_action :require_admin
+  before_action :require_admin, except: :index
 
   # GET /seasons
   # GET /seasons.json
   def index
     @seasons = Season.all
+    @current_season = Season.current_or_next
   end
 
   # GET /seasons/1
