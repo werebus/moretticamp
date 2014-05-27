@@ -37,7 +37,7 @@ gem 'pry', group: :development
 # Devise for auth
 gem 'devise', '>= 2.0.0'
 gem 'devise_invitable', '~> 1.3.4'
-gem 'omniauth-google'
+gem 'omniauth-google-oauth2'
 
 # Calendar View
 gem 'fullcalendar-rails'
