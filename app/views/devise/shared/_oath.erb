@@ -1,0 +1,26 @@
+<%- if devise_mapping.omniauthable? %>
+  <% providers = {google_oauth2: ["Google", "fa-google"]} %>
+
+  <div class="row">
+    <div class="medium-6 medium-centered columns">
+      <ul class="button-group even-3">
+        <%- resource_class.omniauth_providers.each do |provider| %>
+          <% if providers[provider] %>
+            <li class="oauth-block oauth-icon-block">
+            <%= link_to content_tag(:i, '', class: "fa #{providers[provider][1]}"),
+              omniauth_authorize_path(resource_name, provider),
+              title: "Sign in with #{providers[provider][0]}",
+              class: "button" %>
+            </li>
+          <% else %>
+            <li class="oauth-block oauth-text-block button">
+            <%= link_to provider.to_s.first.capitalize,
+              omniauth_authorize_path(resource_name, provider),
+              title: "Sign in with #{provider.to_s.titleize}",
+              class: "button" %>
+          <% end %>
+        <% end -%>
+      </ul>
+    </div>
+  </div>
+<% end -%>
