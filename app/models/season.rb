@@ -1,4 +1,7 @@
 class Season < ActiveRecord::Base
+  require 'date_range'
+  include DateRange
+
   class << self
     def current_or_next
       current || self.next
@@ -11,9 +14,5 @@ class Season < ActiveRecord::Base
     def next
       where("start_date >= ?", Date.today).order(:start_date).first
     end
-  end
-
-  def date_range
-    (start_date..end_date)
   end
 end
