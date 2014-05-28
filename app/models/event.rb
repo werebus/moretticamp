@@ -23,4 +23,8 @@ class Event < ActiveRecord::Base
   def self.between(start_date, end_date)
     where("start_date <= ? AND end_date >= ?", end_date, start_date)
   end
+
+  def display_title
+    (title.present? ? title : user.try(:first_name) || "" )
+  end
 end

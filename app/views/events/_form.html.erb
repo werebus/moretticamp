@@ -1,19 +1,24 @@
 <%= form_for(@event) do |f| %>
   <div class="panel">
-    <% if @event.errors[:base] %>
+    <% if @event.errors[:base].any? %>
       <div data-alert class="alert-box alert">
         <% @event.errors[:base].each do |e| %>
           <%= e %><br/>
         <% end %>
       </div>
     <% end %>
-    <div class="row">
-      <div class="small-12 column">
-        <% if current_user.admin %>
-          <%=f.collection_select(:user_id, User.all, :id, :full_name,  label: "Schedule For") %>
-        <% end %>
+    <% if current_user.admin %>
+      <div class="row">
+        <div class="small-12 column">
+          <%=f.text_field :title, placeholder: "Overrides Owner Name" %>
+        </div>
       </div>
-    </div>
+      <div class="row">
+        <div class="small-12 column">
+            <%=f.collection_select(:user_id, User.all, :id, :full_name,  label: "Schedule For") %>
+        </div>
+      </div>
+    <% end %>
     <div class="row">
       <div class="small-6 column">
         <%=f.text_field :start_date, label: "First Date", class: "date-pick" %>
