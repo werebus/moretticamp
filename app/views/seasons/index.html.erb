@@ -1,5 +1,5 @@
 <div class="row">
-  <h1>Listing seasons</h1>
+  <h1>Listing Seasons</h1>
 
   <table>
     <thead>
@@ -12,7 +12,7 @@
 
     <tbody>
       <% @seasons.each do |season| %>
-        <tr>
+        <tr class="<%= season == @current_season ? 'current-season' : 'noncurrent-season' %>">
           <td><%= season.start_date %></td>
           <td><%= season.end_date %></td>
           <td><%= link_to 'Edit', edit_season_path(season) %></td>

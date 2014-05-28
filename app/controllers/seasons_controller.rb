@@ -5,7 +5,7 @@ class SeasonsController < ApplicationController
   # GET /seasons
   # GET /seasons.json
   def index
-    @seasons = Season.all
+    @seasons = Season.order(start_date: :desc)
     @current_season = Season.current_or_next
   end
 
@@ -30,7 +30,7 @@ class SeasonsController < ApplicationController
 
     respond_to do |format|
       if @season.save
-        format.html { redirect_to @season, notice: 'Season was successfully created.' }
+        format.html { redirect_to seasons_path, notice: 'Season was successfully created.' }
         format.json { render :show, status: :created, location: @season }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class SeasonsController < ApplicationController
   def update
     respond_to do |format|
       if @season.update(season_params)
-        format.html { redirect_to @season, notice: 'Season was successfully updated.' }
+        format.html { redirect_to seasons_path, notice: 'Season was successfully updated.' }
         format.json { render :show, status: :ok, location: @season }
       else
         format.html { render :edit }
