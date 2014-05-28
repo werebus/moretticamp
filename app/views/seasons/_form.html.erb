@@ -1,25 +1,24 @@
 <%= form_for(@season) do |f| %>
-  <% if @season.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@season.errors.count, "error") %> prohibited this season from being saved:</h2>
-
-      <ul>
-      <% @season.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <div class="panel">
+    <% if @season.errors[:base].any? %>
+      <div data-alert class="alert-box alert">
+        <% @season.errors[:base].each do |e| %>
+          <%= e %><br/>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="row">
+      <div class="small-6 column">
+        <%= f.text_field :start_date, label: "First Date", class: "date-pick" %>
+      </div>
+      <div class="small-6 column">
+        <%= f.text_field :end_date, label: "Last Date", class: "date-pick" %>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :start_date %><br>
-    <%= f.date_select :start_date %>
-  </div>
-  <div class="field">
-    <%= f.label :end_date %><br>
-    <%= f.date_select :end_date %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+    <div class="row">
+      <div class="small-12 column">
+        <%= f.submit class: "button expand" %>
+      </div>
+    </div>
   </div>
 <% end %>
