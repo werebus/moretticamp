@@ -1,23 +1,35 @@
 <div class="row">
-  <div class="medium-2 medium-push-10 columns">
-    <%= link_to 'New Event', new_event_path %>
-    <div class="row collapse">
-      <label>Calendar Feed</label>
-      <% if current_user.calendar_access_token.present? %>
-        <div class="small-9 medium-12 large-9 columns">
-          <%= text_field_tag :access_token, current_user.feed_url, disabled: true %>
-        </div>
-        <div class="small-3 hide-for-medium-only columns">
-          <a href="#" class="postfix button clip" data-clipboard-text="<%= current_user.feed_url %>">
-            <i class="fa fa-clipboard"></i>
-          </a>
-        </div>
-      <% else %>
-        <%= link_to "Generate", edit_user_registration_path, class: "tiny expand button" %>
+  <div class="medium-3 medium-push-9 columns">
+    <ul id="nav-links" class="no-bullet">
+      <li><%= link_to 'New Event', new_event_path %></li>
+      <% if current_user.admin %>
+        <li><%= link_to "Manage Seasons", seasons_path %></li>
       <% end %>
+    </ul>
+    <div class="row collapse">
+      <label>
+        Calendar Feed URL
+        <span data-tooltip
+          class="has-tip"
+          title="Use this address to subscribe to the Camp calendar in another calendar
+          application (e.g. Google Calendar). Click the button to copy the address to
+          your clipboard.">
+          <i class="fa fa-question-circle"></i>
+        </span>
+      </label>
+    </div>
+    <div class="row collapse">
+      <div class="small-9 columns">
+        <%= text_field_tag :access_token, current_user.feed_url, readonly: true %>
+      </div>
+      <div class="small-3 columns">
+        <a href="#" class="postfix button clip" data-clipboard-text="<%= current_user.feed_url %>">
+          <i class="fa fa-clipboard"></i>
+        </a>
+      </div>
     </div>
   </div>
-  <div class="medium-10 medium-pull-2 columns">
+  <div class="medium-9 medium-pull-3 columns">
     <% if @season %>
       <div id="calendar"
         <%= 'data-today=true' if @include_today %>
@@ -28,7 +40,7 @@
     <% else %>
       <div class="callout panel">
         <h5>Season Not Open</h5>
-        <p>The dates for the next camp "season" aren't defined yet.  Stay tuned.</p>
+        <p>The dates for the next Camp "season" aren't defined yet. Stay tuned.</p>
       </div>
     <% end %>
   </div>

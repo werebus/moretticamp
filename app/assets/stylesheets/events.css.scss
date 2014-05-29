@@ -1,8 +1,18 @@
-// Place all the styles related to the events controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+$include-html-classes: false;
+@import "foundation";
+
 p.description {
   margin-top: 1.25rem;
   border: 1px dashed;
   padding: 1.25rem;
+}
+
+#nav-links{
+  @media #{$small-only} {
+    @include inline-list;
+  }
+
+  @media #{$medium-up} {
+    margin-bottom: 4rem;
+  }
 }
