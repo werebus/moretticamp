@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, and :lockable
   devise :invitable, :database_authenticatable, :omniauthable, :recoverable,
     :registerable, :rememberable, :timeoutable, :trackable, :validatable,
-    :omniauth_providers => [:google_oauth2, :facebook]
+    :omniauth_providers => [:google_oauth2, :facebook, :twitter]
 
   has_many :events
 

@@ -1,5 +1,5 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  @providers = {:google_oauth2 => "Google", :facebook => "Facebook"}
+  @providers = {google_oauth2: "Google", facebook: "Facebook", twitter: "Twitter"}
 
   def self.provides_callback_for(provider, name)
     class_eval %Q{
