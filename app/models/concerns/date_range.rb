@@ -1,4 +1,6 @@
 module DateRange
+  extend ActiveSupport::Concern
+
   def date_range
     (start_date..end_date)
   end

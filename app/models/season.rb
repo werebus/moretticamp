@@ -12,7 +12,6 @@ class SeasonValidator < ActiveModel::Validator
 end
 
 class Season < ActiveRecord::Base
-  require 'date_range'
   include DateRange
 
   validates_presence_of :start_date, :end_date
