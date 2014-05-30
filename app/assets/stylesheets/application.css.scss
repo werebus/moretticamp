@@ -19,17 +19,9 @@
  */
 $include-html-classes: false;
 @import "foundation_and_overrides";
+@import "font-face";
 
-@font-face {
-    font-family: 'danielregular';
-    src: url('daniel-webfont.eot');
-    src: url('daniel-webfont.eot?#iefix') format('embedded-opentype'),
-         url('daniel-webfont.woff') format('woff'),
-         url('daniel-webfont.ttf') format('truetype'),
-         url('daniel-webfont.svg#danielregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
+@include font-face(danielregular, 'daniel-webfont', $asset-pipeline: true);
 
 label .label-note {
   margin: 0 0.75rem;
@@ -49,7 +41,7 @@ header.row {
   }
 
   h1 {
-    font-family: 'danielregular', inherit;
+    font-family: 'danielregular', 'Monotype Corsiva', 'Apple Chancery', 'ITC Zapf Chancery', 'URW Chancery L', cursive;
   }
 
   .inline-list {
@@ -74,7 +66,7 @@ body {
   background-position: right bottom;
   background-repeat: no-repeat;
 
-  @media #{$large-only} {
+  @media #{$large-up} {
     background-image: image-url('hemlock.png');
   }
 
