@@ -27,5 +27,5 @@ $(document).ready ->
       start_date_string = start_date.getMonth() + '/' + start_date.getYear()
       end_date_string = end_date.getMonth() + '/' + end_date.getYear()
 
-      $('.fc-button-prev').toggleClass('fc-state-disabled', (current_date_string == start_date_string))
-      $('.fc-button-next').toggleClass('fc-state-disabled', (current_date_string == end_date_string))
+      $('.fc-button-prev').toggleClass('ui-state-disabled', (current_date_string == start_date_string))
+      $('.fc-button-next').toggleClass('ui-state-disabled', (current_date_string == end_date_string))

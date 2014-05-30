@@ -70,3 +70,15 @@ div.datepicker {
   }
 }
 
+body {
+  background-position: right bottom;
+  background-repeat: no-repeat;
+
+  @media #{$large-only} {
+    background-image: image-url('hemlock.png');
+  }
+
+  @media #{$medium-only} {
+    background-image: image-url('hemlockcone.png');
+  }
+}

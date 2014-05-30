@@ -14,6 +14,10 @@ table.fc-header {
   border: 1px solid #ddd;
 }
 
+.ui-state-highlight {
+  background-color: #f0dfd0;
+}
+
 table.fc-header .fc-button {
   margin-top: 0.4rem;
   padding-top: 0.2rem;
@@ -26,10 +30,10 @@ table.fc-header .fc-button {
   font-size: 1em;
 }
 
-.fc-button:not(.fc-button-disabled) {
+.fc-button:not(.ui-state-disabled) {
   @include button($padding: $button-sml);
 }
 
-.fc-button.fc-state-disabled {
+.fc-button.ui-state-disabled {
   @include button($padding: $button-sml, $disabled: true);
 }
