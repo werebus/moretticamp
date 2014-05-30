@@ -4,13 +4,17 @@
 $(document).ready ->
   d = new Date( $('#calendar').data('date') )
   $('#calendar').fullCalendar
-    eventSources: [
-      '/events.json',
-      '/seasons.json'
-    ]
+    theme: true,
+    eventSources: [{
+      url: '/events.json'
+      color: '#061'},{
+      url: '/seasons.json'
+      color: '#666'
+    }]
     year: d.getFullYear(),
     month: d.getMonth(),
     date: d.getDate(),
+    buttonIcons: false,
     header:
       left: 'title'
       center: ''

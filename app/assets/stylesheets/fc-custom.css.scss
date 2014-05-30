@@ -1,0 +1,35 @@
+$include-html-classes: false;
+@import "foundation_and_overrides";
+
+a.fc-event:hover {
+  color: #ddd;
+}
+
+table.fc-header {
+  border: none;
+  margin-bottom: 0;
+}
+
+.ui-widget-header, .ui-widget-content {
+  border: 1px solid #ddd;
+}
+
+table.fc-header .fc-button {
+  margin-top: 0.4rem;
+  padding-top: 0.2rem;
+  @media #{$medium-up} {
+    margin-top: 0.8rem;
+  }
+}
+
+.fc-button .fc-text-arrow {
+  font-size: 1em;
+}
+
+.fc-button:not(.fc-button-disabled) {
+  @include button($padding: $button-sml);
+}
+
+.fc-button.fc-state-disabled {
+  @include button($padding: $button-sml, $disabled: true);
+}

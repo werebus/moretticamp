@@ -17,6 +17,56 @@
  *= require fullcalendar
  *= require foundation-datepicker
  */
+$include-html-classes: false;
+@import "foundation_and_overrides";
+
+@font-face {
+    font-family: 'danielregular';
+    src: url('daniel-webfont.eot');
+    src: url('daniel-webfont.eot?#iefix') format('embedded-opentype'),
+         url('daniel-webfont.woff') format('woff'),
+         url('daniel-webfont.ttf') format('truetype'),
+         url('daniel-webfont.svg#danielregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 label .label-note {
   margin: 0 0.75rem;
 }
+
+header.row {
+  background: #222;
+  max-width: 100%;
+  margin-bottom: 1.5rem;
+
+  a {
+    $link-color: #f0dfd0;
+    color: $link-color;
+    &:hover {
+      color: scale-color($link-color, $lightness: -5%);
+    }
+  }
+
+  h1 {
+    font-family: 'danielregular', inherit;
+  }
+
+  .inline-list {
+    @media #{$medium-up} {
+      float: right;
+    }
+  }
+}
+
+div.datepicker {
+  td.active.day,
+  th.active.day,
+  td.active.year,
+  th.active.year,
+  td span.active,
+  th span.active {
+    background: $primary-color;
+  }
+}
+

@@ -14,7 +14,7 @@
   </head>
 
   <body>
-    <div class="row">
+    <header class="row">
       <div class="medium-9 columns">
         <h1><%= link_to "Il Campo Moretti", authenticated_root_path %></h1>
       </div>
@@ -24,7 +24,7 @@
           <li><%=link_to "Logout", destroy_user_session_path, method: :delete %></li>
         </ul>
       </div>
-    </div>
+    </header>
     <div class="row">
       <div class="medium-8 medium-centered columns">
         <% if notice.present? %>
