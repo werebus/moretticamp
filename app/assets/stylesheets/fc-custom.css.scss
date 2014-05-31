@@ -36,4 +36,6 @@ table.fc-header .fc-button {
 
 .fc-button.ui-state-disabled {
   @include button($padding: $button-sml, $disabled: true);
+  /* Stupid hack: */
+  -webkit-transform: translateZ(0);
 }
