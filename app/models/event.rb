@@ -14,9 +14,8 @@ end
 
 class Event < ActiveRecord::Base
   include DateRange
-
-  validates_presence_of :start_date, :end_date
   validates_with EventSeasonValidator
+
   belongs_to :user
 
   def self.between(start_date, end_date)
