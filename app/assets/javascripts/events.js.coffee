@@ -15,6 +15,8 @@ $(document).ready ->
     month: d.getMonth(),
     date: d.getDate(),
     buttonIcons: false,
+    buttonText:
+      today: 'Today'
     header:
       left: 'title'
       center: ''
@@ -29,3 +31,7 @@ $(document).ready ->
 
       $('.fc-button-prev').toggleClass('ui-state-disabled', (current_date_string == start_date_string))
       $('.fc-button-next').toggleClass('ui-state-disabled', (current_date_string == end_date_string))
+
+      if $('.fc-header-title h3').length == 0
+        $('.fc-header-title').append('<h3></h3>')
+      $('.fc-header-title h3').text( (view.start.getMonth()+1) + '/' + (view.start.getFullYear() + '').substring(2) )
