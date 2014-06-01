@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_for :users, skip: [:registrations],
     controllers: {omniauth_callbacks: 'users/omniauth_callbacks',
                   invitations: 'users/invitations'}
+
   as :user do
     get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
     put 'users' => 'devise/registrations#update', :as => 'user_registration'
@@ -16,4 +17,6 @@ Rails.application.routes.draw do
   root :to => redirect('/users/sign_in')
 
   get 'feed/:token' => 'events#feed'
+
+  post 'voice/events' => "voice#events"
 end
