@@ -1,3 +1,5 @@
+require 'csv'
+
 namespace :invite do
   desc "Invites a user to the site"
   task :user, [:email, :last_name, :first_name] => [:environment] do |t,args|
@@ -7,7 +9,7 @@ namespace :invite do
   desc "Invite a CSV of users to the site"
   task :userlist, [:filename] => [:environment] do |t,args|
     CSV.foreach(args[:filename], headers: true) do |row|
-      Inviter.invite! row
+      Inviter.invite! row.to_hash.symbolize_keys
     end
   end
 end
