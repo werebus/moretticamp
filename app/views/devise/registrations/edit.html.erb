@@ -39,21 +39,31 @@
             <a href="#" id="token-button" class="button postfix"><i class="fa fa-refresh"></i></a>
           </div>
         </div>
-        <div class="row">
-          <div class="small-6 column">
-            <%= f.password_field :password, autocomplete: "off" %>
-            <small data-for="user_password" class="label-note hide">Leave blank if no change</small>
+        <% if @oauth %>
+          <div class="row">
+            <div class="small-12 column">
+              <div class="panel">
+                Your login is associated with your <%= @oauth %> account.
+              </div>
+            </div>
           </div>
-          <div class="small-6 column">
-            <%= f.password_field :password_confirmation, autocomplete: "off", label: "Confirm Password" %>
+        <% else %>
+          <div class="row">
+            <div class="small-6 column">
+              <%= f.password_field :password, autocomplete: "off" %>
+              <small data-for="user_password" class="label-note hide">Leave blank if no change</small>
+            </div>
+            <div class="small-6 column">
+              <%= f.password_field :password_confirmation, autocomplete: "off", label: "Confirm Password" %>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="small-12 column">
-            <%= f.password_field :current_password, autocomplete: "off", label: "Current Password" %>
-            <small data-for="user_current_password" class="label-note hide">We need your current password to confirm your changes</small>
+          <div class="row">
+            <div class="small-12 column">
+              <%= f.password_field :current_password, autocomplete: "off", label: "Current Password" %>
+              <small data-for="user_current_password" class="label-note hide">We need your current password to confirm your changes</small>
+            </div>
           </div>
-        </div>
+        <% end %>
         <div class="row">
           <div class="small-12 column">
             <%= f.submit "Update", class: "button expand" %>

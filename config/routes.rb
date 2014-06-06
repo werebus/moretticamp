@@ -7,8 +7,8 @@ Rails.application.routes.draw do
                   invitations: 'users/invitations'}
 
   as :user do
-    get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
-    put 'users' => 'devise/registrations#update', :as => 'user_registration'
+    get 'users/edit' => 'users/registrations#edit', :as => 'edit_user_registration'
+    put 'users' => 'users/registrations#update', :as => 'user_registration'
   end
 
   authenticated :user do
