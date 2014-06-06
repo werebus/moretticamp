@@ -20,6 +20,13 @@ class User < ActiveRecord::Base
   def self.find_for_oath(auth)
     where(auth.slice(:provider, :uid)).first
   end
+
+  def send_reset_password_instructions
+    if encrypted_password.present?
+      super
+    end
+  end
+
   private
 
   def generate_calendar_access_token
