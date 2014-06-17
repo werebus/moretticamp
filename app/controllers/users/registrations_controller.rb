@@ -1,7 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
 
   def edit
-    @oauth = Users::OmniauthCallbacksController.available_providers[ resource.provider.try(:to_sym) ]
+    @oauth = OAUTH_PROVIDERS.select{|oap| oap.label == resource.provider.try(:to_sym)}.first.name
     super
   end
 

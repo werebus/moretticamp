@@ -1,9 +1,4 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  @providers = {google_oauth2: "Google", facebook: "Facebook", twitter: "Twitter"}
-
-  def self.available_providers
-    @providers
-  end
 
   def self.provides_callback_for(provider, name)
     class_eval %Q{
@@ -30,7 +25,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     }
   end
 
-  @providers.each do |provider, name|
-    provides_callback_for provider, name
+  OAUTH_PROVIDERS.each do |oap|
+    provides_callback_for oap.label, oap.name
   end
 end
