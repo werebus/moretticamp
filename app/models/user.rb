@@ -24,7 +24,17 @@ class User < ActiveRecord::Base
   def send_reset_password_instructions
     if encrypted_password.present?
       super
+    elsif invitation_token.present?
+      send_no_reset_email(:invited)
+    elsif provider.present?
+      send_no_reset_email(:oauth)
     end
+  end
+
+  protected
+
+  def send_no_reset_email(reason)
+    UserMailer.no_reset(self, reason).deliver
   end
 
   private
@@ -34,4 +44,5 @@ class User < ActiveRecord::Base
       self.calendar_access_token = SecureRandom.hex
     end while self.class.exists?(calendar_access_token: calendar_access_token)
   end
+
 end
