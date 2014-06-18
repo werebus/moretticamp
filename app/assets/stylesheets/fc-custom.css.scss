@@ -52,3 +52,22 @@ table.fc-header .fc-button {
     display: none;
   }
 }
+
+.event-hover {
+  display: none;
+  font-size: 0.9em;
+  padding: 1em;
+  border: 1px solid #222;
+
+  position: absolute;
+  z-index: 10;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  background: white;
+  color: #222;
+  &:hover {
+    color: #222;
+  }
+}

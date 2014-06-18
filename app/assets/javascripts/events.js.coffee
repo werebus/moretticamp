@@ -21,6 +21,22 @@ $(document).ready ->
       left: 'title'
       center: ''
       right: if $('#calendar').data('today') then 'today prev,next' else 'prev,next'
+
+    eventMouseover: (event, jsEvent, view)->
+      unless (event.description == '' || event.description == null || event.description == undefined)
+        $('.fc-event-inner', this).append(
+          '<div class="event-hover" id="eh-' + event.id + '">' + event.description + '</div>')
+        $('#eh-' + event.id).fadeIn('fast').css
+          top: $(this).height() + 15
+          'max-width': $('td.fc-day').width() * 3
+        if $(this).position().left < $('#calendar').width() / 2
+          $('#eh-' + event.id).css('left', 15)
+        else
+          $('#eh-' + event.id).css('right', 15)
+    eventMouseout: (event, jsEvent, view)->
+      $('#eh-' + event.id).fadeOut('fast', ->
+        $(this).remove())
+
     viewRender: (view, element)->
       start_date = new Date( $('#calendar').data('start-date') )
       end_date = new Date( $('#calendar').data('end-date') )
