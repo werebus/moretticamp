@@ -1,0 +1,34 @@
+/*
+ *= require_tree ./print
+ *= require_self
+ */
+header, .fc-header-right, .sidebar, span.tooltip {
+  display: none;
+}
+
+#calendar {
+  width: 10in;
+  font-size: 1.5em;
+
+  .fc-view td, .fc-view th {
+    border: 1px solid #777;
+  }
+
+  .fc-view tbody tr:nth-child(odd) {
+    background-color: #EEE;
+    -webkit-print-color-adjust: exact; 
+    print-color-adjust: exact;
+  }
+
+  a.fc-event {
+    background: none !important;
+    color: #061;
+    border-width: 2px;
+  }
+}
+
+.fc-header-title h3{
+  display: none;
+}
+
+
