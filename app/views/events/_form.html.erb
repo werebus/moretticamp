@@ -15,7 +15,11 @@
       </div>
       <div class="row">
         <div class="small-12 column">
+          <% if @event.persisted? %>
             <%=f.collection_select(:user_id, User.all, :id, :full_name, include_blank: true, label: "Schedule For") %>
+          <% else %>
+            <%=f.collection_select(:user_id, User.all + [User.new], :id, :full_name, selected: current_user.id, label: "Schedule For") %>
+          <% end %>
         </div>
       </div>
     <% end %>
