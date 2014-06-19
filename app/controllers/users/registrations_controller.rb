@@ -1,7 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
 
   def edit
-    @oauth = OAUTH_PROVIDERS.select{|oap| oap.label == resource.provider.try(:to_sym)}.first.name
+    @oauth = OAUTH_PROVIDERS.find{|oap| oap.label == resource.provider.to_sym}.name if resource.provider.present?
     super
   end
 
@@ -11,9 +11,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if needs_password?( resource, params )
       resource.update_with_password( params )
     else
-      params.delete( :current_password )
-      params.delete( :password )
-      params.delete( :password_confirmation )
+      params.delete_if{ |p| [:current_password, :password, :password_confirmation].include?(p) }
       resource.update_without_password( params )
     end
   end
