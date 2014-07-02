@@ -2,25 +2,34 @@ class VoiceController < ApplicationController
   include Webhookable
 
   def events
+    @pressed = (params[:Digits].present? ? params[:Digits].to_i : nil)
+
     @exclude = session[:exclude] || [0]
-    @exclude << session[:event] if (params[:Digits].to_i) == 2
-    @exclude = [0] if (params[:Digits].to_i) == 3
+    @exclude << session[:event] if @pressed == 2
+    @exclude = [0] if @pressed == 3
 
     @event = Event.next_after( Date.today, @exclude )
-    session[:event] = @event.id
+    session[:event] = @event.try(:id)
     session[:exclude] = @exclude
 
+    say_options = {voice: 'alice'}
     response = Twilio::TwiML::Response.new do |r|
-      if params[:Digits].nil? || [1, 2, 3].include?(params[:Digits].to_i)
+      if [nil, 1, 2, 3].include? @pressed
         r.Gather(numDigits: 1) do |g|
-          g.Say "The next event scheduled #{@exclude.length > 1 ? 'after that' : ''} is"
-          g.Say @event.display_title + " " + @event.date_range_readable + "."
-          g.Say "To repeat that, press 1."
-          g.Say "To hear the next event, press 2."
-          g.Say "To start over, press 3."
+          if @event
+            g.Say "The next event scheduled #{@exclude.length > 1 ? 'after that' : ''} is", say_options
+            g.Say @event.display_title + " " + @event.date_range_readable + ".", say_options
+            g.Pause
+            g.Say "To repeat that, press 1.", say_options
+            g.Say "To hear the next event, press 2.", say_options
+          else
+            g.Say "There are no further events scheduled.", say_options
+          end
+
+          g.Say "To start over, press 3.", say_options
         end
       end
-      r.Say "Goodbye"
+      r.Say "Goodbye!", say_options
       r.Hangup
     end
 
