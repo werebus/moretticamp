@@ -7,7 +7,10 @@ $(document).ready ->
     theme: true,
     eventSources: [{
       url: '/events.json'
-      color: '#061'},{
+      color: '#061'
+      error: (e)->
+        if e.status == 401 then window.location.reload(false)
+      },{
       url: '/seasons.json'
       color: '#666'
     }]
