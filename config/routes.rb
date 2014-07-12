@@ -16,7 +16,14 @@ Rails.application.routes.draw do
   end
   root :to => redirect('/users/sign_in')
 
+  #ics feed
   get 'feed/:token' => 'events#feed'
 
+  #Twilio route
   post 'voice/events' => "voice#events"
+
+  #Static pages
+  PagesController.action_methods.each do |action|
+    get "/#{action}", to: "pages##{action}", as: "#{action}_page"
+  end
 end
