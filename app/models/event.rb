@@ -18,14 +18,6 @@ class Event < ActiveRecord::Base
 
   belongs_to :user
 
-  def self.next_after(date, exclude = [0])
-    where("start_date >= ? AND id NOT IN (?)", date, exclude).order(:start_date).first
-  end
-
-  def self.between(start_date, end_date)
-    where("start_date <= ? AND end_date >= ?", end_date, start_date)
-  end
-
   def display_title
     (title.present? ? title : user.try(:first_name) || "" )
   end

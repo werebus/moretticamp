@@ -16,13 +16,14 @@ module Webhookable
   end
 
   def require_valid_source
-    unless Rails.env.development? ||
-      ( params[:AccountSid] == ENV['TWILIO_ACCOUNT_SID'] && params[:From] == ENV['CAMP_PHONE_NUMBER'])
-      response = Twilio::TwiML::Response.new do |r|
-        r.Reject
-      end
-
-      render_twiml response and return
+    unless Rails.env.development? || params.values_at(:AccountSid, :From) == ENV.values_at('TWILIO_ACCOUNT_SID', 'CAMP_PHONE_NUMBER')
+      reject_call!
     end
+  end
+
+  def reject_call!
+    response = Twilio::TwiML::Response.new{ |r| r.Reject }
+    set_header
+    render_twiml response
   end
 end
