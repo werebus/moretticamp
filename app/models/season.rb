@@ -1,9 +1,8 @@
 class SeasonValidator < ActiveModel::Validator
   def validate(record)
-    return if record.start_date.blank? or record.end_date.blank?
+    return if record.start_date.blank? or record.end_date.blank? or (record.end_date - record.start_date) < 0
 
-    overlaps = Season.where("start_date IN (:range) OR end_date IN (:range)",
-                            range: record.date_range).reject{|s| s==record}
+    overlaps = Season.where("start_date < ? AND end_date > ?", record.end_date, record.start_date).reject{|s| s==record}
 
     if overlaps.any?
       record.errors[:base] << "Season overlaps with another season"
