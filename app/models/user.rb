@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   has_many :events
 
-  before_create :generate_calendar_access_token
+  before_save :generate_calendar_access_token, unless: 'calendar_access_token.present?'
 
   def full_name
     "#{first_name} #{last_name}"
