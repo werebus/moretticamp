@@ -1,0 +1,11 @@
+AllCops:
+  Include:
+    - Rakefile
+    - Capfile
+    - config.ru
+  Exclude:
+    - bin/**/*
+    - db/schema.rb
+
+LineLength:
+  Enabled: false

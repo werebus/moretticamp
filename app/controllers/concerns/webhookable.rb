@@ -7,6 +7,11 @@ module Webhookable
     skip_before_action :verify_authenticity_token, :authenticate_user!
   end
 
+  def valid_call?
+    params.values_at(:AccountSid, :From) ==
+      ENV.values_at('TWILIO_ACCOUNT_SID', 'CAMP_PHONE_NUMBER')
+  end
+
   def set_header
     response.headers['Content-Type'] = 'text/xml'
   end
@@ -16,13 +21,12 @@ module Webhookable
   end
 
   def require_valid_source
-    unless Rails.env.development? || params.values_at(:AccountSid, :From) == ENV.values_at('TWILIO_ACCOUNT_SID', 'CAMP_PHONE_NUMBER')
-      reject_call!
-    end
+    return if Rails.env.development? || valid_call?
+    reject_call!
   end
 
   def reject_call!
-    response = Twilio::TwiML::Response.new{ |r| r.Reject }
+    response = Twilio::TwiML::Response.new(&:Reject)
     set_header
     render_twiml response
   end

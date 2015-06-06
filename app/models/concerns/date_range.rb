@@ -8,7 +8,7 @@ module DateRange
 
   module ClassMethods
     def next_after(date, exclude = [0])
-      where("start_date >= ? AND id NOT IN (?)", date, exclude).order(:start_date).first
+      where('start_date >= ? AND id NOT IN (?)', date, exclude).order(:start_date).first
     end
 
     def next
@@ -16,7 +16,7 @@ module DateRange
     end
 
     def between(start_date, end_date)
-      where("start_date <= ? AND end_date >= ?", end_date, start_date)
+      where('start_date <= ? AND end_date >= ?', end_date, start_date)
     end
 
     def current
@@ -43,7 +43,7 @@ module DateRange
       "from #{long_date_words(start_date)}, until #{long_date_words(end_date)}"
     end
   end
-  
+
   private
 
   def short_date_words(date)

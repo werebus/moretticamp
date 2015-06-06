@@ -8,17 +8,17 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @season = Season.current_or_next
-    if @season
-      @date = [@season.start_date, Date.today].max
-      @include_today = (@season.date_range.include? Date.today)
 
-      if params[:start] && params[:end]
-        start_time = Time.at(params[:start].to_i)
-        end_time = Time.at(params[:end].to_i)
-        @events = Event.between(start_time, end_time)
-      else
-        @events = Event.all
-      end
+    return unless @season
+    @date = [@season.start_date, Date.today].max
+    @include_today = (@season.date_range.include? Date.today)
+
+    if params[:start] && params[:end]
+      start_time = Time.at(params[:start].to_i)
+      end_time = Time.at(params[:end].to_i)
+      @events = Event.between(start_time, end_time)
+    else
+      @events = Event.all
     end
   end
 
@@ -79,7 +79,7 @@ class EventsController < ApplicationController
   end
 
   def feed
-    if params[:format] == "ics" && (user_signed_in? || User.where(calendar_access_token: params[:token]).any?)
+    if params[:format] == 'ics' && (user_signed_in? || User.where(calendar_access_token: params[:token]).any?)
       @events = Event.all
       render action: 'index'
     else
@@ -88,17 +88,18 @@ class EventsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_event
-      @event = Event.find(params[:id])
-    end
 
-    def require_ownership
-      redirect_to @event unless current_user.admin || @event.user == current_user
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_event
+    @event = Event.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def event_params
-      params.require(:event).permit(:id, :start_date, :end_date, :title, :description, :user_id)
-    end
+  def require_ownership
+    redirect_to @event unless current_user.admin || @event.user == current_user
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def event_params
+    params.require(:event).permit(:id, :start_date, :end_date, :title, :description, :user_id)
+  end
 end

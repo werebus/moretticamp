@@ -47,10 +47,6 @@ gem 'fullcalendar-rails'
 # Clipboard
 gem 'zeroclipboard-rails'
 
-# Capistrano for deployment
-gem 'capistrano', '~> 3.1.0'
-gem 'capistrano-bundler', '~> 1.1.2'
-gem 'capistrano-rails', '~> 1.1.1'
 
 group :development, :test do
   gem 'rspec-rails'
@@ -60,6 +56,10 @@ end
 group :development do
   gem 'spring'
   gem 'pry'
+  gem 'capistrano', '~> 3.1.0', require: false
+  gem 'capistrano-bundler', '~> 1.1.2', require: false
+  gem 'capistrano-rails', '~> 1.1.1', require: false
+  gem 'rubocop', require: false
 end
 
 group :test do

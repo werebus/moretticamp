@@ -64,13 +64,14 @@ class SeasonsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_season
-      @season = Season.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def season_params
-      params.require(:season).permit(:start_date, :end_date)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_season
+    @season = Season.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def season_params
+    params.require(:season).permit(:start_date, :end_date)
+  end
 end

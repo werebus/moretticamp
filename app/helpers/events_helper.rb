@@ -4,7 +4,7 @@ module EventsHelper
   end
 
   def time_for_ical(time)
-    time.strftime("%Y%m%d")
+    time.strftime('%Y%m%d')
   end
 
   def time_localized(time)

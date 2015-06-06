@@ -2,9 +2,10 @@ Rails.application.routes.draw do
   resources :events
   resources :seasons
 
-  devise_for :users, skip: [:registrations],
-    controllers: {omniauth_callbacks: 'users/omniauth_callbacks',
-                  invitations: 'users/invitations'}
+  devise_for :users, skip:        [:registrations],
+                     controllers: { omniauth_callbacks: 'users/omniauth_callbacks',
+                                    invitations:        'users/invitations'
+                                  }
 
   as :user do
     get 'users/edit' => 'users/registrations#edit', :as => 'edit_user_registration'
@@ -12,17 +13,17 @@ Rails.application.routes.draw do
   end
 
   authenticated :user do
-    root :to => 'events#index', :as => :authenticated_root
+    root to: 'events#index', as: :authenticated_root
   end
-  root :to => redirect('/users/sign_in')
+  root to: redirect('/users/sign_in')
 
-  #ics feed
+  # ics feed
   get 'feed/:token' => 'events#feed'
 
-  #Twilio route
-  post 'voice/events' => "voice#events"
+  # Twilio route
+  post 'voice/events' => 'voice#events'
 
-  #Static pages
+  # Static pages
   PagesController.action_methods.each do |action|
     get "/#{action}", to: "pages##{action}", as: "#{action}_page"
   end
