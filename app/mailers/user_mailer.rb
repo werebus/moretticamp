@@ -8,7 +8,7 @@ class UserMailer < ActionMailer::Base
               when :invited
                 invited_reason
               when :oauth
-                oath_reason(oauth_provider)
+                oauth_reason(oauth_provider)
               end
 
     mail to: user.email,
