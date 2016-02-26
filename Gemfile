@@ -56,10 +56,9 @@ end
 group :development do
   gem 'spring'
   gem 'pry'
-  gem 'capistrano', '~> 3.1', require: false
+  gem 'capistrano', '~> 3.1.0', require: false
   gem 'capistrano-bundler', '~> 1.1.2', require: false
   gem 'capistrano-rails', '~> 1.1.1', require: false
-  gem 'capistrano-pending', require: false
   gem 'rubocop', require: false
 end
 
