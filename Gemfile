@@ -10,7 +10,7 @@ gem 'pg'
 gem 'figaro'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 4.0.3'
 gem 'foundation-rails'
 gem 'foundation_rails_helper'
 gem "font-awesome-rails"
