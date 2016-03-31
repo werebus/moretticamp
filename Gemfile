@@ -34,6 +34,9 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Twilio for voice access
 gem 'twilio-ruby'
 
+# Mail with SES
+gem 'aws-ses'
+
 # Devise for auth
 gem 'devise', '>= 2.0.0'
 gem 'devise_invitable', '~> 1.3.4'
