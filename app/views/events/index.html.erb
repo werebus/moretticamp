@@ -1,6 +1,6 @@
 <div class="row">
   <div class="sidebar medium-3 medium-push-9 columns">
-    <ul id="nav-links" class="no-bullet">
+    <ul id="nav-links" class="medium-vertical menu">
       <li><%= link_to 'New Event', new_event_path %></li>
       <% if current_user.admin %>
         <li><%= link_to "Manage Seasons", seasons_path %></li>
@@ -11,19 +11,18 @@
         Calendar Feed URL
         <span data-tooltip
           class="has-tip"
-          title="Use this address to subscribe to the Camp calendar in another calendar
-          application (e.g. Google Calendar). Click the button to copy the address to
-          your clipboard.">
+          title="Use this address to subscribe to the Camp calendar in another calendar application (e.g. Google Calendar). Click the button to copy the address to your clipboard.">
           <i class="fa fa-question-circle"></i>
         </span>
       </label>
     </div>
-    <div class="row collapse">
-      <div class="small-9 columns">
-        <%= text_field_tag :access_token, current_user.feed_url, readonly: true %>
-      </div>
-      <div class="small-3 columns">
-        <a href="#" class="postfix button clip" data-clipboard-text="<%= current_user.feed_url %>">
+    <div class="row collapse input-group">
+      <%= text_field_tag :access_token,
+                         current_user.feed_url,
+                         readonly: true,
+                         class: 'input-group-field' %>
+      <div class="input-group-button">
+        <a href="#" class="button clip" data-clipboard-text="<%= current_user.feed_url %>">
           <i class="fa fa-clipboard"></i>
         </a>
       </div>
@@ -38,7 +37,7 @@
         data-end-date="<%= time_for_json(@season.end_date) %>">
       </div>
     <% else %>
-      <div class="callout panel">
+      <div class="secondary callout">
         <h5>Season Not Open</h5>
         <p>The dates for the next Camp "season" aren't defined yet. Stay tuned.</p>
       </div>

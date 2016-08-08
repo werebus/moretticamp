@@ -21,7 +21,7 @@
         <h1><%= link_to "Il Campo Moretti", authenticated_root_path %></h1>
       </div>
       <div class="medium-3 columns">
-        <ul class="inline-list">
+        <ul class="menu">
           <li><%=link_to current_user.full_name, edit_user_registration_path %></li>
           <li><%=link_to "Documents", documents_page_path %></li>
           <li><%=link_to "Logout", destroy_user_session_path, method: :delete %></li>
@@ -31,15 +31,15 @@
     <div class="row">
       <div class="medium-8 medium-centered columns">
         <% if notice.present? %>
-          <div data-alert class="alert-box success">
+          <div data-closable class="success callout">
             <%= notice %>
-            <a href="#" class="close">&times;</a>
+            <button class="close-button" type="button" data-close>&times;</button>
           </div>
         <% end %>
         <% if alert.present? %>
-          <div data-alert class="alert-box alert">
+          <div data-closable class="alert callout">
             <%= alert %>
-            <a href="#" class="close">&times;</a>
+            <button class="close-button" type="button" data-close>&times;</button>
           </div>
         <% end %>
       </div>

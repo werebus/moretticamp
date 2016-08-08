@@ -8,11 +8,10 @@ p.description {
 }
 
 #nav-links{
-  @media #{$small-only} {
-    @include inline-list;
-  }
-
-  @media #{$medium-up} {
+  @include breakpoint(medium) {
     margin-bottom: 4rem;
+    li a {
+      padding: 0.7rem 0;
+    }
   }
 }

@@ -1,7 +1,7 @@
 <%= form_for(@event) do |f| %>
-  <div class="panel">
+  <div class="callout">
     <% if @event.errors[:base].any? %>
-      <div data-alert class="alert-box alert">
+      <div class="alert callout">
         <% @event.errors[:base].each do |e| %>
           <%= e %><br/>
         <% end %>
@@ -48,7 +48,7 @@
     </div>
     <div class="row">
       <div class= "small-12 column">
-        <%=f.submit class: "button expand" %>
+        <%=f.submit class: "expanded button" %>
       </div>
     </div>
   </div>

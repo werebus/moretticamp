@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
+//= require moment
 //= require fullcalendar
 //= require foundation-datepicker
 //= require zeroclipboard

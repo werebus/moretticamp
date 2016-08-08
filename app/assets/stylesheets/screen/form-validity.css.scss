@@ -1,0 +1,14 @@
+$include-html-classes: false;
+@import "foundation";
+
+label.error {
+  color: map-get($foundation-palette, alert);
+}
+
+small.error {
+  display: block;
+  color: $white;
+  background: map-get($foundation-palette, alert);
+  margin-top: -1rem;
+  padding: 0.5rem;
+}

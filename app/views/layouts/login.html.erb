@@ -16,25 +16,27 @@
   </head>
 
   <body>
-    <div id="pusher" class="show-for-medium-up"></div>
+    <div id="pusher" class="show-for-medium"></div>
     <div id="login-form" class="row">
-      <div class="small-8 small-centered columns panel">
-        <% if notice.present? %>
-          <div data-alert class="alert-box success">
-            <%= notice %>
-            <a href="#" class="close">&times;</a>
-          </div>
-        <% end %>
-        <% if alert.present? %>
-          <div data-alert class="alert-box alert">
-            <%= alert %>
-            <a href="#" class="close">&times;</a>
-          </div>
-        <% end %>
-        <%= yield %>
-        <%= javascript_include_tag "application" %>
-        <%= render "devise/shared/links" %>
+      <div class="small-8 small-centered columns">
+        <div class="callout">
+          <% if notice.present? %>
+            <div data-closable class="success callout">
+              <%= notice %>
+              <button class="close-button" type="button" data-close>&times;</button>
+            </div>
+          <% end %>
+          <% if alert.present? %>
+            <div data-closable class="alert callout">
+              <%= alert %>
+              <button class="close-button" type="button" data-close>&times;</button>
+            </div>
+          <% end %>
+          <%= yield %>
+          <%= render "devise/shared/links" %>
+        </div>
       </div>
     </div>
+    <%= javascript_include_tag "application" %>
   </body>
 </html>

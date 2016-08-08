@@ -7,7 +7,7 @@
     </div>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-      <div class="panel">
+      <div class="callout">
         <div class="row">
           <div class="small-6 column">
             <%= f.text_field :first_name, autofucus: true, label: "First Name" %>
@@ -24,25 +24,27 @@
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <div class="row">
             <div class="small-12 column">
-              <div data-alert class="alert-box info">
+              <div class="callout primary">
                 Currently waiting confirmation for: <%= resource.unconfirmed_email %>
               </div>
             </div>
           </div>
         <% end %>
-        <div class="row collapse">
-          <div class="small-11 column">
-            <%= f.text_field :calendar_access_token, readonly: true, placeholder: "Will be Regenerated", label: "Calendar Access Token" %>
-          </div>
-          <div class="small-1 column">
+        <div class="input-group">
+          <%= f.text_field :calendar_access_token,
+                           readonly: true,
+                           placeholder: "Will be Regenerated",
+                           label: "Calendar Access Token",
+                           class: "input-group-field"%>
+          <div class="input-group-button">
             <label>&nbsp;</label>
-            <a href="#" id="token-button" class="button postfix"><i class="fa fa-refresh"></i></a>
+            <a href="#" id="token-button" class="button"><i class="fa fa-refresh"></i></a>
           </div>
         </div>
         <% if @oauth %>
           <div class="row">
             <div class="small-12 column">
-              <div class="panel">
+              <div class="callout secondary">
                 Your login is associated with your <%= @oauth %> account.
               </div>
             </div>
@@ -66,7 +68,7 @@
         <% end %>
         <div class="row">
           <div class="small-12 column">
-            <%= f.submit "Update", class: "button expand" %>
+            <%= f.submit "Update", class: "expanded button" %>
           </div>
         </div>
       </div>

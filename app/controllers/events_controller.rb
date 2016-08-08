@@ -14,8 +14,8 @@ class EventsController < ApplicationController
     @include_today = (@season.date_range.include? Date.today)
 
     if params[:start] && params[:end]
-      start_time = Time.at(params[:start].to_i)
-      end_time = Time.at(params[:end].to_i)
+      start_time = Date.parse(params[:start])
+      end_time = Date.parse(params[:end])
       @events = Event.between(start_time, end_time)
     else
       @events = Event.all

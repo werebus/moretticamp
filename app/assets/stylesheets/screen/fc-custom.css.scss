@@ -5,53 +5,55 @@ a.fc-event:hover {
   color: #ddd;
 }
 
-table.fc-header {
+.fc-toolbar {
   border: none;
   margin-bottom: 0;
 }
 
-.ui-widget-header, .ui-widget-content {
-  border: 1px solid #ddd;
+.fc {
+  th, td, .fc-body {
+    border: 1px solid #ddd;
+  }
 }
 
 .ui-state-highlight {
   background-color: #f0dfd0;
 }
 
-table.fc-header .fc-button {
+.fc-toolbar .ui-button {
   margin-top: 0.4rem;
   padding-top: 0.2rem;
-  @media #{$medium-up} {
+  @include breakpoint(medium) {
     margin-top: 0.8rem;
   }
 }
 
-.fc-button .fc-text-arrow {
-  font-size: 1em;
+.ui-button:not(.ui-state-disabled) {
+  @include button;
 }
 
-.fc-button:not(.ui-state-disabled) {
-  @include button($padding: $button-sml);
-}
-
-.fc-button.ui-state-disabled {
-  @include button($padding: $button-sml, $disabled: true);
+.ui-button.ui-state-disabled {
+  @include button;
+  @include button-disabled;
   /* Stupid hack: */
   -webkit-transform: translateZ(0);
 }
 
-.fc-header-title h2 {
-  display: none;
-}
-
-@media #{$medium-up} {
-  .fc-header-title h2 {
-    display: block;
-  }
-  .fc-header-title h3 {
+.fc-toolbar .fc-left {
+  h2 {
     display: none;
   }
+
+  @include breakpoint(medium) {
+    h2 {
+      display: block;
+    }
+    h3 {
+      display: none;
+    }
+  }
 }
+
 
 .event-hover {
   display: none;

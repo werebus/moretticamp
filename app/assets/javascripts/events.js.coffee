@@ -2,7 +2,6 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).ready ->
-  d = new Date( $('#calendar').data('date') )
   $('#calendar').fullCalendar
     theme: true,
     eventSources: [{
@@ -14,12 +13,12 @@ $(document).ready ->
       url: '/seasons.json'
       color: '#666'
     }]
-    year: d.getFullYear(),
-    month: d.getMonth(),
-    date: d.getDate(),
+    defaultDate: moment( $('#calendar').data('date') ),
     buttonIcons: false,
     buttonText:
       today: 'Today'
+      prev: '<'
+      next: '>'
     header:
       left: 'title'
       center: ''
@@ -27,7 +26,7 @@ $(document).ready ->
 
     eventMouseover: (event, jsEvent, view)->
       unless (event.description == '' || event.description == null || event.description == undefined)
-        $('.fc-event-inner', this).append(
+        $(this).append(
           '<div class="event-hover" id="eh-' + event.id + '">' + event.description + '</div>')
         $('#eh-' + event.id).fadeIn('fast').css
           top: $(this).height() + 15
@@ -41,16 +40,16 @@ $(document).ready ->
         $(this).remove())
 
     viewRender: (view, element)->
-      start_date = new Date( $('#calendar').data('start-date') )
-      end_date = new Date( $('#calendar').data('end-date') )
+      start_date = moment( $('#calendar').data('start-date') )
+      end_date = moment( $('#calendar').data('end-date') )
 
-      current_date_string = view.start.getMonth() + '/' + view.start.getYear()
-      start_date_string = start_date.getMonth() + '/' + start_date.getYear()
-      end_date_string = end_date.getMonth() + '/' + end_date.getYear()
+      current_date_string = view.intervalStart.format('YYYY-MM')
+      start_date_string = start_date.format('YYYY-MM')
+      end_date_string = end_date.format('YYYY-MM')
 
-      $('.fc-button-prev').toggleClass('ui-state-disabled', (current_date_string == start_date_string))
-      $('.fc-button-next').toggleClass('ui-state-disabled', (current_date_string == end_date_string))
+      $('.fc-prev-button').toggleClass('ui-state-disabled', (current_date_string == start_date_string))
+      $('.fc-next-button').toggleClass('ui-state-disabled', (current_date_string == end_date_string))
 
-      if $('.fc-header-title h3').length == 0
-        $('.fc-header-title').append('<h3></h3>')
-      $('.fc-header-title h3').text( (view.start.getMonth()+1) + '/' + (view.start.getFullYear() + '').substring(2) )
+      if $('.fc-toolbar .fc-left h3').length == 0
+        $('.fc-toolbar .fc-left').append('<h3></h3>')
+      $('.fc-toolbar .fc-left h3').text( view.intervalStart.format('M/YY') )

@@ -4,6 +4,6 @@
   <% if devise_mapping.rememberable? -%>
     <%= f.check_box :remember_me, label: "Remember Me" %>
   <% end -%>
-  <%= f.submit "Sign In", class: "button expand" %>
+  <%= f.submit "Sign In", class: "expanded button" %>
 <% end %>
 <%= render partial: 'devise/shared/oauth' %>
