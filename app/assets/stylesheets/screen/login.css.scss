@@ -1,6 +1,11 @@
+$include-html-classes: false;
+@import "screen/foundation_and_overrides";
+
 #pusher {
+  @include show-for(medium);
   float: left;
   height: 50%;
+  height: 50vh;
   margin-bottom: -200px;
 }
 

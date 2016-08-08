@@ -11,6 +11,11 @@ $include-html-classes: false;
 
 @include font-face(danielregular, 'daniel-webfont', $asset-pipeline: true);
 
+html, body {
+  min-height: 100%;
+  min-height: 100vh;
+}
+
 label .label-note {
   margin: 0 0.75rem;
 }
