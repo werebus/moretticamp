@@ -1,75 +1,89 @@
 $include-html-classes: false;
 @import "foundation_and_overrides";
 
-a.fc-event:hover {
-  color: #ddd;
-}
-
-.fc-toolbar {
-  border: none;
-  margin-bottom: 0;
-}
-
 .fc {
-  th, td, .fc-body {
+  thead, tbody, tfoot, th, td {
+    background: none;
+    border: 0;
+  }
+
+  .fc-head {
+    background: #ddd;
+  }
+
+  .fc-body {
+    background: $white;
+  }
+
+  .fc-row.fc-week:nth-of-type(even) {
+    background: #eee;
+  }
+
+  .fc-day-header {
+    padding: 1rem 0 0;
+  }
+
+  .fc-day {
     border: 1px solid #ddd;
   }
-}
 
-.ui-state-highlight {
-  background-color: #f0dfd0;
-}
-
-.fc-toolbar .ui-button {
-  margin-top: 0.4rem;
-  padding-top: 0.2rem;
-  @include breakpoint(medium) {
-    margin-top: 0.8rem;
-  }
-}
-
-.ui-button:not(.ui-state-disabled) {
-  @include button;
-}
-
-.ui-button.ui-state-disabled {
-  @include button;
-  @include button-disabled;
-  /* Stupid hack: */
-  -webkit-transform: translateZ(0);
-}
-
-.fc-toolbar .fc-left {
-  h2 {
-    display: none;
+  a.fc-event:hover {
+    color: #ddd;
   }
 
-  @include breakpoint(medium) {
+  .fc-toolbar {
+    margin-bottom: 0;
+  }
+
+  .ui-state-highlight {
+    background-color: #f0dfd0;
+  }
+
+  button {
+    height: auto;
+  }
+
+  .ui-button {
+    @include button;
+  }
+
+  .ui-button.ui-state-disabled {
+    @include button-disabled;
+    /* Stupid hack: */
+    -webkit-transform: translateZ(0);
+  }
+
+  .fc-toolbar .fc-left {
     h2 {
-      display: block;
-    }
-    h3 {
       display: none;
     }
+
+    @include breakpoint(medium) {
+      h2 {
+        display: block;
+      }
+      h3 {
+        display: none;
+      }
+    }
   }
-}
 
+  .event-hover {
+    display: none;
+    font-size: 0.9em;
+    padding: 1em;
+    border: 1px solid #222;
 
-.event-hover {
-  display: none;
-  font-size: 0.9em;
-  padding: 1em;
-  border: 1px solid #222;
+    position: absolute;
+    z-index: 10;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 
-  position: absolute;
-  z-index: 10;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-
-  background: white;
-  color: #222;
-  &:hover {
+    background: white;
     color: #222;
+    &:hover {
+      color: #222;
+    }
   }
 }
