@@ -13,6 +13,7 @@ gem 'figaro'
 gem 'sass-rails', '~> 5.0.0'
 gem 'foundation-rails'
 gem 'foundation_rails_helper'
+gem 'rails-assets-foundation-datepicker', source: 'https://rails-assets.org'
 gem "font-awesome-sass"
 
 # Use Uglifier as compressor for JavaScript assets
