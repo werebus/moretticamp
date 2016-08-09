@@ -7,11 +7,7 @@
     <title><%= content_for?(:title) ? yield(:title) : "Il Campo Moretti" %></title>
 
     <%= favicon_link_tag       "/favicon.ico" %>
-    <%= favicon_link_tag       '/hemlockicon.png', rel: 'apple-touch-icon', type: 'image/png' %>
-    <%= stylesheet_link_tag    "application-all", media: 'all' %>
-    <%= stylesheet_link_tag    "application-screen", media: 'screen' %>
-    <%= stylesheet_link_tag    "application-print", media: 'print' %>
-    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= stylesheet_link_tag    "application" %>
     <%= csrf_meta_tags %>
   </head>
 

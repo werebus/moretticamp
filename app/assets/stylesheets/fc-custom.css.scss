@@ -1,7 +1,7 @@
 $include-html-classes: false;
 @import "foundation_and_overrides";
 
-.fc {
+#calendar.fc {
   thead, tbody, tfoot, th, td {
     background: none;
     border: 0;
@@ -51,6 +51,16 @@ $include-html-classes: false;
     @include button-disabled;
     /* Stupid hack: */
     -webkit-transform: translateZ(0);
+  }
+
+  .fc-prev-button:after {
+    //@include fa-icon;
+  }
+
+  .fc-next-button:after {
+    font-size: 1rem;
+    padding: 0 2rem;
+    content: "\0203A";
   }
 
   .fc-toolbar .fc-left {

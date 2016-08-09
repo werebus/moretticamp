@@ -1,13 +1,14 @@
 /*
- *= require_tree ./screen
+ *= require_tree .
  *= require_self
- *= require screen/foundation_and_overrides
  *= require font-awesome
  *= require foundation-datepicker
+ *= require fullcalendar
  */
+
 $include-html-classes: false;
-@import "screen/foundation_and_overrides";
-@import "screen/font-face";
+@import "foundation_and_overrides";
+@import "font-face";
 
 @include font-face(danielregular, 'daniel-webfont', $asset-pipeline: true);
 
@@ -34,7 +35,12 @@ header.row {
   }
 
   h1 {
-    font-family: 'danielregular', 'Monotype Corsiva', 'Apple Chancery', 'ITC Zapf Chancery', 'URW Chancery L', cursive;
+    font-family: 'danielregular',
+                 'Monotype Corsiva',
+                 'Apple Chancery',
+                 'ITC Zapf Chancery',
+                 'URW Chancery L',
+                 cursive;
   }
 
   .inline-list {
