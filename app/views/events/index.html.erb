@@ -32,9 +32,9 @@
     <% if @season %>
       <div id="calendar"
         <%= 'data-today=true' if @include_today %>
-        data-date="<%= time_for_json(@date) %>"
-        data-start-date="<%= time_for_json(@season.start_date) %>"
-        data-end-date="<%= time_for_json(@season.end_date) %>">
+        data-date="<%= @date.iso8601 %>"
+        data-start-date="<%= @season.start_date.iso8601 %>"
+        data-end-date="<%= @season.end_date.iso8601 %>">
       </div>
     <% else %>
       <div class="secondary callout">
