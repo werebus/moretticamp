@@ -13,7 +13,7 @@ gem 'figaro'
 gem 'sass-rails', '~> 5.0.0'
 gem 'foundation-rails'
 gem 'foundation_rails_helper'
-gem "font-awesome-rails"
+gem "font-awesome-sass"
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

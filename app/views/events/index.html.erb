@@ -12,7 +12,7 @@
         <span data-tooltip
           class="has-tip"
           title="Use this address to subscribe to the Camp calendar in another calendar application (e.g. Google Calendar). Click the button to copy the address to your clipboard.">
-          <i class="fa fa-question-circle"></i>
+          <%= icon 'question-circle' %>
         </span>
       </label>
     </div>
@@ -23,7 +23,7 @@
                          class: 'input-group-field' %>
       <div class="input-group-button">
         <a href="#" class="button clip" data-clipboard-text="<%= current_user.feed_url %>">
-          <i class="fa fa-clipboard"></i>
+          <%= icon 'clipboard' %>
         </a>
       </div>
     </div>

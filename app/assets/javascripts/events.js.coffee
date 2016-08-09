@@ -3,6 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).ready ->
   $('#calendar').fullCalendar
+    height: 'auto'
     theme: true,
     eventSources: [{
       url: '/events.json'
@@ -17,8 +18,6 @@ $(document).ready ->
     buttonIcons: false,
     buttonText:
       today: 'Today'
-      prev: '<'
-      next: '>'
     header:
       left: 'title'
       center: ''
