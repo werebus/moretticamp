@@ -22,16 +22,14 @@ label .label-note {
   margin: 0 0.75rem;
 }
 
-header.row {
-  background: #222;
-  max-width: 100%;
+header {
   margin-bottom: 1.5rem;
 
   a {
     $link-color: #f0dfd0;
     color: $link-color;
     &:hover {
-      color: scale-color($link-color, $lightness: -5%);
+      color: scale-color($link-color, $lightness: -15%);
     }
   }
 
@@ -42,12 +40,6 @@ header.row {
                  'ITC Zapf Chancery',
                  'URW Chancery L',
                  cursive;
-  }
-
-  .inline-list {
-    @media #{$medium-up} {
-      float: right;
-    }
   }
 }
 

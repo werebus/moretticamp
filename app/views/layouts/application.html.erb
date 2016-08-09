@@ -12,11 +12,11 @@
   </head>
 
   <body>
-    <header class="row">
-      <div class="medium-9 columns">
+    <header class="top-bar">
+      <div class="top-bar-left">
         <h1><%= link_to "Il Campo Moretti", authenticated_root_path %></h1>
       </div>
-      <div class="medium-3 columns">
+      <div class="top-bar-right">
         <ul class="menu">
           <li><%=link_to current_user.full_name, edit_user_registration_path %></li>
           <li><%=link_to "Documents", documents_page_path %></li>
