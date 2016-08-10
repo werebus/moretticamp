@@ -12,7 +12,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         if token && user = User.find_by_invitation_token(token, true)
           session[:invitation_token] = nil
           user.accept_invitation!
-          user.update_attributes(auth.slice(:provider, :uid))
+          user.update_attributes(provider: auth.provider, uid: auth.uid)
           sign_in_and_redirect(user, event: :authentication)
           set_flash_message(:notice, :success, kind: name) if is_navigational_format?
         else
