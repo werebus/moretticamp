@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   before_save :generate_calendar_access_token, unless: 'calendar_access_token.present?'
 
   def self.find_for_oath(auth)
-    where(auth.slice(:provider, :uid)).first
+    where(provider: auth.provider, uid: auth.uid).first
   end
 
   def feed_url
