@@ -7,11 +7,11 @@ METHOD:PUBLISH
 <% @events.each do |event| %>
 BEGIN:VEVENT
 UID:<%= event.id %>@moretti.camp
-DTSTART;VALUE=DATE:<%= time_for_ical(event.start_date) %>
-DTEND;VALUE=DATE:<%= time_for_ical(event.end_date + 1.day) %>
+DTSTART;VALUE=DATE:<%= event.start_date.to_s(:number) %>
+DTEND;VALUE=DATE:<%= (event.end_date + 1.day).to_s(:number) %>
 SUMMARY:<%= event.display_title %>
 DESCRIPTION:<%= event.description %>
-LAST-MODIFIED:<%= time_for_ical(event.updated_at) %>
+LAST-MODIFIED:<%= event.updated_at.to_s(:number) %>
 STATUS:CONFIRMED
 END:VEVENT
 <% end %>
