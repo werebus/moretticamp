@@ -17,6 +17,10 @@ $include-html-classes: false;
     background: $white;
   }
 
+  .fc-row.ui-widget-content {
+    min-height: 7rem;
+  }
+
   .fc-row.fc-week:nth-of-type(even) {
     background: #eee;
   }
