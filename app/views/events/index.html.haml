@@ -1,0 +1,26 @@
+.row
+  .sidebar.medium-3.medium-push-9.columns
+    %ul#nav-links.medium-vertical.menu
+      %li= link_to 'Print', events_path(format: :pdf)
+      %li= link_to 'New Event', new_event_path
+      - if current_user.admin
+        %li= link_to 'Manage Seasons', seasons_path
+    .row.collapse
+      %label
+        Calendar Feed URL
+        %span.has-tip{title: 'Use this address to subscribe to the Camp calendar in another calendar application (e.g. Google Calendar). Click the button to copy the address to your clipboard.'}
+          = icon 'question-circle'
+    .row.collapse.input-group
+      = text_field_tag :access_token, current_user.feed_url, readonly: true, class: 'input-group-field'
+      .input-group-button
+        %a.button.clip{data: {clipboard_text: current_user.feed_url}, href: '#'}
+          = icon 'clipboard'
+  .medium-9.medium-pull-3.columns
+    - if @season
+      - caldata = {date: @date.iso8601, start_date: @season.start_date.iso8601, end_date: @season.end_date.iso8601}
+      - caldata[:today] = 'true' if @include_today
+      #calendar{data: caldata}
+    - else
+      .secondary.callout
+        %h5 Season Not Open
+        %p The dates for the next Camp "season" aren't defined yet. Stay tuned.

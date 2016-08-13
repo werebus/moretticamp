@@ -9,6 +9,9 @@ gem 'pg'
 # Figaro manages app secrets in ENV
 gem 'figaro'
 
+# Use HAML for views
+gem 'haml-rails', '~> 0.9'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.0'
 gem 'foundation-rails'

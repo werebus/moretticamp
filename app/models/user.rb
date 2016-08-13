@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   has_many :events
 
+  default_scope { order(:first_name, :last_name) }
+
   before_save :generate_calendar_access_token, unless: 'calendar_access_token.present?'
 
   def self.find_for_oath(auth)

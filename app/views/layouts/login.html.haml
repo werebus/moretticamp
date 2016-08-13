@@ -1,0 +1,25 @@
+!!!
+%html{lang: 'en'}
+  %head
+    %meta{charset: 'utf-8'}
+    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
+    %title Il Campo Moretti
+    = favicon_link_tag    '/favicon.ico'
+    = stylesheet_link_tag 'application'
+    = csrf_meta_tags
+  %body
+    #pusher
+    #login-form.row
+      .small-8.small-centered.columns
+        .callout
+          - if notice.present?
+            .success.callout{data: {closable: true}}
+              = notice
+              %button.close-button{data: {close: true}, type: 'button'} ×
+          - if alert.present?
+            .alert.callout{data: {closable: true}}
+              = alert
+              %button.close-button{data: {close: true}, type: 'button'} ×
+          = yield
+          = render 'devise/shared/links'
+    = javascript_include_tag 'application'

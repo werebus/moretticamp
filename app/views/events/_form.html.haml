@@ -1,0 +1,25 @@
+= form_for(@event) do |f|
+  .callout
+    - if @event.errors[:base].any?
+      .alert.callout
+        - @event.errors[:base].each do |e|
+          = e
+          %br/
+    - if current_user.admin
+      .row
+        .small-12.column
+          = f.text_field :title, placeholder: 'Overrides Owner Name'
+      .row
+        .small-12.column
+          = owner_dropdown(f, @event)
+    .row
+      .small-6.column
+        = f.text_field :start_date, label: 'First Date', class: 'date-pick'
+      .small-6.column
+        = f.text_field :end_date, label: 'Last Date', class: 'date-pick'
+    .row
+      .small-12.column
+        = f.text_area :description, label: 'Notes'
+    .row
+      .small-12.column
+        = f.submit class: 'expanded button'

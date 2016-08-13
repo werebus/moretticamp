@@ -1,0 +1,11 @@
+.row
+  .small-8.small-centered.column
+    .row
+      .small-12.column
+        %h1 Editing Event
+    = render 'form'
+    .row
+      .small-6.column
+        = link_to 'Show', @event
+      .small-6.column.text-right
+        = link_to 'Back', events_path

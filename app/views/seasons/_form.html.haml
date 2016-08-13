@@ -1,0 +1,15 @@
+= form_for(@season) do |f|
+  .callout
+    - if @season.errors[:base].any?
+      .alert.callout
+        - @season.errors[:base].each do |e|
+          = e
+          %br
+    .row
+      .small-6.column
+        = f.text_field :start_date, label: 'First Date', class: 'date-pick'
+      .small-6.column
+        = f.text_field :end_date, label: 'Last Date', class: 'date-pick'
+    .row
+      .small-12.column
+        = f.submit class: 'expanded button'

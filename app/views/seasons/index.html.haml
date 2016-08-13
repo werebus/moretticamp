@@ -1,0 +1,16 @@
+.row
+  %h1 Listing Seasons
+  %table
+    %thead
+      %tr
+        %th Start date
+        %th End date
+        %th{colspan: 2}
+    %tbody
+      - @seasons.each do |season|
+        %tr{class: season == @current_season ? 'current-season' : 'noncurrent-season'}
+          %td= season.start_date
+          %td= season.end_date
+          %td= link_to 'Edit', edit_season_path(season)
+          %td= link_to 'Destroy', season, method: :delete, data: { confirm: 'Are you sure?' }
+  = link_to 'New Season', new_season_path

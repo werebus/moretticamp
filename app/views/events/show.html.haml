@@ -1,0 +1,28 @@
+.row
+  .small-8.small-centered.column
+    .callout
+      .row
+        .small-12.column
+          %h3.subheader
+            = @event.display_title
+      .row
+        .small-6.column
+          %strong From:
+          = @event.start_date
+        .small-6.column
+          %strong To:
+          = @event.end_date
+      - if @event.description.present?
+        .row
+          .small-12.column
+            %p.description
+              = @event.description
+    .row
+      .small-4.column
+        - if @owner
+          = link_to 'Edit', edit_event_path(@event)
+      .small-4.column.text-center
+        - if @owner
+          = link_to 'Delete', event_path(@event), method: :delete
+      .small-4.column.text-right
+        = link_to 'Back', events_path
