@@ -20,6 +20,19 @@ class EventsController < ApplicationController
     else
       @events = Event.all
     end
+
+    respond_to do |format|
+      format.html
+      format.json
+      format.ics
+      format.pdf do
+        pdf = SeasonCalendar.new(@season, @events)
+        pdf.generate
+        send_data pdf.render,
+                  filename: 'camp_calendar.pdf',
+                  type: 'application/pdf'
+      end
+    end
   end
 
   # GET /events/1

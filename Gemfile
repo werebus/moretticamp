@@ -52,6 +52,9 @@ gem 'momentjs-rails'
 # Clipboard
 gem 'zeroclipboard-rails'
 
+# Prawn - printable calendar
+gem 'prawn'
+gem 'prawn-table'
 
 group :development, :test do
   gem 'rspec-rails'
@@ -61,6 +64,7 @@ end
 group :development do
   gem 'spring'
   gem 'pry'
+  gem 'pry-byebug'
   gem 'capistrano', '~> 3.4.0', require: false
   gem 'capistrano-bundler', '~> 1.1.2', require: false
   gem 'capistrano-rails', '~> 1.1.1', require: false

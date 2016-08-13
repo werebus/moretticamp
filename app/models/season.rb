@@ -13,4 +13,9 @@ end
 class Season < ActiveRecord::Base
   include DateRange
   validates_with SeasonValidator
+
+  def months
+    firsts = date_range.select{ |date| date.day == 1 }
+    firsts.unshift start_date.beginning_of_month
+  end
 end
