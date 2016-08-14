@@ -58,11 +58,11 @@ body {
   background-position: right bottom;
   background-repeat: no-repeat;
 
-  @media #{$large-up} {
+  @include breakpoint(large) {
     background-image: image-url('hemlock.png');
   }
 
-  @media #{$medium-only} {
+  @include breakpoint(medium only) {
     background-image: image-url('hemlockcone.png');
   }
 }
