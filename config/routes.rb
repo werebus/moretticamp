@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   # Twilio route
   post 'voice/events' => 'voice#events'
 
+  resources :notifications, only: [:new, :create]
+
   # Static pages
   PagesController.action_methods.each do |action|
     get "/#{action}", to: "pages##{action}", as: "#{action}_page"
