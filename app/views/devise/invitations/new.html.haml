@@ -1,0 +1,23 @@
+.row
+  .small-8.columns.small-centered
+    .row
+      .small-12.columns
+        %h1
+          Invite New #{resource_name.to_s.humanize}
+        %p= pluralize(current_user.invitation_limit, 'invitation') + ' remaining.'
+    =form_for(resource, as: resource_name, url: invitation_path(resource_name), html: {method: :post}) do |f|
+      .callout
+        .row
+          .small-6.column
+            = f.text_field :first_name, autofocus: true, label: 'First Name'
+          .small-6.column
+            = f.text_field :last_name, label: 'Last Name'
+        .row
+          .small-12.column
+            = f.email_field :email
+        .row
+          .small-12.column
+            = f.submit 'Invite', class: 'expanded button'
+    .row
+      .small-12.column.text-right
+        = link_to 'Back', :back

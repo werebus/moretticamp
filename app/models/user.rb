@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   end
 
   def invitation_limit
-    admin? ? 999 : self[:invitation_limit]
+    admin? ? Float::INFINITY : self[:invitation_limit]
   end
 
   def send_reset_password_instructions
