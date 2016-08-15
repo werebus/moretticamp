@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
     where(provider: auth.provider, uid: auth.uid).first
   end
 
+  def self.to_notify(override = false)
+    override ? all : where(email_updates: true)
+  end
+
   def feed_url
     "http://moretti.camp/feed/#{calendar_access_token}.ics"
   end
