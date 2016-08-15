@@ -4,6 +4,7 @@ class NotificationMailer < ActionMailer::Base
   def notification_email(user, subject, body)
     mail to: user.email,
          subject: subject,
-         body: body
+         body: body,
+         content_type: 'text/html'
   end
 end

@@ -124,6 +124,7 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.3)
     jwt (1.5.4)
+    kramdown (1.11.1)
     libv8 (3.16.14.15)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
@@ -312,6 +313,7 @@ DEPENDENCIES
   haml-rails (~> 0.9)
   jbuilder (~> 2.0)
   jquery-rails
+  kramdown
   momentjs-rails
   omniauth-facebook
   omniauth-google-oauth2

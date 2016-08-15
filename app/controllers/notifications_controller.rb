@@ -11,8 +11,10 @@ class NotificationsController < ApplicationController
     params.permit :override
 
     users = params[:override].present? ? User.all : User.where(email_updates: true)
+    body = Kramdown::Document.new(params[:body]).to_html
+
     users.each do |user|
-      NotificationMailer.notification_email(user, params[:subject], params[:body]).deliver
+      NotificationMailer.notification_email(user, params[:subject], body).deliver
     end
 
     flash.notice = pluralize(users.count, 'notification') + " delivered."

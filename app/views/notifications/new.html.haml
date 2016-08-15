@@ -11,7 +11,9 @@
             = label_tag 'subject'
             = text_field_tag 'subject', '', autofocus: true, required: true
           .small-12.column
-            = label_tag 'body'
+            = label_tag 'body' do
+              Body
+              %small Markdown allowed
             = text_area_tag 'body', '', rows: 6, required: true
           .small-12.column
             = check_box_tag 'override'

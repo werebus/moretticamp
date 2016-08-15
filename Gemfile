@@ -59,6 +59,8 @@ gem 'zeroclipboard-rails'
 gem 'prawn'
 gem 'prawn-table'
 
+gem 'kramdown'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
