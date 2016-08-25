@@ -11,6 +11,10 @@ p.description {
   @include breakpoint(small only) {
     text-align: center;
 
+    li {
+      @include grid-column(4);
+    }
+
     i {
       width: 100%;
       padding-bottom: 0.5rem;
