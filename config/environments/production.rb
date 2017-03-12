@@ -88,6 +88,6 @@ end
 
 Rails.application.config.middleware.use ExceptionNotification::Rack,
   email: {
-    exception_recipients: 'matt@moretti.camp',
+  exception_recipients: Proc.new { User.find(1).email },
     sender_address: '"Moretticamp Exception" noreply@moretti.camp'
   }
