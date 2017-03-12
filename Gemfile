@@ -61,6 +61,8 @@ gem 'prawn-table'
 
 gem 'kramdown'
 
+gem 'exception_notification'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
