@@ -9,10 +9,6 @@ class EventsController < ApplicationController
   def index
     @season = Season.current_or_next
 
-    return unless @season
-    @date = [@season.start_date, Date.today].max
-    @include_today = (@season.date_range.include? Date.today)
-
     if params[:start] && params[:end]
       start_time = Date.parse(params[:start])
       end_time = Date.parse(params[:end])
@@ -22,15 +18,23 @@ class EventsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html
+      format.html do
+        return unless @season
+        @date = [@season.start_date, Date.today].max
+        @include_today = (@season.date_range.include? Date.today)
+      end
       format.json
       format.ics
       format.pdf do
-        pdf = SeasonCalendar.new(@season, @events)
-        pdf.generate
-        send_data pdf.render,
-                  filename: 'camp_calendar.pdf',
-                  type: 'application/pdf'
+        if @season
+          pdf = SeasonCalendar.new(@season, @events)
+          pdf.generate
+          send_data pdf.render,
+                    filename: 'camp_calendar.pdf',
+                    type: 'application/pdf'
+        else
+          redirect_to events_url, alert: 'No calendar to print.'
+        end
       end
     end
   end
