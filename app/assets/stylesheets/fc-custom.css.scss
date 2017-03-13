@@ -33,6 +33,10 @@ $include-html-classes: false;
     border: 1px solid #ddd;
   }
 
+  .fc-day-grid-container {
+    overflow-y: hidden !important;
+  }
+
   a.fc-event:hover {
     color: #ddd;
   }

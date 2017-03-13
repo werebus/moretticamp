@@ -22,6 +22,10 @@ label .label-note {
   margin: 0 0.75rem;
 }
 
+button, .button {
+  font-family: $body-font-family;
+}
+
 header {
   margin-bottom: 1.5rem;
 

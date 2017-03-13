@@ -4,7 +4,7 @@
 $(document).ready ->
   $('#calendar').fullCalendar
     height: 'auto'
-    theme: true,
+    theme: true
     eventSources: [{
       url: '/events.json'
       color: '#061'
