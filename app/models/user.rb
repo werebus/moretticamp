@@ -31,6 +31,10 @@ class User < ActiveRecord::Base
     admin? ? Float::INFINITY : self[:invitation_limit]
   end
 
+  def has_invitations?
+    invitation_limit.present? && invitation_limit > 0
+  end
+
   def send_reset_password_instructions
     if encrypted_password.present?
       super

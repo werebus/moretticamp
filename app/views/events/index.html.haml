@@ -1,15 +1,16 @@
 .row
   .sidebar.medium-3.medium-push-9.columns
     %ul#nav-links.medium-vertical.menu.clearfix
-      %li
-        = link_to events_path(format: :pdf) do
-          = icon 'print'
-          %span Print
-      %li
-        = link_to new_event_path do
-          = icon 'calendar'
-          %span New Event
-      - if current_user.invitation_limit > 0
+      - if @season
+        %li
+          = link_to events_path(format: :pdf) do
+            = icon 'print'
+            %span Print
+        %li
+          = link_to new_event_path do
+            = icon 'calendar'
+            %span New Event
+      - if current_user.has_invitations?
         %li
           = link_to new_user_invitation_path do
             = icon 'user-plus'
