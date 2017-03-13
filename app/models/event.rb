@@ -12,7 +12,7 @@ class EventSeasonValidator < ActiveModel::Validator
   end
 end
 
-class Event < ActiveRecord::Base
+class Event < ApplicationRecord
   include DateRange
   validates_with EventSeasonValidator
 

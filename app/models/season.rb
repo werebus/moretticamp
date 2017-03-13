@@ -10,7 +10,7 @@ class SeasonValidator < ActiveModel::Validator
   end
 end
 
-class Season < ActiveRecord::Base
+class Season < ApplicationRecord
   include DateRange
   validates_with SeasonValidator
 
