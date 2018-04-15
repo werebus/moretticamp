@@ -16,8 +16,11 @@ gem 'haml-rails', '~> 0.9'
 gem 'sass-rails', '~> 5.0.0'
 gem 'foundation-rails'
 gem 'foundation_rails_helper'
-gem 'rails-assets-foundation-datepicker', source: 'https://rails-assets.org'
 gem "font-awesome-sass"
+source 'https://rails-assets.org' do
+  gem 'rails-assets-foundation-datepicker'
+  gem 'rails-assets-clipboard'
+end
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -51,9 +54,6 @@ gem 'omniauth-twitter'
 # Calendar View
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
-
-# Clipboard
-gem 'zeroclipboard-rails'
 
 # Prawn - printable calendar
 gem 'prawn'

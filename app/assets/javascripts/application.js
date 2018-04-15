@@ -16,7 +16,7 @@
 //= require moment
 //= require fullcalendar
 //= require foundation-datepicker
-//= require zeroclipboard
+//= require clipboard
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
