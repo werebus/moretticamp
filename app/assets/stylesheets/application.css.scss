@@ -1,6 +1,4 @@
 /*
- *= require_tree .
- *= require_self
  *= require foundation-datepicker
  *= require fullcalendar
  */
@@ -10,6 +8,12 @@ $include-html-classes: false;
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "font-face";
+
+@import "events";
+@import "fc-custom";
+@import "form-validity";
+@import "login";
+@import "seasons";
 
 @include font-face(danielregular, 'daniel-webfont', $asset-pipeline: true);
 
