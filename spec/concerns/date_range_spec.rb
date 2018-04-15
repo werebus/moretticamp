@@ -12,7 +12,7 @@ shared_examples_for "date_range" do
   it "needs a positive length" do
     inv = build( fact, start_date: Date.today, end_date: Date.today - 1.day )
     expect( inv ).to_not be_valid
-    expect( inv.errors[:end_date].join ).to match /be after/
+    expect( inv.errors[:end_date].join ).to match(/be after/)
   end
 
   context "with monthly sequence" do
@@ -22,7 +22,7 @@ shared_examples_for "date_range" do
       described_class.delete_all
       fact = described_class.to_s.underscore.to_sym
 
-      FactoryGirl.reload
+      FactoryBot.reload
       create_list(fact, 5, :sequenced)
     end
 

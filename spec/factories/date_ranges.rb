@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
 
   trait :sequenced do
     sequence :start_date do |n|
