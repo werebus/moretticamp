@@ -4,36 +4,36 @@
       - if @season
         %li
           = link_to events_path(format: :pdf) do
-            = icon 'print'
+            = icon 'fas', 'print'
             %span Print
         %li
           = link_to new_event_path do
-            = icon 'calendar'
+            = icon 'fas', 'calendar'
             %span New Event
       - if current_user.has_invitations?
         %li
           = link_to new_user_invitation_path do
-            = icon 'user-plus'
+            = icon 'fas', 'user-plus'
             %span Invite New User
       - if current_user.admin
         %li
           = link_to seasons_path do
-            = icon 'edit'
+            = icon 'fas', 'edit'
             %span Manage Seasons
         %li
           = link_to new_notification_path do
-            = icon 'envelope-o'
+            = icon 'fas', 'envelope-open'
             %span Send Notification
     .row.collapse
       %label
         Calendar Feed URL
         %span.has-tip{title: 'Use this address to subscribe to the Camp calendar in another calendar application (e.g. Google Calendar). Click the button to copy the address to your clipboard.'}
-          = icon 'question-circle'
+          = icon 'fas', 'question-circle'
     .row.collapse.input-group
       = text_field_tag :access_token, current_user.feed_url, readonly: true, class: 'input-group-field', id: 'feed-url-field'
       .input-group-button
         %a.button.clip{data: {clipboard_target: '#feed-url-field'}, href: '#'}
-          = icon 'clipboard'
+          = icon 'fas', 'clipboard'
   .medium-9.medium-pull-3.columns
     - if @season
       - caldata = {date: @date.iso8601, start_date: @season.start_date.iso8601, end_date: @season.end_date.iso8601}

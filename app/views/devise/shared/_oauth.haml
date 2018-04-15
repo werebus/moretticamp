@@ -4,7 +4,7 @@
       .expanded.button-group
         - OAUTH_PROVIDERS.each do |oap|
           - if oap.icon
-            = link_to icon(oap.icon),                            |
+            = link_to icon('fab', oap.icon),                     |
               omniauth_authorize_path(resource_name, oap.label), |
               title: "Sign in with #{oap.name}",                 |
               class: "button"                                    |
