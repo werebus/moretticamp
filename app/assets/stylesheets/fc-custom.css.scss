@@ -59,17 +59,17 @@
     -webkit-transform: translateZ(0);
   }
 
-  .fc-prev-button {
-    @include fa-icon;
-    &:before {
-      content: $fa-var-arrow-left;
+  .ui-button {
+    &.fc-prev-button, &.fc-next-button {
+      @include fa-icon;
+      @extend .fas;
+      font-weight: 900;
     }
-  }
-
-  .fc-next-button {
-    @include fa-icon;
-    &:before {
-      content: $fa-var-arrow-right;
+    &.fc-prev-button:before {
+      content: fa-content($fa-var-arrow-left);
+    }
+    &.fc-next-button:before {
+      content: fa-content($fa-var-arrow-right);
     }
   }
 
