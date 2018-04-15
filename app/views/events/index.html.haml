@@ -30,9 +30,9 @@
         %span.has-tip{title: 'Use this address to subscribe to the Camp calendar in another calendar application (e.g. Google Calendar). Click the button to copy the address to your clipboard.'}
           = icon 'question-circle'
     .row.collapse.input-group
-      = text_field_tag :access_token, current_user.feed_url, readonly: true, class: 'input-group-field'
+      = text_field_tag :access_token, current_user.feed_url, readonly: true, class: 'input-group-field', id: 'feed-url-field'
       .input-group-button
-        %a.button.clip{data: {clipboard_text: current_user.feed_url}, href: '#'}
+        %a.button.clip{data: {clipboard_target: '#feed-url-field'}, href: '#'}
           = icon 'clipboard'
   .medium-9.medium-pull-3.columns
     - if @season
