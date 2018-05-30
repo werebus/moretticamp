@@ -17,7 +17,7 @@ module Webhookable
   end
 
   def render_twiml(response)
-    render text: response.text
+    render body: response.to_s
   end
 
   def require_valid_source
@@ -26,7 +26,7 @@ module Webhookable
   end
 
   def reject_call!
-    response = Twilio::TwiML::Response.new(&:Reject)
+    response = Twilio::TwiML::VoiceResponse.new.reject
     set_header
     render_twiml response
   end

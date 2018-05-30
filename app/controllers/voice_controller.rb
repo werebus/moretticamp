@@ -13,24 +13,24 @@ class VoiceController < ApplicationController
     session[:exclude] = @exclude
 
     say_options = { voice: 'alice' }
-    response = Twilio::TwiML::Response.new do |r|
+    response = Twilio::TwiML::VoiceResponse.new do |r|
       if [nil, 1, 2, 3].include? @pressed
-        r.Gather(numDigits: 1) do |g|
+        r.gather(num_digits: 1) do |g|
           if @event
-            g.Say "The next event scheduled #{@exclude.length > 1 ? 'after that' : ''} is", say_options
-            g.Say "#{@event.display_title}  #{@event.date_range_readable}.", say_options
-            g.Pause
-            g.Say 'To repeat that, press 1.', say_options
-            g.Say 'To hear the next event, press 2.', say_options
+            g.say "The next event scheduled #{@exclude.length > 1 ? 'after that' : ''} is", say_options
+            g.say "#{@event.display_title}  #{@event.date_range_readable}.", say_options
+            g.pause
+            g.say 'To repeat that, press 1.', say_options
+            g.say 'To hear the next event, press 2.', say_options
           else
-            g.Say 'There are no further events scheduled.', say_options
+            g.say 'There are no further events scheduled.', say_options
           end
 
-          g.Say 'To start over, press 3.', say_options
+          g.say 'To start over, press 3.', say_options
         end
       end
-      r.Say 'Goodbye!', say_options
-      r.Hangup
+      r.say 'Goodbye!', say_options
+      r.hangup
     end
 
     render_twiml response
