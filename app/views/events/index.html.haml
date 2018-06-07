@@ -27,17 +27,25 @@
     .row.collapse
       %label
         Calendar Feed URL
-        %span.has-tip{title: 'Use this address to subscribe to the Camp calendar in another calendar application (e.g. Google Calendar). Click the button to copy the address to your clipboard.'}
+        %span.has-tip{title: calendar_tip}
           = icon 'fas', 'question-circle'
     .row.collapse.input-group
-      = text_field_tag :access_token, current_user.feed_url, readonly: true, class: 'input-group-field', id: 'feed-url-field'
+      = text_field_tag :access_token,
+        current_user.feed_url,
+        class: 'input-group-field',
+        id: 'feed-url-field',
+        readonly: true
       .input-group-button
-        %a.button.clip{data: {clipboard_target: '#feed-url-field'}, href: '#'}
-          = icon 'fas', 'clipboard'
+        = button_tag icon('fas', 'clipboard'),
+          data: {clipboard_target: '#feed-uri-field'},
+          class: 'button clip'
   .medium-9.medium-pull-3.columns
     - if @season
-      - caldata = {date: @date.iso8601, start_date: @season.start_date.iso8601, end_date: @season.end_date.iso8601}
-      - caldata[:today] = 'true' if @include_today
+      - caldata = Hash.new.tap do |cd|
+        - cd[:date] = @date.iso8601
+        - cd[:start_date] = @season.start_date.iso8601
+        - cd[:end_date] = @season.end_date.iso8601
+        - cd[:today] = 'true' if @include_today
       #calendar{data: caldata}
     - else
       .secondary.callout

@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
 module EventHelper
+  def calendar_tip
+    <<~TIP.gsub("\n", ' ')
+      Use this address to subscribe to the Camp calendar in another calendar
+      application (e.g. Google Calendar). Click the button to copy the address
+      to your clipboard.
+    TIP
+  end
+
   def owner_dropdown(form, event)
     if event.persisted?
       form.collection_select :user_id,

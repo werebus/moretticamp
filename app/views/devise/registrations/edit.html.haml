@@ -26,14 +26,15 @@
           .small-12.column
             %label{for: 'user_calendar_access_token'} Calendar Access Token
             .input-group
-              = f.text_field :calendar_access_token, |
-                readonly: true,                      |
-                placeholder: "Will be Regenerated",  |
-                label: false,                        |
-                class: "input-group-field"           |
+              = f.text_field :calendar_access_token,
+                readonly: true,
+                placeholder: "Will be Regenerated",
+                label: false,
+                class: "input-group-field"
               .input-group-button
-                %label  
-                %a#token-button.button{href: '#'}= icon 'fas', 'sync'
+                = button_tag icon('fas', 'sync'),
+                  id: 'token-button',
+                  class: 'button'
         - if @oauth
           .row
             .small-12.column
