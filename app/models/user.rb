@@ -9,7 +9,12 @@ class User < ApplicationRecord
 
   default_scope { order(:first_name, :last_name) }
 
-  before_save :generate_calendar_access_token, unless: 'calendar_access_token.present?'
+  before_save :generate_calendar_access_token,
+    unless: ->{ calendar_access_token.present? }
+
+  validates :first_name,
+    presence: { message: "can't be blank if Last Name is blank" },
+    if: ->{ last_name.blank? }
 
   def self.find_for_oath(auth)
     where(provider: auth.provider, uid: auth.uid).first
