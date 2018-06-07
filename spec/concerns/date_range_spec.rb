@@ -2,28 +2,24 @@ require 'rails_helper'
 
 shared_examples_for "date_range" do
   let(:model) { described_class }
-  let(:fact) { model.to_s.underscore.to_sym }
+  let(:factory) { model.to_s.underscore.to_sym }
 
   it "needs a start and end date" do
-    expect( build( fact, start_date: nil ) ).to_not be_valid
-    expect( build( fact, end_date: nil ) ).to_not be_valid
+    expect( build( factory, start_date: nil ) ).to_not be_valid
+    expect( build( factory, end_date: nil ) ).to_not be_valid
   end
 
   it "needs a positive length" do
-    inv = build( fact, start_date: Date.today, end_date: Date.today - 1.day )
+    inv = build( factory, start_date: Date.today, end_date: Date.today - 1.day )
     expect( inv ).to_not be_valid
     expect( inv.errors[:end_date].join ).to match(/be after/)
   end
 
   context "with monthly sequence" do
-    before(:all) do
-      Season.delete_all
+    before(:each) do
       create(:season) unless described_class == Season
-      described_class.delete_all
-      fact = described_class.to_s.underscore.to_sym
-
       FactoryBot.reload
-      create_list(fact, 5, :sequenced)
+      create_list(factory, 5, :sequenced)
     end
 
     it "finds the next one after a date" do
@@ -45,10 +41,8 @@ shared_examples_for "date_range" do
   end
 
   it "finds one occurring today" do
-    Season.delete_all
     create(:season) unless model == Season
-    model.delete_all
-    create(fact, start_date: Date.today - 1.day, end_date: Date.today + 1.day)
+    create(factory, start_date: Date.today - 1.day, end_date: Date.today + 1.day)
     expect( model.current ).to be
   end
 end

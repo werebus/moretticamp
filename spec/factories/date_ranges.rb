@@ -1,9 +1,8 @@
 FactoryBot.define do
-
   trait :sequenced do
     sequence :start_date do |n|
       #March, April, etc
-      Date.new(Date.today.year, n+2, 1)
+      Date.new(Date.today.year, n+3, 1)
     end
 
     end_date { start_date + 1.day }
@@ -19,5 +18,4 @@ FactoryBot.define do
       end
     end
   end
-
 end

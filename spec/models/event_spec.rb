@@ -1,15 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Event, :type => :model do
-
   it_behaves_like "date_range"
 
   describe EventSeasonValidator do
     context "without a season" do
-      before(:all) do
-        Season.delete_all
-      end
-
       it "requires an existing season" do
         event = build(:event)
         expect(event).to_not be_valid
@@ -18,7 +13,7 @@ RSpec.describe Event, :type => :model do
     end
 
     context "with a season" do
-      before(:all) do
+      before(:each) do
         create(:season)
         @season_start = Season.current_or_next.start_date
         @season_end = Season.current_or_next.end_date

@@ -1,12 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Season, :type => :model do
-
   it_behaves_like "date_range"
 
   describe SeasonValidator do
-    before(:all) do
-      Season.delete_all
+    before(:each) do
       create(:season)
     end
 
@@ -21,9 +19,8 @@ RSpec.describe Season, :type => :model do
       ranges.each do |range|
         other = build(:season, start_date: range.first, end_date: range.last)
         expect( other ).to be_invalid
-        expect( other.errors[:base].join ).to match /overlaps/
+        expect( other.errors[:base].join ).to match(/overlaps/)
       end
-
     end
   end
 end
