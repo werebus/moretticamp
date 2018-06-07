@@ -90,8 +90,8 @@ Rails.application.configure do
 end
 
 Rails.application.config.middleware.use ExceptionNotification::Rack,
-  email: {
-    exception_recipients: 'matt@moretti.camp',
-    sender_address: 'Moretti.camp Exception <noreply@moretti.camp>',
-    delivery_method: :ses
-  }
+                                        email: {
+                                          exception_recipients: 'matt@moretti.camp',
+                                          sender_address: 'Moretti.camp Exception <noreply@moretti.camp>',
+                                          delivery_method: :ses
+                                        }
