@@ -11,8 +11,8 @@ gem 'foundation-rails',       '~> 6.4'
 gem 'foundation_rails_helper'
 gem 'fullcalendar-rails'
 gem 'haml-rails',             '~> 1.0'
-gem 'jquery-rails'
 gem 'jbuilder',               '~> 2.0'
+gem 'jquery-rails'
 gem 'kramdown'
 gem 'momentjs-rails'
 gem 'omniauth-facebook'
@@ -27,19 +27,19 @@ gem 'twilio-ruby',            '~> 5.8'
 gem 'uglifier',               '>= 1.3.0'
 
 source 'https://rails-assets.org' do
-  gem 'rails-assets-foundation-datepicker'
   gem 'rails-assets-clipboard'
+  gem 'rails-assets-foundation-datepicker'
 end
 
 group :development do
-  gem 'spring'
-  gem 'pry'
-  gem 'pry-byebug'
   gem 'capistrano',         '~> 3.4.0', require: false
   gem 'capistrano-bundler', '~> 1.1.2', require: false
-  gem 'capistrano-rails',   '~> 1.1.1', require: false
   gem 'capistrano-pending',             require: false
+  gem 'capistrano-rails',   '~> 1.1.1', require: false
+  gem 'pry'
+  gem 'pry-byebug'
   gem 'rubocop',                        require: false
+  gem 'spring'
 end
 
 group :test do
@@ -47,6 +47,6 @@ group :test do
 end
 
 group :development, :test do
-  gem 'rspec-rails'
   gem 'factory_bot_rails'
+  gem 'rspec-rails'
 end
