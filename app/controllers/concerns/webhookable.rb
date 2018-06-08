@@ -4,8 +4,8 @@ module Webhookable
   extend ActiveSupport::Concern
 
   included do
-    before_filter :require_valid_source
-    after_filter :set_header
+    before_action :require_valid_source
+    after_action :set_header
     skip_before_action :verify_authenticity_token, :authenticate_user!
   end
 
