@@ -32,17 +32,6 @@ Metrics/PerceivedComplexity:
 Style/Documentation:
   Enabled: false
 
-# Offense count: 7
-# Cop supports --auto-correct.
-# Configuration parameters: PreferredDelimiters.
-Style/PercentLiteralDelimiters:
-  Exclude:
-    - 'app/controllers/application_controller.rb'
-    - 'app/pdfs/season_calendar.rb'
-    - 'config/deploy.rb'
-    - 'config/deploy/production.rb'
-    - 'config/spring.rb'
-
 # Offense count: 35
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, ConsistentQuotesInMultiline.

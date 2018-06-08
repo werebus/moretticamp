@@ -41,7 +41,7 @@ class SeasonCalendar
     end
 
     cal_cells = (headers + leaders + days + trailers)
-    table cal_cells.each_slice(7).to_a, row_colors: %w(FFFFFF EEEEEE)
+    table cal_cells.each_slice(7).to_a, row_colors: %w[FFFFFF EEEEEE]
   end
 
   def day_cell(day)
