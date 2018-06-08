@@ -32,18 +32,6 @@ Metrics/PerceivedComplexity:
 Style/Documentation:
   Enabled: false
 
-# Offense count: 6
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, MinSize.
-# SupportedStyles: percent, brackets
-Style/SymbolArray:
-  Exclude:
-    - 'app/controllers/concerns/webhookable.rb'
-    - 'app/controllers/events_controller.rb'
-    - 'app/controllers/seasons_controller.rb'
-    - 'app/controllers/users/registrations_controller.rb'
-    - 'config/routes.rb'
-
 # Offense count: 94
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
 # URISchemes: http, https

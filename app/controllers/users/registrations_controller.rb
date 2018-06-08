@@ -13,7 +13,7 @@ module Users
       if needs_password?(resource, params)
         resource.update_with_password(params)
       else
-        params.delete_if { |p| [:current_password, :password, :password_confirmation].include?(p) }
+        params.delete_if { |p| %i[current_password password password_confirmation].include?(p) }
         resource.update_without_password(params)
       end
     end

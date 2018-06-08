@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :require_ownership, only: [:edit, :update, :destroy]
+  before_action :set_event, only: %i[show edit update destroy]
+  before_action :require_ownership, only: %i[edit update destroy]
 
   skip_before_action :authenticate_user!, only: :feed
 

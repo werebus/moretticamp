@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   # Twilio route
   post 'voice/events' => 'voice#events'
 
-  resources :notifications, only: [:new, :create]
+  resources :notifications, only: %i[new create]
 
   # Static pages
   PagesController.action_methods.each do |action|

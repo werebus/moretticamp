@@ -10,7 +10,7 @@ module Webhookable
   end
 
   def valid_call?
-    params.permit([:AccountSid, :From]).to_h.values ==
+    params.permit(%i[AccountSid From]).to_h.values ==
       ENV.values_at('TWILIO_ACCOUNT_SID', 'CAMP_PHONE_NUMBER')
   end
 
