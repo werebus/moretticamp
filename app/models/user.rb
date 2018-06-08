@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-require 'pry'
 
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
