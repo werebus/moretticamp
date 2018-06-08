@@ -9,7 +9,9 @@ module Users
 
         if identity
           sign_in_and_redirect(identity, event: :authentication)
-          set_flash_message(:notice, :success, kind: name) if is_navigational_format?
+          if is_navigational_format?
+            set_flash_message(:notice, :success, kind: name)
+          end
         else
           token = session[:invitation_token]
           if token && (user = User.find_by_invitation_token(token, true))
@@ -17,7 +19,9 @@ module Users
             user.accept_invitation!
             user.update_attributes(provider: auth.provider, uid: auth.uid)
             sign_in_and_redirect(user, event: :authentication)
-            set_flash_message(:notice, :success, kind: name) if is_navigational_format?
+            if is_navigational_format?
+              set_flash_message(:notice, :success, kind: name)
+            end
           else
             redirect_to new_user_session_path
           end

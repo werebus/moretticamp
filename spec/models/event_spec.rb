@@ -22,19 +22,25 @@ RSpec.describe Event do
       end
 
       it 'requires events to not start before the current season' do
-        event = build(:event, start_date: @season_start - 1.day, end_date: @season_start + 2.days)
+        event = build(:event,
+                      start_date: @season_start - 1.day,
+                      end_date: @season_start + 2.days)
         expect(event).to_not be_valid
         expect(event.errors[:base].join).to match(/occur durring/)
       end
 
       it 'requires events to not end after the current season' do
-        event = build(:event, start_date: @season_start + 1.day, end_date: @season_end + 1.day)
+        event = build(:event,
+                      start_date: @season_start + 1.day,
+                      end_date: @season_end + 1.day)
         expect(event).to_not be_valid
         expect(event.errors[:base].join).to match(/occur durring/)
       end
 
       it 'allows events within the season' do
-        event = build(:event, start_date: @season_start + 1.day, end_date: @season_end - 1.day)
+        event = build(:event,
+                      start_date: @season_start + 1.day,
+                      end_date: @season_end - 1.day)
         expect(event).to be_valid
       end
     end
@@ -52,7 +58,7 @@ RSpec.describe Event do
     end
 
     it 'has an empty title if nothing else' do
-      expect(build(:event, :unowned).display_title).to eql ''
+      expect(build(:event, :unowned).display_title).to be_blank
     end
   end
 end

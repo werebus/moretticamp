@@ -62,8 +62,8 @@ class User < ApplicationRecord
 
   def generate_calendar_access_token
     loop do
-      self.calendar_access_token = SecureRandom.hex
-      break unless self.class.exists?(calendar_access_token: calendar_access_token)
+      calendar_access_token = SecureRandom.hex
+      break unless User.exists?(calendar_access_token: calendar_access_token)
     end
   end
 end

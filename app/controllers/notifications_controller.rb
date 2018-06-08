@@ -5,8 +5,6 @@ class NotificationsController < ApplicationController
 
   before_action :require_admin
 
-  def new; end
-
   def create
     params.require :subject
     params.require :body
@@ -16,7 +14,9 @@ class NotificationsController < ApplicationController
 
     users = User.to_notify params[:override].present?
     users.each do |user|
-      NotificationMailer.notification_email(user, params[:subject], body).deliver
+      NotificationMailer.notification_email(user,
+                                            params[:subject],
+                                            body).deliver
     end
 
     flash.notice = pluralize(users.count, 'notification') + ' delivered.'

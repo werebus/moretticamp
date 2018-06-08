@@ -3,7 +3,8 @@
 module Users
   class InvitationsController < Devise::InvitationsController
     def edit
-      resource.invitation_token = session[:invitation_token] = params[:invitation_token]
+      resource.invitation_token = params[:invitation_token]
+      session[:invitation_token] = params[:invitation_token]
       render :edit
     end
 

@@ -19,8 +19,11 @@ class VoiceController < ApplicationController
       if [nil, 1, 2, 3].include? @pressed
         r.gather(num_digits: 1) do |g|
           if @event
-            g.say "The next event scheduled #{@exclude.length > 1 ? 'after that' : ''} is", say_options
-            g.say "#{@event.display_title}  #{@event.date_range_readable}.", say_options
+            g.say 'The next event scheduled' \
+                  "#{@exclude.length > 1 ? 'after that' : ''} is",
+                  say_options
+            g.say "#{@event.display_title}  #{@event.date_range_readable}.",
+                  say_options
             g.pause
             g.say 'To repeat that, press 1.', say_options
             g.say 'To hear the next event, press 2.', say_options

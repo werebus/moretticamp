@@ -10,7 +10,8 @@ module DateRange
 
   module ClassMethods
     def next_after(date, exclude = [0])
-      where('start_date >= ? AND id NOT IN (?)', date, exclude).order(:start_date).first
+      where('start_date >= ? AND id NOT IN (?)', date, exclude)
+        .order(:start_date).first
     end
 
     def next

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AddTitleToEvent < ActiveRecord::Migration
+class AddTitleToEvent < ActiveRecord::Migration[4.2]
   def change
     add_column :events, :title, :string
   end
