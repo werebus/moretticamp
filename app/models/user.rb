@@ -64,5 +64,4 @@ class User < ApplicationRecord
       break unless self.class.exists?(calendar_access_token: calendar_access_token)
     end
   end
-
 end

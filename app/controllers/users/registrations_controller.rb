@@ -1,5 +1,4 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-
   def edit
     @oauth = OAUTH_PROVIDERS.find { |oap| oap.label == resource.provider.to_sym }.name if resource.provider.present?
     super
