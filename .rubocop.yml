@@ -12,3 +12,7 @@ AllCops:
 Layout/ExtraSpacing:
   Exclude:
     - 'Gemfile'
+
+Naming/FileName:
+  Exclude:
+    - 'Gemfile'

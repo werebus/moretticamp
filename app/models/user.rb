@@ -36,8 +36,8 @@ class User < ApplicationRecord
     admin? ? Float::INFINITY : self[:invitation_limit]
   end
 
-  def has_invitations?
-    invitation_limit.present? && invitation_limit > 0
+  def invitations?
+    invitation_limit.present? && invitation_limit.positive?
   end
 
   def send_reset_password_instructions

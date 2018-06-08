@@ -17,23 +17,19 @@ class UserMailer < ActionMailer::Base
 
   private
 
-  def clean(string)
-    string.gsub(/^ +/, '').strip
-  end
-
   def invited_reason
-    clean(<<-EOS)
+    <<~REASON
       You haven't yet accepted your invitation to the site and so do not have a password
       to reset. Please click the link in the invitation email to create a password. If
       you need a new invitation, please contact the site administrator.
-    EOS
+    REASON
   end
 
   def oauth_reason(provider)
-    clean(<<-EOS)
+    <<~REASON
       Your account on moretti.camp is associated with your #{provider} account. You
       don't need a password to log in, simply click the #{provider} logo on the
       sign-in page.
-    EOS
+    REASON
   end
 end

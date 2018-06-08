@@ -10,7 +10,7 @@
           = link_to new_event_path do
             = icon 'fas', 'calendar'
             %span New Event
-      - if current_user.has_invitations?
+      - if current_user.invitations?
         %li
           = link_to new_user_invitation_path do
             = icon 'fas', 'user-plus'
