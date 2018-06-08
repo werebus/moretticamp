@@ -18,8 +18,8 @@ RSpec.describe Season, :type => :model do
 
       ranges.each do |range|
         other = build(:season, start_date: range.first, end_date: range.last)
-        expect( other ).to be_invalid
-        expect( other.errors[:base].join ).to match(/overlaps/)
+        expect(other).to be_invalid
+        expect(other.errors[:base].join).to match(/overlaps/)
       end
     end
   end

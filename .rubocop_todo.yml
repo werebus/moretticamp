@@ -6,29 +6,12 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 5
-# Cop supports --auto-correct.
-# Configuration parameters: AllowForAlignment, ForceEqualSignAlignment.
-Layout/ExtraSpacing:
-  Exclude:
-    - 'Gemfile'
-    - 'config.ru'
-    - 'db/migrate/20140524023443_devise_invitable_add_to_users.rb'
-
 # Offense count: 2
 # Cop supports --auto-correct.
 # Configuration parameters: IndentationWidth.
 # SupportedStyles: special_inside_parentheses, consistent, align_braces
 Layout/IndentHash:
   EnforcedStyle: consistent
-
-# Offense count: 5
-# Cop supports --auto-correct.
-Layout/LeadingCommentSpace:
-  Exclude:
-    - 'spec/factories/date_ranges.rb'
-    - 'spec/rails_helper.rb'
-    - 'spec/support/factory_bot.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
@@ -37,70 +20,6 @@ Layout/LeadingCommentSpace:
 Layout/MultilineHashBraceLayout:
   Exclude:
     - 'config/routes.rb'
-
-# Offense count: 5
-# Cop supports --auto-correct.
-Layout/SpaceAfterComma:
-  Exclude:
-    - 'spec/factories/date_ranges.rb'
-
-# Offense count: 4
-# Cop supports --auto-correct.
-# Configuration parameters: AllowForAlignment.
-Layout/SpaceAroundOperators:
-  Exclude:
-    - 'spec/factories/date_ranges.rb'
-
-# Offense count: 6
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, EnforcedStyleForEmptyBraces.
-# SupportedStyles: space, no_space
-# SupportedStylesForEmptyBraces: space, no_space
-Layout/SpaceBeforeBlockBraces:
-  Exclude:
-    - 'app/models/season.rb'
-    - 'app/models/user.rb'
-    - 'app/pdfs/season_calendar.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: AllowForAlignment.
-Layout/SpaceBeforeFirstArg:
-  Exclude:
-    - 'db/migrate/20140524023443_devise_invitable_add_to_users.rb'
-
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, EnforcedStyleForEmptyBrackets.
-# SupportedStyles: space, no_space, compact
-# SupportedStylesForEmptyBrackets: space, no_space
-Layout/SpaceInsideArrayLiteralBrackets:
-  Exclude:
-    - 'config/environments/production.rb'
-
-# Offense count: 6
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, EnforcedStyleForEmptyBraces.
-# SupportedStyles: space, no_space, compact
-# SupportedStylesForEmptyBraces: space, no_space
-Layout/SpaceInsideHashLiteralBraces:
-  Exclude:
-    - 'app/helpers/password_form_helper.rb'
-    - 'app/views/seasons/index.json.jbuilder'
-
-# Offense count: 37
-# Cop supports --auto-correct.
-Layout/SpaceInsideParens:
-  Exclude:
-    - 'spec/concerns/date_range_spec.rb'
-    - 'spec/models/event_spec.rb'
-    - 'spec/models/season_spec.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-Layout/TrailingWhitespace:
-  Exclude:
-    - 'app/controllers/users/registrations_controller.rb'
 
 # Offense count: 1
 Lint/AmbiguousRegexpLiteral:

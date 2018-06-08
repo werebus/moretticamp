@@ -1,5 +1,5 @@
-events = [{name: 'Camp Opens', date: @current_season.try(:start_date)},
-          {name: 'Camp Closes', date: @current_season.try(:end_date)}]
+events = [{ name: 'Camp Opens', date: @current_season.try(:start_date) },
+          { name: 'Camp Closes', date: @current_season.try(:end_date) }]
 
 json.array! events do |event|
   json.title event[:name]

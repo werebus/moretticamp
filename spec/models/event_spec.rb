@@ -40,17 +40,17 @@ RSpec.describe Event, :type => :model do
 
   describe "#display_title" do
     it "shows a title if present" do
-      expect( build(:event, :titled).display_title ).to match(/Fun/)
-      expect( build(:event, :titled, :unowned).display_title ).to match(/Fun/)
+      expect(build(:event, :titled).display_title).to match(/Fun/)
+      expect(build(:event, :titled, :unowned).display_title).to match(/Fun/)
     end
 
     it "shows the user's first name if no title" do
       event = build(:event)
-      expect( event.display_title ).to eql( event.user.first_name )
+      expect(event.display_title).to eql(event.user.first_name)
     end
 
     it "has an empty title if nothing else" do
-      expect( build(:event, :unowned).display_title ).to eql ''
+      expect(build(:event, :unowned).display_title).to eql ''
     end
   end
 end

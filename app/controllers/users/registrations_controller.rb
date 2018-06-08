@@ -16,7 +16,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   private
- 
+
   def needs_password?(resource, params)
     params[:password].present? || resource.encrypted_password.present?
   end

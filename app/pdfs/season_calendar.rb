@@ -31,10 +31,10 @@ class SeasonCalendar
   end
 
   def month_grid(month)
-    headers = Date::ABBR_DAYNAMES.map{ |dayname| make_cell(dayname) }
+    headers = Date::ABBR_DAYNAMES.map { |dayname| make_cell(dayname) }
 
-    leaders = month.wday.times.map{ box_cell(nil) }
-    trailers = (6 - month.end_of_month.wday).times.map{ box_cell(nil) }
+    leaders = month.wday.times.map { box_cell(nil) }
+    trailers = (6 - month.end_of_month.wday).times.map { box_cell(nil) }
 
     days = (month..month.end_of_month).map do |day|
       day_cell day
