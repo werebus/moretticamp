@@ -10,8 +10,8 @@ class SeasonCalendar
 
   def document
     @document ||= Prawn::Document.new({
-      page_layout: :landscape
-    })
+                                        page_layout: :landscape
+                                      })
   end
 
   def generate
