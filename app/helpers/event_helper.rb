@@ -2,7 +2,7 @@
 
 module EventHelper
   def calendar_tip
-    <<~TIP.gsub("\n", ' ')
+    <<~TIP.tr("\n", ' ')
       Use this address to subscribe to the Camp calendar in another calendar
       application (e.g. Google Calendar). Click the button to copy the address
       to your clipboard.

@@ -3,13 +3,14 @@ AllCops:
     - Rakefile
     - Capfile
     - config.ru
+    - '**/*.rb'
   Exclude:
     - bin/**/*
     - db/schema.rb
 
 Layout/ExtraSpacing:
   Exclude:
-    - 'Gemfile'
+    - Gemfile
 
 Metrics:
   Exclude:
@@ -22,7 +23,7 @@ Metrics/BlockLength:
 
 Naming/FileName:
   Exclude:
-    - 'Gemfile'
+    - Gemfile
 
 Style/Documentation:
   Enabled: false
