@@ -18,4 +18,4 @@ twitter = OauthProvider.new :twitter,
                             ENV['TWITTER_APP_ID'],
                             ENV['TWITTER_APP_SECRET']
 
-OAUTH_PROVIDERS = [google, facebook, twitter]
+OAUTH_PROVIDERS = [google, facebook, twitter].freeze

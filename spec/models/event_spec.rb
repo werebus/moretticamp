@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Event, :type => :model do
+RSpec.describe Event do
   it_behaves_like "date_range"
 
   describe EventSeasonValidator do

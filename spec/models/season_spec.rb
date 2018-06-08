@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Season, :type => :model do
+RSpec.describe Season do
   it_behaves_like "date_range"
 
   describe SeasonValidator do
