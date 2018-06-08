@@ -26,10 +26,6 @@ class User < ApplicationRecord
     override ? all : where(email_updates: true)
   end
 
-  def feed_url
-    "http://moretti.camp/feed/#{calendar_access_token}.ics"
-  end
-
   def full_name
     "#{first_name} #{last_name}"
   end

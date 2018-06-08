@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   root to: redirect('/users/sign_in')
 
   # ics feed
-  get 'feed/:token' => 'events#feed'
+  get 'feed/:token' => 'events#feed', as: 'events_feed'
 
   # Twilio route
   post 'voice/events' => 'voice#events'

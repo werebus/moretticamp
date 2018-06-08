@@ -31,7 +31,8 @@
           = icon 'fas', 'question-circle'
     .row.collapse.input-group
       = text_field_tag :access_token,
-        current_user.feed_url,
+        events_feed_url(token: current_user.calendar_access_token,
+                        format: 'ics'),
         class: 'input-group-field',
         id: 'feed-url-field',
         readonly: true
