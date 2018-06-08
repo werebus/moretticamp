@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'pry'
 
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
@@ -62,7 +63,7 @@ class User < ApplicationRecord
 
   def generate_calendar_access_token
     loop do
-      calendar_access_token = SecureRandom.hex
+      self.calendar_access_token = SecureRandom.hex
       break unless User.exists?(calendar_access_token: calendar_access_token)
     end
   end
