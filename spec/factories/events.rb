@@ -6,7 +6,7 @@ FactoryBot.define do
     random_schedule
 
     trait :titled do
-      title "Fun Times"
+      title 'Fun Times'
     end
 
     trait :unowned do

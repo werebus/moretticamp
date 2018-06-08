@@ -8,7 +8,7 @@ gem 'devise',                 '~> 4.4.3'
 gem 'devise_invitable',       '~> 1.6.0'
 gem 'exception_notification'
 gem 'figaro'
-gem "font-awesome-sass"
+gem 'font-awesome-sass'
 gem 'foundation-rails',       '~> 6.4'
 gem 'foundation_rails_helper'
 gem 'fullcalendar-rails'

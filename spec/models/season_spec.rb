@@ -3,14 +3,14 @@
 require 'rails_helper'
 
 RSpec.describe Season do
-  it_behaves_like "date_range"
+  it_behaves_like 'date_range'
 
   describe SeasonValidator do
     before(:each) do
       create(:season)
     end
 
-    it "prohibits overlapping seasons" do
+    it 'prohibits overlapping seasons' do
       ranges = [
         (Date.new(Date.today.year, 1, 1)..Date.new(Date.today.year, 5, 1)),
         (Date.new(Date.today.year, 11, 1)..Date.new(Date.today.year, 12, 1)),

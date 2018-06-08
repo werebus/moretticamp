@@ -19,7 +19,7 @@ class NotificationsController < ApplicationController
       NotificationMailer.notification_email(user, params[:subject], body).deliver
     end
 
-    flash.notice = pluralize(users.count, 'notification') + " delivered."
+    flash.notice = pluralize(users.count, 'notification') + ' delivered.'
     redirect_to '/'
   end
 end
