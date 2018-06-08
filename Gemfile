@@ -38,6 +38,7 @@ group :development do
   gem 'capistrano-bundler', '~> 1.1.2', require: false
   gem 'capistrano-pending',             require: false
   gem 'capistrano-rails',   '~> 1.1.1', require: false
+  gem 'listen'
   gem 'pry'
   gem 'pry-byebug'
   gem 'rubocop',                        require: false
