@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   trait :sequenced do
     sequence :start_date do |n|

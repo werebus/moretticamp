@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EventSeasonValidator < ActiveModel::Validator
   def validate(record)
     return if record.start_date.blank? || record.end_date.blank?

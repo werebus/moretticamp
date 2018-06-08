@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :season do
     start_date Date.new(Date.today.year, 2, 15)

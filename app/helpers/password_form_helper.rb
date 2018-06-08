@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PasswordFormHelper
   def password_form(path_method, token, button_text)
     render partial: 'devise/shared/password_form',

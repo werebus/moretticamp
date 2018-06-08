@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SeasonsController < ApplicationController
   before_action :set_season, only: [:show, :edit, :update, :destroy]
   before_action :require_admin, except: :index

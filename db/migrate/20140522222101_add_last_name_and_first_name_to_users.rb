@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddLastNameAndFirstNameToUsers < ActiveRecord::Migration
   def change
     add_column :users, :last_name, :string

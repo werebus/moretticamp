@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PositiveLengthValidator < ActiveModel::EachValidator
   # Use to validate the end_date
   def validate_each(record, attribute, value)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 OauthProvider = Struct.new :label, :name, :icon, :app_id, :app_secret
 
 google = OauthProvider.new :google_oauth2,

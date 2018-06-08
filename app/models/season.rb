@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SeasonValidator < ActiveModel::Validator
   def validate(record)
     overlaps = Season.where('start_date < ? AND end_date > ? AND id != ?',

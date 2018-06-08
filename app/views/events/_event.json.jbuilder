@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.extract! event, :id, :description, :created_at, :updated_at
 json.title event.display_title
 json.start event.start_date.iso8601

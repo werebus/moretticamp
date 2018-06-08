@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module EventHelper
   def owner_dropdown(form, event)
     if event.persisted?
