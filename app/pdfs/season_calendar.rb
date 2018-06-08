@@ -9,9 +9,7 @@ class SeasonCalendar
   end
 
   def document
-    @document ||= Prawn::Document.new({
-                                        page_layout: :landscape
-                                      })
+    @document ||= Prawn::Document.new(page_layout: :landscape)
   end
 
   def generate
@@ -33,8 +31,8 @@ class SeasonCalendar
   def month_grid(month)
     headers = Date::ABBR_DAYNAMES.map { |dayname| make_cell(dayname) }
 
-    leaders = month.wday.times.map { box_cell(nil) }
-    trailers = (6 - month.end_of_month.wday).times.map { box_cell(nil) }
+    leaders = Array.new(month.wday) { box_cell nil }
+    trailers = Array.new(6 - month.end_of_month.wday) { box_cell nil }
 
     days = (month..month.end_of_month).map do |day|
       day_cell day
