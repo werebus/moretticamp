@@ -8,7 +8,7 @@ class UserMailer < ActionMailer::Base
     if user.provider.present?
       oauth_provider = OAUTH_PROVIDERS.find do |oap|
         oap.label == user.provider.to_sym
-      end.name 
+      end.name
     end
     @reason = case reason
               when :invited

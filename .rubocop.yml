@@ -12,7 +12,13 @@ Layout/ExtraSpacing:
     - 'Gemfile'
 
 Metrics:
-  Enabled: true
+  Exclude:
+    - db/migrate/*
+
+Metrics/BlockLength:
+  Exclude:
+    - config/**/*
+    - spec/**/*
 
 Naming/FileName:
   Exclude:
