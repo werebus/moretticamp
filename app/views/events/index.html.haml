@@ -38,7 +38,10 @@
         readonly: true
       .input-group-button
         = button_tag icon('fas', 'clipboard'),
-          data: {clipboard_target: '#feed-uri-field'},
+          data: {clipboard_target: '#feed-url-field',
+                 disable_hover: true,
+                 click_open: false,
+                 tabindex: 2},
           class: 'button clip'
   .medium-9.medium-pull-3.columns
     - if @season
