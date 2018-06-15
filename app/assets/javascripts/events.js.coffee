@@ -24,7 +24,7 @@ $(document).ready ->
       right: if $('#calendar').data('today') then 'today prev,next' else 'prev,next'
 
     eventMouseover: (event, jsEvent, view)->
-      unless (event.description == '' || event.description == null || event.description == undefined)
+      if event.description
         $(this).append(
           '<div class="event-hover" id="eh-' + event.id + '">' + event.description + '</div>')
         $('#eh-' + event.id).fadeIn('fast').css
