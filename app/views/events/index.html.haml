@@ -45,11 +45,9 @@
           class: 'button clip'
   .medium-9.medium-pull-3.columns
     - if @season
-      - caldata = Hash.new.tap do |cd|
-        - cd[:date] = @date.iso8601
-        - cd[:start_date] = @season.start_date.iso8601
-        - cd[:end_date] = @season.end_date.iso8601
-        - cd[:today] = 'true' if @include_today
+      - caldata = {date: @date.iso8601,
+                   start_date: @season.start_date.iso8601,
+                   end_date: (@season.end_date + 1.day).iso8601}
       #calendar{data: caldata}
     - else
       .secondary.callout

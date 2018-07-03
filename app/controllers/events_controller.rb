@@ -21,7 +21,6 @@ class EventsController < ApplicationController
       format.html do
         return unless @season
         @date = [@season.start_date, Date.today].max
-        @include_today = (@season.date_range.include? Date.today)
       end
       format.json
       format.ics

@@ -4,20 +4,20 @@ source 'https://rubygems.org'
 
 gem 'aws-ses'
 gem 'bootsnap'
-gem 'coffee-rails',           '~> 4.2.1'
+gem 'coffee-rails',           '~> 4.2.1'  #A
 gem 'devise',                 '~> 4.4.3'
 gem 'devise_invitable',       '~> 1.6.0'
 gem 'exception_notification'
 gem 'figaro'
-gem 'font-awesome-sass'
-gem 'foundation-rails',       '~> 6.4'
-gem 'foundation_rails_helper'
-gem 'fullcalendar-rails'
+gem 'font-awesome-sass'                   #A
+gem 'foundation-rails',       '~> 6.4'    #A
+gem 'foundation_rails_helper'             #A
+gem 'fullcalendar-rails'                  #A
 gem 'haml-rails',             '~> 1.0'
 gem 'jbuilder',               '~> 2.0'
-gem 'jquery-rails'
+gem 'jquery-rails'                        #A
 gem 'kramdown'
-gem 'momentjs-rails'
+gem 'momentjs-rails'                      #A
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
@@ -25,13 +25,13 @@ gem 'pg'
 gem 'prawn'
 gem 'prawn-table'
 gem 'rails',                  '~> 5.2.0'
-gem 'sass-rails',             '~> 5.0.0'
+gem 'sass-rails',             '~> 5.0.0'  #A
 gem 'twilio-ruby',            '~> 5.8'
-gem 'uglifier',               '>= 1.3.0'
+gem 'uglifier',               '>= 1.3.0'  #A
 
 source 'https://rails-assets.org' do
-  gem 'rails-assets-clipboard'
-  gem 'rails-assets-foundation-datepicker'
+  gem 'rails-assets-clipboard'            #A
+  gem 'rails-assets-foundation-datepicker'#A
 end
 
 group :development do

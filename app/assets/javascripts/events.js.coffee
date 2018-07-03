@@ -1,7 +1,9 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).ready ->
+  caldate = ->
+    date = Number(window.location.hash.slice 1) ||
+      $('#calendar').data('date')
+    moment( date ).add(1, 'day')
+
   $('#calendar').fullCalendar
     height: 'auto'
     theme: true
@@ -14,14 +16,14 @@ $(document).ready ->
       url: '/seasons.json'
       color: '#666'
     }]
-    defaultDate: moment( $('#calendar').data('date') ),
+    defaultDate: caldate(),
+    validRange: {
+      start: moment( $('#calendar').data('start-date')),
+      end: moment( $('#calendar').data('end-date'))
+    },
     buttonIcons: false,
     buttonText:
       today: 'Today'
-    header:
-      left: 'title'
-      center: ''
-      right: if $('#calendar').data('today') then 'today prev,next' else 'prev,next'
 
     eventMouseover: (event, jsEvent, view)->
       if event.description
@@ -39,16 +41,20 @@ $(document).ready ->
         $(this).remove())
 
     viewRender: (view, element)->
+      current_date = view.intervalStart
       start_date = moment( $('#calendar').data('start-date') )
       end_date = moment( $('#calendar').data('end-date') )
 
-      current_date_string = view.intervalStart.format('YYYY-MM')
-      start_date_string = start_date.format('YYYY-MM')
-      end_date_string = end_date.format('YYYY-MM')
-
-      $('.fc-prev-button').toggleClass('ui-state-disabled', (current_date_string == start_date_string))
-      $('.fc-next-button').toggleClass('ui-state-disabled', (current_date_string == end_date_string))
-
       if $('.fc-toolbar .fc-left h3').length == 0
         $('.fc-toolbar .fc-left').append('<h3></h3>')
-      $('.fc-toolbar .fc-left h3').text( view.intervalStart.format('M/YY') )
+      $('.fc-toolbar .fc-left h3').text( current_date.format('M/YY') )
+
+    viewDestroy: (view, element)->
+      current_date = view.intervalStart
+      history.replaceState {date: current_date},
+        'Events, ' + current_date.format('MMMM YYYY'),
+        '#' + current_date
+
+  window.onpopstate = (event)->
+    if event.state.date
+      $('#calendar').fullCalendar 'gotoDate', event.state.date
