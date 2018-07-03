@@ -9,12 +9,12 @@ $(document).ready ->
     theme: true
     eventSources: [{
       url: '/events.json'
-      color: '#061'
+      className: 'event-event'
       error: (e)->
         if e.status == 401 then window.location.reload(false)
       },{
       url: '/seasons.json'
-      color: '#666'
+      className: 'season-event'
     }]
     defaultDate: caldate(),
     validRange: {
