@@ -11,4 +11,10 @@ module ApplicationHelper
     end
     return 'javascript:history.back()'
   end
+
+  def page_title
+    title = 'Il Campo Moretti'
+    title += " - #{content_for :title}" if content_for? :title
+    return title
+  end
 end

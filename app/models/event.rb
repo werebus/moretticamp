@@ -26,4 +26,8 @@ class Event < ApplicationRecord
   def display_title
     title.present? ? title : user.try(:first_name)
   end
+
+  def full_title
+    "#{display_title} (#{date_range_words})"
+  end
 end

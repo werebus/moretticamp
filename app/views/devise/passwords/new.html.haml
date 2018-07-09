@@ -1,3 +1,4 @@
-= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+= form_for resource, as: resource_name,
+  url: password_path(resource_name) do |f|
   = f.email_field :email, autofocus: true
   = f.submit 'Send Me Password Reset Instructions', class: 'expanded button'

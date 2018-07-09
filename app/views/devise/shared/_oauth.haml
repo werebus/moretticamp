@@ -3,13 +3,7 @@
     .medium-6.medium-centered.columns
       .expanded.button-group
         - OAUTH_PROVIDERS.each do |oap|
-          - if oap.icon
-            = link_to icon('fab', oap.icon),                     |
-              omniauth_authorize_path(resource_name, oap.label), |
-              title: "Sign in with #{oap.name}",                 |
-              class: "button"                                    |
-          - else
-            = link_to oap.name.first,                            |
-              omniauth_authorize_path(resource_name, oap.label), |
-              title: "Sign in with #{oap.name}",                 |
-              class: "button"                                    |
+          = link_to oap.icon.present? ? icon('fab', oap.icon) : oap.name.first,
+            omniauth_authorize_path(resource_name, oap.label),
+            title: "Sign in with #{oap.name}",
+            class: 'button'
