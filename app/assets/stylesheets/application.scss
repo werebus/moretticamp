@@ -32,12 +32,13 @@ button, .button {
 
 header {
   margin-bottom: 1.5rem;
+  $header-color: #f0dfd0;
+  color: $header-color;
 
   a {
-    $link-color: #f0dfd0;
-    color: $link-color;
+    color: $header-color;
     &:hover {
-      color: scale-color($link-color, $lightness: -15%);
+      color: scale-color($header-color, $lightness: -15%);
     }
   }
 
@@ -48,6 +49,10 @@ header {
                  'ITC Zapf Chancery',
                  'URW Chancery L',
                  cursive;
+  }
+
+  h1, h2 {
+    color: inherit;
   }
 }
 

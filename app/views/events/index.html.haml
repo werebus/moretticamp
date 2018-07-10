@@ -1,48 +1,51 @@
 .row
   .sidebar.medium-3.medium-push-9.columns
-    %ul#nav-links.medium-vertical.menu.clearfix
-      - if @season
-        %li
-          = link_to events_path(format: :pdf) do
-            = icon 'fas', 'print'
-            %span Print
-        %li
-          = link_to new_event_path do
-            = icon 'fas', 'calendar'
-            %span New Event
-      - if current_user.invitations?
-        %li
-          = link_to new_user_invitation_path do
-            = icon 'fas', 'user-plus'
-            %span Invite New User
-      - if current_user.admin
-        %li
-          = link_to seasons_path do
-            = icon 'fas', 'edit'
-            %span Manage Seasons
-        %li
-          = link_to new_notification_path do
-            = icon 'fas', 'envelope-open'
-            %span Send Notification
-    .row.collapse
-      %label
+    %nav{'aria-labeledby' => 'eventnav'}
+      %h2#eventnav.show-for-sr Event Navigation
+      %ul#nav-links.medium-vertical.menu.clearfix
+        - if @season
+          %li
+            = link_to events_path(format: :pdf) do
+              = icon 'fas', 'print'
+              %span Print
+          %li
+            = link_to new_event_path do
+              = icon 'fas', 'calendar'
+              %span New Event
+        - if current_user.invitations?
+          %li
+            = link_to new_user_invitation_path do
+              = icon 'fas', 'user-plus'
+              %span Invite New User
+        - if current_user.admin
+          %li
+            = link_to seasons_path do
+              = icon 'fas', 'edit'
+              %span Manage Seasons
+          %li
+            = link_to new_notification_path do
+              = icon 'fas', 'envelope-open'
+              %span Send Notification
+    %label{for: 'feed-url-field'}
+      .row.collapse
         Calendar Feed URL
         %span.has-tip{title: calendar_tip}
           = icon 'fas', 'question-circle'
-    .row.collapse.input-group
-      = text_field_tag :access_token,
-        events_feed_url(token: current_user.calendar_access_token,
-                        format: 'ics'),
-        class: 'input-group-field',
-        id: 'feed-url-field',
-        readonly: true
-      .input-group-button
-        = button_tag icon('fas', 'clipboard'),
-          data: {clipboard_target: '#feed-url-field',
-                 disable_hover: true,
-                 click_open: false,
-                 tabindex: 2},
-          class: 'button clip'
+      .row.collapse.input-group
+        = text_field_tag :access_token,
+          events_feed_url(token: current_user.calendar_access_token,
+                          format: 'ics'),
+          class: 'input-group-field',
+          id: 'feed-url-field',
+          readonly: true
+        .input-group-button
+          = button_tag data: {clipboard_target: '#feed-url-field',
+          disable_hover: true,
+          click_open: false,
+          tabindex: 2},
+          class: 'button clip' do
+            %span.show-for-sr Copy feed URL to the clipboard
+            = icon('fas', 'clipboard')
   .medium-9.medium-pull-3.columns
     - if @season
       - caldata = {date: @date.iso8601,
