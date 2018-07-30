@@ -4,12 +4,12 @@ module ApplicationHelper
   def back_link
     if controller.respond_to?(:request)
       referrer = controller.request.env['HTTP_REFERER']
-      uri = URI(referrer)
-      if referrer && uri.scheme != 'javascript' && uri.path != '/'
-        return referrer
+      if referrer.present?
+        uri = URI(referrer)
+        return referrer if uri.scheme != 'javascript' && uri.path != '/'
       end
     end
-    return 'javascript:history.back()'
+    'javascript:history.back()'
   end
 
   def page_title
