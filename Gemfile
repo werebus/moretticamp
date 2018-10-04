@@ -14,6 +14,7 @@ gem 'foundation-rails',       '~> 6.4'    #A
 gem 'foundation_rails_helper'             #A
 gem 'fullcalendar-rails'                  #A
 gem 'haml-rails',             '~> 1.0'
+gem 'icalendar'
 gem 'jbuilder',               '~> 2.0'
 gem 'jquery-rails'                        #A
 gem 'kramdown'

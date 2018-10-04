@@ -144,6 +144,9 @@ GEM
       ruby_parser (~> 3.5)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
+    icalendar (2.5.0)
+      ice_cube (~> 0.16)
+    ice_cube (0.16.3)
     jaro_winkler (1.5.1)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
@@ -367,6 +370,7 @@ DEPENDENCIES
   foundation_rails_helper
   fullcalendar-rails
   haml-rails (~> 1.0)
+  icalendar
   jbuilder (~> 2.0)
   jquery-rails
   kramdown

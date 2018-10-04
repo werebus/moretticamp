@@ -23,7 +23,9 @@ class EventsController < ApplicationController
         @date = [@season.start_date, Date.today].max
       end
       format.json
-      format.ics
+      format.ics do
+        render plain: Event.ical(@events).to_ical, content_type: 'text/calendar'
+      end
       format.pdf do
         if @season
           pdf = SeasonCalendar.new(@season, @events)
@@ -93,8 +95,7 @@ class EventsController < ApplicationController
 
   def feed
     if params[:format] == 'ics' && valid_token?(params[:token])
-      @events = Event.all
-      render action: 'index'
+      render plain: Event.ical.to_ical, content_type: 'text/calendar'
     else
       render file: 'public/401.html', layout: false, status: 401
     end
