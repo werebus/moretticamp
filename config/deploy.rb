@@ -21,6 +21,7 @@ set :linked_dirs, %w[log
                      vendor/bundle
                      public/system]
 
+set :assets_prefix, 'packs'
 set :bundle_binstubs, nil
 
 namespace :deploy do
