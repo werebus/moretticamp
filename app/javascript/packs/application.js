@@ -1,7 +1,7 @@
 /* eslint no-console:0 */
 //import 'clipboard';
+import flatpickr from 'flatpickr';
 import 'foundation-sites';
-//import 'foundation-datepicker';
 import 'fullcalendar';
 import Rails from 'rails-ujs';
 import '../src/js/events.js';

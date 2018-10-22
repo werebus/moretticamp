@@ -1,8 +1,7 @@
 const ClipboardJS = require('clipboard');
 
 $(document).ready(function() {
-  /* $('.date-pick').fdatepicker({
-    format: "yyyy-mm-dd"}); */
+  flatpickr('.date-pick', {});
 
   const clipboard_selector = '.button.clip';
   const clipboard_button = $(clipboard_selector);
