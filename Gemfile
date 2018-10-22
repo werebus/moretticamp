@@ -8,10 +8,7 @@ gem 'devise',                 '~> 4.4.3'
 gem 'devise_invitable',       '~> 1.6.0'
 gem 'exception_notification'
 gem 'figaro'
-gem 'font-awesome-sass'                   #A
-gem 'foundation-rails',       '~> 6.4'    #A
 gem 'foundation_rails_helper'             #A
-gem 'fullcalendar-rails'                  #A
 gem 'haml-rails',             '~> 1.0'
 gem 'icalendar'
 gem 'jbuilder',               '~> 2.0'
@@ -23,7 +20,6 @@ gem 'pg'
 gem 'prawn'
 gem 'prawn-table'
 gem 'rails',                  '~> 5.2.0'
-gem 'sass-rails',             '~> 5.0.0'  #A
 gem 'twilio-ruby',            '~> 5.8'
 gem 'webpacker',              '~> 3.5'
 
