@@ -36,6 +36,10 @@ class Event < ApplicationRecord
     title.present? ? title : user.try(:first_name)
   end
 
+  def full_title
+    "#{display_title} (#{date_range_words})"
+  end
+
   def ical
     Icalendar::Event.new.tap do |e|
       e.uid = "#{id}@moretti.camp"
@@ -47,9 +51,5 @@ class Event < ApplicationRecord
       e.dtstamp = created_at.utc.strftime('%Y%m%dT%H%M%SZ')
       e.last_modified = updated_at.utc.strftime('%Y%m%dT%H%M%SZ')
     end
-  end
-
-  def full_title
-    "#{display_title} (#{date_range_words})"
   end
 end

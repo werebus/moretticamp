@@ -46,6 +46,14 @@
     cursor: default;
   }
 
+  a.fc-event.has-tip::after {
+    @extend .fas;
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    content: fa-content($fa-var-sticky-note);
+  }
+
   .fc-toolbar {
     margin-bottom: 0;
   }
@@ -95,25 +103,6 @@
       h3 {
         display: none;
       }
-    }
-  }
-
-  .event-hover {
-    display: none;
-    font-size: 0.9em;
-    padding: 1em;
-    border: 1px solid #222;
-
-    position: absolute;
-    z-index: 10;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-
-    background: white;
-    color: #222;
-    &:hover {
-      color: #222;
     }
   }
 }

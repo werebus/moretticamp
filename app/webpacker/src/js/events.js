@@ -30,25 +30,12 @@ $(document).ready(function() {
       today: 'Today'
     },
 
-    eventMouseover(event, jsEvent, view){
+    eventRender(event, element){
       if (event.description) {
-        $(this).append(
-          `<div class="event-hover" id="eh-${event.id}">${event.description}</div>`);
-        $(`#eh-${event.id}`).fadeIn('fast').css({
-          top: $(this).height() + 15,
-          'max-width': $('td.fc-day').width() * 3
+        var tip = new Foundation.Tooltip(element, {
+          tipText: event.description
         });
-        if ($(this).position().left < ($('#calendar').width() / 2)) {
-          $(`#eh-${event.id}`).css('left', 15);
-        } else {
-          $(`#eh-${event.id}`).css('right', 15);
-        }
       }
-    },
-    eventMouseout(event, jsEvent, view){
-      $(`#eh-${event.id}`).fadeOut('fast', function() {
-        $(this).remove();
-    });
     },
 
     viewRender(view, element){
