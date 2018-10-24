@@ -12,14 +12,7 @@
     #login-form.row
       .small-8.small-centered.columns
         .callout
-          - if notice.present?
-            .success.callout{data: {closable: true}}
-              = notice
-              %button.close-button{data: {close: true}, type: 'button'} ×
-          - if alert.present?
-            .alert.callout{data: {closable: true}}
-              = alert
-              %button.close-button{data: {close: true}, type: 'button'} ×
+          = display_flash_messages
           = yield
           = render 'devise/shared/links'
     = javascript_pack_tag 'application'

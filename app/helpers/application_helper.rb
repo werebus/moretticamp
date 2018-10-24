@@ -12,6 +12,10 @@ module ApplicationHelper
     'javascript:history.back()'
   end
 
+  def comment_lines(text)
+    text.each_line.map{ |line| "<!-- #{line.chomp} -->" }.join("\n").html_safe
+  end
+
   def icon(style, name, text = nil, html_options = {})
     text, html_options = nil, text if text.is_a?(Hash)
 
