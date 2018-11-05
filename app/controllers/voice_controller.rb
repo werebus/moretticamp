@@ -4,26 +4,46 @@ class VoiceController < ApplicationController
   include Webhookable
 
   def events
-    @pressed = (params[:Digits].present? ? params[:Digits].to_i : nil)
+    @event = Event.next_after(Date.today, exclude)
+    twiml_response = event_twiml
 
-    @exclude = session[:exclude] || [0]
-    @exclude << session[:event] if @pressed == 2
-    @exclude = [0] if @pressed == 3
+    session[:exclude] = exclude
+    session[:event] = @event.try :id
+    render_twiml twiml_response
+  end
 
-    @event = Event.next_after(Date.today, @exclude)
-    session[:event] = @event.try(:id)
-    session[:exclude] = @exclude
+  private
 
-    say_options = { voice: 'alice' }
-    response = Twilio::TwiML::VoiceResponse.new do |r|
-      if [nil, 1, 2, 3].include? @pressed
+  def exclude
+    @exclude ||= session[:exclude] || [0]
+    @exclude << session[:event] if pressed? 2
+    @exclude = [0] if pressed? 3
+    @exclude
+  end
+
+  def pressed
+    @pressed ||= params[:Digits].try :to_i
+  end
+
+  def pressed?(*nums)
+    nums.include? pressed
+  end
+
+  def say_event(event)
+    "The next event scheduled #{'after that' if exclude.length > 1} is " \
+    "#{event.display_title}  #{event.date_range_readable}."
+  end
+
+  def say_options
+    { voice: 'alice' }
+  end
+
+  def event_twiml
+    Twilio::TwiML::VoiceResponse.new do |r|
+      if pressed?(nil, 1, 2, 3)
         r.gather(num_digits: 1) do |g|
           if @event
-            g.say 'The next event scheduled' \
-                  "#{@exclude.length > 1 ? 'after that' : ''} is",
-                  say_options
-            g.say "#{@event.display_title}  #{@event.date_range_readable}.",
-                  say_options
+            g.say say_event(@event), say_options
             g.pause
             g.say 'To repeat that, press 1.', say_options
             g.say 'To hear the next event, press 2.', say_options
@@ -37,7 +57,5 @@ class VoiceController < ApplicationController
       r.say 'Goodbye!', say_options
       r.hangup
     end
-
-    render_twiml response
   end
 end
