@@ -6,20 +6,11 @@ class NotificationsController < ApplicationController
   before_action :require_admin
 
   def create
-    params.require :subject
-    params.require :body
+    params.require %i[subject body]
     params.permit :override
 
-    body = Kramdown::Document.new(params[:body]).to_html
-
-    users = User.to_notify params[:override].present?
-    users.each do |user|
-      NotificationMailer.notification_email(user,
-                                            params[:subject],
-                                            body).deliver
-    end
-
-    flash.notice = pluralize(users.count, 'notification') + ' delivered.'
+    number_sent = NotificationService.send(params)
+    flash.notice = pluralize(number_sent, 'notification') + ' delivered.'
     redirect_to '/'
   end
 end
