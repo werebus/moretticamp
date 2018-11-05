@@ -18,7 +18,7 @@ header {
 
   a {
     color: $header-color;
-    &:hover {
+    &:hover, &:focus {
       color: scale-color($header-color, $lightness: -15%);
     }
   }
