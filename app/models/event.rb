@@ -1,18 +1,23 @@
 # frozen_string_literal: true
+
 class EventSeasonValidator < ActiveModel::Validator
   def validate(record)
     return if record.start_date.blank? || record.end_date.blank?
-
+    errors = []
     season = Season.current_or_next
-    unless season.present?
-      record.errors[:base] <<
-        'Your event cannot be created because there is no season defined yet.'
-      return
-    end
+    errors << no_season(season)
+    errors << not_in_season(record, season)
+    record.errors[:base] << errors.compact
+  end
+
+  def no_season(season)
+    return if season.present?
+    'Your event cannot be created because there is no season defined yet.'
+  end
+
+  def not_in_season(record, season)
     return if season.date_range.include?(record.date_range)
-    record.errors[:base] <<
-      'Event must occur durring the current season' \
-      " (#{season.date_range_words})."
+    "Event must occur durring the current season (#{season.date_range_words})."
   end
 end
 
@@ -22,7 +27,7 @@ class Event < ApplicationRecord
 
   belongs_to :user, optional: true
 
-  def self.ical(events = self.all)
+  def self.ical(events = all)
     Icalendar::Calendar.new.tap do |cal|
       cal.prodid = '-//wereb.us//moretti.camp//EN'
 
