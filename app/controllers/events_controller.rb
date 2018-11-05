@@ -10,7 +10,7 @@ class EventsController < ApplicationController
 
   def index
     @season = Season.current_or_next
-    @events = EventService.find(params)
+    @events = EventsService.find(params)
 
     respond_to do |format|
       format.html { html_index }
