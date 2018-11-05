@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PoetryHelper
   def il_campo_moretti
     <<~VERSE

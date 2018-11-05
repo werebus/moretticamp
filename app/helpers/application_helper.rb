@@ -13,7 +13,7 @@ module ApplicationHelper
   end
 
   def comment_lines(text)
-    text.each_line.map{ |line| "<!-- #{line.chomp} -->" }.join("\n").html_safe
+    text.each_line.map { |line| "<!-- #{line.chomp} -->" }.join("\n").html_safe
   end
 
   def icon(style, name, text = nil, html_options = {})
@@ -31,6 +31,6 @@ module ApplicationHelper
   def page_title
     title = 'Il Campo Moretti'
     title += " - #{content_for :title}" if content_for? :title
-    return title
+    title
   end
 end
