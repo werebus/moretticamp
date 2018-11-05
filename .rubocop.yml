@@ -6,6 +6,7 @@ AllCops:
     - '**/*.rb'
   Exclude:
     - bin/**/*
+    - node_modules/**/*
     - db/schema.rb
 
 Layout/ExtraSpacing:
@@ -16,10 +17,16 @@ Metrics:
   Exclude:
     - db/migrate/*
 
+Metrics/AbcSize:
+  Max: 20
+
 Metrics/BlockLength:
   Exclude:
     - config/**/*
     - spec/**/*
+
+Metrics/MethodLength:
+  Max: 15
 
 Naming/FileName:
   Exclude:
