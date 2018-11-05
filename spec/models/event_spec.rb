@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-require_relative '../concerns/date_range_spec'
+require_relative '../concerns/date_range'
 
 RSpec.describe Event do
   it_behaves_like 'date_range'
