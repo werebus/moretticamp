@@ -6,7 +6,7 @@ class EventSeasonValidator < ActiveModel::Validator
     errors = []
     season = Season.current_or_next
     errors << no_season(season)
-    errors << not_in_season(record, season)
+    errors << not_in_season(record, season) if season.present?
     record.errors[:base] << errors.compact
   end
 
