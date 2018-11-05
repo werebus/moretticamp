@@ -8,7 +8,7 @@ gem 'devise',                 '~> 4.4.3'
 gem 'devise_invitable',       '~> 1.6.0'
 gem 'exception_notification'
 gem 'figaro'
-gem 'foundation_rails_helper'             #A
+gem 'foundation_rails_helper'
 gem 'haml-rails',             '~> 1.0'
 gem 'icalendar'
 gem 'jbuilder',               '~> 2.0'
@@ -37,6 +37,7 @@ end
 
 group :test do
   gem 'faker'
+  gem 'simplecov', require: false
 end
 
 group :development, :test do
