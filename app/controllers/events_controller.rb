@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class EventsController < ApplicationController
+  include EventsIndex
+
   before_action :set_event, only: %i[show edit update destroy]
   before_action :require_ownership, only: %i[edit update destroy]
 
@@ -8,35 +10,13 @@ class EventsController < ApplicationController
 
   def index
     @season = Season.current_or_next
-
-    if params[:start] && params[:end]
-      start_time = Date.parse(params[:start])
-      end_time = Date.parse(params[:end])
-      @events = Event.between(start_time, end_time)
-    else
-      @events = Event.all
-    end
+    @events = EventService.find(params)
 
     respond_to do |format|
-      format.html do
-        return unless @season
-        @date = [@season.start_date, Date.today].max
-      end
+      format.html { html_index }
       format.json
-      format.ics do
-        render plain: Event.ical(@events).to_ical, content_type: 'text/calendar'
-      end
-      format.pdf do
-        if @season
-          pdf = SeasonCalendar.new(@season, @events)
-          pdf.generate
-          send_data pdf.render,
-                    filename: 'camp_calendar.pdf',
-                    type: 'application/pdf'
-        else
-          redirect_to events_url, alert: 'No calendar to print.'
-        end
-      end
+      format.ics { ics_index }
+      format.pdf { pdf_index }
     end
   end
 
@@ -112,12 +92,8 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:id,
-                                  :start_date,
-                                  :end_date,
-                                  :title,
-                                  :description,
-                                  :user_id)
+    permitted = %i[id start_date end_date title description user_id]
+    params.require(:event).permit(permitted)
   end
 
   def valid_token?(token)
