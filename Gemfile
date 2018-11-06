@@ -37,10 +37,11 @@ end
 
 group :test do
   gem 'faker'
+  gem 'rails-controller-testing'
+  gem 'rspec-rails', '~> 3.7.2'
   gem 'simplecov', require: false
 end
 
 group :development, :test do
   gem 'factory_bot_rails'
-  gem 'rspec-rails'
 end
