@@ -34,7 +34,7 @@ RSpec.describe 'EventsController#index' do
   end
   context 'with a season' do
     before :each do
-      create :season
+      create :season, :now
       visit events_path
     end
     it 'loads the calendar' do
