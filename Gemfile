@@ -36,9 +36,11 @@ group :development do
 end
 
 group :test do
+  gem 'capybara', '~> 3.10'
   gem 'faker'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 3.7.2'
+  gem 'selenium-webdriver'
   gem 'simplecov', require: false
 end
 
