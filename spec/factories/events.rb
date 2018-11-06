@@ -12,5 +12,10 @@ FactoryBot.define do
     trait :unowned do
       user nil
     end
+
+    trait :now do
+      start_date Date.today
+      end_date Date.today
+    end
   end
 end
