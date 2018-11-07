@@ -10,20 +10,13 @@ module EventHelper
   end
 
   def owner_dropdown(form, event)
-    if event.persisted?
-      form.collection_select :user_id,
-                             User.all,
-                             :id,
-                             :full_name,
-                             include_blank: true,
-                             label: 'Schedule For'
-    else
-      form.collection_select :user_id,
-                             [User.new] + User.all,
-                             :id,
-                             :full_name,
-                             selected: current_user.id,
-                             label: 'Schedule For'
-    end
+    selected = event.persisted? ? event.user_id : current_user.id
+    form.collection_select :user_id,
+                           User.order(:first_name, :last_name),
+                           :id,
+                           :full_name,
+                           include_blank: true,
+                           selected: selected,
+                           label: 'Schedule For'
   end
 end

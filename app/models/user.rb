@@ -11,8 +11,6 @@ class User < ApplicationRecord
   has_many :events
   has_many :invitations, class_name: 'User', as: :invited_by
 
-  default_scope { order(:first_name, :last_name) }
-
   before_save :generate_calendar_access_token,
               unless: -> { calendar_access_token.present? }
 
@@ -44,16 +42,10 @@ class User < ApplicationRecord
     if encrypted_password.present?
       super
     elsif invitation_token.present?
-      send_no_reset_email(:invited)
+      UserMailer.no_reset(self, :invited).deliver_now
     elsif provider.present?
-      send_no_reset_email(:oauth)
+      UserMailer.no_reset(self, :oauth).deliver_now
     end
-  end
-
-  protected
-
-  def send_no_reset_email(reason)
-    UserMailer.no_reset(self, reason).deliver
   end
 
   private
