@@ -5,9 +5,11 @@ class User < ApplicationRecord
   # :confirmable, and :lockable
   devise :invitable, :database_authenticatable, :omniauthable, :recoverable,
          :registerable, :rememberable, :timeoutable, :trackable, :validatable,
+         validate_on_invite: true,
          omniauth_providers: OAUTH_PROVIDERS.map(&:label)
 
   has_many :events
+  has_many :invitations, class_name: 'User', as: :invited_by
 
   default_scope { order(:first_name, :last_name) }
 
