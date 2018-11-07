@@ -8,7 +8,7 @@ RSpec.describe 'Index page' do
     expect(response).to redirect_to(new_user_session_path)
   end
   it 'displays the events index' do
-    sign_in(create :user)
+    sign_in(create(:user))
     get '/'
     expect(response).to render_template('events/index')
   end

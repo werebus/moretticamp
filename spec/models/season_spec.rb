@@ -29,8 +29,8 @@ RSpec.describe Season do
   describe '#months' do
     let :season do
       create :season,
-             start_date: Date.new(2018,5,15),
-             end_date: Date.new(2018,9,15)
+             start_date: Date.new(2018, 5, 15),
+             end_date: Date.new(2018, 9, 15)
     end
 
     it 'is an array of dates' do
@@ -39,10 +39,10 @@ RSpec.describe Season do
       expect(season.months.map(&:day)).to all(be 1)
     end
     it 'contains the first month' do
-      expect(season.months).to include(Date.new(2018,5,1))
+      expect(season.months).to include(Date.new(2018, 5, 1))
     end
     it 'contains the last month' do
-      expect(season.months).to include(Date.new(2018,9,1))
+      expect(season.months).to include(Date.new(2018, 9, 1))
     end
     it 'has the right number of months' do
       expect(season.months.count).to be 5

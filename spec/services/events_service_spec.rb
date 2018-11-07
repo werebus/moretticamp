@@ -13,7 +13,7 @@ RSpec.describe EventsService do
     it 'finds events between two dates if given them' do
       expect(Event)
         .to receive(:between)
-        .with(Date.new(2018,1,1), Date.new(2018,12,31))
+        .with(Date.new(2018, 1, 1), Date.new(2018, 12, 31))
       EventsService.find(date_params)
     end
     it 'finds all events if there aren\'t both dates' do

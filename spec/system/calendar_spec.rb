@@ -10,7 +10,7 @@ RSpec.describe 'EventsController#index - calendar', js: true do
     create :event, :now, title: 'LADYBUGS'
   end
   before :each do
-    sign_in(create :user)
+    sign_in(create(:user))
     visit events_path
   end
 
@@ -28,13 +28,9 @@ RSpec.describe 'EventsController#index - calendar', js: true do
     Capybara.enable_aria_label = true
     within '#calendar' do
       using_wait_time 0.2 do
-        until page.has_css? 'button.fc-prev-button[disabled]' do
-          click_on 'prev'
-        end
+        click_on 'prev' until page.has_css? 'button.fc-prev-button[disabled]'
         expect(page).to have_content season.start_date.strftime('%B %Y')
-        until page.has_css? 'button.fc-next-button[disabled]' do
-          click_on 'next'
-        end
+        click_on 'next' until page.has_css? 'button.fc-next-button[disabled]'
         expect(page).to have_content season.end_date.strftime('%B %Y')
       end
     end
@@ -43,13 +39,9 @@ RSpec.describe 'EventsController#index - calendar', js: true do
     Capybara.enable_aria_label = true
     within '#calendar' do
       using_wait_time 0.2 do
-        until page.has_css? 'button.fc-prev-button[disabled]' do
-          click_on 'prev'
-        end
+        click_on 'prev' until page.has_css? 'button.fc-prev-button[disabled]'
         expect(page).to have_content 'Camp Opens'
-        until page.has_css? 'button.fc-next-button[disabled]' do
-          click_on 'next'
-        end
+        click_on 'next' until page.has_css? 'button.fc-next-button[disabled]'
         expect(page).to have_content 'Camp Closes'
       end
     end

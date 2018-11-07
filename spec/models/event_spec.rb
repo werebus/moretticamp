@@ -62,7 +62,7 @@ RSpec.describe Event do
       expect(ical_lines.count('BEGIN:VEVENT')).to be 5
     end
     it 'can be given a subset of events' do
-      lines = Event.ical(events[0,2]).to_ical.split("\r\n")
+      lines = Event.ical(events[0, 2]).to_ical.split("\r\n")
       expect(lines.count('BEGIN:VEVENT')).to be 2
     end
   end
