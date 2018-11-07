@@ -21,7 +21,7 @@ RSpec.describe NotificationService do
 
     it 'converts the body to HTML' do
       expect(NotificationMailer).to receive(:notification_email)
-        .with(anything, anything, /<(strong|b)>Testing<\/\1>/)
+        .with(anything, anything, %r{<(strong|b)>Testing</\1>})
         .at_least(:once)
         .and_return(dummy_mail_message)
       NotificationService.send(note_params)
