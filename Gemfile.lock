@@ -217,6 +217,7 @@ GEM
       byebug (~> 10.0)
       pry (~> 0.10)
     public_suffix (3.0.3)
+    puma (3.12.0)
     rack (2.0.5)
     rack-proxy (0.6.5)
       rack
@@ -366,6 +367,7 @@ DEPENDENCIES
   prawn-table
   pry
   pry-byebug
+  puma
   rails (~> 5.2.0)
   rails-controller-testing
   rspec-rails (~> 3.7.2)
