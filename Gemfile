@@ -37,12 +37,13 @@ group :development do
 end
 
 group :test do
-  gem 'capybara', '~> 3.10'
+  gem 'capybara',                '~> 3.10'
   gem 'faker'
+  gem 'pdf-inspector',                      require: 'pdf/inspector'
   gem 'rails-controller-testing'
-  gem 'rspec-rails', '~> 3.7.2'
+  gem 'rspec-rails',             '~> 3.7.2'
   gem 'selenium-webdriver'
-  gem 'simplecov', require: false
+  gem 'simplecov',                          require: false
 end
 
 group :development, :test do

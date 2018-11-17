@@ -52,4 +52,18 @@ shared_examples_for 'date_range' do
            end_date: Date.today + 1.day)
     expect(model.current).to be
   end
+
+  it 'has several date formats' do
+    date1 = Date.new(2018, 11, 1)
+    date2 = Date.new(2018,11, 7)
+    one_day = build(factory, start_date: date1, end_date: date1)
+    multi_day = build(factory, start_date: date1, end_date: date2)
+
+    expect(multi_day.date_range).to eq date1..date2
+    expect(multi_day.date_range_words).to match(/Nov 1st/)
+    expect(multi_day.date_range_words).to match(/Nov 7th/)
+    expect(one_day.date_range_readable).to match(/^on \w+, November 1st/)
+    expect(multi_day.date_range_readable).to match(/from \w+, November 1st/)
+    expect(multi_day.date_range_readable).to match(/until \w+, November 7th/)
+  end
 end
