@@ -46,7 +46,7 @@ shared_examples_for 'date_range' do
   end
 
   it 'finds one occurring today' do
-    create(:season) unless model == Season
+    create(:season, :now) unless model == Season
     create(factory,
            start_date: Date.today - 1.day,
            end_date: Date.today + 1.day)
