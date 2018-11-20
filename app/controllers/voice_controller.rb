@@ -38,6 +38,7 @@ class VoiceController < ApplicationController
     { voice: 'alice' }
   end
 
+  # rubocop:disable Metrics/MethodLength
   def event_twiml
     Twilio::TwiML::VoiceResponse.new do |r|
       if pressed?(nil, 1, 2, 3)
@@ -58,4 +59,5 @@ class VoiceController < ApplicationController
       r.hangup
     end
   end
+  # rubocop:enable Metrics/MethodLength
 end

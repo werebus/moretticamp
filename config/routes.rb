@@ -3,11 +3,14 @@
 Rails.application.routes.draw do
   resources :events
   resources :seasons
+  resources :notifications, only: %i[new create]
 
   devise_for :users,
-             skip:        [:registrations],
-             controllers: { omniauth_callbacks: 'users/omniauth_callbacks',
-                            invitations:        'users/invitations' }
+             skip: [:registrations],
+             controllers: {
+               omniauth_callbacks: 'users/omniauth_callbacks',
+               invitations: 'users/invitations'
+             }
 
   as :user do
     get 'users/edit' => 'users/registrations#edit',
@@ -26,8 +29,6 @@ Rails.application.routes.draw do
 
   # Twilio route
   post 'voice/events' => 'voice#events'
-
-  resources :notifications, only: %i[new create]
 
   # Static pages
   PagesController.action_methods.each do |action|
