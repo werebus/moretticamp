@@ -55,7 +55,7 @@ shared_examples_for 'date_range' do
 
   it 'has several date formats' do
     date1 = Date.new(2018, 11, 1)
-    date2 = Date.new(2018,11, 7)
+    date2 = Date.new(2018, 11, 7)
     one_day = build(factory, start_date: date1, end_date: date1)
     multi_day = build(factory, start_date: date1, end_date: date2)
 

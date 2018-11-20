@@ -20,7 +20,7 @@ RSpec.describe 'PDF calendar' do
     expect(cd).to match(/filename="camp_calendar.pdf"/)
   end
 
-  it 'redirects without a season' do
+  it 'redirects without a current season' do
     get events_path(format: 'pdf')
     expect(response.code).to match(/^3\d\d/)
   end

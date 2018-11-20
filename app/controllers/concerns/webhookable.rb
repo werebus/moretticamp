@@ -24,6 +24,7 @@ module Webhookable
 
   def require_valid_source
     return if Rails.env.development? || valid_call?
+
     reject_call!
   end
 

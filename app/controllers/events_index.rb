@@ -3,6 +3,7 @@
 module EventsIndex
   def html_index
     return unless @season
+
     @date = [@season.start_date, Date.today].max
   end
 

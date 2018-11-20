@@ -6,6 +6,7 @@ class PositiveLengthValidator < ActiveModel::EachValidator
     return unless value.present? &&
                   record.start_date.present? &&
                   value < record.start_date
+
     record.errors[attribute] <<
       (options[:message] || "must be after #{record.start_date}")
   end
