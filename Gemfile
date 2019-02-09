@@ -39,6 +39,7 @@ end
 group :test do
   gem 'capybara',                '~> 3.10'
   gem 'faker'
+  gem 'fuubar'
   gem 'pdf-inspector',                      require: 'pdf/inspector'
   gem 'rails-controller-testing'
   gem 'rspec-rails',             '~> 3.7.2'

@@ -25,5 +25,6 @@ yarn-debug.log*
 .yarn-integrity
 yarn-error.log
 
-# Ignore coverage
+# Ignore coverage and spec status
 /coverage
+/spec/examples.txt
