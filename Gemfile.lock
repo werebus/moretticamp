@@ -395,5 +395,8 @@ DEPENDENCIES
   twilio-ruby (~> 5.8)
   webpacker (~> 3.5)
 
+RUBY VERSION
+   ruby 2.6.3p62
+
 BUNDLED WITH
-   1.17.3
+   2.0.1
