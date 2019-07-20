@@ -23,7 +23,7 @@ gem 'prawn-table'
 gem 'puma'
 gem 'rails',                  '~> 5.2.0'
 gem 'twilio-ruby',            '~> 5.8'
-gem 'webpacker',              '~> 3.5'
+gem 'webpacker',              '~> 4.x'
 
 group :development do
   gem 'capistrano',         '~> 3.4.0', require: false
