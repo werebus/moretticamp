@@ -46,33 +46,23 @@ RSpec.describe VoiceController do
   end
 
   it 'repeats the event when 1 is pressed' do
-    post webhook_path, params: valid_call_params.merge({
-      Digits: '1'
-    })
+    post webhook_path, params: valid_call_params.merge(Digits: '1')
 
     event = Event.next
     expect(first_speech).to include(event.display_title)
   end
 
   it 'moves onto the next event when 2 is pressed' do
-    post webhook_path, params: valid_call_params.merge({
-      Digits: '2'
-    })
+    post webhook_path, params: valid_call_params.merge(Digits: '2')
 
     event = Event.next_after(Date.today, [Event.next.id])
     expect(first_speech).to include(event.display_title)
   end
 
   it 'starts over at the beginning when 3 is pressed' do
-    post webhook_path, params: valid_call_params.merge({
-      Digits: '2'
-    })
-    post webhook_path, params: valid_call_params.merge({
-      Digits: '2'
-    })
-    post webhook_path, params: valid_call_params.merge({
-      Digits: '3'
-    })
+    post webhook_path, params: valid_call_params.merge(Digits: '2')
+    post webhook_path, params: valid_call_params.merge(Digits: '2')
+    post webhook_path, params: valid_call_params.merge(Digits: '3')
 
     event = Event.next
     expect(first_speech).to include(event.display_title)
@@ -81,17 +71,15 @@ RSpec.describe VoiceController do
   it 'informs the caller when they are at the end' do
     event_count = Event.between(Date.today, @season.end_date).count
     event_count.times do
-      post webhook_path, params: valid_call_params.merge({
-        Digits: '2'
-      })
+      post webhook_path, params: valid_call_params.merge(Digits: '2')
     end
 
     expect(first_speech).to include('no further events')
   end
 
   it 'says goodbye and hangs up' do
-    goodbye = response_document.css('Say')
-      .select{|tag| tag.text =~ /Goodbye/}
+    goodbye = response_document
+              .css('Say').select { |tag| tag.text =~ /Goodbye/ }
     hangup = response_document.css('Hangup')
 
     expect(goodbye).to be_present

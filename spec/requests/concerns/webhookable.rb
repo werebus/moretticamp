@@ -49,17 +49,15 @@ shared_examples_for 'a_webhookable_controller' do
   end
 
   it 'rejects calls from other numbers' do
-    post webhook_path, params: valid_call_params.merge({
-        From: '+15005550001'
-    })
+    post webhook_path, params: valid_call_params.merge(From: '+15005550001')
 
     expect(first_response_element.name).to eq 'Reject'
   end
 
   it 'rejects calls from other Twilio accounts' do
-    post webhook_path, params: valid_call_params.merge({
-        AccountSid: 'ACbad555bad555bad555bad555bad555bd'
-      })
+    post webhook_path, params: valid_call_params.merge(
+      AccountSid: 'ACbad555bad555bad555bad555bad555bd'
+    )
 
     expect(first_response_element.name).to eq 'Reject'
   end
