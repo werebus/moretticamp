@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-require_relative '../concerns/date_range'
 
 RSpec.describe User do
   describe '.find_for_oauth' do

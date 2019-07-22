@@ -34,8 +34,11 @@ class VoiceController < ApplicationController
     "#{event.display_title}  #{event.date_range_readable}."
   end
 
-  def say_options
-    { voice: 'alice' }
+  def say(message)
+    {
+      message: message,
+      voice: 'alice'
+    }
   end
 
   # rubocop:disable Metrics/MethodLength
@@ -44,18 +47,18 @@ class VoiceController < ApplicationController
       if pressed?(nil, 1, 2, 3)
         r.gather(num_digits: 1) do |g|
           if @event
-            g.say say_event(@event), say_options
+            g.say say(say_event(@event))
             g.pause
-            g.say 'To repeat that, press 1.', say_options
-            g.say 'To hear the next event, press 2.', say_options
+            g.say say('To repeat that, press 1.')
+            g.say say('To hear the next event, press 2.')
           else
-            g.say 'There are no further events scheduled.', say_options
+            g.say say('There are no further events scheduled.')
           end
 
-          g.say 'To start over, press 3.', say_options
+          g.say say('To start over, press 3.')
         end
       end
-      r.say 'Goodbye!', say_options
+      r.say say('Goodbye!')
       r.hangup
     end
   end

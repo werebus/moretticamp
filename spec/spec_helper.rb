@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'pathname'
+require 'timecop'
 
 RSpec.configure do |config|
   config.filter_run :focus
@@ -22,4 +23,6 @@ RSpec.configure do |config|
     mocks.syntax = :expect
     mocks.verify_partial_doubles = true
   end
+
+  Timecop.safe_mode = true
 end

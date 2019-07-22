@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
+require_relative 'concerns/date_range'
 
 RSpec.describe Season do
   it_behaves_like 'date_range'

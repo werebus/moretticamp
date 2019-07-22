@@ -5,7 +5,6 @@ module Webhookable
 
   included do
     before_action :require_valid_source
-    after_action :set_header
     skip_before_action :verify_authenticity_token, :authenticate_user!
   end
 
@@ -14,12 +13,8 @@ module Webhookable
       ENV.values_at('TWILIO_ACCOUNT_SID', 'CAMP_PHONE_NUMBER')
   end
 
-  def set_header
-    response.headers['Content-Type'] = 'text/xml'
-  end
-
   def render_twiml(response)
-    render body: response.to_s
+    render xml: response.to_xml
   end
 
   def require_valid_source
@@ -29,8 +24,6 @@ module Webhookable
   end
 
   def reject_call!
-    response = Twilio::TwiML::VoiceResponse.new.reject
-    set_header
-    render_twiml response
+    render_twiml Twilio::TwiML::VoiceResponse.new.reject
   end
 end

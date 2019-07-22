@@ -13,10 +13,12 @@ RSpec.describe 'ICS feed' do
     expect(response.content_type).to eq 'text/calendar'
     expect(response.body.lines.first).to eq "BEGIN:VCALENDAR\r\n"
   end
+
   it 'prohibits access without a valid token' do
     get "/feed/#{SecureRandom.hex}.ics"
     expect(response.status).to eq 401
   end
+
   it 'is accesable at the events index as well' do
     sign_in(user)
     get events_path(format: 'ics')
