@@ -56,7 +56,8 @@ class Event < ApplicationRecord
       e.dtend = Icalendar::Values::Date.new(end_date + 1.day)
       e.summary = display_title
       e.description = description
-      e.dtstamp = created_at.utc.strftime('%Y%m%dT%H%M%SZ')
+      e.dtstamp = Time.now.utc.strftime('%Y%m%dT%H%M%SZ')
+      e.created = created_at.utc.strftime('%Y%m%dT%H%M%SZ')
       e.last_modified = updated_at.utc.strftime('%Y%m%dT%H%M%SZ')
     end
   end
