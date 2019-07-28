@@ -2,10 +2,11 @@
 
 module Users
   class InvitationsController < Devise::InvitationsController
+    prepend_before_action -> { request.format = 'html' }, only: :edit
+
     def edit
-      resource.invitation_token = params[:invitation_token]
       session[:invitation_token] = params[:invitation_token]
-      render :edit
+      super
     end
 
     def update
