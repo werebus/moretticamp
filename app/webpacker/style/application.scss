@@ -1,5 +1,5 @@
 $include-html-classes: false;
-@import "stylesheets/foundation_and_overrides";
+@import "foundation_and_overrides";
 
 $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
 @import "~@fortawesome/fontawesome-free/scss/fontawesome";
@@ -9,13 +9,13 @@ $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
 @import "~flatpickr/dist/flatpickr";
 @import "~fullcalendar/dist/fullcalendar";
 
-@import "stylesheets/global";
-@import "stylesheets/events";
-@import "stylesheets/fc-custom";
-@import "stylesheets/flatpickr-custom";
-@import "stylesheets/form-validity";
-@import "stylesheets/login";
-@import "stylesheets/seasons";
+@import "global";
+@import "events";
+@import "fc-custom";
+@import "flatpickr-custom";
+@import "form-validity";
+@import "login";
+@import "seasons";
 
-@import "stylesheets/font-face";
+@import "font-face";
 @include font-face(danielregular, '../fonts/daniel-webfont', $asset-pipeline: false);
