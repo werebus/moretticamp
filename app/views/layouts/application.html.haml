@@ -6,7 +6,7 @@
     %title= page_title
 
     = favicon_link_tag    '/favicon.ico'
-    = javascript_pack_tag 'style'
+    = stylesheet_pack_tag 'style', media: 'all'
     = csrf_meta_tags
   %body
     %header.top-bar
