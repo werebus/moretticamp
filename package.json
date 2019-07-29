@@ -1,4 +1,6 @@
 {
+  "license": "MIT",
+  "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.4.1",
     "@rails/webpacker": "^4.0.2",
