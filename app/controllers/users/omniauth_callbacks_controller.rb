@@ -2,35 +2,44 @@
 
 module Users
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
-    def self.provides_callback_for(provider, name)
-      define_method(provider) do
-        auth = request.env['omniauth.auth']
-        identity = User.find_for_oath(auth)
+    OAUTH_PROVIDERS.each do |oap|
+      define_method(oap.label) do
+        omniauth_callback(oap.name)
+      end
+    end
 
-        if identity
-          sign_in_and_redirect(identity, event: :authentication)
-          if is_navigational_format?
-            set_flash_message(:notice, :success, kind: name)
-          end
+    private
+
+    def omniauth_callback(name)
+      auth = request.env['omniauth.auth']
+      identity = User.find_for_oath(auth)
+
+      if identity
+        sign_in_and_redirect(identity, event: :authentication)
+        report_success name
+      else
+        token = session[:invitation_token]
+        user = User.find_by_invitation_token(token, true)
+        if user
+          accept_invite(user, auth)
+          report_success name
         else
-          token = session[:invitation_token]
-          if token && (user = User.find_by_invitation_token(token, true))
-            session[:invitation_token] = nil
-            user.accept_invitation!
-            user.update_attributes(provider: auth.provider, uid: auth.uid)
-            sign_in_and_redirect(user, event: :authentication)
-            if is_navigational_format?
-              set_flash_message(:notice, :success, kind: name)
-            end
-          else
-            redirect_to new_user_session_path
-          end
+          redirect_to new_user_session_path
         end
       end
     end
 
-    OAUTH_PROVIDERS.each do |oap|
-      provides_callback_for oap.label, oap.name
+    def accept_invite(user, auth)
+      session[:invitation_token] = nil
+      user.accept_invitation!
+      user.update_attributes(provider: auth.provider, uid: auth.uid)
+      sign_in_and_redirect(user, event: :authentication)
+    end
+
+    def report_success(name)
+      return unless is_navigational_format?
+
+      set_flash_message(:notice, :success, kind: name)
     end
   end
 end
