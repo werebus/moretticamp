@@ -6,9 +6,9 @@ module EventsService
       if params[:start] && params[:end]
         start_time = Date.parse(params[:start])
         end_time = Date.parse(params[:end])
-        Event.between(start_time, end_time)
+        Event.includes(:user).between(start_time, end_time)
       else
-        Event.all
+        Event.includes(:user)
       end
     end
   end

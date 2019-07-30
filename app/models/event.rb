@@ -30,7 +30,7 @@ class Event < ApplicationRecord
 
   belongs_to :user, optional: true
 
-  def self.ical(events = all)
+  def self.ical(events = includes(:user))
     Icalendar::Calendar.new.tap do |cal|
       cal.prodid = '-//wereb.us//moretti.camp//EN'
 
@@ -56,7 +56,6 @@ class Event < ApplicationRecord
       e.dtend = Icalendar::Values::Date.new(end_date + 1.day)
       e.summary = display_title
       e.description = description
-      e.dtstamp = Time.now.utc.strftime('%Y%m%dT%H%M%SZ')
       e.created = created_at.utc.strftime('%Y%m%dT%H%M%SZ')
       e.last_modified = updated_at.utc.strftime('%Y%m%dT%H%M%SZ')
     end
