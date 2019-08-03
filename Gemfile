@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 ruby IO.read(File.expand_path('.ruby-version', __dir__)).strip
 
-gem 'aws-ses'
+gem 'aws-sdk-rails',          '~> 2.1'
 gem 'bootsnap'
 gem 'devise',                 '~> 4.6.0'
 gem 'devise_invitable',       '~> 1.6.0'
