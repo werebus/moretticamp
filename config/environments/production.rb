@@ -104,6 +104,6 @@ Rails.application.configure do
     ExceptionNotification::Rack,
     email: { exception_recipients: 'matt@moretti.camp',
              sender_address: 'Moretti.camp Exception <noreply@moretti.camp>',
-             delivery_method: :ses }
+             delivery_method: :aws_sdk }
   )
 end

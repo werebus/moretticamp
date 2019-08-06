@@ -5,5 +5,6 @@
         - OAUTH_PROVIDERS.each do |oap|
           = link_to oap.icon.present? ? icon('fab', oap.icon) : oap.name.first,
             omniauth_authorize_path(resource_name, oap.label),
+            method: :post,
             title: "Sign in with #{oap.name}",
             class: 'button'
