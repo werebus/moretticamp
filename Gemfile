@@ -40,6 +40,7 @@ end
 
 group :test do
   gem 'capybara',                '~> 3.10'
+  gem 'factory_bot_rails'
   gem 'faker'
   gem 'fuubar'
   gem 'pdf-inspector',                      require: 'pdf/inspector'
@@ -50,6 +51,6 @@ group :test do
   gem 'timecop'
 end
 
-group :development, :test do
-  gem 'factory_bot_rails'
+group :production do
+  gem 'resque'
 end

@@ -9,6 +9,6 @@ class NotificationSenderJob < ApplicationJob
     users.each do |user|
       m = NotificationMailer.notification_email(user, subject, body)
       m.deliver_now
-    end.count
+    end
   end
 end

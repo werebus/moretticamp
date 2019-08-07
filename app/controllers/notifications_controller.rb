@@ -1,16 +1,14 @@
 # frozen_string_literal: true
 
 class NotificationsController < ApplicationController
-  include ActionView::Helpers::TextHelper
-
   before_action :require_admin
 
   def create
     params.require %i[subject body]
-    params.permit :override
+    permitted = params.permit(%i[subject body override]).to_h.symbolize_keys
 
-    number_sent = NotificationService.send(params)
-    flash.notice = pluralize(number_sent, 'notification') + ' delivered.'
+    NotificationSenderJob.perform_later(permitted)
+    flash.notice = 'Notifications queued for delivery'
     redirect_to '/'
   end
 end
