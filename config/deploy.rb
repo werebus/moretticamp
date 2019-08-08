@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-# config valid only for Capistrano 3.4.1
-lock '3.4.1'
+lock '~> 3.4.0'
 
 set :application, 'moretticamp'
 set :repo_url, 'https://github.com/werebus/moretticamp.git'
@@ -24,13 +23,6 @@ set :linked_dirs, %w[log
 set :assets_prefix, 'packs'
 set :bundle_binstubs, nil
 
-namespace :deploy do
-  desc 'Restart application'
-  task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      execute :touch, release_path.join('tmp/restart.txt')
-    end
-  end
+set :passenger_restart_with_touch, true
 
-  after :publishing, :restart
-end
+after 'deploy:published', 'resque:restart'

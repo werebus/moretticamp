@@ -27,14 +27,15 @@ gem 'twilio-ruby',            '~> 5.8'
 gem 'webpacker',              '~> 4.x'
 
 group :development do
-  gem 'capistrano',         '~> 3.4.0', require: false
-  gem 'capistrano-bundler', '~> 1.1.2', require: false
-  gem 'capistrano-pending',             require: false
-  gem 'capistrano-rails',   '~> 1.1.1', require: false
+  gem 'capistrano',           '~> 3.4.0', require: false
+  gem 'capistrano-bundler',   '~> 1.1.2', require: false
+  gem 'capistrano-passenger',             require: false
+  gem 'capistrano-pending',               require: false
+  gem 'capistrano-rails',     '~> 1.1.1', require: false
   gem 'listen'
   gem 'pry'
   gem 'pry-byebug'
-  gem 'rubocop',                        require: false
+  gem 'rubocop',                          require: false
   gem 'spring'
 end
 

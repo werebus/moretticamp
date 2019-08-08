@@ -75,6 +75,8 @@ GEM
     capistrano-bundler (1.1.4)
       capistrano (~> 3.1)
       sshkit (~> 1.2)
+    capistrano-passenger (0.2.0)
+      capistrano (~> 3.0)
     capistrano-pending (0.2.0)
       capistrano (>= 3.2.0)
     capistrano-rails (1.1.8)
@@ -390,6 +392,7 @@ DEPENDENCIES
   bootsnap
   capistrano (~> 3.4.0)
   capistrano-bundler (~> 1.1.2)
+  capistrano-passenger
   capistrano-pending
   capistrano-rails (~> 1.1.1)
   capybara (~> 3.10)
