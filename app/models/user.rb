@@ -38,13 +38,17 @@ class User < ApplicationRecord
     invitation_limit.present? && invitation_limit.positive?
   end
 
+  def send_devise_notification(notification, *args)
+    devise_mailer.send(notification, self, *args).deliver_later
+  end
+
   def send_reset_password_instructions
     if encrypted_password.present?
       super
     elsif invitation_token.present?
-      UserMailer.no_reset(self, :invited).deliver_now
+      UserMailer.no_reset(self, :invited).deliver_later
     elsif provider.present?
-      UserMailer.no_reset(self, :oauth).deliver_now
+      UserMailer.no_reset(self, :oauth).deliver_later
     end
   end
 
