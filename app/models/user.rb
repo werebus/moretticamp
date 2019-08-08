@@ -43,12 +43,12 @@ class User < ApplicationRecord
   end
 
   def send_reset_password_instructions
-    if encrypted_password.present?
-      super
-    elsif invitation_token.present?
+    if invited_to_sign_up?
       UserMailer.no_reset(self, 'invited').deliver_later
     elsif provider.present?
       UserMailer.no_reset(self, 'oauth').deliver_later
+    else
+      super
     end
   end
 
