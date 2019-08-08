@@ -20,6 +20,7 @@ RSpec.describe NotificationSenderJob do
       expect { described_class.perform_later(note_params) }
         .to have_enqueued_job.on_queue('default')
     end
+
     it 'converts the body to HTML', perform_enqueued: true do
       expect(NotificationMailer).to receive(:notification_email)
         .with(anything, anything, %r{<(strong|b)>Testing</\1>})
@@ -27,6 +28,7 @@ RSpec.describe NotificationSenderJob do
         .and_return(dummy_mail_message)
       described_class.perform_later(note_params)
     end
+
     it 'passes User.to_notify the override parameter', perform_enqueued: true do
       expect(User).to receive(:to_notify).with(true).once.and_return([])
       expect(User).to receive(:to_notify).with(false).once.and_return([])
@@ -34,18 +36,23 @@ RSpec.describe NotificationSenderJob do
       described_class.perform_later(note_params.merge(override: true))
       described_class.perform_later(note_params.merge(override: false))
     end
-    it 'sends a notification for each user who wants them', perform_enqueued: true do
+
+    it <<~DESC, perform_enqueued: true do
+      sends a notification to each user who wants notifications
+    DESC
       expect(NotificationMailer).to receive(:notification_email)
         .twice.and_return(dummy_mail_message)
 
       described_class.perform_later(note_params)
     end
+
     it 'sends a notification to all users if told to', perform_enqueued: true do
       expect(NotificationMailer).to receive(:notification_email)
         .exactly(5).times.and_return(dummy_mail_message)
 
       described_class.perform_later(note_params.merge(override: true))
     end
+
     it 'uses the subject given', perform_enqueued: true do
       expect(NotificationMailer).to receive(:notification_email)
         .with(anything, 'TEST EMAIL', anything)

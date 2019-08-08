@@ -11,9 +11,9 @@ class UserMailer < ActionMailer::Base
       end.name
     end
     @reason = case reason
-              when :invited
+              when :invited, 'invited'
                 invited_reason
-              when :oauth
+              when :oauth, 'oauth'
                 oauth_reason(oauth_provider)
               end
 

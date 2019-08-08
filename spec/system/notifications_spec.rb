@@ -24,7 +24,8 @@ RSpec.describe 'sending notifications' do
     fill_in 'Body', with: 'A respectful message'
     click_on 'Send'
     expect(page.current_path).to eq '/'
-    expect(page.find(:flash_type, :success)).to have_text(/Notifications queued /)
+    expect(page.find(:flash_type, :success))
+      .to have_text(/Notifications queued /)
   end
 
   it 'Allows you to ignore user notification preference' do
