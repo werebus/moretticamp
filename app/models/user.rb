@@ -46,9 +46,9 @@ class User < ApplicationRecord
     if encrypted_password.present?
       super
     elsif invitation_token.present?
-      UserMailer.no_reset(self, :invited).deliver_later
+      UserMailer.no_reset(self, 'invited').deliver_later
     elsif provider.present?
-      UserMailer.no_reset(self, :oauth).deliver_later
+      UserMailer.no_reset(self, 'oauth').deliver_later
     end
   end
 

@@ -92,14 +92,14 @@ RSpec.describe User do
     it 'does not reset the password if an invitation is pending' do
       expect(UserMailer)
         .to receive(:no_reset)
-        .with(invited_user, :invited)
+        .with(invited_user, 'invited')
         .and_return(mail)
       invited_user.send_reset_password_instructions
     end
     it 'does not reset the password if oauth is configured' do
       expect(UserMailer)
         .to receive(:no_reset)
-        .with(oauth_user, :oauth)
+        .with(oauth_user, 'oauth')
         .and_return(mail)
       oauth_user.send_reset_password_instructions
     end
