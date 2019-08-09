@@ -1,7 +1,5 @@
-p.description {
-  margin-top: 1.25rem;
-  border: 1px dashed;
-  padding: 1.25rem;
+.event-description {
+  @include callout(#bca);
 }
 
 #nav-links{

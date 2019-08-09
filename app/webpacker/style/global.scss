@@ -7,10 +7,6 @@ label .label-note {
   margin: 0 0.75rem;
 }
 
-button, .button {
-  font-family: $body-font-family;
-}
-
 header {
   margin-bottom: 1.5rem;
   $header-color: #f0dfd0;
@@ -30,21 +26,6 @@ header {
                  'ITC Zapf Chancery',
                  'URW Chancery L',
                  cursive;
-  }
-
-  h1, h2 {
-    color: inherit;
-  }
-}
-
-div.datepicker {
-  td.active.day,
-  th.active.day,
-  td.active.year,
-  th.active.year,
-  td span.active,
-  th span.active {
-    background: $primary-color;
   }
 }
 

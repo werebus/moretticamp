@@ -69,15 +69,7 @@
   .ui-button {
     @include button;
     font-size: 1rem;
-  }
 
-  .ui-button.ui-state-disabled {
-    @include button-disabled;
-    /* Stupid hack: */
-    -webkit-transform: translateZ(0);
-  }
-
-  .ui-button {
     &.fc-prev-button, &.fc-next-button {
       @include fa-icon;
       @extend .fas;
@@ -88,6 +80,9 @@
     }
     &.fc-next-button:before {
       content: fa-content($fa-var-arrow-right);
+    }
+    &.ui-state-disabled {
+      @include button-disabled;
     }
   }
 
