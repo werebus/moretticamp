@@ -10,16 +10,19 @@ FactoryBot.define do
     admin { false }
 
     trait :invited do
-      password { nil }
-      password_confirmation { nil }
-      invitation_token { '***' }
+      encrypted_password { 'x' }
+
+      after(:create) do |user|
+        user.invite! do |u|
+          u.skip_invitation = true
+        end
+      end
     end
 
     trait :oauth do
-      password { nil }
-      password_confirmation { nil }
+      encrypted_password { 'x' }
       provider { 'test' }
-      uid { 'test@example.com' }
+      uid { 'user@test.local' }
     end
   end
 end

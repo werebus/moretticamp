@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe User do
   describe '.find_for_oauth' do
     let! :user do
-      create :user, provider: 'test', uid: 'user@test.local'
+      create :user, :oauth
     end
     let :auth do
       OpenStruct.new(provider: 'test', uid: 'user@test.local')
@@ -66,19 +66,10 @@ RSpec.describe User do
       create :user
     end
     let :invited_user do
-      user = build :user, :invited
-      user.invite! do |u|
-        u.skip_invitation = true
-      end
-      user
+      create :user, :invited
     end
     let :oauth_user do
-      user = build :user, :oauth
-      user.invite! do |u|
-        u.skip_invitation = true
-      end
-      user.accept_invitation!
-      user
+      create :user, :oauth
     end
     let :mail do
       OpenStruct.new(deliver: true, deliver_now: true, deliver_later: true)
