@@ -3,17 +3,19 @@
 require 'forwardable'
 
 class OauthProvider
-  @@instances ||= []
+  @instances ||= []
 
   attr_reader :label, :name, :icon, :app_id, :app_secret
 
   class << self
+    attr_accessor :instances
+
     def [](label)
       all.find { |p| p.label == label.to_sym }
     end
 
     def all
-      @@instances
+      @instances
     end
 
     def labels
@@ -22,9 +24,12 @@ class OauthProvider
   end
 
   def initialize(label, name, icon, app_id, app_secret)
-    @label, @name, @icon, @app_id, @app_secret =
-      label, name, icon, app_id, app_secret
+    @label = label
+    @name = name
+    @icon = icon
+    @app_id = app_id
+    @app_secret = app_secret
 
-    @@instances << self
+    self.class.instances << self
   end
 end

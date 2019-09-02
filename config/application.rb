@@ -18,7 +18,6 @@ require 'action_view/railtie'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-
 module Moretticamp
   class Application < Rails::Application
     require 'oauth_provider'
