@@ -1,15 +1,16 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
+git_source(:github){ |repo_name| "https://github.com/#{repo_name}.git" }
 ruby IO.read(File.expand_path('.ruby-version', __dir__)).strip
 
 gem 'aws-sdk-rails',          '~> 2.1'
 gem 'bootsnap'
-gem 'devise',                 '~> 4.6.0'
+gem 'devise',                 '~> 4.7.0'
 gem 'devise_invitable'
 gem 'exception_notification'
 gem 'figaro'
-gem 'foundation_rails_helper'
+gem 'foundation_rails_helper', github: 'werebus/foundation_rails_helper', branch: 'rails-6-support'
 gem 'haml-rails',             '~> 2.0'
 gem 'icalendar'
 gem 'jbuilder',               '~> 2.0'
@@ -22,7 +23,7 @@ gem 'pg'
 gem 'prawn'
 gem 'prawn-table'
 gem 'puma'
-gem 'rails',                  '~> 5.2'
+gem 'rails',                  '~> 6.0'
 gem 'twilio-ruby',            '~> 5.8'
 gem 'webpacker',              '~> 4.0'
 
