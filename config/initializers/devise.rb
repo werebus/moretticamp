@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'oauth_providers'
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
@@ -279,7 +278,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-  OAUTH_PROVIDERS.each do |oap|
+  OauthProvider.all.each do |oap|
     config.omniauth oap.label, oap.app_id, oap.app_secret
   end
 

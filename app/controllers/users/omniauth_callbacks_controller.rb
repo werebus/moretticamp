@@ -2,7 +2,7 @@
 
 module Users
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
-    OAUTH_PROVIDERS.each do |oap|
+    OauthProvider.all.each do |oap|
       define_method(oap.label) do
         omniauth_callback(oap.name)
       end

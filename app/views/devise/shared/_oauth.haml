@@ -2,7 +2,7 @@
   .row
     .medium-6.medium-centered.columns
       .expanded.button-group
-        - OAUTH_PROVIDERS.each do |oap|
+        - OauthProvider.all.each do |oap|
           = link_to oap.icon.present? ? icon('fab', oap.icon) : oap.name.first,
             omniauth_authorize_path(resource_name, oap.label),
             method: :post,

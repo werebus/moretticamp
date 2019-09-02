@@ -6,7 +6,7 @@ class User < ApplicationRecord
   devise :invitable, :database_authenticatable, :omniauthable, :recoverable,
          :registerable, :rememberable, :timeoutable, :trackable, :validatable,
          validate_on_invite: true,
-         omniauth_providers: OAUTH_PROVIDERS.map(&:label)
+         omniauth_providers: OauthProvider.labels
 
   has_many :events
   has_many :invitations, class_name: 'User', as: :invited_by

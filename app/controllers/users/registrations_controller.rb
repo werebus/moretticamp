@@ -3,11 +3,7 @@
 module Users
   class RegistrationsController < Devise::RegistrationsController
     def edit
-      if resource.provider.present?
-        @oauth = OAUTH_PROVIDERS.find do |oap|
-          oap.label == resource.provider.to_sym
-        end.name
-      end
+      @oauth = OauthProvider[resource.provider].try(:name)
       super
     end
 

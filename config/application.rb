@@ -18,8 +18,10 @@ require 'action_view/railtie'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+
 module Moretticamp
   class Application < Rails::Application
+    require 'oauth_provider'
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
@@ -27,5 +29,16 @@ module Moretticamp
     # here. Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
+    config.before_initialize do
+      OauthProvider.new :google_oauth2, 'Google', 'google',
+                        ENV['GOOGLE_APP_ID'], ENV['GOOGLE_APP_SECRET']
+
+      OauthProvider.new :facebook, 'Facebook', 'facebook',
+                        ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET']
+
+      OauthProvider.new :twitter, 'Twitter', 'twitter',
+                        ENV['TWITTER_APP_ID'], ENV['TWITTER_APP_SECRET']
+    end
   end
 end

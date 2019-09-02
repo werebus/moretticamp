@@ -5,11 +5,8 @@ class UserMailer < ActionMailer::Base
 
   def no_reset(user, reason)
     @user = user
-    if user.provider.present?
-      oauth_provider = OAUTH_PROVIDERS.find do |oap|
-        oap.label == user.provider.to_sym
-      end.name
-    end
+    oauth_provider = OauthProvider[user.provider].try(:name)
+
     @reason = case reason
               when :invited, 'invited'
                 invited_reason
