@@ -13,7 +13,7 @@ RSpec.describe 'PDF calendar' do
   it 'renders a PDF' do
     create :season, :now
     get events_path(format: 'pdf')
-    expect(response.content_type).to eq 'application/pdf'
+    expect(response.media_type).to eq 'application/pdf'
 
     cd = response.headers['Content-Disposition']
     expect(cd).to match(/^attachment/)

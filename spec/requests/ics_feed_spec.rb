@@ -10,7 +10,7 @@ RSpec.describe 'ICS feed' do
   it 'renders an ics feed with a valid token' do
     get "/feed/#{user.calendar_access_token}.ics"
     expect(response.status).to eq 200
-    expect(response.content_type).to eq 'text/calendar'
+    expect(response.media_type).to eq 'text/calendar'
     expect(response.body.lines.first).to eq "BEGIN:VCALENDAR\r\n"
   end
 
@@ -23,7 +23,7 @@ RSpec.describe 'ICS feed' do
     sign_in(user)
     get events_path(format: 'ics')
     expect(response.status).to eq 200
-    expect(response.content_type).to eq 'text/calendar'
+    expect(response.media_type).to eq 'text/calendar'
     expect(response.body.lines.first).to eq "BEGIN:VCALENDAR\r\n"
   end
 end

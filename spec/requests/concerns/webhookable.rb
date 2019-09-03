@@ -37,7 +37,7 @@ shared_examples_for 'a_webhookable_controller' do
   it 'renders TwiML correctly' do
     post webhook_path
 
-    expect(response.content_type).to eq 'application/xml'
+    expect(response.media_type).to eq 'application/xml'
     expect(response_document.xml?).to be true
     expect(first_response_element).to be_present
   end

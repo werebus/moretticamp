@@ -32,7 +32,7 @@ module Users
     def accept_invite(user, auth)
       session[:invitation_token] = nil
       user.accept_invitation!
-      user.update_attributes(provider: auth.provider, uid: auth.uid)
+      user.update(provider: auth.provider, uid: auth.uid)
       sign_in_and_redirect(user, event: :authentication)
     end
 

@@ -111,7 +111,7 @@ RSpec.describe User do
     end
     it 'regenerates a token when blanked' do
       old_token = existing_user.calendar_access_token
-      existing_user.update_attributes(calendar_access_token: nil)
+      existing_user.update(calendar_access_token: nil)
       expect(existing_user.calendar_access_token).not_to be_blank
       expect(existing_user.calendar_access_token).not_to eq(old_token)
     end

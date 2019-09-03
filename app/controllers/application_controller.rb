@@ -10,8 +10,6 @@ class ApplicationController < ActionController::Base
 
   layout :layout_except_login
 
-  force_ssl if: :ssl_configured?
-
   protected
 
   def require_admin
@@ -31,9 +29,5 @@ class ApplicationController < ActionController::Base
 
   def layout_except_login
     user_signed_in? ? 'application' : 'login'
-  end
-
-  def ssl_configured?
-    Rails.env.production?
   end
 end
