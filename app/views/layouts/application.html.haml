@@ -8,6 +8,7 @@
     = favicon_link_tag    '/favicon.ico'
     = stylesheet_pack_tag 'style', media: 'all'
     = csrf_meta_tags
+    = csp_meta_tag
   %body
     %header.top-bar
       .top-bar-left
@@ -23,5 +24,5 @@
       .medium-8.medium-centered.columns
         = display_flash_messages
     = yield
-    = javascript_pack_tag 'application'
+    = javascript_pack_tag 'application', nonce: true
     = comment_lines il_campo_moretti
