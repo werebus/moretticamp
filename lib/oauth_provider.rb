@@ -11,6 +11,8 @@ class OauthProvider
     attr_accessor :instances
 
     def [](label)
+      return if label.nil?
+
       all.find { |p| p.label == label.to_sym }
     end
 
