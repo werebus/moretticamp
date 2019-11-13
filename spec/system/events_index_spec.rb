@@ -12,8 +12,9 @@ RSpec.describe 'EventsController#index' do
 
   it 'has a calendar feed url' do
     visit events_path
-    feed_url = events_feed_url(token: user.calendar_access_token,
-                               format: 'ics')
+    feed_url = events_feed_url token: user.calendar_access_token,
+                               format: 'ics',
+                               host: Capybara.app_host
 
     expect(find_field('Calendar Feed URL').value).to eq feed_url
   end
