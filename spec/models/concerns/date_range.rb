@@ -18,10 +18,10 @@ shared_examples_for 'date_range' do
   end
 
   context 'with monthly sequence' do
-    let(:mar15) { Date.new(Date.today.year, 3, 15) }
-    let(:apr1) { Date.new(Date.today.year, 4, 1) }
-    let(:may1) { Date.new(Date.today.year, 5, 1) }
-    let(:jun1) { Date.new(Date.today.year, 6, 1) }
+    let(:mar15) { Date.new(year, 3, 15) }
+    let(:apr1) { Date.new(year, 4, 1) }
+    let(:may1) { Date.new(year, 5, 1) }
+    let(:jun1) { Date.new(year, 6, 1) }
 
     before(:each) do
       create(:season) unless described_class == Season

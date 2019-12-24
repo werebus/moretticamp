@@ -13,10 +13,10 @@ RSpec.describe Season do
 
     it 'prohibits overlapping seasons' do
       ranges = [
-        (Date.new(Date.today.year, 1, 1)..Date.new(Date.today.year, 5, 1)),
-        (Date.new(Date.today.year, 11, 1)..Date.new(Date.today.year, 12, 1)),
-        (Date.new(Date.today.year, 5, 1)..Date.new(Date.today.year, 7, 1)),
-        (Date.new(Date.today.year, 1, 1)..Date.new(Date.today.year, 12, 1))
+        (Date.new(year, 1, 1)..Date.new(year, 5, 1)),
+        (Date.new(year, 11, 1)..Date.new(year, 12, 1)),
+        (Date.new(year, 5, 1)..Date.new(year, 7, 1)),
+        (Date.new(year, 1, 1)..Date.new(year, 12, 1))
       ]
 
       ranges.each do |range|
