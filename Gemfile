@@ -45,11 +45,10 @@ group :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'fuubar'
-  gem 'pdf-inspector',           require: 'pdf/inspector'
-  gem 'rails-controller-testing'
+  gem 'pdf-inspector',     require: 'pdf/inspector'
   gem 'rspec-rails'
-  gem 'selenium-webdriver'
-  gem 'simplecov',               require: false
+  gem 'webdrivers'
+  gem 'simplecov',         require: false
   gem 'timecop'
 end
 

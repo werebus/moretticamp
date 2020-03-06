@@ -10,6 +10,7 @@ RSpec.describe 'Index page' do
   it 'displays the events index' do
     sign_in(create(:user))
     get '/'
-    expect(response).to render_template('events/index')
+    expect(response).to have_http_status(:ok)
+    expect(response.body).to match(/Season Not Open/)
   end
 end
