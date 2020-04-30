@@ -4,7 +4,7 @@ $(document).ready(function() {
   const caldate = function() {
     const date = Number(window.location.hash.slice(1)) ||
       $('#calendar').data('date');
-    return moment( date ).add(1, 'day');
+    return moment( date );
   };
 
   $('#calendar').fullCalendar({
