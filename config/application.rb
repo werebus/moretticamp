@@ -33,9 +33,6 @@ module Moretticamp
       OauthProvider.new :google_oauth2, 'Google', 'google',
                         ENV['GOOGLE_APP_ID'], ENV['GOOGLE_APP_SECRET']
 
-      OauthProvider.new :facebook, 'Facebook', 'facebook',
-                        ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET']
-
       OauthProvider.new :twitter, 'Twitter', 'twitter',
                         ENV['TWITTER_APP_ID'], ENV['TWITTER_APP_SECRET']
     end
