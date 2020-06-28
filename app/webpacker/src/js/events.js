@@ -47,19 +47,6 @@ $(document).ready(function() {
         $('.fc-toolbar .fc-left').append('<h3></h3>');
       }
       $('.fc-toolbar .fc-left h3').text( current_date.format('M/YY') );
-    },
-
-    viewDestroy(view, element){
-      const current_date = view.intervalStart;
-      history.replaceState({date: current_date},
-        `Events, ${current_date.format('MMMM YYYY')}`,
-        `#${current_date}`);
     }
   });
-
-  window.onpopstate = function(event){
-    if (event.state.date) {
-      $('#calendar').fullCalendar('gotoDate', event.state.date);
-    }
-  };
 });

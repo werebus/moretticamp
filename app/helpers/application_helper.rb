@@ -1,17 +1,6 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
-  def back_link
-    if controller.respond_to?(:request)
-      referrer = controller.request.env['HTTP_REFERER']
-      if referrer.present?
-        uri = URI(referrer)
-        return referrer if uri.scheme != 'javascript' && uri.path != '/'
-      end
-    end
-    'javascript:history.back()'
-  end
-
   def comment_lines(text)
     text.each_line.map { |line| "<!-- #{line.chomp} -->" }.join("\n").html_safe
   end
