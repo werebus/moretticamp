@@ -15,13 +15,14 @@ Rails.application.config.content_security_policy do |policy|
   policy.script_src  :self
   policy.style_src   :self
   policy.connect_src :self
-  # If you are using webpack-dev-server then specify webpack-dev-server host
-  if Rails.env.development?
-    policy.connect_src :self, 'http://localhost:3035', 'ws://localhost:3035'
-  end
 
   # Specify URI for violation reports
   # policy.report_uri "/csp-violation-report-endpoint"
+
+  # If you are using webpack-dev-server then specify webpack-dev-server host
+  break unless Rails.env.development?
+
+  policy.connect_src :self, 'http://localhost:3035', 'ws://localhost:3035'
 end
 
 # If you are using UJS then enable automatic nonce generation

@@ -5,10 +5,7 @@ module SeasonYear
 
   def year
     current = Date.today.year
-    if Date.today.after?(Date.new(current, 11, 20))
-      current += 1
-    end
-    current
+    current + (Date.today.after?(Date.new(current, 11, 20)) ? 0 : 1)
   end
 end
 
