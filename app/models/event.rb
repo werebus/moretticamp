@@ -54,8 +54,8 @@ class Event < ApplicationRecord
       e.dtend = Icalendar::Values::Date.new(end_date + 1.day)
       e.summary = display_title
       e.description = description
-      e.created = created_at.utc.strftime('%Y%m%dT%H%M%SZ')
-      e.last_modified = updated_at.utc.strftime('%Y%m%dT%H%M%SZ')
+      e.created = created_at.to_s(:ics)
+      e.last_modified = updated_at.to_s(:ics)
     end
   end
   # rubocop:enable Metrics/AbcSize
