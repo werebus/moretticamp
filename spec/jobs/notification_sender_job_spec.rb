@@ -30,8 +30,10 @@ RSpec.describe NotificationSenderJob do
     end
 
     it 'passes User.to_notify the override parameter', perform_enqueued: true do
-      expect(User).to receive(:to_notify).with(true).once.and_return([])
-      expect(User).to receive(:to_notify).with(false).once.and_return([])
+      expect(User).to receive(:to_notify)
+        .with(override: true).once.and_return([])
+      expect(User).to receive(:to_notify)
+        .with(override: false).once.and_return([])
 
       described_class.perform_later(note_params.merge(override: true))
       described_class.perform_later(note_params.merge(override: false))

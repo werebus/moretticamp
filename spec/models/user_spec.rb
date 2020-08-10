@@ -24,7 +24,7 @@ RSpec.describe User do
       expect(User.to_notify.count).to be 1
     end
     it 'finds all users if told to' do
-      expect(User.to_notify(true).count).to be 2
+      expect(User.to_notify(override: true).count).to be 2
     end
   end
 

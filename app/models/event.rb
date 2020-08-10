@@ -33,10 +33,7 @@ class Event < ApplicationRecord
   def self.ical(events = includes(:user))
     Icalendar::Calendar.new.tap do |cal|
       cal.prodid = '-//wereb.us//moretti.camp//EN'
-
-      events.each do |event|
-        cal.add_event event.ical
-      end
+      events.each { |event| cal.add_event event.ical }
     end
   end
 
@@ -48,6 +45,7 @@ class Event < ApplicationRecord
     "#{display_title} (#{date_range_words})"
   end
 
+  # rubocop:disable Metrics/AbcSize
   def ical
     Icalendar::Event.new.tap do |e|
       e.uid = "#{id}@moretti.camp"
@@ -60,4 +58,5 @@ class Event < ApplicationRecord
       e.last_modified = updated_at.utc.strftime('%Y%m%dT%H%M%SZ')
     end
   end
+  # rubocop:enable Metrics/AbcSize
 end

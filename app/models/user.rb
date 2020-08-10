@@ -22,7 +22,7 @@ class User < ApplicationRecord
     where(provider: auth.provider, uid: auth.uid).first
   end
 
-  def self.to_notify(override = false)
+  def self.to_notify(override: false)
     override ? all : where(email_updates: true)
   end
 
