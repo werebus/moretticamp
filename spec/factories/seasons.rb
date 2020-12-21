@@ -4,8 +4,8 @@ FactoryBot.define do
   factory :season do
     with_year
 
-    start_date { Date.new(year, 2, 15) }
-    end_date { Date.new(year, 11, 20) }
+    start_date { Date.new(year, 1, 1) }
+    end_date { Date.new(year, 12, 31) }
 
     trait :now do
       start_date { Date.today - 40.days }
