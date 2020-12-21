@@ -12,6 +12,7 @@ set :log_level, :info
 append :linked_files, 'config/database.yml', 'config/application.yml'
 append :linked_dirs,
        'log',
+       'node_modules',
        'tmp/pids',
        'tmp/cache',
        'tmp/sockets',
