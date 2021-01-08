@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-class NotificationMailer < ActionMailer::Base
-  default from: 'noreply@moretti.camp'
-
+class NotificationMailer < ApplicationMailer
   def notification_email(user, subject, body)
     mail to: user.email,
          subject: subject,
