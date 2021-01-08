@@ -9,7 +9,7 @@
 # Read the Guide for Upgrading Ruby on Rails for more info on each option.
 
 # Support for inversing belongs_to -> has_many Active Record associations.
-# Rails.application.config.active_record.has_many_inversing = true
+Rails.application.config.active_record.has_many_inversing = true
 
 # Apply random variation to the delay when retrying failed jobs.
 Rails.application.config.active_job.retry_jitter = 0.15
@@ -22,13 +22,13 @@ Rails.application.config.active_job.skip_after_callbacks_if_terminated = true
 #
 # This change is not backwards compatible with earlier Rails versions.
 # It's best enabled when your entire app is migrated and stable on 6.1.
-# Rails.application.config.action_dispatch.cookies_same_site_protection = :lax
+Rails.application.config.action_dispatch.cookies_same_site_protection = :lax
 
 # Generate CSRF tokens that are encoded in URL-safe Base64.
 #
 # This change is not backwards compatible with earlier Rails versions.
 # It's best enabled when your entire app is migrated and stable on 6.1.
-# Rails.application.config.action_controller.urlsafe_csrf_tokens = true
+Rails.application.config.action_controller.urlsafe_csrf_tokens = true
 
 # Specify whether `ActiveSupport::TimeZone.utc_to_local` returns a time with an
 # UTC offset or a UTC time.
@@ -47,7 +47,7 @@ Rails.application.config.active_record.legacy_connection_handling = false
 Rails.application.config.action_view.form_with_generates_remote_forms = false
 
 # Set the default queue name for the mail deliver job to the queue adapter default.
-# Rails.application.config.action_mailer.deliver_later_queue_name = nil
+Rails.application.config.action_mailer.deliver_later_queue_name = nil
 
 # Generate a `Link` header that gives a hint to modern browsers about
 # preloading assets when using `javascript_include_tag` and `stylesheet_link_tag`.
