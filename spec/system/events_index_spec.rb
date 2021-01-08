@@ -33,6 +33,7 @@ RSpec.describe 'EventsController#index' do
       expect(page).not_to have_content 'New Event'
     end
   end
+
   context 'with a season' do
     before :each do
       create :season, :now
@@ -48,6 +49,7 @@ RSpec.describe 'EventsController#index' do
       expect(page).to have_link href: events_path(format: 'pdf')
     end
   end
+
   context 'as a non-admin' do
     before :each do
       visit events_path
@@ -59,6 +61,7 @@ RSpec.describe 'EventsController#index' do
       expect(page).not_to have_content 'Send Notification'
     end
   end
+
   context 'as an admin' do
     before :each do
       user.update_attribute(:admin, true)
@@ -71,6 +74,7 @@ RSpec.describe 'EventsController#index' do
       expect(page).to have_link href: new_notification_path
     end
   end
+
   context 'without invitations' do
     before :each do
       visit events_path
@@ -79,6 +83,7 @@ RSpec.describe 'EventsController#index' do
       expect(page).not_to have_content 'Invite New User'
     end
   end
+
   context 'with invitations' do
     before :each do
       user.update_attribute(:invitation_limit, 1)
