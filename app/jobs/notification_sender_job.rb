@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class NotificationSenderJob < ApplicationJob
-  queue_as :default
-
   def perform(subject:, body:, override: false)
     body = Kramdown::Document.new(body).to_html
     users = User.to_notify(override: override)
