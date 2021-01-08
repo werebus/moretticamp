@@ -12,6 +12,7 @@ RSpec.describe Season do
     end
 
     it 'prohibits overlapping seasons' do
+      year = Date.today.year
       ranges = [
         (Date.new(year, 1, 1)..Date.new(year, 5, 1)),
         (Date.new(year, 11, 1)..Date.new(year, 12, 1)),

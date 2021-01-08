@@ -3,7 +3,7 @@
 FactoryBot.define do
   trait :with_year do
     transient do
-      year { Module.new { extend SeasonYear }.year }
+      year { Date.today.year }
     end
   end
 

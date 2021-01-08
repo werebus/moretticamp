@@ -18,6 +18,7 @@ shared_examples_for 'date_range' do
   end
 
   context 'with monthly sequence' do
+    let(:year) { Date.today.year }
     let(:mar15) { Date.new(year, 3, 15) }
     let(:apr1) { Date.new(year, 4, 1) }
     let(:may1) { Date.new(year, 5, 1) }
