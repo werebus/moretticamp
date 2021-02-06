@@ -2,10 +2,10 @@
 
 class NotificationSenderJob < ApplicationJob
   def perform(subject:, body:, override: false)
-    body = Kramdown::Document.new(body).to_html
+    document = Kramdown::Document.new(body)
     users = User.to_notify(override: override)
     users.each do |user|
-      m = NotificationMailer.notification_email(user, subject, body)
+      m = NotificationMailer.notify(user, subject, document)
       m.deliver_now
     end
   end

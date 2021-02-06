@@ -9,56 +9,55 @@ RSpec.describe NotificationSenderJob do
       create_list :user, 3, email_updates: false
     end
 
-    let :note_params do
-      { subject: 'TEST EMAIL', body: '**Testing**' }
-    end
-    let :dummy_mail_message do
-      OpenStruct.new(deliver: true, deliver_now: true, deliver_later: true)
-    end
+    let(:note_params) { { subject: 'TEST EMAIL', body: 'BODY' } }
+    let(:call) { described_class.perform_later(note_params) }
 
     it 'enqueues a job' do
-      expect { described_class.perform_later(note_params) }
-        .to have_enqueued_job.on_queue('default')
+      expect { call }.to have_enqueued_job.on_queue('default')
     end
 
     context 'performing the job', perform_enqueued: true do
-      it 'converts the body to HTML' do
-        expect(NotificationMailer).to receive(:notification_email)
-          .with(anything, anything, %r{<(strong|b)>Testing</\1>})
-          .at_least(:once)
-          .and_return(dummy_mail_message)
-        described_class.perform_later(note_params)
+      it 'wraps the body in a Kramdown Document' do
+        expect(Kramdown::Document).to receive(:new)
+          .with('BODY').and_call_original
+        call
       end
 
-      it 'passes User.to_notify the override parameter' do
-        expect(User).to receive(:to_notify)
-          .with(override: true).once.and_return([])
-        expect(User).to receive(:to_notify)
-          .with(override: false).once.and_return([])
+      it 'passes along the body document' do
+        allow(Kramdown::Document).to receive(:new).and_return(:a_document)
+        expect(NotificationMailer).to receive(:notify)
+          .with(anything, anything, :a_document)
+          .at_least(:once).and_call_original
+        call
+      end
 
-        described_class.perform_later(note_params.merge(override: true))
-        described_class.perform_later(note_params.merge(override: false))
+      [true, false].each do |bool|
+        context "with a #{bool} override parameter" do
+          let(:call) do
+            described_class.perform_later(note_params.merge(override: bool))
+          end
+          it 'passes User.to_notify the override parameter' do
+            expect(User).to receive(:to_notify)
+              .with(override: bool).once.and_return([])
+            call
+          end
+        end
       end
 
       it 'sends a notification to each user who wants notifications' do
-        expect(NotificationMailer).to receive(:notification_email)
-          .twice.and_return(dummy_mail_message)
-
-        described_class.perform_later(note_params)
+        expect { described_class.perform_later(note_params) }
+          .to change { ActionMailer::Base.deliveries.count }.by(2)
       end
 
       it 'sends a notification to all users if told to' do
-        expect(NotificationMailer).to receive(:notification_email)
-          .exactly(5).times.and_return(dummy_mail_message)
-
-        described_class.perform_later(note_params.merge(override: true))
+        expect { described_class.perform_later(note_params.merge(override: true)) }
+          .to change { ActionMailer::Base.deliveries.count }.by(5)
       end
 
       it 'uses the subject given' do
-        expect(NotificationMailer).to receive(:notification_email)
+        expect(NotificationMailer).to receive(:notify)
           .with(anything, 'TEST EMAIL', anything)
-          .at_least(:once)
-          .and_return(dummy_mail_message)
+          .at_least(:once).and_call_original
         described_class.perform_later(note_params)
       end
     end
