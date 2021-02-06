@@ -1,7 +1,6 @@
 GIT
-  remote: https://github.com/werebus/foundation_rails_helper.git
-  revision: 527082aaad6ae1c24099c1817ca66fbcd9145073
-  branch: remove-tzinfo-req
+  remote: https://github.com/sgruhier/foundation_rails_helper.git
+  revision: 45709e28f567b2e619a06091eb63d4f050f861d8
   specs:
     foundation_rails_helper (3.0.0)
       actionpack (>= 4.1, < 7.0)

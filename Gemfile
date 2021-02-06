@@ -11,8 +11,7 @@ gem 'devise_invitable'
 gem 'exception_notification'
 gem 'figaro'
 gem 'foundation_rails_helper',
-  github: 'werebus/foundation_rails_helper',
-  branch: 'remove-tzinfo-req'
+  github: 'sgruhier/foundation_rails_helper'
 gem 'haml-rails',             '~> 2.0'
 gem 'icalendar'
 gem 'jbuilder',               '~> 2.0'
