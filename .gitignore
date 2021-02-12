@@ -21,13 +21,9 @@
 /public/packs
 /public/packs-test
 /node_modules
-
-.yarn/*
-!.yarn/releases
-!.yarn/plugins
-!.yarn/sdks
-!.yarn/versions
-.pnp.*
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
 
 # Ignore coverage and spec status
 /coverage
