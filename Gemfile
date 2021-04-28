@@ -45,7 +45,6 @@ group :test do
   gem 'capybara'
   gem 'factory_bot_rails'
   gem 'faker'
-  gem 'fuubar'
   gem 'pdf-inspector',     require: 'pdf/inspector'
   gem 'rspec-rails'
   gem 'webdrivers'
