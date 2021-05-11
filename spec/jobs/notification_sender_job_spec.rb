@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe NotificationSenderJob do
   describe '.perform_later' do
-    before :each do
+    before do
       create_list :user, 2, email_updates: true
       create_list :user, 3, email_updates: false
     end
@@ -36,6 +36,7 @@ RSpec.describe NotificationSenderJob do
           let(:call) do
             described_class.perform_later(note_params.merge(override: bool))
           end
+
           it 'passes User.to_notify the override parameter' do
             expect(User).to receive(:to_notify)
               .with(override: bool).once.and_return([])

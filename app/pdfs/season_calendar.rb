@@ -5,9 +5,9 @@ class SeasonCalendar
 
   def initialize(season, events)
     @season = season
-    @dates = @season.date_range.map do |date|
-      [date, events.between(date, date).map(&:display_title)]
-    end.to_h
+    @dates = @season.date_range.index_with do |date|
+      events.between(date, date).map(&:display_title)
+    end
     @dates[season.start_date].unshift('Camp Opens')
     @dates[season.end_date].unshift('Camp Closes')
   end

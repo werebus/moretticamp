@@ -7,13 +7,18 @@ RSpec.describe VoiceController do
   include_context 'with_twilio'
 
   let(:webhook_path) { voice_events_path }
-  it_behaves_like 'a_webhookable_controller'
-
   let :first_speech do
     response_document.css('Say').first.text
   end
 
-  before :each do
+  around do |example|
+    date = Time.local(Date.today.year, 4, 15)
+    Timecop.travel(date) do
+      example.run
+    end
+  end
+
+  before do
     FactoryBot.reload
     @season = create :season
     create_list(:event, 5, :sequenced)
@@ -21,12 +26,7 @@ RSpec.describe VoiceController do
     post webhook_path, params: valid_call_params
   end
 
-  around :each do |example|
-    date = Time.local(Date.today.year, 4, 15)
-    Timecop.travel(date) do
-      example.run
-    end
-  end
+  it_behaves_like 'a_webhookable_controller'
 
   it 'gives the caller a menu' do
     says = response_document.css('Say')

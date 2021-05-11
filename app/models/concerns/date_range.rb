@@ -4,7 +4,7 @@ module DateRange
   extend ActiveSupport::Concern
 
   included do
-    validates_presence_of :start_date, :end_date
+    validates :start_date, :end_date, presence: true
     validates :end_date, positive_length: true
   end
 

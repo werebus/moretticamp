@@ -7,13 +7,13 @@ shared_examples_for 'date_range' do
   let(:factory) { model.to_s.underscore.to_sym }
 
   it 'needs a start and end date' do
-    expect(build(factory, start_date: nil)).to_not be_valid
-    expect(build(factory, end_date: nil)).to_not be_valid
+    expect(build(factory, start_date: nil)).not_to be_valid
+    expect(build(factory, end_date: nil)).not_to be_valid
   end
 
   it 'needs a positive length' do
     inv = build(factory, start_date: Date.today, end_date: Date.today - 1.day)
-    expect(inv).to_not be_valid
+    expect(inv).not_to be_valid
     expect(inv.errors[:end_date].join).to match(/be after/)
   end
 
@@ -24,7 +24,7 @@ shared_examples_for 'date_range' do
     let(:may1) { Date.new(year, 5, 1) }
     let(:jun1) { Date.new(year, 6, 1) }
 
-    before(:each) do
+    before do
       create(:season) unless described_class == Season
       FactoryBot.reload
       create_list(factory, 5, :sequenced)

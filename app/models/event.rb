@@ -14,7 +14,7 @@ class Event < ApplicationRecord
   end
 
   def display_title
-    title.present? ? title : user.try(:first_name)
+    title.presence || user.try(:first_name)
   end
 
   def full_title

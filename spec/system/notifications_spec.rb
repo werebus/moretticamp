@@ -4,7 +4,8 @@ require 'rails_helper'
 
 RSpec.describe 'sending notifications' do
   let(:user) { create :user, admin: true }
-  before :each do
+
+  before do
     sign_in(user)
   end
 
@@ -23,7 +24,7 @@ RSpec.describe 'sending notifications' do
     fill_in 'Subject', with: 'A Notification'
     fill_in 'Body', with: 'A respectful message'
     click_on 'Send'
-    expect(page.current_path).to eq '/'
+    expect(page).to have_current_path '/'
     expect(page.find(:flash_type, :success))
       .to have_text(/Notifications queued /)
   end

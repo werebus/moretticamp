@@ -6,7 +6,8 @@ RSpec.describe 'static pages' do
   let :user do
     create :user
   end
-  before :each do
+
+  before do
     sign_in user
   end
 

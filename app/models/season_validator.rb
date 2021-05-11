@@ -7,7 +7,7 @@ class SeasonValidator < ActiveModel::Validator
                             record.start_date,
                             record.id.to_i).first
 
-    return unless overlaps.present?
+    return if overlaps.blank?
 
     record.errors.add(:base, 'Season overlaps with another season')
   end

@@ -7,7 +7,7 @@ RSpec.describe Season do
   it_behaves_like 'date_range'
 
   describe SeasonValidator do
-    before(:each) do
+    before do
       create(:season)
     end
 
@@ -40,12 +40,15 @@ RSpec.describe Season do
       expect(season.months).to all(be_a Date)
       expect(season.months.map(&:day)).to all(be 1)
     end
+
     it 'contains the first month' do
       expect(season.months).to include(Date.new(2018, 5, 1))
     end
+
     it 'contains the last month' do
       expect(season.months).to include(Date.new(2018, 9, 1))
     end
+
     it 'has the right number of months' do
       expect(season.months.count).to be 5
     end

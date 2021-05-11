@@ -7,7 +7,7 @@ class OauthProvider
 
   class << self
     attr_accessor :instances
-    alias_method :all, :instances
+    alias all instances
 
     def [](label)
       return if label.nil?

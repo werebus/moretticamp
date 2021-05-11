@@ -9,7 +9,8 @@ RSpec.describe 'EventsController#index - calendar', js: true do
   let! :event do
     create :event, :now, title: 'LADYBUGS'
   end
-  before :each do
+
+  before do
     sign_in(create(:user))
     visit events_path
   end
@@ -18,12 +19,14 @@ RSpec.describe 'EventsController#index - calendar', js: true do
     header = find('#calendar .fc-header-toolbar .fc-left h2')
     expect(header).to have_content Date.today.strftime('%B %Y')
   end
+
   it 'has an event on it' do
     within '#calendar .fc-body' do
       expect(page).to have_content event.display_title
       expect(page).to have_link href: /#{event_path(event)}/
     end
   end
+
   it 'limits navigation to the season' do
     Capybara.enable_aria_label = true
     within '#calendar' do
@@ -35,6 +38,7 @@ RSpec.describe 'EventsController#index - calendar', js: true do
       end
     end
   end
+
   it 'has camp open and close events on it' do
     Capybara.enable_aria_label = true
     within '#calendar' do

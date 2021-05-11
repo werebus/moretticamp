@@ -10,12 +10,13 @@ RSpec.describe Event do
     context 'without a season' do
       it 'requires an existing season' do
         event = build(:event)
-        expect(event).to_not be_valid
+        expect(event).not_to be_valid
         expect(event.errors[:base].join).to match(/no season/)
       end
     end
+
     context 'with a season' do
-      before(:each) do
+      before do
         create(:season)
         @season_start = Season.current_or_next.start_date
         @season_end = Season.current_or_next.end_date
@@ -25,16 +26,18 @@ RSpec.describe Event do
         event = build(:event,
                       start_date: @season_start - 1.day,
                       end_date: @season_start + 2.days)
-        expect(event).to_not be_valid
+        expect(event).not_to be_valid
         expect(event.errors[:base].join).to match(/occur durring/)
       end
+
       it 'requires events to not end after the current season' do
         event = build(:event,
                       start_date: @season_start + 1.day,
                       end_date: @season_end + 1.day)
-        expect(event).to_not be_valid
+        expect(event).not_to be_valid
         expect(event.errors[:base].join).to match(/occur durring/)
       end
+
       it 'allows events within the season' do
         event = build(:event,
                       start_date: @season_start + 1.day,
@@ -45,9 +48,10 @@ RSpec.describe Event do
   end
 
   describe '.ical' do
-    before :each do
+    before do
       create :season
     end
+
     let! :events do
       create_list :event, 5
     end
@@ -58,9 +62,11 @@ RSpec.describe Event do
     it 'has a prodid' do
       expect(ical_lines).to include('PRODID:-//wereb.us//moretti.camp//EN')
     end
+
     it 'has a VEVENT for every event' do
       expect(ical_lines.count('BEGIN:VEVENT')).to be 5
     end
+
     it 'can be given a subset of events' do
       lines = Event.ical(events[0, 2]).to_ical.split("\r\n")
       expect(lines.count('BEGIN:VEVENT')).to be 2
@@ -72,10 +78,12 @@ RSpec.describe Event do
       expect(build(:event, :titled).display_title).to match(/Fun/)
       expect(build(:event, :titled, :unowned).display_title).to match(/Fun/)
     end
+
     it "shows the user's first name if no title" do
       event = build(:event)
       expect(event.display_title).to eql(event.user.first_name)
     end
+
     it 'has an empty title if nothing else' do
       expect(build(:event, :unowned).display_title).to be_blank
     end
@@ -89,6 +97,7 @@ RSpec.describe Event do
     it 'contains the display_title' do
       expect(event.full_title).to include(event.display_title)
     end
+
     it 'contains the start and end dates' do
       expect(event.full_title).to include(event.start_date.strftime('%b'))
       expect(event.full_title).to include(event.end_date.strftime('%b'))
@@ -96,9 +105,10 @@ RSpec.describe Event do
   end
 
   describe '#ical' do
-    before :each do
+    before do
       create :season
     end
+
     let :event do
       create :event, description: 'Toasty'
     end
@@ -115,21 +125,26 @@ RSpec.describe Event do
     it 'has a UID' do
       expect(ical_lines).to include("UID:#{event.id}@moretti.camp")
     end
+
     it 'is CONFIRMED' do
       expect(ical_lines).to include('STATUS:CONFIRMED')
     end
+
     it 'has a start and end date' do
       start_string = event.start_date.strftime('%Y%m%d')
       end_string = (event.end_date + 1.day).strftime('%Y%m%d')
       expect(ical_lines).to include("DTSTART;VALUE=DATE:#{start_string}")
       expect(ical_lines).to include("DTEND;VALUE=DATE:#{end_string}")
     end
+
     it 'has a summary' do
       expect(ical_lines).to include("SUMMARY:#{event.display_title}")
     end
+
     it 'has a description' do
       expect(ical_lines).to include('DESCRIPTION:Toasty')
     end
+
     it 'has timestamps' do
       expect(ical_lines).to include("DTSTAMP:#{created_stamp}")
       expect(ical_lines).to include("LAST-MODIFIED:#{updated_stamp}")

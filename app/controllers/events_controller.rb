@@ -77,7 +77,7 @@ class EventsController < ApplicationController
     if params[:format] == 'ics' && valid_token?(params[:token])
       render plain: Event.ical.to_ical, content_type: 'text/calendar'
     else
-      render file: 'public/401.html', layout: false, status: 401
+      render file: 'public/401.html', layout: false, status: :unauthorized
     end
   end
 

@@ -10,19 +10,22 @@ RSpec.describe User do
     let :auth do
       OpenStruct.new(provider: 'test', uid: 'user@test.local')
     end
+
     it 'finds a user given an auth object' do
       expect(User.find_for_oath(auth)).to eq user
     end
   end
 
   describe '.to_notify' do
-    before :each do
+    before do
       create :user, email_updates: true
       create :user, email_updates: false
     end
+
     it 'finds users who want to be notified' do
       expect(User.to_notify.count).to be 1
     end
+
     it 'finds all users if told to' do
       expect(User.to_notify(override: true).count).to be 2
     end
@@ -51,10 +54,12 @@ RSpec.describe User do
       expect(admin.invitation_limit).to eq Float::INFINITY
       expect(admin.invitations?).to be true
     end
+
     it 'passes through for non-admins, false for non-positive numbers' do
       expect(non_admin_without_invites.invitation_limit).to be_nil
       expect(non_admin_without_invites.invitations?).to be false
     end
+
     it 'passes through for non-admins, true for positive numbers' do
       expect(non_admin_with_invites.invitation_limit).to be 1
       expect(non_admin_with_invites.invitations?).to be true
@@ -80,6 +85,7 @@ RSpec.describe User do
         .to receive(:send_reset_password_instructions_notification)
       password_user.send_reset_password_instructions
     end
+
     it 'does not reset the password if an invitation is pending' do
       expect(UserMailer)
         .to receive(:no_reset)
@@ -87,6 +93,7 @@ RSpec.describe User do
         .and_return(mail)
       invited_user.send_reset_password_instructions
     end
+
     it 'does not reset the password if oauth is configured' do
       expect(UserMailer)
         .to receive(:no_reset)
@@ -109,6 +116,7 @@ RSpec.describe User do
       new_user.save
       expect(new_user.calendar_access_token).not_to be_blank
     end
+
     it 'regenerates a token when blanked' do
       old_token = existing_user.calendar_access_token
       existing_user.update(calendar_access_token: nil)

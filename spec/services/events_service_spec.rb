@@ -10,6 +10,7 @@ RSpec.describe EventsService do
         end: '2018-12-31'
       )
     end
+
     it 'finds events between two dates if given them' do
       expect(Event)
         .to receive(:between)
@@ -17,11 +18,13 @@ RSpec.describe EventsService do
         .and_call_original
       EventsService.find(date_params)
     end
+
     it 'finds all events if there aren\'t both dates' do
       # #includes delegates to #all
       expect(Event).to receive(:all).and_call_original
       EventsService.find({})
     end
+
     it 'includes the users' do
       expect(Event).to receive(:includes).with(:user).and_call_original
       EventsService.find({})
