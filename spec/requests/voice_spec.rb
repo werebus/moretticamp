@@ -12,7 +12,7 @@ RSpec.describe VoiceController do
   end
 
   around do |example|
-    date = Time.local(Date.today.year, 4, 15)
+    date = Time.zone.local(Date.today.year, 4, 15)
     Timecop.travel(date) do
       example.run
     end

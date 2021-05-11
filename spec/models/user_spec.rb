@@ -12,7 +12,7 @@ RSpec.describe User do
     end
 
     it 'finds a user given an auth object' do
-      expect(User.find_for_oath(auth)).to eq user
+      expect(described_class.find_for_oath(auth)).to eq user
     end
   end
 
@@ -23,11 +23,11 @@ RSpec.describe User do
     end
 
     it 'finds users who want to be notified' do
-      expect(User.to_notify.count).to be 1
+      expect(described_class.to_notify.count).to be 1
     end
 
     it 'finds all users if told to' do
-      expect(User.to_notify(override: true).count).to be 2
+      expect(described_class.to_notify(override: true).count).to be 2
     end
   end
 

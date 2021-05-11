@@ -16,18 +16,18 @@ RSpec.describe EventsService do
         .to receive(:between)
         .with(Date.new(2018, 1, 1), Date.new(2018, 12, 31))
         .and_call_original
-      EventsService.find(date_params)
+      described_class.find(date_params)
     end
 
     it 'finds all events if there aren\'t both dates' do
       # #includes delegates to #all
       expect(Event).to receive(:all).and_call_original
-      EventsService.find({})
+      described_class.find({})
     end
 
     it 'includes the users' do
       expect(Event).to receive(:includes).with(:user).and_call_original
-      EventsService.find({})
+      described_class.find({})
     end
   end
 end

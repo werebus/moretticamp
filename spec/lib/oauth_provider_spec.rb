@@ -4,10 +4,10 @@ require 'oauth_provider'
 require 'rails_helper'
 
 RSpec.describe OauthProvider do
-  before { OauthProvider.instances = [] }
+  before { described_class.instances = [] }
 
   describe 'attributes' do
-    let(:oap) { OauthProvider.new('l', 'n', 'i', 'id', 's') }
+    let(:oap) { described_class.new('l', 'n', 'i', 'id', 's') }
 
     it 'includes a label' do
       expect(oap.label).to eq 'l'
@@ -32,60 +32,60 @@ RSpec.describe OauthProvider do
 
   describe '.instances' do
     it 'is an array' do
-      expect(OauthProvider.instances).to be_a(Array)
+      expect(described_class.instances).to be_a(Array)
     end
 
     it 'can be assigned to' do
-      OauthProvider.instances = [:nothing]
-      expect(OauthProvider.instances).to eq [:nothing]
+      described_class.instances = [:nothing]
+      expect(described_class.instances).to eq [:nothing]
     end
 
     it 'can be appended to' do
-      OauthProvider.instances << :something
-      expect(OauthProvider.instances).to include(:something)
+      described_class.instances << :something
+      expect(described_class.instances).to include(:something)
     end
   end
 
   describe '.[]' do
     it 'allows lookup by label' do
-      o = OauthProvider.new(:a_label, '', '', '', '')
-      expect(OauthProvider[:a_label]).to be(o)
+      o = described_class.new(:a_label, '', '', '', '')
+      expect(described_class[:a_label]).to be(o)
     end
 
     it 'returns nil if nothing is found' do
-      expect(OauthProvider[:nonexeistant]).to be_nil
+      expect(described_class[:nonexeistant]).to be_nil
     end
 
     it 'returns nil if passed nil' do
-      expect(OauthProvider[nil]).to be_nil
+      expect(described_class[nil]).to be_nil
     end
   end
 
   describe '.all' do
     it 'is an alias for .instances' do
-      _ = OauthProvider.new(:a, '', '', '', '')
-      expect(OauthProvider.all).to eq(OauthProvider.instances)
+      _ = described_class.new(:a, '', '', '', '')
+      expect(described_class.all).to eq(described_class.instances)
     end
   end
 
   describe '.labels' do
-    let!(:oap_one) { OauthProvider.new(:l1, '', '', '', '') }
-    let!(:oap_two) { OauthProvider.new(:l2, '', '', '', '') }
+    let!(:oap_one) { described_class.new(:l1, '', '', '', '') }
+    let!(:oap_two) { described_class.new(:l2, '', '', '', '') }
 
     it 'is an array' do
-      expect(OauthProvider.labels).to be_a(Array)
+      expect(described_class.labels).to be_a(Array)
     end
 
     it 'contains the labels of all instances' do
-      expect(OauthProvider.labels)
+      expect(described_class.labels)
         .to contain_exactly(oap_one.label, oap_two.label)
     end
   end
 
   describe '#initialize' do
     it 'appends to the class instances collection' do
-      oap = OauthProvider.new(:foo, '', '', '', '')
-      expect(OauthProvider.all).to include(oap)
+      oap = described_class.new(:foo, '', '', '', '')
+      expect(described_class.all).to include(oap)
     end
   end
 end

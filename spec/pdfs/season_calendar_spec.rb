@@ -11,7 +11,7 @@ RSpec.describe SeasonCalendar do
     create :event, :titled
   end
   let :pdf do
-    SeasonCalendar.new(season, Event.all)
+    described_class.new(season, Event.all)
   end
   let :rendered_pdf do
     pdf.generate

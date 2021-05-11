@@ -56,7 +56,7 @@ RSpec.describe Event do
       create_list :event, 5
     end
     let :ical_lines do
-      Event.ical.to_ical.split("\r\n")
+      described_class.ical.to_ical.split("\r\n")
     end
 
     it 'has a prodid' do
@@ -68,7 +68,7 @@ RSpec.describe Event do
     end
 
     it 'can be given a subset of events' do
-      lines = Event.ical(events[0, 2]).to_ical.split("\r\n")
+      lines = described_class.ical(events[0, 2]).to_ical.split("\r\n")
       expect(lines.count('BEGIN:VEVENT')).to be 2
     end
   end
