@@ -8,8 +8,8 @@ class User < ApplicationRecord
          validate_on_invite: true,
          omniauth_providers: OauthProvider.labels
 
-  has_many :events
-  has_many :invitations, class_name: 'User', as: :invited_by
+  has_many :events, dependent: :nullify
+  has_many :invitations, class_name: 'User', as: :invited_by, dependent: :nullify
 
   before_save :generate_calendar_access_token,
               unless: -> { calendar_access_token.present? }
@@ -19,7 +19,7 @@ class User < ApplicationRecord
             if: -> { last_name.blank? }
 
   def self.find_for_oath(auth)
-    where(provider: auth.provider, uid: auth.uid).first
+    find_by(provider: auth.provider, uid: auth.uid)
   end
 
   def self.to_notify(override: false)

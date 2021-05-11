@@ -4,7 +4,7 @@ class VoiceController < ApplicationController
   include Webhookable
 
   def events
-    @event = Event.next_after(Date.today, exclude)
+    @event = Event.next_after(Time.zone.today, exclude)
     twiml_response = event_twiml
 
     session[:exclude] = exclude

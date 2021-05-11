@@ -4,7 +4,7 @@ module EventsIndex
   def html_index
     return unless @season
 
-    @date = [@season.start_date, Date.today].max
+    @date = [@season.start_date, Time.zone.today].max
   end
 
   def ics_index

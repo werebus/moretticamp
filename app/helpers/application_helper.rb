@@ -2,7 +2,13 @@
 
 module ApplicationHelper
   def comment_lines(text)
-    text.each_line.map { |line| "<!-- #{line.chomp} -->" }.join("\n").html_safe
+    # Each individual line is escaped, the remainder of the output are static
+    # strings defined in this method. `.html_safe` is safe in this context.
+    # rubocop:disable Rails/OutputSafety
+    text.each_line.map do |line|
+      "<!-- #{escape_once(line.chomp)} -->"
+    end.join("\n").html_safe
+    # rubocop:enable Rails/OutputSafety
   end
 
   def icon(style, name, text = nil, html_options = {})

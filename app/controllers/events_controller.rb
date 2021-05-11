@@ -47,6 +47,8 @@ class EventsController < ApplicationController
     end
   end
 
+  def edit; end
+
   def update
     respond_to do |format|
       if @event.update(event_params)

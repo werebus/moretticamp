@@ -15,7 +15,7 @@ module DateRange
     end
 
     def next
-      next_after(Date.today)
+      next_after(Time.zone.today)
     end
 
     def between(start_date, end_date)
@@ -23,7 +23,7 @@ module DateRange
     end
 
     def current
-      between(Date.today, Date.today).first
+      between(Time.zone.today, Time.zone.today).first
     end
 
     def current_or_next

@@ -9,6 +9,8 @@ class SeasonsController < ApplicationController
     @current_season = Season.current_or_next
   end
 
+  def show; end
+
   def new
     @season = Season.new
   end
@@ -30,6 +32,8 @@ class SeasonsController < ApplicationController
       end
     end
   end
+
+  def edit; end
 
   def update
     respond_to do |format|

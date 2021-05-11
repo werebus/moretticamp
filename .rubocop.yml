@@ -10,8 +10,8 @@ AllCops:
     - '**/*.rb'
   Exclude:
     - bin/**/*
+    - db/**/*
     - node_modules/**/*
-    - db/schema.rb
   NewCops: enable
 
 Layout/ExtraSpacing:

@@ -19,7 +19,10 @@ module Users
         report_success name
       else
         token = session[:invitation_token]
+        # Not a dynamic finder, defined in devise_invitable
+        # rubocop:disable  Rails/DynamicFindBy
         user = User.find_by_invitation_token(token, true)
+        # rubocop:enable  Rails/DynamicFindBy
         if user
           accept_invite(user, auth)
           report_success name
