@@ -3,26 +3,36 @@
 require 'rails_helper'
 
 RSpec.describe 'PDF calendar' do
-  let :user do
-    create :user
+  let(:user) { create :user }
+
+  before { sign_in(user) }
+
+  context 'with a current season' do
+    let(:content_disposition) { response.headers['Content-Disposition'] }
+
+    before do
+      create :season, :now
+      get events_path(format: 'pdf')
+    end
+
+    it 'is a pdf' do
+      expect(response.media_type).to eq 'application/pdf'
+    end
+
+    it 'is an attachment' do
+      expect(content_disposition).to match(/^attachment/)
+    end
+
+    it 'specifies a file name' do
+      expect(content_disposition).to match(/filename="camp_calendar.pdf"/)
+    end
   end
 
-  before do
-    sign_in(user)
-  end
+  context 'without a current season' do
+    before { get events_path(format: 'pdf') }
 
-  it 'renders a PDF' do
-    create :season, :now
-    get events_path(format: 'pdf')
-    expect(response.media_type).to eq 'application/pdf'
-
-    cd = response.headers['Content-Disposition']
-    expect(cd).to match(/^attachment/)
-    expect(cd).to match(/filename="camp_calendar.pdf"/)
-  end
-
-  it 'redirects without a current season' do
-    get events_path(format: 'pdf')
-    expect(response.code).to match(/^3\d\d/)
+    it 'redirects' do
+      expect(response.code).to match(/^3\d\d/)
+    end
   end
 end

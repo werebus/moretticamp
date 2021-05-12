@@ -8,8 +8,8 @@ FactoryBot.define do
     end_date { Date.new(year, 12, 31) }
 
     trait :now do
-      start_date { Date.today - 40.days }
-      end_date { Date.today + 40.days }
+      start_date { 40.days.ago.to_date }
+      end_date { 40.days.from_now.to_date }
     end
   end
 end

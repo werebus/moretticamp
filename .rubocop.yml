@@ -30,5 +30,12 @@ Metrics/BlockLength:
 Metrics/MethodLength:
   Max: 15
 
+RSpec/DescribeClass:
+  Exclude:
+    - spec/{requests,system}/**/*
+
+RSpec/NestedGroups:
+  Max: 4
+
 Style/Documentation:
   Enabled: false

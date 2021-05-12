@@ -24,8 +24,8 @@ FactoryBot.define do
     end
 
     trait :now do
-      start_date { Date.today }
-      end_date { Date.today }
+      start_date { Time.zone.today }
+      end_date { Time.zone.today }
     end
   end
 end

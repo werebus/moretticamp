@@ -3,62 +3,65 @@
 require 'nokogiri'
 require 'rails_helper'
 
-shared_context 'with_twilio' do
-  before :all do
+RSpec.shared_context 'with twilio' do
+  before do
     ENV['TWILIO_ACCOUNT_SID'] = 'AC0123456789abcdef0123456789abcdef'
     ENV['CAMP_PHONE_NUMBER'] = '+15005550006'
   end
 
   let :valid_call_params do
-    {
-      AccountSid: 'AC0123456789abcdef0123456789abcdef',
-      From: '+15005550006'
-    }
+    { AccountSid: 'AC0123456789abcdef0123456789abcdef',
+      From: '+15005550006' }
   end
 
-  let :response_document do
-    Nokogiri::XML(response.body)
-  end
+  let(:response_document) { Nokogiri::XML(response.body) }
 end
 
-shared_examples_for 'a_webhookable_controller' do
-  include_context 'with_twilio'
+RSpec.shared_examples_for 'a webhookable controller' do
+  include_context 'with twilio'
 
   let :first_response_element do
     response_document.css('Response > *').first
   end
+  let(:params) { valid_call_params }
+
+  before { post webhook_path, params: params }
 
   it 'allows unauthenticated access' do
-    post webhook_path
-
     expect(response.status).to eq 200
   end
 
-  it 'renders TwiML correctly' do
-    post webhook_path
-
+  it 'sets the content type to XML' do
     expect(response.media_type).to eq 'application/xml'
+  end
+
+  it 'contains valid XML' do
     expect(response_document.xml?).to be true
+  end
+
+  it 'has a root <Response> element' do
     expect(first_response_element).to be_present
   end
 
   it 'allows calls from the configured number' do
-    post webhook_path, params: valid_call_params
-
     expect(first_response_element.name).not_to eq 'Reject'
   end
 
-  it 'rejects calls from other numbers' do
-    post webhook_path, params: valid_call_params.merge(From: '+15005550001')
+  context 'when the call is from another number' do
+    let(:params) { valid_call_params.merge(From: '+15005550001') }
 
-    expect(first_response_element.name).to eq 'Reject'
+    it 'rejects calls' do
+      expect(first_response_element.name).to eq 'Reject'
+    end
   end
 
-  it 'rejects calls from other Twilio accounts' do
-    post webhook_path, params: valid_call_params.merge(
-      AccountSid: 'ACbad555bad555bad555bad555bad555bd'
-    )
+  context 'when the call is from another Twillio account' do
+    let(:params) do
+      valid_call_params.merge(AccountSid: 'ACbad555bad555bad555bad555bad555bd')
+    end
 
-    expect(first_response_element.name).to eq 'Reject'
+    it 'rejects calls' do
+      expect(first_response_element.name).to eq 'Reject'
+    end
   end
 end

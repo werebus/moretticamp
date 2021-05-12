@@ -3,13 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'static pages' do
-  let :user do
-    create :user
-  end
-
-  before do
-    sign_in user
-  end
+  before { sign_in create(:user) }
 
   %w[documents].each do |page_name|
     it "has a #{page_name} page" do

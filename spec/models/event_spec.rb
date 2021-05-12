@@ -8,60 +8,58 @@ RSpec.describe Event do
 
   describe EventSeasonValidator do
     context 'without a season' do
-      it 'requires an existing season' do
+      it 'is invalid' do
+        expect(build(:event)).to be_invalid
+      end
+
+      it 'adds errors to base' do
         event = build(:event)
-        expect(event).not_to be_valid
+        event.validate
         expect(event.errors[:base].join).to match(/no season/)
       end
     end
 
     context 'with a season' do
-      before do
-        create(:season)
-        @season_start = Season.current_or_next.start_date
-        @season_end = Season.current_or_next.end_date
-      end
+      let(:season_start) { Season.current_or_next.start_date }
+      let(:season_end) { Season.current_or_next.end_date }
+
+      before { create(:season) }
 
       it 'requires events to not start before the current season' do
-        event = build(:event,
-                      start_date: @season_start - 1.day,
-                      end_date: @season_start + 2.days)
-        expect(event).not_to be_valid
-        expect(event.errors[:base].join).to match(/occur durring/)
+        event = build :event, start_date: season_start - 1.day,
+                              end_date: season_start + 2.days
+        expect(event).to be_invalid
       end
 
       it 'requires events to not end after the current season' do
-        event = build(:event,
-                      start_date: @season_start + 1.day,
-                      end_date: @season_end + 1.day)
-        expect(event).not_to be_valid
-        expect(event.errors[:base].join).to match(/occur durring/)
+        event = build :event, start_date: season_start + 1.day,
+                              end_date: season_end + 1.day
+        expect(event).to be_invalid
       end
 
       it 'allows events within the season' do
-        event = build(:event,
-                      start_date: @season_start + 1.day,
-                      end_date: @season_end - 1.day)
+        event = build :event, start_date: season_start + 1.day,
+                              end_date: season_end - 1.day
         expect(event).to be_valid
+      end
+
+      it 'puts an error on base' do
+        event = build :event, start_date: season_start - 1.day,
+                              end_date: season_start + 2.days
+        event.validate
+        expect(event.errors[:base].join).to match(/occur durring/)
       end
     end
   end
 
   describe '.ical' do
-    before do
-      create :season
-    end
+    subject(:ical_lines) { described_class.ical.to_ical.split("\r\n") }
 
-    let! :events do
-      create_list :event, 5
-    end
-    let :ical_lines do
-      described_class.ical.to_ical.split("\r\n")
-    end
+    before { create :season }
 
-    it 'has a prodid' do
-      expect(ical_lines).to include('PRODID:-//wereb.us//moretti.camp//EN')
-    end
+    let!(:events) { create_list :event, 5 }
+
+    it { is_expected.to include('PRODID:-//wereb.us//moretti.camp//EN') }
 
     it 'has a VEVENT for every event' do
       expect(ical_lines.count('BEGIN:VEVENT')).to be 5
@@ -74,9 +72,12 @@ RSpec.describe Event do
   end
 
   describe '#display_title' do
-    it 'shows a title if present' do
-      expect(build(:event, :titled).display_title).to match(/Fun/)
+    it 'shows a title if it is present and there is no user' do
       expect(build(:event, :titled, :unowned).display_title).to match(/Fun/)
+    end
+
+    it 'shows a title if it is present even if there is a user' do
+      expect(build(:event, :titled).display_title).to match(/Fun/)
     end
 
     it "shows the user's first name if no title" do
@@ -90,63 +91,49 @@ RSpec.describe Event do
   end
 
   describe '#full_title' do
-    let :event do
-      build :event
-    end
+    subject(:call) { event.full_title }
 
-    it 'contains the display_title' do
-      expect(event.full_title).to include(event.display_title)
-    end
+    let(:event) { build :event }
 
-    it 'contains the start and end dates' do
-      expect(event.full_title).to include(event.start_date.strftime('%b'))
-      expect(event.full_title).to include(event.end_date.strftime('%b'))
-    end
+    it { is_expected.to include(event.display_title) }
+
+    it { is_expected.to include(event.start_date.strftime('%b')) }
+
+    it { is_expected.to include(event.end_date.strftime('%b')) }
   end
 
   describe '#ical' do
-    before do
-      create :season
-    end
+    subject(:ical_lines) { event.ical.to_ical.split("\r\n") }
 
-    let :event do
-      create :event, description: 'Toasty'
-    end
-    let :ical_lines do
-      event.ical.to_ical.split("\r\n")
-    end
-    let :created_stamp do
-      event.created_at.utc.strftime('%Y%m%dT%H%M%SZ')
-    end
-    let :updated_stamp do
-      event.updated_at.utc.strftime('%Y%m%dT%H%M%SZ')
-    end
+    before { create :season }
 
-    it 'has a UID' do
-      expect(ical_lines).to include("UID:#{event.id}@moretti.camp")
-    end
+    let(:event) { create :event, description: 'Toasty' }
 
-    it 'is CONFIRMED' do
-      expect(ical_lines).to include('STATUS:CONFIRMED')
-    end
+    it { is_expected.to include("UID:#{event.id}@moretti.camp") }
 
-    it 'has a start and end date' do
+    it { is_expected.to include('STATUS:CONFIRMED') }
+
+    it 'has a start date' do
       start_string = event.start_date.strftime('%Y%m%d')
-      end_string = (event.end_date + 1.day).strftime('%Y%m%d')
       expect(ical_lines).to include("DTSTART;VALUE=DATE:#{start_string}")
+    end
+
+    it 'has an end date' do
+      end_string = (event.end_date + 1.day).strftime('%Y%m%d')
       expect(ical_lines).to include("DTEND;VALUE=DATE:#{end_string}")
     end
 
-    it 'has a summary' do
-      expect(ical_lines).to include("SUMMARY:#{event.display_title}")
-    end
+    it { is_expected.to include("SUMMARY:#{event.display_title}") }
 
-    it 'has a description' do
-      expect(ical_lines).to include('DESCRIPTION:Toasty')
-    end
+    it { is_expected.to include('DESCRIPTION:Toasty') }
 
-    it 'has timestamps' do
+    it 'has a created timestamp' do
+      created_stamp = event.created_at.utc.strftime('%Y%m%dT%H%M%SZ')
       expect(ical_lines).to include("DTSTAMP:#{created_stamp}")
+    end
+
+    it 'has an updated timestamp' do
+      updated_stamp = event.updated_at.utc.strftime('%Y%m%dT%H%M%SZ')
       expect(ical_lines).to include("LAST-MODIFIED:#{updated_stamp}")
     end
   end

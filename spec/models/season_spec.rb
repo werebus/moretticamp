@@ -7,50 +7,44 @@ RSpec.describe Season do
   it_behaves_like 'date_range'
 
   describe SeasonValidator do
-    before do
-      create(:season)
+    let(:other) do
+      start_date = Time.zone.now.change(month: 3).to_date
+      end_date = Time.zone.now.change(month: 10).to_date
+      build :season, start_date: start_date, end_date: end_date
     end
 
-    it 'prohibits overlapping seasons' do
-      year = Date.today.year
-      ranges = [
-        (Date.new(year, 1, 1)..Date.new(year, 5, 1)),
-        (Date.new(year, 11, 1)..Date.new(year, 12, 1)),
-        (Date.new(year, 5, 1)..Date.new(year, 7, 1)),
-        (Date.new(year, 1, 1)..Date.new(year, 12, 1))
-      ]
+    before { create(:season) }
 
-      ranges.each do |range|
-        other = build(:season, start_date: range.first, end_date: range.last)
-        expect(other).to be_invalid
-        expect(other.errors[:base].join).to match(/overlaps/)
-      end
+    it 'prohibits overlapping seasons' do
+      expect(other).to be_invalid
+    end
+
+    it 'adds errors to base' do
+      other.validate
+      expect(other.errors[:base].join).to match(/overlaps/)
     end
   end
 
   describe '#months' do
-    let :season do
-      create :season,
-             start_date: Date.new(2018, 5, 15),
-             end_date: Date.new(2018, 9, 15)
+    subject :months do
+      build(:season, start_date: Date.new(2018, 5, 15),
+                     end_date: Date.new(2018, 9, 15)).months
     end
 
-    it 'is an array of dates' do
-      expect(season.months).to be_an Array
-      expect(season.months).to all(be_a Date)
-      expect(season.months.map(&:day)).to all(be 1)
+    it { is_expected.to be_an Array }
+
+    it { is_expected.to all(be_a Date) }
+
+    it 'is entirely firsts of the month' do
+      expect(months.map(&:day)).to all(be 1)
     end
 
-    it 'contains the first month' do
-      expect(season.months).to include(Date.new(2018, 5, 1))
-    end
+    it { is_expected.to include(Date.new(2018, 5, 1)) }
 
-    it 'contains the last month' do
-      expect(season.months).to include(Date.new(2018, 9, 1))
-    end
+    it { is_expected.to include(Date.new(2018, 9, 1)) }
 
     it 'has the right number of months' do
-      expect(season.months.count).to be 5
+      expect(months.count).to be 5
     end
   end
 end

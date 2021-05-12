@@ -3,27 +3,48 @@
 require 'rails_helper'
 
 RSpec.describe 'ICS feed' do
-  let :user do
-    create :user
+  let(:user) { create :user }
+
+  context 'with a valid token' do
+    before { get "/feed/#{user.calendar_access_token}.ics" }
+
+    it 'allows access' do
+      expect(response.status).to eq 200
+    end
+
+    it 'has the correct content type' do
+      expect(response.media_type).to eq 'text/calendar'
+    end
+
+    it 'contains an iCal document' do
+      expect(response.body.lines.first).to eq "BEGIN:VCALENDAR\r\n"
+    end
   end
 
-  it 'renders an ics feed with a valid token' do
-    get "/feed/#{user.calendar_access_token}.ics"
-    expect(response.status).to eq 200
-    expect(response.media_type).to eq 'text/calendar'
-    expect(response.body.lines.first).to eq "BEGIN:VCALENDAR\r\n"
+  context 'with an invalid token' do
+    before { get "/feed/#{SecureRandom.hex}.ics" }
+
+    it 'prohibits access' do
+      expect(response.status).to eq 401
+    end
   end
 
-  it 'prohibits access without a valid token' do
-    get "/feed/#{SecureRandom.hex}.ics"
-    expect(response.status).to eq 401
-  end
+  context 'when the user is logged in' do
+    before do
+      sign_in user
+      get events_path(format: 'ics')
+    end
 
-  it 'is accesable at the events index as well' do
-    sign_in(user)
-    get events_path(format: 'ics')
-    expect(response.status).to eq 200
-    expect(response.media_type).to eq 'text/calendar'
-    expect(response.body.lines.first).to eq "BEGIN:VCALENDAR\r\n"
+    it 'allows access' do
+      expect(response.status).to eq 200
+    end
+
+    it 'has the correct content type' do
+      expect(response.media_type).to eq 'text/calendar'
+    end
+
+    it 'contains an iCal document' do
+      expect(response.body.lines.first).to eq "BEGIN:VCALENDAR\r\n"
+    end
   end
 end

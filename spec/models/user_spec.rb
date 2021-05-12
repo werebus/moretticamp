@@ -4,15 +4,11 @@ require 'rails_helper'
 
 RSpec.describe User do
   describe '.find_for_oauth' do
-    let! :user do
-      create :user, :oauth
-    end
-    let :auth do
-      OpenStruct.new(provider: 'test', uid: 'user@test.local')
-    end
+    let!(:user) { create :user, :oauth }
+    let(:auth) { OpenStruct.new(provider: 'test', uid: 'user@test.local') }
 
     it 'finds a user given an auth object' do
-      expect(described_class.find_for_oath(auth)).to eq user
+      expect(described_class.find_for_oath(auth)).to eq(user)
     end
   end
 
@@ -32,96 +28,105 @@ RSpec.describe User do
   end
 
   describe '#full_name' do
-    it 'has both names' do
-      user = build :user, first_name: 'Primus', last_name: 'Ultimus'
-      expect(user.full_name).to include('Primus')
-      expect(user.full_name).to include('Ultimus')
+    subject(:full_name) { user.full_name }
+
+    let(:user) { build :user, first_name: 'Primus', last_name: 'Ultimus' }
+
+    it { is_expected.to include('Primus') }
+
+    it { is_expected.to include('Ultimus') }
+  end
+
+  describe '#invitation_limit' do
+    it 'never runs out for admins' do
+      user = create :user, admin: true
+      expect(user.invitation_limit).to eq Float::INFINITY
+    end
+
+    it 'passes through for non-admins without invitations' do
+      user = create :user, invitation_limit: nil
+      expect(user.invitation_limit).to be_nil
+    end
+
+    it 'passes through for non-admins with invitations' do
+      user = create :user, invitation_limit: 1
+      expect(user.invitation_limit).to be 1
     end
   end
 
-  describe '#invitation_limit and #invitations?' do
-    let :non_admin_without_invites do
-      create :user, invitation_limit: nil
-    end
-    let :non_admin_with_invites do
-      create :user, invitation_limit: 1
-    end
-    let :admin do
-      create :user, admin: true
+  describe '#invitations?' do
+    it 'returns true for admins' do
+      user = create :user, admin: true
+      expect(user.invitations?).to be true
     end
 
-    it 'never runs out for admins' do
-      expect(admin.invitation_limit).to eq Float::INFINITY
-      expect(admin.invitations?).to be true
+    it 'returns false for non-admins without invitations' do
+      user = create :user, invitation_limit: nil
+      expect(user.invitations?).to be false
     end
 
-    it 'passes through for non-admins, false for non-positive numbers' do
-      expect(non_admin_without_invites.invitation_limit).to be_nil
-      expect(non_admin_without_invites.invitations?).to be false
-    end
-
-    it 'passes through for non-admins, true for positive numbers' do
-      expect(non_admin_with_invites.invitation_limit).to be 1
-      expect(non_admin_with_invites.invitations?).to be true
+    it 'returns true for non-admins with invitations' do
+      user = create :user, invitation_limit: 2
+      expect(user.invitations?).to be true
     end
   end
 
   describe '#send_reset_password_instructions' do
-    let :password_user do
-      create :user
-    end
-    let :invited_user do
-      create :user, :invited
-    end
-    let :oauth_user do
-      create :user, :oauth
-    end
+    let(:password_user) { create :user }
+    let(:invited_user) { create :user, :invited }
+    let(:oauth_user) { create :user, :oauth }
     let :mail do
       OpenStruct.new(deliver: true, deliver_now: true, deliver_later: true)
     end
 
+    before do
+      allow(UserMailer).to receive(:no_reset).and_return(mail)
+    end
+
     it 'sends a reset email if there is no reason not to' do
-      expect(password_user)
-        .to receive(:send_reset_password_instructions_notification)
+      allow(password_user).to receive(:send_reset_password_instructions_notification)
       password_user.send_reset_password_instructions
+      expect(password_user).to have_received(:send_reset_password_instructions_notification)
     end
 
     it 'does not reset the password if an invitation is pending' do
-      expect(UserMailer)
-        .to receive(:no_reset)
-        .with(invited_user, 'invited')
-        .and_return(mail)
       invited_user.send_reset_password_instructions
+      expect(UserMailer).to have_received(:no_reset).with(invited_user, 'invited')
     end
 
     it 'does not reset the password if oauth is configured' do
-      expect(UserMailer)
-        .to receive(:no_reset)
-        .with(oauth_user, 'oauth')
-        .and_return(mail)
       oauth_user.send_reset_password_instructions
+      expect(UserMailer).to have_received(:no_reset).with(oauth_user, 'oauth')
     end
   end
 
   describe '#generate_calendar_access_token' do
-    let :new_user do
-      build :user
-    end
-    let :existing_user do
-      create :user
+    subject(:call) { user.calendar_access_token }
+
+    context 'with a new user' do
+      let(:user) { build :user }
+
+      it { is_expected.to be_blank }
+
+      it 'generates a token on save' do
+        user.save
+        expect(call).to be_present
+      end
     end
 
-    it 'generates a token for new users' do
-      expect(new_user.calendar_access_token).to be_blank
-      new_user.save
-      expect(new_user.calendar_access_token).not_to be_blank
-    end
+    context 'with a existing user' do
+      let(:user) { create :user }
 
-    it 'regenerates a token when blanked' do
-      old_token = existing_user.calendar_access_token
-      existing_user.update(calendar_access_token: nil)
-      expect(existing_user.calendar_access_token).not_to be_blank
-      expect(existing_user.calendar_access_token).not_to eq(old_token)
+      it 'regenerates a token when blanked' do
+        user.update(calendar_access_token: nil)
+        expect(user.calendar_access_token).to be_present
+      end
+
+      it 'changes the token when blanked' do
+        old_token = user.calendar_access_token
+        user.update(calendar_access_token: nil)
+        expect(user.calendar_access_token).not_to eq(old_token)
+      end
     end
   end
 end

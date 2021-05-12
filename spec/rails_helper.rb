@@ -7,7 +7,7 @@ require 'spec_helper'
 require File.expand_path('../config/environment', __dir__)
 require 'rspec/rails'
 
-Rails.root.join('spec', 'support').glob('**/*.rb').sort.each { |f| require f }
+Rails.root.join('spec/support').glob('**/*.rb').sort.each { |f| require f }
 
 ActiveRecord::Migration.maintain_test_schema!
 Capybara.server = :puma, { Silent: true }

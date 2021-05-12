@@ -3,39 +3,29 @@
 require 'rails_helper'
 
 RSpec.describe 'EventsController#index' do
-  let :user do
-    create :user
-  end
+  subject(:index) { page }
+
+  let(:user) { create :user }
 
   before do
     sign_in(user)
+    visit events_path
   end
 
   it 'has a calendar feed url' do
-    visit events_path
     feed_url = events_feed_url token: user.calendar_access_token,
                                format: 'ics',
                                host: URI.parse(page.current_url).host
 
-    expect(find_field('Calendar Feed URL').value).to eq feed_url
+    expect(page).to have_field('Calendar Feed URL', with: feed_url)
   end
 
   context 'without a season' do
-    before do
-      visit events_path
-    end
+    it { is_expected.to have_content('Season Not Open') }
 
-    it 'tells the user to stay tuned' do
-      expect(page).to have_content 'Season Not Open'
-    end
+    it { is_expected.not_to have_css('#calendar') }
 
-    it 'does not load the calendar' do
-      expect(page).not_to have_css '#calendar'
-    end
-
-    it 'does not show a link for new events' do
-      expect(page).not_to have_content 'New Event'
-    end
+    it { is_expected.not_to have_link('New Event') }
   end
 
   context 'with a season' do
@@ -44,66 +34,34 @@ RSpec.describe 'EventsController#index' do
       visit events_path
     end
 
-    it 'loads the calendar' do
-      expect(page).to have_css '#calendar'
-    end
+    it { is_expected.to have_css('#calendar') }
 
-    it 'shows a link for new events' do
-      expect(page).to have_link href: new_event_path
-    end
+    it { is_expected.to have_link('New Event') }
 
-    it 'shows a link to print the season calendar' do
-      expect(page).to have_link href: events_path(format: 'pdf')
-    end
+    it { is_expected.to have_link(href: events_path(format: 'pdf')) }
   end
 
-  context 'as a non-admin' do
-    before do
-      visit events_path
-    end
+  context 'when then user is not an admin' do
+    it { is_expected.not_to have_link('Manage Seasons') }
 
-    it 'does not show a link to manage seasons' do
-      expect(page).not_to have_content 'Manage Seasons'
-    end
-
-    it 'does not show a link to send notifications' do
-      expect(page).not_to have_content 'Send Notification'
-    end
+    it { is_expected.not_to have_link('Send Notification') }
   end
 
-  context 'as an admin' do
-    before do
-      user.update_attribute(:admin, true)
-      visit events_path
-    end
+  context 'when the user is an admin' do
+    let(:user) { create :user, admin: true }
 
-    it 'shows a link to manage seasons' do
-      expect(page).to have_link href: seasons_path
-    end
+    it { is_expected.to have_link href: seasons_path }
 
-    it 'shows a link to send notifications' do
-      expect(page).to have_link href: new_notification_path
-    end
+    it { is_expected.to have_link href: new_notification_path }
   end
 
   context 'without invitations' do
-    before do
-      visit events_path
-    end
-
-    it 'does not show a link to invite a new user' do
-      expect(page).not_to have_content 'Invite New User'
-    end
+    it { is_expected.not_to have_link 'Invite New User' }
   end
 
   context 'with invitations' do
-    before do
-      user.update_attribute(:invitation_limit, 1)
-      visit events_path
-    end
+    let(:user) { create :user, invitation_limit: 1 }
 
-    it 'shows a link to invite a new user' do
-      expect(page).to have_link href: new_user_invitation_path
-    end
+    it { is_expected.to have_link(href: new_user_invitation_path) }
   end
 end
