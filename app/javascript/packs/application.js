@@ -1,9 +1,9 @@
 import flatpickr from 'flatpickr';
-import 'foundation-sites';
+import '../foundation';
 import Rails from '@rails/ujs';
 
-import '../events.js';
-import '../global.js';
-import '../users.js';
+import '../events';
+import '../global';
+import '../users';
 
 Rails.start();
