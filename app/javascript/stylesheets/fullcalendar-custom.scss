@@ -1,0 +1,18 @@
+#calendar.fc {
+  thead, tbody, tfoot, th, td {
+    background: none;
+    border: 0;
+  }
+
+  a.fc-event.has-tip {
+    display: block;
+
+    &::after {
+      @extend .fas;
+      position: absolute;
+      top: 1px;
+      right: 1px;
+      content: fa-content($fa-var-sticky-note);
+    }
+  }
+}

@@ -7,11 +7,10 @@ $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
 @import "~@fortawesome/fontawesome-free/scss/brands";
 
 @import "~flatpickr/dist/flatpickr";
-@import "~fullcalendar/dist/fullcalendar";
 
 @import "global";
 @import "events";
-@import "fc-custom";
+@import "fullcalendar-custom";
 @import "flatpickr-custom";
 @import "login";
 @import "seasons";

@@ -48,9 +48,9 @@
             = icon('fas', 'clipboard')
   .medium-9.medium-pull-3.columns
     - if @season
-      - caldata = {date: @date.iso8601,
-                   start_date: @season.start_date.iso8601,
-                   end_date: (@season.end_date + 1.day).iso8601}
+      - caldata = {date: @date.to_s(:unix),
+                   start_date: @season.start_date.to_s(:unix),
+                   end_date: (@season.end_date + 1.day).to_s(:unix)}
       #calendar{data: caldata}
     - else
       .secondary.callout
