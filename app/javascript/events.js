@@ -30,7 +30,7 @@ $(document).ready(function() {
         end: new Date( $('#calendar').data('end-date') * 1000)
       },
       buttonIcons: false,
-      buttonText: { today: 'Today' },
+      buttonText: { today: 'Today', prev: null, next: null },
       titleFormat: function(date) {
         var opts;
         if (Foundation.MediaQuery.is('medium')) {
@@ -51,5 +51,6 @@ $(document).ready(function() {
     });
 
     calendar.render();
+    window.calendar = calendar;
   }
 });

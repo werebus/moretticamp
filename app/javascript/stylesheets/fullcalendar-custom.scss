@@ -4,6 +4,37 @@
     border: 0;
   }
 
+  table, .fc-toolbar {
+    margin-bottom: 0;
+  }
+
+  .fc-daygrid-body {
+    background: $white;
+  }
+
+  .fc-scrollgrid, .fc-day {
+    border: 1px solid #ddd;
+  }
+
+  .fc-col-header a, a.fc-daygrid-day-number {
+    color: inherit;
+    cursor: inherit;
+  }
+
+  a.event-event {
+    background-color: $primary-color;
+    border-color: $primary-color;
+    &:hover {
+      color: #ddd;
+    }
+  }
+
+  a.season-event {
+    background-color: $secondary-color;
+    border-color: $secondary-color;
+    cursor: default;
+  }
+
   a.fc-event.has-tip {
     display: block;
 
@@ -12,7 +43,25 @@
       position: absolute;
       top: 1px;
       right: 1px;
+      color: $white;
       content: fa-content($fa-var-sticky-note);
+    }
+  }
+
+  .fc-button {
+    @include button;
+    font-size: 1rem;
+
+    &.fc-prev-button, &.fc-next-button {
+      @include fa-icon;
+      @extend .fas;
+      font-weight: 900;
+    }
+    &.fc-prev-button:before {
+      content: fa-content($fa-var-arrow-left);
+    }
+    &.fc-next-button:before {
+      content: fa-content($fa-var-arrow-right);
     }
   }
 }
