@@ -51,6 +51,5 @@ $(document).ready(function() {
     });
 
     calendar.render();
-    window.calendar = calendar;
   }
 });
