@@ -10,7 +10,7 @@ import { MediaQuery } from 'foundation-sites/js/foundation.util.mediaQuery';
 //import { Nest } from 'foundation-sites/js/foundation.util.nest';
 //import { Timer } from 'foundation-sites/js/foundation.util.timer';
 //import { Touch } from 'foundation-sites/js/foundation.util.touch';
-//import { Triggers } from 'foundation-sites/js/foundation.util.triggers';
+import { Triggers } from 'foundation-sites/js/foundation.util.triggers';
 //import { Abide } from 'foundation-sites/js/foundation.abide';
 //import { Accordion } from 'foundation-sites/js/foundation.accordion';
 //import { AccordionMenu } from 'foundation-sites/js/foundation.accordionMenu';
@@ -55,7 +55,7 @@ Foundation.MediaQuery = MediaQuery;
 // Touch and Triggers previously were almost purely sede effect driven,
 // so no need to add it to Foundation, just init them.
 //Touch.init($);
-//Triggers.init($, Foundation);
+Triggers.init($, Foundation);
 MediaQuery._init();
 
 //Foundation.plugin(Abide, 'Abide');
