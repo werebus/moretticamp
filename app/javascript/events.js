@@ -7,6 +7,14 @@ $(document).ready(function() {
       $('#calendar').data('date') * 1000;
     return new Date(date);
   };
+  const updateTitleFormat = function(cal) {
+    if (Foundation.MediaQuery.is('medium')) {
+      cal.changeView('desktopDayGridMonth');
+    } else {
+      cal.changeView('dayGridMonth');
+    }
+  };
+
 
   var calEl = document.getElementById('calendar')
   if(calEl) {
@@ -31,25 +39,28 @@ $(document).ready(function() {
       },
       buttonIcons: false,
       buttonText: { today: 'Today', prev: null, next: null },
-      titleFormat: function(date) {
-        var opts;
-        if (Foundation.MediaQuery.is('medium')) {
-          opts = { month: 'long', year: 'numeric' };
-        } else {
-          opts = { month: 'numeric', year: '2-digit' };
+      views: {
+        dayGridMonth: {
+          titleFormat: { month: 'numeric', year: '2-digit' }
+        },
+        desktopDayGridMonth: {
+          type: 'dayGridMonth',
+          titleFormat: { month: 'long', year: 'numeric' }
         }
-        return formatDate(date.date.marker, opts);
       },
 
-      eventDidMount(info){
+      eventDidMount: function(info) {
         const desc = info.event.extendedProps.description
 
         if (desc) {
           var tip = new Foundation.Tooltip($(info.el), { tipText: desc });
         }
-      }
+      },
+
+      windowResize: function() { updateTitleFormat(this) }
     });
 
+    updateTitleFormat(calendar);
     calendar.render();
   }
 });
