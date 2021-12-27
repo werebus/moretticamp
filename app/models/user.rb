@@ -18,7 +18,7 @@ class User < ApplicationRecord
             presence: { message: "can't be blank if Last Name is blank" },
             if: -> { last_name.blank? }
 
-  def self.find_for_oath(auth)
+  def self.find_for_oauth(auth)
     find_by(provider: auth.provider, uid: auth.uid)
   end
 

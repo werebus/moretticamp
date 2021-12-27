@@ -31,7 +31,7 @@ class VoiceController < ApplicationController
 
   def say_event(event)
     "The next event scheduled #{'after that' if exclude.length > 1} is " \
-    "#{event.display_title}  #{event.date_range_readable}."
+      "#{event.display_title}  #{event.date_range_readable}."
   end
 
   def say(message)

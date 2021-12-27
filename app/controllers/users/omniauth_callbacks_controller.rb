@@ -12,7 +12,7 @@ module Users
 
     def omniauth_callback(name)
       auth = request.env['omniauth.auth']
-      identity = User.find_for_oath(auth)
+      identity = User.find_for_oauth(auth)
 
       if identity
         sign_in_and_redirect(identity, event: :authentication)

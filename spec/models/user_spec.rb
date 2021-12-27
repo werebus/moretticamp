@@ -5,10 +5,10 @@ require 'rails_helper'
 RSpec.describe User do
   describe '.find_for_oauth' do
     let!(:user) { create :user, :oauth }
-    let(:auth) { OpenStruct.new(provider: 'test', uid: 'user@test.local') }
+    let(:auth) { Hashie::Mash.new(provider: 'test', uid: 'user@test.local') }
 
     it 'finds a user given an auth object' do
-      expect(described_class.find_for_oath(auth)).to eq(user)
+      expect(described_class.find_for_oauth(auth)).to eq(user)
     end
   end
 
@@ -75,12 +75,9 @@ RSpec.describe User do
     let(:password_user) { create :user }
     let(:invited_user) { create :user, :invited }
     let(:oauth_user) { create :user, :oauth }
-    let :mail do
-      OpenStruct.new(deliver: true, deliver_now: true, deliver_later: true)
-    end
 
     before do
-      allow(UserMailer).to receive(:no_reset).and_return(mail)
+      allow(UserMailer).to receive(:no_reset).and_call_original
     end
 
     it 'sends a reset email if there is no reason not to' do
