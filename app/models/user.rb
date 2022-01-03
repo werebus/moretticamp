@@ -38,15 +38,17 @@ class User < ApplicationRecord
     invitation_limit.present? && invitation_limit.positive?
   end
 
+  def provider_name
+    OauthProvider[provider]&.name
+  end
+
   def send_devise_notification(notification, *args)
     devise_mailer.send(notification, self, *args).deliver_later
   end
 
   def send_reset_password_instructions
-    if invited_to_sign_up?
-      UserMailer.no_reset(self, 'invited').deliver_later
-    elsif provider.present?
-      UserMailer.no_reset(self, 'oauth').deliver_later
+    if invited_to_sign_up? || provider.present?
+      UserMailer.no_reset(self).deliver_later
     else
       super
     end

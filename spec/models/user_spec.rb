@@ -71,6 +71,21 @@ RSpec.describe User do
     end
   end
 
+  describe '#provider_name' do
+    let!(:provider) do
+      OauthProvider.new(:test, 'Test', 'test', 'test_id', 'test_secret')
+    end
+
+    it "is the name of the user's provider" do
+      user = build(:user, provider: 'test')
+      expect(user.provider_name).to eq(OauthProvider[:test].name)
+    end
+
+    it "is nil if the user's provider is nil" do
+      expect(build(:user).provider_name).to be_nil
+    end
+  end
+
   describe '#send_reset_password_instructions' do
     let(:password_user) { create :user }
     let(:invited_user) { create :user, :invited }
@@ -88,12 +103,12 @@ RSpec.describe User do
 
     it 'does not reset the password if an invitation is pending' do
       invited_user.send_reset_password_instructions
-      expect(UserMailer).to have_received(:no_reset).with(invited_user, 'invited')
+      expect(UserMailer).to have_received(:no_reset).with(invited_user)
     end
 
     it 'does not reset the password if oauth is configured' do
       oauth_user.send_reset_password_instructions
-      expect(UserMailer).to have_received(:no_reset).with(oauth_user, 'oauth')
+      expect(UserMailer).to have_received(:no_reset).with(oauth_user)
     end
   end
 

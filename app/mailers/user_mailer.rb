@@ -1,22 +1,18 @@
 # frozen_string_literal: true
 
 class UserMailer < ApplicationMailer
-  def no_reset(user, reason)
+  def no_reset(user)
     @user = user
-    oauth_provider = OauthProvider[user.provider].try(:name)
+    @reason = invited_reason || oauth_reason
 
-    @reason = case reason.to_s
-              when 'invited' then invited_reason
-              when 'oauth' then oauth_reason(oauth_provider)
-              end
-
-    mail to: user.email,
-         subject: 'Password reset not performed'
+    mail to: user.email, subject: 'Password reset not performed'
   end
 
   private
 
   def invited_reason
+    return unless @user.invited_to_sign_up?
+
     <<~REASON.squish
       You haven't yet accepted your invitation to the site and so do not have a
       password to reset. Please click the link in the invitation email to create
@@ -25,7 +21,10 @@ class UserMailer < ApplicationMailer
     REASON
   end
 
-  def oauth_reason(provider)
+  def oauth_reason
+    return unless @user.provider.present?
+
+    provider = @user.provider_name
     <<~REASON.squish
       Your account on moretti.camp is associated with your #{provider} account.
       You don't need a password to log in, simply click the #{provider} logo on
