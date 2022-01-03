@@ -6,26 +6,21 @@
         - if @season
           %li
             = link_to events_path(format: :pdf) do
-              = icon 'fas', 'print'
-              %span Print
+              = icon 'fas', 'print', 'Print'
           %li
             = link_to new_event_path do
-              = icon 'fas', 'calendar'
-              %span New Event
+              = icon 'fas', 'calendar', 'New Event'
         - if current_user.invitations?
           %li
             = link_to new_user_invitation_path do
-              = icon 'fas', 'user-plus'
-              %span Invite New User
+              = icon 'fas', 'user-plus', 'Invite New User'
         - if current_user.admin
           %li
             = link_to seasons_path do
-              = icon 'fas', 'edit'
-              %span Manage Seasons
+              = icon 'fas', 'edit', 'Manage Seasons'
           %li
             = link_to new_notification_path do
-              = icon 'fas', 'envelope-open'
-              %span Send Notification
+              = icon 'fas', 'envelope-open', 'Send Notification'
     %label{for: 'feed-url-field'}
       .row.collapse
         Calendar Feed URL
@@ -45,7 +40,7 @@
           tabindex: 2},
           class: 'button clip' do
             %span.show-for-sr Copy feed URL to the clipboard
-            = icon('fas', 'clipboard')
+            = icon 'fas', 'clipboard'
   .medium-9.medium-pull-3.columns
     - if @season
       - caldata = {date: @date.to_fs(:unix),

@@ -11,16 +11,9 @@ module ApplicationHelper
     # rubocop:enable Rails/OutputSafety
   end
 
-  def icon(style, name, text = nil, html_options = {})
-    if text.is_a?(Hash)
-      html_options = text
-      text = nil
-    end
-
-    html_options[:class] = Array(html_options[:class]) + [style, "fa-#{name}"]
-
-    tag.i(nil, html_options).then do |html|
-      html + (text.present? ? " #{text}" : '')
+  def icon(style, name, text = nil)
+    tag.i(nil, class: [style, "fa-#{name}"]).then do |html|
+      html + " #{text}".presence
     end
   end
 
