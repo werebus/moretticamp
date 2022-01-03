@@ -10,6 +10,8 @@ AllCops:
     - '**/*.rb'
   Exclude:
     - bin/**/*
+    - config/{environments,initializers}/**/*
+    - config/{application,boot,environment,puma,spring}.rb
     - db/**/*
     - node_modules/**/*
   NewCops: enable
@@ -18,22 +20,21 @@ Layout/ExtraSpacing:
   Exclude:
     - Gemfile
 
-Metrics:
-  Exclude:
-    - db/migrate/*
 Metrics/AbcSize:
-  Max: 20
+  CountRepeatedAttributes: false
 Metrics/BlockLength:
   Exclude:
     - config/**/*
     - spec/**/*
 Metrics/MethodLength:
-  Max: 15
+  CountAsOne:
+    - array
+    - hash
+    - heredoc
 
 RSpec/DescribeClass:
   Exclude:
     - spec/{requests,system}/**/*
-
 RSpec/NestedGroups:
   Max: 4
 
