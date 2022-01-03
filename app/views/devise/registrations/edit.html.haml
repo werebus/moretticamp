@@ -44,14 +44,18 @@
         - else
           .row
             .small-6.column
-              = f.password_field :password, autocomplete: 'off', label: 'New Password'
-              %small.label-note.hide{data: {for: 'user_password'}} Leave blank if no change
+              = f.label :password do
+                New Password
+                %small Leave blank if no change
+              = f.password_field :password, label: false
             .small-6.column
-              = f.password_field :password_confirmation, autocomplete: 'off', label: 'Confirm New Password'
+              = f.password_field :password_confirmation, label: 'Confirm New Password'
           .row
             .small-12.column
-              = f.password_field :current_password, autocomplete: 'off', label: 'Current Password'
-              %small.label-note.hide{data: {for: 'user_current_password'}} We need your current password to confirm your changes
+              = f.label :current_password do
+                Current Password
+                %small We need your current password to confirm your changes
+              = f.password_field :current_password, label: false
         .row
           .small-12.column
             = f.submit 'Update', class: 'expanded button'
