@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe NotificationSenderJob do
   describe '.perform_later' do
-    subject(:call) { described_class.perform_later(note_params) }
+    subject(:call) { described_class.perform_later(**note_params) }
 
     before do
       create_list :user, 2, email_updates: true
