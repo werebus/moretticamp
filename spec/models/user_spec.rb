@@ -78,7 +78,7 @@ RSpec.describe User do
 
     it "is the name of the user's provider" do
       user = build(:user, provider: 'test')
-      expect(user.provider_name).to eq(OauthProvider[:test].name)
+      expect(user.provider_name).to eq(provider.name)
     end
 
     it "is nil if the user's provider is nil" do

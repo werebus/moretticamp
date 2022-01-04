@@ -22,7 +22,7 @@ class UserMailer < ApplicationMailer
   end
 
   def oauth_reason
-    return unless @user.provider.present?
+    return if @user.provider.blank?
 
     provider = @user.provider_name
     <<~REASON.squish

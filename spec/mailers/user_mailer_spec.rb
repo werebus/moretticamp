@@ -4,8 +4,9 @@ require 'rails_helper'
 
 RSpec.describe UserMailer do
   describe '#no_reset' do
-    let(:user) { build(:user) }
     subject(:mail) { described_class.no_reset(user) }
+
+    let(:user) { build(:user) }
 
     it 'is addressed to the user' do
       expect(mail.to).to eq([user.email])
@@ -26,7 +27,7 @@ RSpec.describe UserMailer do
       let(:user) { build :user, :oauth }
 
       it 'says why in the body' do
-        expect(mail.body.encoded).to match(/associated with your Test account/)
+        expect(mail.body.encoded).to match(/associated with your #{provider.name} account/)
       end
     end
   end
