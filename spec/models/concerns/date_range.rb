@@ -24,7 +24,7 @@ RSpec.shared_examples_for 'date_range' do
 
     it 'adds an error to the end date' do
       invalid.validate
-      expect(invalid.errors[:end_date].join).to match(/be after/)
+      expect(invalid.errors[:end_date].join).to match(/be on or after/)
     end
   end
 
