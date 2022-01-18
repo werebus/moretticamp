@@ -6,7 +6,7 @@ module DateRange
   included do
     validates :start_date, :end_date, presence: true
     validates :end_date, comparison: { greater_than_or_equal_to: :start_date,
-                                       message: 'must be on or after %{count}' }
+                                       message: 'must be on or after %<count>s' }
   end
 
   module ClassMethods
@@ -37,24 +37,14 @@ module DateRange
   end
 
   def date_range_words
-    "#{short_date_words(start_date)} - #{short_date_words(end_date)}"
+    "#{start_date.to_fs(:short_ordinal)} - #{end_date.to_fs(:short_ordinal)}"
   end
 
   def date_range_readable
     if start_date == end_date
-      "on #{long_date_words(start_date)}"
+      "on #{start_date.to_fs(:long_ordinal)}"
     else
-      "from #{long_date_words(start_date)}, until #{long_date_words(end_date)}"
+      "from #{start_date.to_fs(:long_ordinal)}, until #{end_date.to_fs(:long_ordinal)}"
     end
-  end
-
-  private
-
-  def short_date_words(date)
-    date.strftime('%b ') + date.day.ordinalize
-  end
-
-  def long_date_words(date)
-    date.strftime('%A, %B ') + date.day.ordinalize
   end
 end
