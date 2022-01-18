@@ -46,7 +46,7 @@ RSpec.describe VoiceController do
   it 'moves on to the next event when 2 is pressed' do
     post webhook_path, params: valid_call_params.merge(Digits: '2')
 
-    event = Event.next_after(Time.zone.today, [Event.next.id])
+    event = Event.excluding(Event.next).next_after(Time.zone.today)
     expect(first_speech).to include(event.display_title)
   end
 

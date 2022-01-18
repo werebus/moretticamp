@@ -48,12 +48,6 @@ RSpec.shared_examples_for 'date_range' do
       expect(model.next_after(dates[:mar15])).to eq april
     end
 
-    it 'can exclude some from the search' do
-      april = model.find_by(start_date: dates[:apr1])
-      may = model.find_by(start_date: dates[:may1])
-      expect(model.next_after(dates[:mar15], april.id)).to eq may
-    end
-
     it 'finds all between two dates' do
       expect(model.between(dates[:apr1], dates[:jun1]).count).to be 3
     end
