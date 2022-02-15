@@ -4,7 +4,11 @@ require 'oauth_provider'
 require 'rails_helper'
 
 RSpec.describe OauthProvider do
-  before { described_class.instances = [] }
+  around do |example|
+    described_class.instances = []
+    example.run
+    described_class.instances = []
+  end
 
   describe 'attributes' do
     let(:oap) { described_class.new('l', 'n', 'i', 'id', 's') }
