@@ -145,6 +145,9 @@ GEM
     docile (1.4.0)
     erubi (1.10.0)
     erubis (2.7.0)
+    exception_notification (4.5.0)
+      actionmailer (>= 5.2, < 8)
+      activesupport (>= 5.2, < 8)
     factory_bot (6.2.0)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.2.0)
@@ -470,12 +473,14 @@ DEPENDENCIES
   capybara
   devise (~> 4.8.0)
   devise_invitable
+  exception_notification
   factory_bot_rails
   faker
   figaro
   foundation_rails_helper!
   haml-rails (~> 2.0)
   icalendar
+  io-wait
   jbuilder (~> 2.0)
   kramdown
   listen
