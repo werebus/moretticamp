@@ -4,6 +4,7 @@ lock '~> 3.11'
 
 set :application, 'moretticamp'
 set :repo_url, 'https://github.com/werebus/moretticamp.git'
+set :branch, 'main'
 
 set :deploy_to, '/srv/moretticamp'
 
