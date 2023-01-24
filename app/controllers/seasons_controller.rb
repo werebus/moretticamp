@@ -15,6 +15,8 @@ class SeasonsController < ApplicationController
     @season = Season.new
   end
 
+  def edit; end
+
   def create
     @season = Season.new(season_params)
 
@@ -32,8 +34,6 @@ class SeasonsController < ApplicationController
       end
     end
   end
-
-  def edit; end
 
   def update
     respond_to do |format|

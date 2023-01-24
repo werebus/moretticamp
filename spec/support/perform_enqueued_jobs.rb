@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.configure do |config|
-  config.around(:each, type: :job, perform_enqueued: true) do |example|
+  config.around(:each, perform_enqueued: true, type: :job) do |example|
     @_perform_enqueued =
       ActiveJob::Base.queue_adapter.perform_enqueued_jobs
     @_perform_enqueued_at =

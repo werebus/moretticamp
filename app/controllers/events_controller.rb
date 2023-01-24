@@ -28,6 +28,8 @@ class EventsController < ApplicationController
     @event = Event.new
   end
 
+  def edit; end
+
   def create
     @event = Event.new(event_params)
     @event.user = current_user unless current_user.admin
@@ -46,8 +48,6 @@ class EventsController < ApplicationController
       end
     end
   end
-
-  def edit; end
 
   def update
     respond_to do |format|

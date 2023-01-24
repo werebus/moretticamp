@@ -13,7 +13,7 @@ RSpec.describe Season do
       build :season, start_date: start_date, end_date: end_date
     end
 
-    before { create(:season) }
+    before { create :season }
 
     it 'prohibits overlapping seasons' do
       expect(other).to be_invalid

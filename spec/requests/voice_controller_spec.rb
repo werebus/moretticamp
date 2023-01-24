@@ -18,7 +18,7 @@ RSpec.describe VoiceController do
 
   before do
     FactoryBot.reload
-    create_list(:event, 5, :sequenced)
+    create_list :event, 5, :sequenced
     post webhook_path, params: valid_call_params
   end
 

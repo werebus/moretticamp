@@ -77,7 +77,7 @@ RSpec.describe User do
     end
 
     it "is the name of the user's provider" do
-      user = build(:user, provider: 'test')
+      user = build :user, provider: 'test'
       expect(user.provider_name).to eq(provider.name)
     end
 

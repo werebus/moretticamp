@@ -6,7 +6,7 @@ RSpec.describe UserMailer do
   describe '#no_reset' do
     subject(:mail) { described_class.no_reset(user) }
 
-    let(:user) { build(:user) }
+    let(:user) { build :user }
 
     it 'is addressed to the user' do
       expect(mail.to).to eq([user.email])

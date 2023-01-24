@@ -13,7 +13,7 @@ RSpec.describe Event do
       end
 
       it 'adds errors to base' do
-        event = build(:event)
+        event = build :event
         event.validate
         expect(event.errors[:base].join).to match(/no season/)
       end
@@ -23,7 +23,7 @@ RSpec.describe Event do
       let(:season_start) { Season.current_or_next.start_date }
       let(:season_end) { Season.current_or_next.end_date }
 
-      before { create(:season) }
+      before { create :season }
 
       it 'requires events to not start before the current season' do
         event = build :event, start_date: season_start - 1.day,
@@ -81,7 +81,7 @@ RSpec.describe Event do
     end
 
     it "shows the user's first name if no title" do
-      event = build(:event)
+      event = build :event
       expect(event.display_title).to eql(event.user.first_name)
     end
 

@@ -38,9 +38,9 @@ RSpec.shared_examples_for 'date_range' do
     end
 
     before do
-      create(:season) unless described_class == Season
+      create :season unless described_class == Season
       FactoryBot.reload
-      create_list(factory, 5, :sequenced)
+      create_list factory, 5, :sequenced
     end
 
     it 'finds the next one after a date' do
@@ -54,9 +54,9 @@ RSpec.shared_examples_for 'date_range' do
   end
 
   it 'finds one occurring today' do
-    create(:season, :now) unless model == Season
-    create(factory, start_date: Time.zone.today - 1.day,
-                    end_date: Time.zone.today + 1.day)
+    create :season, :now unless model == Season
+    create factory, start_date: Time.zone.today - 1.day,
+                    end_date: Time.zone.today + 1.day
     expect(model.current).to be_present
   end
 

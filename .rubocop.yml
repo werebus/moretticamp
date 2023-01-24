@@ -22,19 +22,23 @@ Layout/ExtraSpacing:
 
 Metrics/AbcSize:
   CountRepeatedAttributes: false
-Metrics/BlockLength:
-  Exclude:
-    - config/**/*
-    - spec/**/*
+
 Metrics/MethodLength:
   CountAsOne:
     - array
     - hash
     - heredoc
 
+Rails/I18nLocaleTexts:
+  Enabled: false
+
 RSpec/DescribeClass:
   Exclude:
     - spec/{requests,system}/**/*
+
+RSpec/FactoryBot/ConsistentParenthesesStyle:
+  EnforcedStyle: omit_parentheses
+
 RSpec/NestedGroups:
   Max: 4
 

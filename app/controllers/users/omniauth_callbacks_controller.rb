@@ -17,14 +17,12 @@ module Users
         sign_in_and_redirect user, event: :authentication
         report_success name
       # Not a dynamic finder, defined in devise_invitable
-      # rubocop:disable  Rails/DynamicFindBy
       elsif (user = User.find_by_invitation_token session[:invitation_token], true)
         accept_invite user, auth
         report_success name
       else
         redirect_to new_user_session_path
       end
-      # rubocop:enable  Rails/DynamicFindBy
     end
 
     def accept_invite(user, auth)
