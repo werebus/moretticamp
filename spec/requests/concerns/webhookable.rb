@@ -28,7 +28,7 @@ RSpec.shared_examples_for 'a webhookable controller' do
   before { post webhook_path, params: params }
 
   it 'allows unauthenticated access' do
-    expect(response.status).to eq 200
+    expect(response).to have_http_status(:ok)
   end
 
   it 'sets the content type to XML' do

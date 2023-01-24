@@ -24,6 +24,7 @@ Metrics/AbcSize:
   CountRepeatedAttributes: false
 
 Metrics/MethodLength:
+  Max: 15
   CountAsOne:
     - array
     - hash

@@ -9,7 +9,7 @@ RSpec.describe 'ICS feed' do
     before { get "/feed/#{user.calendar_access_token}.ics" }
 
     it 'allows access' do
-      expect(response.status).to eq 200
+      expect(response).to have_http_status(:ok)
     end
 
     it 'has the correct content type' do
@@ -25,7 +25,7 @@ RSpec.describe 'ICS feed' do
     before { get "/feed/#{SecureRandom.hex}.ics" }
 
     it 'prohibits access' do
-      expect(response.status).to eq 401
+      expect(response).to have_http_status(:unauthorized)
     end
   end
 
@@ -36,7 +36,7 @@ RSpec.describe 'ICS feed' do
     end
 
     it 'allows access' do
-      expect(response.status).to eq 200
+      expect(response).to have_http_status(:ok)
     end
 
     it 'has the correct content type' do
