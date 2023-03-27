@@ -6,7 +6,9 @@
     %title= page_title
 
     = favicon_link_tag    '/favicon.ico'
-    = stylesheet_pack_tag 'application', media: 'all'
+    = stylesheet_link_tag 'application'
+    = stylesheet_link_tag 'application.webpack'
+    = javascript_include_tag 'application', nonce: true, defer: true
     = csrf_meta_tags
     = csp_meta_tag
   %body
@@ -24,5 +26,4 @@
       .medium-8.medium-centered.columns
         = display_flash_messages
     = yield
-    = javascript_pack_tag 'application', nonce: true
     = comment_lines il_campo_moretti

@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 $(document).ready(() =>
   $('#token-button').click(function(event){
     event.preventDefault();

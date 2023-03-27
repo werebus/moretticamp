@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 const ClipboardJS = require('clipboard');
 
 $(document).ready(function() {

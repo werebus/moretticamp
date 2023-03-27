@@ -5,7 +5,9 @@
     %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
     %title Il Campo Moretti
     = favicon_link_tag    '/favicon.ico'
-    = stylesheet_pack_tag 'application', media: 'all'
+    = stylesheet_link_tag 'application'
+    = stylesheet_link_tag 'application.webpack'
+    = javascript_include_tag 'application', nonce: true, defer: true
     = csrf_meta_tags
     = csp_meta_tag
   %body
@@ -16,4 +18,3 @@
           = display_flash_messages
           = yield
           = render 'devise/shared/links'
-    = javascript_pack_tag 'application', nonce: true

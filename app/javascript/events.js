@@ -1,5 +1,6 @@
 import { Calendar, formatDate } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import $ from 'jquery';
 
 $(document).ready(function() {
   const caldate = function() {
