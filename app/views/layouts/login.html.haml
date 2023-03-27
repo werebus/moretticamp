@@ -1,20 +1,9 @@
-!!!
-%html{lang: 'en'}
-  %head
-    %meta{charset: 'utf-8'}
-    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
-    %title Il Campo Moretti
-    = favicon_link_tag    '/favicon.ico'
-    = stylesheet_link_tag 'application'
-    = stylesheet_link_tag 'application.webpack'
-    = javascript_include_tag 'application', nonce: true, defer: true
-    = csrf_meta_tags
-    = csp_meta_tag
-  %body
-    #pusher
-    #login-form.row
-      .small-8.small-centered.columns
-        .callout
-          = display_flash_messages
-          = yield
-          = render 'devise/shared/links'
+- content_for :body do
+  #pusher
+  #login-form.row
+    .small-8.small-centered.columns
+      .callout
+        = display_flash_messages
+        = yield
+        = render 'devise/shared/links'
+= render template: 'layouts/application'
