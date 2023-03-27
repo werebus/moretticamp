@@ -3,8 +3,6 @@ import $ from 'jquery';
 const ClipboardJS = require('clipboard');
 
 $(document).ready(function() {
-  flatpickr('.date-pick', {});
-
   const clipboard_selector = '.button.clip';
   const clipboard_button = $(clipboard_selector);
   const clipboard = new ClipboardJS(clipboard_selector);

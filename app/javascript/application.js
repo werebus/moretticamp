@@ -1,4 +1,3 @@
-import flatpickr from 'flatpickr';
 import './foundation';
 import Rails from '@rails/ujs';
 
