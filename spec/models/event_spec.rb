@@ -15,7 +15,7 @@ RSpec.describe Event do
       it 'adds errors to base' do
         event = build :event
         event.validate
-        expect(event.errors[:base].join).to match(/no season/)
+        expect(event.errors[:base].join).to match(/no current season/)
       end
     end
 

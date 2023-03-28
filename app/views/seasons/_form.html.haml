@@ -1,10 +1,10 @@
 = form_for(@season) do |f|
   .callout
-    - if @season.errors[:base].any?
+    - if @season.invalid?
       .alert.callout
-        - @season.errors[:base].each do |e|
-          = e
-          %br
+        %ul
+          - @eas.errors.each do |error|
+            %li= error.full_message
     .row
       .small-6.column
         = f.date_field :start_date, label: 'First Date'

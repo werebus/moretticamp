@@ -5,8 +5,9 @@ module DateRange
 
   included do
     validates :start_date, :end_date, presence: true
-    validates :end_date, comparison: { greater_than_or_equal_to: :start_date,
-                                       message: 'must be on or after %<count>s' }
+    validates :end_date,
+              comparison: { greater_than_or_equal_to: :start_date, message: 'must be on or after %<count>s' },
+              unless: -> { start_date.blank? }
   end
 
   module ClassMethods

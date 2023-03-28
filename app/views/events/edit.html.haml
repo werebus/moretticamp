@@ -1,4 +1,4 @@
-= content_for :title, @event.full_title
+= content_for :title, @event&.valid? ? @event.full_title : 'Invalid event'
 .row
   .small-8.small-centered.column
     .row

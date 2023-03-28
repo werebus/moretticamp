@@ -1,4 +1,8 @@
-= content_for :title, "Season - #{@season.date_range_words}"
+= content_for :title do
+  - if @season&.valid?
+    "Season - #{@season.date_range_words}"
+  - else
+    'Invalid season'
 .row
   .small-8.small-centered.column
     .row
