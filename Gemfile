@@ -31,6 +31,11 @@ gem 'puma'
 gem 'rails',                  '~> 7.0.0'
 gem 'twilio-ruby',            '~> 5.8'
 
+group :development, :test do
+  gem 'pry'
+  gem 'pry-byebug'
+end
+
 group :development do
   gem 'capistrano',           '~> 3.11', require: false
   gem 'capistrano-bundler',              require: false
@@ -38,8 +43,6 @@ group :development do
   gem 'capistrano-pending',              require: false
   gem 'capistrano-rails',                require: false
   gem 'listen'
-  gem 'pry'
-  gem 'pry-byebug'
   gem 'rubocop',                         require: false
   gem 'rubocop-rails',                   require: false
   gem 'rubocop-rspec',                   require: false
