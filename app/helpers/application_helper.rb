@@ -18,8 +18,6 @@ module ApplicationHelper
   end
 
   def page_title
-    title = 'Il Campo Moretti'
-    title += " - #{content_for :title}" if content_for? :title
-    title
+    ['Il Campo Moretti', content_for(:title)].compact.join(' - ')
   end
 end
