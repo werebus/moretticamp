@@ -1,4 +1,6 @@
 require:
+  - rubocop-capybara
+  - rubocop-factory_bot
   - rubocop-rails
   - rubocop-rspec
 
@@ -37,7 +39,7 @@ RSpec/DescribeClass:
   Exclude:
     - spec/{requests,system}/**/*
 
-RSpec/FactoryBot/ConsistentParenthesesStyle:
+FactoryBot/ConsistentParenthesesStyle:
   EnforcedStyle: omit_parentheses
 
 RSpec/NestedGroups:
