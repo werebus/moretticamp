@@ -5,7 +5,4 @@
 # routes in the application.  The call to "render" is technically
 # optional
 class PagesController < ApplicationController
-  def documents
-    render
-  end
 end
