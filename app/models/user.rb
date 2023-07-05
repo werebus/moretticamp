@@ -1,22 +1,21 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, and :lockable
   devise :invitable, :database_authenticatable, :omniauthable, :recoverable,
          :registerable, :rememberable, :timeoutable, :trackable, :validatable,
          validate_on_invite: true,
          omniauth_providers: OauthProvider.labels
+  has_secure_token :calendar_access_token
 
   has_many :events, dependent: :nullify
   has_many :invitations, class_name: 'User', as: :invited_by, dependent: :nullify
 
-  before_save :generate_calendar_access_token,
-              unless: -> { calendar_access_token.present? }
+  before_save :regenerate_calendar_access_token, if: -> { calendar_access_token.blank? }
 
   validates :first_name,
             presence: { message: "can't be blank if Last Name is blank" },
             if: -> { last_name.blank? }
+  validates :calendar_access_token, uniqueness: { case_sensitive: true }
 
   def self.find_for_oauth(auth)
     find_by(provider: auth.provider, uid: auth.uid)
@@ -51,15 +50,6 @@ class User < ApplicationRecord
       UserMailer.no_reset(self).deliver_later
     else
       super
-    end
-  end
-
-  private
-
-  def generate_calendar_access_token
-    loop do
-      self.calendar_access_token = SecureRandom.hex
-      break unless User.exists?(calendar_access_token: calendar_access_token)
     end
   end
 end
