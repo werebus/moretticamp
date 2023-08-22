@@ -1,6 +1,20 @@
 # frozen_string_literal: true
 
 module PoetryHelper
+  def guest
+    <<~VERSE
+      YOU are wecome here,
+      Be at your ease.
+      Get up when you're ready,
+      Go to bed when you please.
+
+      You don't have to thank us
+      Or laugh at our jokes.
+      Sit deep and come often,
+      You're ONE of the FOLKS.
+    VERSE
+  end
+
   def il_campo_moretti
     <<~VERSE
       Il Campo Moretti - - Art Shane, April 1997
@@ -94,6 +108,6 @@ module PoetryHelper
   end
 
   def poem
-    send(%i[il_campo_moretti mia_francesca].sample)
+    send(%i[guest il_campo_moretti mia_francesca].sample)
   end
 end
