@@ -37,11 +37,13 @@ group :development, :test do
 end
 
 group :development do
+  gem 'bcrypt_pbkdf'
   gem 'capistrano',           '~> 3.11', require: false
   gem 'capistrano-bundler',              require: false
   gem 'capistrano-passenger',            require: false
   gem 'capistrano-pending',              require: false
   gem 'capistrano-rails',                require: false
+  gem 'ed25519'
   gem 'listen'
   gem 'rubocop',                         require: false
   gem 'rubocop-rails',                   require: false
