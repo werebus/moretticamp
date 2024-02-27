@@ -29,7 +29,7 @@ gem 'prawn'
 gem 'prawn-table'
 gem 'propshaft'
 gem 'puma'
-gem 'rails',                  '~> 7.0.0'
+gem 'rails',                  '~> 7.0.8'
 gem 'twilio-ruby',            '~> 5.8'
 
 group :development, :test do
