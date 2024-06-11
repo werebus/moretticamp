@@ -7,7 +7,7 @@ ruby IO.read(File.expand_path('.ruby-version', __dir__)).strip
 gem 'aws-sdk-rails',          '~> 2.1'
 gem 'bootsnap'
 gem 'cssbundling-rails'
-gem 'devise',                 '~> 4.8.0'
+gem 'devise',                 '~> 4.9.4'
 gem 'devise_invitable'
 gem 'exception_notification'
 gem 'figaro'
