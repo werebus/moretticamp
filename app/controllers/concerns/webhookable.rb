@@ -10,7 +10,7 @@ module Webhookable
 
   def valid_call?
     params.permit(%i[AccountSid From]).to_h.values ==
-      ENV.values_at('TWILIO_ACCOUNT_SID', 'CAMP_PHONE_NUMBER')
+      [Rails.application.credentials.twilio_account_sid, Rails.application.credentials.camp_phone_number]
   end
 
   def render_twiml(response)

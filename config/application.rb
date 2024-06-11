@@ -26,7 +26,8 @@ module Moretticamp
 
     config.before_initialize do
       OauthProvider.new :google_oauth2, 'Google', 'google',
-                        ENV['GOOGLE_APP_ID'], ENV['GOOGLE_APP_SECRET']
+                        Rails.application.credentials.google[:client_id],
+                        Rails.application.credentials.google[:client_secret]
     end
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do

@@ -5,8 +5,8 @@ require 'rails_helper'
 
 RSpec.shared_context 'with twilio' do
   before do
-    ENV['TWILIO_ACCOUNT_SID'] = 'AC0123456789abcdef0123456789abcdef'
-    ENV['CAMP_PHONE_NUMBER'] = '+15005550006'
+    Rails.application.credentials.twilio_account_sid = 'AC0123456789abcdef0123456789abcdef'
+    Rails.application.credentials.camp_phone_number = '+15005550006'
   end
 
   let :valid_call_params do
