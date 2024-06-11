@@ -65,7 +65,7 @@ Rails.application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.delivery_method = :aws_sdk
+  config.action_mailer.delivery_method = :ses
   config.action_mailer.perform_deliveries = true
   config.action_mailer.default_options =
     { from: 'Moretti.camp <noreply@moretti.camp>' }
@@ -92,5 +92,5 @@ Rails.application.configure do
   config.middleware.use ExceptionNotification::Rack,
                         email: { exception_recipients: 'matt@moretti.camp',
                                  sender_address: 'Moretti.camp Exception <noreply@moretti.camp>',
-                                 delivery_method: :aws_sdk }
+                                 delivery_method: :ses }
 end

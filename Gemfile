@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 git_source(:github){ |repo_name| "https://github.com/#{repo_name}.git" }
 ruby IO.read(File.expand_path('.ruby-version', __dir__)).strip
 
-gem 'aws-sdk-rails',          '~> 2.1'
+gem 'aws-sdk-rails',          '~> 3.13'
 gem 'bootsnap'
 gem 'cssbundling-rails'
 gem 'devise',                 '~> 4.9.4'
