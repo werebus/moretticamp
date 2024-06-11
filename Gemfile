@@ -10,7 +10,6 @@ gem 'cssbundling-rails'
 gem 'devise',                 '~> 4.9.4'
 gem 'devise_invitable'
 gem 'exception_notification'
-gem 'figaro'
 gem 'foundation_rails_helper',
   github: 'werebus/foundation_rails_helper',
   branch: 'rails-71'
