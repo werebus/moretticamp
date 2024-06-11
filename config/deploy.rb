@@ -10,7 +10,7 @@ set :deploy_to, '/srv/moretticamp'
 
 set :log_level, :info
 
-append :linked_files, 'config/database.yml', 'config/application.yml'
+append :linked_files, 'config/database.yml', 'config/master.key'
 append :linked_dirs,
        'log',
        'node_modules',
