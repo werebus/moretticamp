@@ -13,7 +13,7 @@ gem 'exception_notification'
 gem 'figaro'
 gem 'foundation_rails_helper',
   github: 'werebus/foundation_rails_helper',
-  branch: 'rails-7'
+  branch: 'rails-71'
 gem 'haml-rails',             '~> 2.0'
 gem 'icalendar'
 gem 'io-wait'
@@ -29,7 +29,7 @@ gem 'prawn'
 gem 'prawn-table'
 gem 'propshaft'
 gem 'puma'
-gem 'rails',                  '~> 7.0.0'
+gem 'rails',                  '~> 7.1.3'
 gem 'twilio-ruby',            '~> 5.8'
 
 group :development, :test do
