@@ -22,9 +22,7 @@ module Moretticamp
   class Application < Rails::Application
     require 'oauth_provider'
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.0
-    config.add_autoload_paths_to_load_path = false
-    config.active_support.cache_format_version = 7.1
+    config.load_defaults 7.1
 
     config.before_initialize do
       OauthProvider.new :google_oauth2, 'Google', 'google',
@@ -34,17 +32,11 @@ module Moretticamp
 
     config.middleware.use Rack::Attack
 
-    # Please, add to the `ignore` list any other `lib` subdirectories that do
-    # not contain `.rb` files, or that should not be reloaded or eager loaded.
-    # Common ones are `templates`, `generators`, or `middleware`, for example.
-    # config.autoload_lib(ignore: %w(assets tasks))
-
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
-    #
+
     # config.time_zone = "Central Time (US & Canada)"
-    # config.eager_load_paths << Rails.root.join("extras")
   end
 end
