@@ -30,6 +30,8 @@ module Moretticamp
                         Rails.application.credentials.google[:client_secret]
     end
 
+    config.middleware.use Rack::Attack
+
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
