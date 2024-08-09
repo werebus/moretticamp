@@ -23,6 +23,8 @@ module Moretticamp
     require 'oauth_provider'
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
+    config.add_autoload_paths_to_load_path = false
+    config.active_support.cache_format_version = 7.1
 
     config.before_initialize do
       OauthProvider.new :google_oauth2, 'Google', 'google',

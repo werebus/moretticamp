@@ -118,11 +118,10 @@ RSpec.describe User do
     context 'with a new user' do
       let(:user) { build :user }
 
-      it { is_expected.to be_blank }
+      it { is_expected.to be_present }
 
-      it 'generates a token on save' do
-        user.save
-        expect(call).to be_present
+      it 'keeps the token on save' do
+        expect { user.save }.not_to change { call }
       end
     end
 
