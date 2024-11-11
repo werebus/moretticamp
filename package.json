@@ -16,6 +16,7 @@
     "postcss-cli": "^10.1.0",
     "postcss-nesting": "^11.2.2",
     "postcss-scss": "^4.0.6",
+    "run-pty": "^5.0.0",
     "sass": "^1.60.0"
   },
   "scripts": {
