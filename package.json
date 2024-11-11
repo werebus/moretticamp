@@ -8,6 +8,7 @@
     "autoprefixer": "^10.4.14",
     "clipboard": "^2.0.1",
     "css-loader": "^6.7.3",
+    "esbuild": "^0.24.0",
     "foundation-sites": "^6.5.0",
     "jquery": "^3.3.1",
     "mini-css-extract-plugin": "^2.7.5",
@@ -18,6 +19,7 @@
     "sass": "^1.60.0"
   },
   "scripts": {
-    "build:css": "postcss ./app/assets/stylesheets/application.postcss.css -o ./app/assets/builds/application.css"
+    "build:css": "postcss ./app/assets/stylesheets/application.postcss.css -o ./app/assets/builds/application.css",
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets"
   }
 }
