@@ -1,4 +1,3 @@
-import './foundation';
 import Rails from '@rails/ujs';
 
 import './events';

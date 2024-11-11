@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
-git_source(:github){ |repo_name| "https://github.com/#{repo_name}.git" }
 ruby IO.read(File.expand_path('.ruby-version', __dir__)).strip
 
 gem 'aws-sdk-rails',          '~> 3.13'
@@ -10,9 +9,6 @@ gem 'cssbundling-rails'
 gem 'devise',                 '~> 4.9.4'
 gem 'devise_invitable'
 gem 'exception_notification'
-gem 'foundation_rails_helper',
-  github: 'werebus/foundation_rails_helper',
-  branch: 'rails-71'
 gem 'haml-rails',             '~> 2.0'
 gem 'icalendar'
 gem 'jbuilder',               '~> 2.13'

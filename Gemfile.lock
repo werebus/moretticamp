@@ -1,14 +1,3 @@
-GIT
-  remote: https://github.com/werebus/foundation_rails_helper.git
-  revision: 1ccdc424b54d48f247f99f257130d866f2017a36
-  branch: rails-71
-  specs:
-    foundation_rails_helper (4.0.1)
-      actionpack (>= 4.1, < 7.2)
-      activemodel (>= 4.1, < 7.2)
-      activesupport (>= 4.1, < 7.2)
-      railties (>= 4.1, < 7.2)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -523,7 +512,6 @@ DEPENDENCIES
   exception_notification
   factory_bot_rails
   faker
-  foundation_rails_helper!
   haml-rails (~> 2.0)
   icalendar
   jbuilder (~> 2.13)
