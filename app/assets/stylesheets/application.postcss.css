@@ -12,7 +12,6 @@ $fa-font-path: ".";
 
 @import "global";
 @import "events";
-@import "flatpickr-custom";
 @import "login";
 @import "seasons";
 
