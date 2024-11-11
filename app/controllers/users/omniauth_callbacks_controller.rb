@@ -2,11 +2,13 @@
 
 module Users
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
+    # rubocop:disable Rails/FindEach
     OauthProvider.all.each do |oap|
       define_method(oap.label) do
         omniauth_callback(oap.name)
       end
     end
+    # rubocop:enable Rails/FindEach
 
     private
 
