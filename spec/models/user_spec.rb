@@ -121,7 +121,7 @@ RSpec.describe User do
       it { is_expected.to be_present }
 
       it 'keeps the token on save' do
-        expect { user.save }.not_to change { call }
+        expect { user.save }.not_to(change { call })
       end
     end
 

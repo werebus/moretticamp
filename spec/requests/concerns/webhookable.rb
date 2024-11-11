@@ -25,7 +25,7 @@ RSpec.shared_examples_for 'a webhookable controller' do
   end
   let(:params) { valid_call_params }
 
-  before { post webhook_path, params: params }
+  before { post webhook_path, params: }
 
   it 'allows unauthenticated access' do
     expect(response).to have_http_status(:ok)

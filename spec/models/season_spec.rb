@@ -10,7 +10,7 @@ RSpec.describe Season do
     let(:other) do
       start_date = Time.zone.now.change(month: 3).to_date
       end_date = Time.zone.now.change(month: 10).to_date
-      build :season, start_date: start_date, end_date: end_date
+      build :season, start_date:, end_date:
     end
 
     before { create :season }

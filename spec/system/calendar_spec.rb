@@ -11,8 +11,8 @@ RSpec.describe 'EventsController#index - calendar', js: true do
     visit events_path
   end
 
-  def with_calendar_buttons(&block)
-    within('#calendar') { using_wait_time(0.2, &block) }
+  def with_calendar_buttons(&)
+    within('#calendar') { using_wait_time(0.2, &) }
   end
 
   it 'starts on the current month' do

@@ -24,7 +24,7 @@ class MonthPage
   private
 
   def box_cell(content)
-    make_cell(content: content, width: (10.0 / 7).in, height: (7.5 / 7).in)
+    make_cell(content:, width: (10.0 / 7).in, height: (7.5 / 7).in)
   end
 
   def headers

@@ -35,7 +35,7 @@ class VoiceController < ApplicationController
   end
 
   def say(resp, message)
-    resp.say message: message, voice: 'alice'
+    resp.say message:, voice: 'alice'
   end
 
   # rubocop:disable Metrics/MethodLength
