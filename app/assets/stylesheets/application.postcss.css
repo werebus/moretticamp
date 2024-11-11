@@ -6,9 +6,12 @@ $fa-font-path: ".";
 @import "@fortawesome/fontawesome-free/scss/solid";
 @import "@fortawesome/fontawesome-free/scss/brands";
 
+@import "@fullcalendar/common/main";
+@import "@fullcalendar/daygrid/main";
+@import "fullcalendar-custom";
+
 @import "global";
 @import "events";
-@import "fullcalendar-custom";
 @import "flatpickr-custom";
 @import "login";
 @import "seasons";
