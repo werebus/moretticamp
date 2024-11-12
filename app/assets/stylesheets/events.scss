@@ -1,13 +1,9 @@
-.event-description {
-  @include callout(#bca);
-}
-
 #nav-links{
-  @include breakpoint(small only) {
+  @include media-breakpoint-only(sm) {
     text-align: center;
 
     li {
-      @include grid-column(4);
+      /*@include grid-column(4);*/
     }
 
     i {
@@ -21,7 +17,7 @@
     }
   }
 
-  @include breakpoint(medium) {
+  @include media-breakpoint-up(md) {
     margin-bottom: 4rem;
     li a {
       padding: 0.7rem 0;
