@@ -5,6 +5,7 @@ ruby IO.read(File.expand_path('.ruby-version', __dir__)).strip
 
 gem 'aws-sdk-rails',          '~> 3.13'
 gem 'bootsnap'
+gem 'bootstrap_form',         '~> 5.4'
 gem 'cssbundling-rails'
 gem 'devise',                 '~> 4.9.4'
 gem 'devise_invitable'
