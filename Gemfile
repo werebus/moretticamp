@@ -30,7 +30,7 @@ gem 'propshaft'
 gem 'puma'
 gem 'rack-attack'
 gem 'rails',                  '~> 7.1.3'
-gem 'twilio-ruby',            '~> 5.8'
+gem 'twilio-ruby',            '~> 7.3'
 
 group :development, :test do
   gem 'pry'
