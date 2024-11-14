@@ -22,8 +22,8 @@
           %ul.navbar-nav{ aria: { labeledby: 'topnav' } }
             %li.nav-item= link_to current_user.full_name, edit_user_registration_path, class: 'nav-link'
             %li.nav-item= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-link'
-      .row
-        .medium-8.medium-centered.columns
+      .row.d-flex.justify-content-center
+        .col-md-8
           = display_flash_messages
       = yield
       = comment_lines poem
