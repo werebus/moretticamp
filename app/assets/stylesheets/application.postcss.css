@@ -1,4 +1,5 @@
 $primary: hsl(130, 100%, 20%);
+$enable-rounded: false;
 @import "bootstrap/scss/bootstrap";
 
 $fa-font-path: ".";
@@ -10,7 +11,6 @@ $fa-font-path: ".";
 
 @import "global";
 @import "events";
-@import "login";
 @import "seasons";
 
 @import "font-face";

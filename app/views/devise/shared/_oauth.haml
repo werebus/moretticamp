@@ -1,10 +1,8 @@
 - if devise_mapping.omniauthable?
-  .row
-    .medium-6.medium-centered.columns
-      .expanded.button-group
-        - OauthProvider.all.each do |oap|
-          = link_to oap.icon.present? ? icon('fab', oap.icon) : oap.name.first,
-            omniauth_authorize_path(resource_name, oap.label),
-            method: :post,
-            title: "Sign in with #{oap.name}",
-            class: 'button'
+  .btn-group.d-grid.mt-3
+    - OauthProvider.all.each do |oap|
+      = link_to oap.icon.present? ? icon('fab', oap.icon) : oap.name.first,
+        omniauth_authorize_path(resource_name, oap.label),
+        method: :post,
+        title: "Sign in with #{oap.name}",
+        class: 'btn btn-primary'

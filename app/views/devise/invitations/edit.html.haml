@@ -2,9 +2,8 @@
   locals: { path_method: :invitation_path,
   token: :invitation_token,
   button_text: 'Create Account' }
-.row
-  .medium-6.medium-centered.columns.text-center
-    %p
-      %strong or
-    %p sign in with another account:
+%hr
+  %p
+    %strong or
+    sign in with another account:
 = render partial: 'devise/shared/oauth'

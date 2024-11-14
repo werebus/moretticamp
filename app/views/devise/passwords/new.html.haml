@@ -1,4 +1,5 @@
-= form_for resource, as: resource_name,
+= bootstrap_form_for resource, as: resource_name,
   url: password_path(resource_name) do |f|
   = f.email_field :email, autofocus: true
-  = f.submit 'Send Me Password Reset Instructions', class: 'expanded button'
+  .d-grid.gap-2
+    = f.submit 'Send Me Password Reset Instructions', class: 'btn btn-primary'

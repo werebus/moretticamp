@@ -19,12 +19,12 @@
           %h1= link_to 'Il Campo Moretti', authenticated_root_path
         .top-bar-right
           %nav{'aria-labeledby' => 'topnav'}
-            %h2#topnav.show-for-sr 'Account Actions'
+            %h2#topnav.show-for-sr Account Actions
             %ul.menu
               %li= link_to current_user.full_name, edit_user_registration_path
               %li= link_to 'Logout', destroy_user_session_path, method: :delete
       .row
         .medium-8.medium-centered.columns
-          =# display_flash_messages
+          = display_flash_messages
       = yield
       = comment_lines poem
