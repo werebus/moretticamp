@@ -14,15 +14,14 @@
     - if content_for?(:body)
       = yield(:body)
     - else
-      %header.top-bar
-        .top-bar-left
-          %h1= link_to 'Il Campo Moretti', authenticated_root_path
-        .top-bar-right
-          %nav{'aria-labeledby' => 'topnav'}
-            %h2#topnav.show-for-sr Account Actions
-            %ul.menu
-              %li= link_to current_user.full_name, edit_user_registration_path
-              %li= link_to 'Logout', destroy_user_session_path, method: :delete
+      %nav#main-nav.navbar.navbar-expand.bg-dark.mb-3
+        .container-fluid
+          %h1= link_to 'Il Campo Moretti', authenticated_root_path, class: 'nav-link'
+
+          %h2#topnav.sr-only Account Actions
+          %ul.navbar-nav{ aria: { labeledby: 'topnav' } }
+            %li.nav-item= link_to current_user.full_name, edit_user_registration_path, class: 'nav-link'
+            %li.nav-item= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-link'
       .row
         .medium-8.medium-centered.columns
           = display_flash_messages

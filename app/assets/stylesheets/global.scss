@@ -1,31 +1,26 @@
-html, body {
+$tan: #f0dfd0;
+
+:root {
+  --color-tan: $tan;
+}
+
+body {
   min-height: 100%;
   min-height: 100vh;
 }
 
-label {
-  margin: 0 0.75rem;
-}
-
-header {
-  margin-bottom: 1.5rem;
-  $header-color: #f0dfd0;
-  color: $header-color;
-
-  a {
-    color: $header-color;
-    &:hover, &:focus {
-      color: scale-color($header-color, $lightness: -15%);
-    }
-  }
+#main-nav {
+  color: $tan;
 
   h1 {
-    font-family: 'danielregular',
-                 'Monotype Corsiva',
-                 'Apple Chancery',
-                 'ITC Zapf Chancery',
-                 'URW Chancery L',
-                 cursive;
+    font-family: 'danielregular', 'Monotype Corsiva', 'Apple Chancery', 'ITC Zapf Chancery', 'URW Chancery L', cursive;
+  }
+
+  a {
+    color: $tan;
+    &:hover, &:focus {
+      color: scale-color($tan, $lightness: -15%);
+    }
   }
 }
 
