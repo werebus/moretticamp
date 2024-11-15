@@ -57,7 +57,7 @@ group :test do
   gem 'faker'
   gem 'pdf-inspector',     require: 'pdf/inspector'
   gem 'rspec-rails'
-  gem 'webdrivers'
+  gem 'selenium-webdriver'
   gem 'simplecov',         require: false
   gem 'timecop'
 end
