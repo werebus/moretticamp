@@ -26,7 +26,7 @@
       .mb-4
         %label.form-label{for: 'feed-url-field'}
           Calendar Feed URL
-          %span.has-tip{title: calendar_tip}= icon 'fas', 'question-circle'
+          %span{title: calendar_tip, data: {bs_toggle: 'tooltip'}}= icon 'fas', 'question-circle'
         .input-group
           = text_field_tag :access_token,
             events_feed_url(token: current_user.calendar_access_token, format: 'ics'),
