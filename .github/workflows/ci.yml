@@ -1,0 +1,28 @@
+name: ci
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  rspec:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: moretticamp_test
+          POSTGRES_PASSWORD: PG-PASSWORD
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: postgres://moretticamp_test:PG-PASSWORD@localhost:5432/moretticamp_test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - run: bin/setup
+      - run: bundle exec rspec
