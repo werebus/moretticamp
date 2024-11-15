@@ -1,5 +1,7 @@
 import { Calendar, formatDate } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import bootstrap5Plugin from '@fullcalendar/bootstrap5';
+import { Tooltip } from 'bootstrap';
 import $ from 'jquery';
 
 $(document).ready(function() {
@@ -9,7 +11,8 @@ $(document).ready(function() {
     return new Date(date);
   };
   const updateTitleFormat = function(cal) {
-    if (Foundation.MediaQuery.is('medium')) {
+    const bsMedium = window.getComputedStyle(document.documentElement).getPropertyValue("--bs-breakpoint-md")
+    if (window.matchMedia("(min-width: " + bsMedium + ")").matches) {
       cal.changeView('desktopDayGridMonth');
     } else {
       cal.changeView('dayGridMonth');
@@ -20,17 +23,20 @@ $(document).ready(function() {
   const calEl = document.getElementById('calendar')
   if(calEl) {
     const calendar = new Calendar(calEl, {
-      plugins: [ dayGridPlugin ],
+      plugins: [ dayGridPlugin, bootstrap5Plugin ],
+      themeSystem: 'bootstrap5',
+      buttonIcons: {
+        prev: 'fa fa fa-chevron-left',
+        next: 'fa fa fa-chevron-right'
+      },
       eventSources: [
         {
           url: '/events.json',
-          className: 'event-event',
           error(e){
             if (e.status === 401) { window.location.reload(false); }
           }
         },{
-          url: '/seasons.json',
-          className: 'season-event'
+          url: '/seasons.json'
         }
       ],
       initialDate: caldate(),
@@ -38,8 +44,6 @@ $(document).ready(function() {
         start: new Date( $('#calendar').data('start-date') * 1000),
         end: new Date( $('#calendar').data('end-date') * 1000)
       },
-      buttonIcons: false,
-      buttonText: { today: 'Today', prev: null, next: null },
       views: {
         dayGridMonth: {
           titleFormat: { month: 'numeric', year: '2-digit' }
@@ -54,7 +58,7 @@ $(document).ready(function() {
         const desc = info.event.extendedProps.description
 
         if (desc) {
-          var tip = new Foundation.Tooltip($(info.el), { tipText: desc });
+          var tip = new Tooltip(info.el, { title: desc });
         }
       },
 
