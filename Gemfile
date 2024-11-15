@@ -15,7 +15,7 @@ gem 'foundation_rails_helper',
   branch: 'rails-71'
 gem 'haml-rails',             '~> 2.0'
 gem 'icalendar'
-gem 'jbuilder',               '~> 2.0'
+gem 'jbuilder',               '~> 2.13'
 gem 'jsbundling-rails'
 gem 'kramdown'
 gem 'matrix'
