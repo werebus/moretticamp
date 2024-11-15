@@ -26,8 +26,8 @@ module Moretticamp
 
     config.before_initialize do
       OauthProvider.new :google_oauth2, 'Google', 'google',
-                        Rails.application.credentials.google[:client_id],
-                        Rails.application.credentials.google[:client_secret]
+                        Rails.application.credentials.google&.fetch(:client_id, nil),
+                        Rails.application.credentials.google&.fetch(:client_secret, nil)
     end
 
     config.middleware.use Rack::Attack
