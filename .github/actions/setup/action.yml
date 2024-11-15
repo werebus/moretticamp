@@ -8,5 +8,4 @@ runs:
         bundler-cache: true
     - uses: actions/setup-node@v4
       with:
-        node-version: 'lts/*'
         cache: 'npm'
