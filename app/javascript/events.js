@@ -17,9 +17,9 @@ $(document).ready(function() {
   };
 
 
-  var calEl = document.getElementById('calendar')
+  const calEl = document.getElementById('calendar')
   if(calEl) {
-    var calendar = new Calendar(calEl, {
+    const calendar = new Calendar(calEl, {
       plugins: [ dayGridPlugin ],
       eventSources: [
         {
