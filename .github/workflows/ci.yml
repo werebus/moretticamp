@@ -25,4 +25,5 @@ jobs:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
       - run: bin/setup
+      - run: bin/rails test:prepare
       - run: bundle exec rspec
