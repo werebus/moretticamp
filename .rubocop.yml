@@ -12,6 +12,7 @@ AllCops:
     - '**/*.rb'
   Exclude:
     - bin/**/*
+    - vendor/**/*
     - config/{environments,initializers}/**/*
     - config/{application,boot,environment,puma,spring}.rb
     - db/**/*
