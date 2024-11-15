@@ -214,7 +214,6 @@ GEM
       ice_cube (~> 0.16)
     ice_cube (0.16.4)
     io-console (0.7.2)
-    io-wait (0.3.0)
     irb (1.13.1)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
@@ -516,7 +515,6 @@ DEPENDENCIES
   foundation_rails_helper!
   haml-rails (~> 2.0)
   icalendar
-  io-wait
   jbuilder (~> 2.0)
   jsbundling-rails
   kramdown
@@ -550,4 +548,4 @@ RUBY VERSION
    ruby 3.1.4p223
 
 BUNDLED WITH
-   2.5.1
+   2.5.23
