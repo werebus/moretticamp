@@ -2,7 +2,7 @@
   "dependencies": {
     "@csstools/postcss-sass": "^5.0.1",
     "@fortawesome/fontawesome-free": "^5.4.1",
-    "@fullcalendar/core": "^5.10.1",
+    "@fullcalendar/core": "^6.1.15",
     "@fullcalendar/daygrid": "^5.10.1",
     "@rails/ujs": "^7.1.500",
     "autoprefixer": "^10.4.14",
