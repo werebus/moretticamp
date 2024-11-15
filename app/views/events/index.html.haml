@@ -1,53 +1,49 @@
-.row
-  .sidebar.medium-3.medium-push-9.columns
-    %nav{'aria-labeledby' => 'eventnav'}
-      %h2#eventnav.show-for-sr Event Navigation
-      %ul#nav-links.medium-vertical.menu.clearfix
-        - if @season
-          %li
-            = link_to events_path(format: :pdf) do
-              = icon 'fas', 'print', 'Print'
-          %li
-            = link_to new_event_path do
-              = icon 'fas', 'calendar', 'New Event'
-        - if current_user.invitations?
-          %li
-            = link_to new_user_invitation_path do
-              = icon 'fas', 'user-plus', 'Invite New User'
-        - if current_user.admin
-          %li
-            = link_to seasons_path do
-              = icon 'fas', 'edit', 'Manage Seasons'
-          %li
-            = link_to new_notification_path do
-              = icon 'fas', 'envelope-open', 'Send Notification'
-    %label{for: 'feed-url-field'}
-      .row.collapse
-        Calendar Feed URL
-        %span.has-tip{title: calendar_tip}
-          = icon 'fas', 'question-circle'
-      .row.collapse.input-group
-        = text_field_tag :access_token,
-          events_feed_url(token: current_user.calendar_access_token,
-                          format: 'ics'),
-          class: 'input-group-field',
-          id: 'feed-url-field',
-          readonly: true
-        .input-group-button
-          = button_tag data: {clipboard_target: '#feed-url-field',
-          disable_hover: true,
-          click_open: false,
-          tabindex: 2},
-          class: 'button clip' do
-            %span.show-for-sr Copy feed URL to the clipboard
+.container-fluid
+  .row
+    .col-12.col-md-3.order-md-2
+      %nav.mb-md-5{aria: {labeledby: 'eventnav'}}
+        %h2#eventnav.sr-only Event Navigation
+        %ul#nav-links.nav.flex-md-column.justify-content-around
+          - if @season
+            %li.nav-item
+              = link_to events_path(format: :pdf), class: 'nav-link' do
+                = icon 'fas', 'print', 'Print'
+            %li.nav-item
+              = link_to new_event_path, class: 'nav-link' do
+                = icon 'fas', 'calendar', 'New Event'
+          - if current_user.invitations?
+            %li.nav-item
+              = link_to new_user_invitation_path, class: 'nav-link' do
+                = icon 'fas', 'user-plus', 'Invite New User'
+          - if current_user.admin
+            %li.nav-item
+              = link_to seasons_path, class: 'nav-link' do
+                = icon 'fas', 'edit', 'Manage Seasons'
+            %li.nav-item
+              = link_to new_notification_path, class: 'nav-link' do
+                = icon 'fas', 'envelope-open', 'Send Notification'
+
+      .mb-4
+        %label.form-label{for: 'feed-url-field'}
+          Calendar Feed URL
+          %span.has-tip{title: calendar_tip}= icon 'fas', 'question-circle'
+        .input-group
+          = text_field_tag :access_token,
+            events_feed_url(token: current_user.calendar_access_token, format: 'ics'),
+            class: 'form-control', id: 'feed-url-field', readonly: true
+          = button_tag data: {clipboard_target: '#feed-url-field', disable_hover: true, click_open: false, tabindex: 2},
+                       class: 'btn btn-secondary clip' do
+            %span.sr-only Copy feed URL to the clipboard
             = icon 'fas', 'clipboard'
-  .medium-9.medium-pull-3.columns
-    - if @season
-      - caldata = {date: @date.to_fs(:unix),
-                   start_date: @season.start_date.to_fs(:unix),
-                   end_date: (@season.end_date + 1.day).to_fs(:unix)}
-      #calendar{data: caldata}
-    - else
-      .secondary.callout
-        %h5 Season Not Open
-        %p The dates for the next Camp "season" aren't defined yet. Stay tuned.
+
+    .col-12.col-md-9.order-md-1
+      - if @season
+        - caldata = {date: @date.to_fs(:unix),
+                     start_date: @season.start_date.to_fs(:unix),
+                     end_date: (@season.end_date + 1.day).to_fs(:unix)}
+        #calendar{data: caldata}
+      - else
+        .card.w-75.mx-auto.text-bg-light
+          .card-body
+            %h5.card-title Season Not Open
+            %p.card-text The dates for the next Camp "season" aren't defined yet. Stay tuned.

@@ -2,25 +2,12 @@
   @include media-breakpoint-only(sm) {
     text-align: center;
 
-    li {
-      /*@include grid-column(4);*/
+    .nav-item {
+      width: 8rem;
     }
 
     i {
       width: 100%;
-      padding-bottom: 0.5rem;
-    }
-
-    i + span {
-      display: block;
-      height: 2rem;
-    }
-  }
-
-  @include media-breakpoint-up(md) {
-    margin-bottom: 4rem;
-    li a {
-      padding: 0.7rem 0;
     }
   }
 }
