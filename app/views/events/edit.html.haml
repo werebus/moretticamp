@@ -1,7 +1,7 @@
 = content_for :title, @event&.valid? ? @event.full_title : 'Invalid event'
 .container
   %h1 Editing Event
-  = render 'form'
+  = render 'form', event: @event
   .row
     .col-sm-6
       = link_to 'Show', @event

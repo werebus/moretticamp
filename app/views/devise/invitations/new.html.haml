@@ -3,9 +3,9 @@
 .container
   %h1
     Invite New #{resource_name.to_s.humanize}
-  %p= pluralize(current_user.invitation_limit, 'invitation') + ' remaining.'
+  %p #{pluralize current_user.invitation_limit, 'invitation'} remaining.
   = bootstrap_form_for resource, as: resource_name, url: invitation_path(resource_name),
-    html: { method: :post, class: 'border border-secondary-subtle p-3' } do |f|
+                                 html: { method: :post, class: 'border border-secondary-subtle p-3' } do |f|
     .row
       .col-sm-6
         = f.text_field :first_name, autofocus: true

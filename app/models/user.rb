@@ -2,7 +2,7 @@
 
 class User < ApplicationRecord
   devise :invitable, :database_authenticatable, :omniauthable, :recoverable,
-         :registerable, :rememberable, :timeoutable, :trackable, :validatable,
+         :rememberable, :timeoutable, :trackable, :validatable,
          validate_on_invite: true,
          omniauth_providers: OauthProvider.labels
   has_secure_token :calendar_access_token

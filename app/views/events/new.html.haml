@@ -1,6 +1,6 @@
 = content_for :title, 'New Event'
 .container
   %h1 New Event
-  = render 'form'
+  = render 'form', event: @event
   .mt-3.w-100.text-end
     = link_to 'Back', events_path
