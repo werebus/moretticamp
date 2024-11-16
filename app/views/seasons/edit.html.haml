@@ -5,6 +5,6 @@
     Invalid season
 .container
   %h1 Editing Season
-  = render 'form'
+  = render 'form', season: @season
   .mt-3.w-100.text-end
     = link_to 'Back', seasons_path

@@ -1,8 +1,8 @@
-= bootstrap_form_for @event, html: { class: 'border border-secondary-subtle p-3' } do |f|
-  = alert @event.errors[:base].to_sentence, 'danger', closable: false if @event.errors[:base].any?
+= bootstrap_form_for event, html: { class: 'border border-secondary-subtle p-3' } do |f|
+  = alert event.errors[:base].to_sentence, 'danger', closable: false if event.errors[:base].any?
   - if current_user.admin
     = f.text_field :title, help: 'Overrides Owner Name'
-    = owner_dropdown(f, @event)
+    = owner_dropdown f, event
   .row
     .col-sm-6
       = f.date_field :start_date, label: 'First Date'

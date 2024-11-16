@@ -1,5 +1,5 @@
-= bootstrap_form_for @season, html: { class: 'border border-secondary-subtle p-3' } do |f|
-  = alert @season.errors[:base].to_sentence, 'danger', closable: false if @season.errors[:base].any?
+= bootstrap_form_for season, html: { class: 'border border-secondary-subtle p-3' } do |f|
+  = alert season.errors[:base].to_sentence, 'danger', closable: false if season.errors[:base].any?
   .row
     .col-sm-6
       = f.date_field :start_date, label: 'First Date'
