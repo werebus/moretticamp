@@ -1,8 +1,8 @@
 !!!
-%html{lang: 'en'}
+%html{ lang: 'en' }
   %head
-    %meta{charset: 'utf-8'}
-    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
+    %meta{ charset: 'utf-8' }
+    %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
     %title= page_title
 
     = favicon_link_tag    '/favicon.ico'
@@ -14,11 +14,11 @@
     - if content_for?(:body)
       = yield(:body)
     - else
-      %nav#main-nav.navbar.navbar-expand.bg-dark.mb-3
+      %nav.navbar.navbar-expand.bg-dark.mb-3#main-nav
         .container-fluid
           %h1= link_to 'Il Campo Moretti', authenticated_root_path, class: 'nav-link'
 
-          %h2#topnav.sr-only Account Actions
+          %h2.sr-only#topnav Account Actions
           %ul.navbar-nav{ aria: { labeledby: 'topnav' } }
             %li.nav-item= link_to current_user.full_name, edit_user_registration_path, class: 'nav-link'
             %li.nav-item= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-link'

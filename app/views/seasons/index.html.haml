@@ -11,7 +11,7 @@
       %tr
         %th Start date
         %th End date
-        %th{colspan: 2}
+        %th{ colspan: 2 }
     %tbody
       - @seasons.each do |season|
         %tr{ class: season == @current_season ? 'table-primary' : nil }
@@ -19,4 +19,4 @@
           %td= season.end_date
           %td= link_to 'Edit', edit_season_path(season)
           %td= button_to 'Destroy', season, method: :delete, class: 'btn btn-danger',
-            data: { confirm: 'Are you sure?' }
+                                            data: { confirm: 'Are you sure?' }
