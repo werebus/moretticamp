@@ -8,6 +8,12 @@ on:
       - main
 
 jobs:
+  haml-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - run: bundle exec haml-lint
   rubocop:
     runs-on: ubuntu-latest
     steps:
