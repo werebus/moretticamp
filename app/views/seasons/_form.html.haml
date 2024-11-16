@@ -1,12 +1,10 @@
-= form_for(@season) do |f|
-  .callout
-    - if @season.errors[:base].any?
-      .alert.callout= @season.errors[:base].to_sentence
-    .row
-      .small-6.column
-        = f.date_field :start_date, label: 'First Date'
-      .small-6.column
-        = f.date_field :end_date, label: 'Last Date'
-    .row
-      .small-12.column
-        = f.submit class: 'expanded button'
+= bootstrap_form_for @season, html: { class: 'border border-secondary-subtle p-3' } do |f|
+  - if @season.errors[:base].any?
+    = alert @season.errors[:base].to_sentence, 'danger', closable: false
+  .row
+    .col-sm-6
+      = f.date_field :start_date, label: 'First Date'
+    .col-sm-6
+      = f.date_field :end_date, label: 'Last Date'
+  .d-grid.gap-2
+    = f.submit class: 'btn btn-primary'

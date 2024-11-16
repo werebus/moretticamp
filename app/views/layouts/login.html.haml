@@ -1,9 +1,13 @@
 - content_for :body do
-  #pusher
-  #login-form.row
-    .small-8.small-centered.columns
-      .callout
-        = display_flash_messages
-        = yield
-        = render 'devise/shared/links'
+  .d-flex.flex-column.justify-content-start.align-items-center.min-vh-100
+    .flex-grow-1.d-none.d-md-block
+    .row.w-100
+      .col-md-3
+      .col-12.col-md-6
+        .card.my-3
+          .card-body
+            = display_flash_messages
+            = yield
+            = render 'devise/shared/links'
+    .flex-grow-1
 = render template: 'layouts/application'

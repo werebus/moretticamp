@@ -1,5 +1,6 @@
-$include-html-classes: false;
-@import "foundation_and_overrides";
+$primary: hsl(130, 100%, 20%);
+$enable-rounded: false;
+@import "bootstrap/scss/bootstrap";
 
 $fa-font-path: ".";
 @import "@fortawesome/fontawesome-free/scss/fontawesome";
@@ -10,8 +11,6 @@ $fa-font-path: ".";
 
 @import "global";
 @import "events";
-@import "login";
-@import "seasons";
 
 @import "font-face";
 @include font-face(danielregular, 'daniel-webfont', $asset-pipeline: false);

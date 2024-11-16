@@ -7,3 +7,5 @@ json.end((event.end_date + 1.day).iso8601)
 json.allDay true
 json.recurring false
 json.url event_url(event)
+json.color('var(--bs-primary)')
+json.classNames 'has-tip' if event.description.present?

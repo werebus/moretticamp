@@ -1,7 +1,12 @@
 = content_for :title, 'Seasons'
-.row
-  %h1 Seasons
-  %table
+.container
+  .row.align-items-center
+    %h1.col-md Seasons
+    = link_to new_season_path, class: 'col-md-auto btn btn-success' do
+      %i.fa.fa-plus
+      New season
+
+  %table.table.table-striped
     %thead
       %tr
         %th Start date
@@ -9,9 +14,9 @@
         %th{colspan: 2}
     %tbody
       - @seasons.each do |season|
-        %tr{class: season == @current_season ? 'current-season' : 'noncurrent-season'}
+        %tr{ class: season == @current_season ? 'table-primary' : nil }
           %td= season.start_date
           %td= season.end_date
           %td= link_to 'Edit', edit_season_path(season)
-          %td= link_to 'Destroy', season, method: :delete, data: { confirm: 'Are you sure?' }
-  = link_to 'New Season', new_season_path
+          %td= button_to 'Destroy', season, method: :delete, class: 'btn btn-danger',
+            data: { confirm: 'Are you sure?' }
