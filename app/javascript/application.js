@@ -1,8 +1,9 @@
 import Rails from '@rails/ujs';
 import * as bootstrap from 'bootstrap';
 
+import './clipboard';
 import './events';
-import './global';
+import './tooltips';
 import './users';
 
 Rails.start();

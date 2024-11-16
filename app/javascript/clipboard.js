@@ -1,15 +1,11 @@
 import { Tooltip } from 'bootstrap';
+import Clipboard from 'clipboard/src/clipboard';
 import $ from 'jquery';
 
-const ClipboardJS = require('clipboard');
-
-$(document).ready(function() {
-  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new Tooltip(tooltipTriggerEl));
-
+$(function() {
   const clipboard_selector = 'button.clip';
   const clipboard_button = document.querySelector(clipboard_selector);
-  const clipboard = new ClipboardJS(clipboard_selector);
+  const clipboard = new Clipboard(clipboard_selector);
 
   clipboard.on('success', function() {
     $(clipboard_selector).attr('title', 'Copied!');
