@@ -11,7 +11,6 @@ $fa-font-path: ".";
 
 @import "global";
 @import "events";
-@import "seasons";
 
 @import "font-face";
 @include font-face(danielregular, 'daniel-webfont', $asset-pipeline: false);
