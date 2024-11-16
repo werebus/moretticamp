@@ -1,23 +1,9 @@
 = content_for :title, 'Send Notification'
-.row
-  .small-8.columns.small-centered
-    .row
-      .small-12.columns
-        %h1
-          Send Notification
-    =form_tag(controller: 'notifications', action: 'create') do
-      .callout
-        .row
-          .small-12.column
-            = label_tag 'subject'
-            = text_field_tag 'subject', '', autofocus: true, required: true
-          .small-12.column
-            = label_tag 'body' do
-              Body
-              %small Markdown allowed
-            = text_area_tag 'body', '', rows: 6, required: true
-          .small-12.column
-            = check_box_tag 'override'
-            = label_tag 'override', 'Ignore user email preference'
-          .small-12.column
-            = submit_tag 'Send', class: 'expanded button'
+.container
+  %h1 Send Notification
+  = bootstrap_form_with url: notifications_path, class: 'border border-secondary-subtle p-3' do |f|
+    = f.text_field :subject, autofocus: true, required: true
+    = f.text_area :body, rows: 6, required: true, help: 'Markdown allowed'
+    = f.check_box :override, label: 'Ignore user email preference'
+    .d-grid.gap-2
+      = f.submit 'Send', class: 'btn btn-primary'
