@@ -1,25 +1,18 @@
 = content_for :title do
-  Invite a New User
-.row
-  .small-8.columns.small-centered
+  Invite New #{resource_name.to_s.humanize}
+.container
+  %h1
+    Invite New #{resource_name.to_s.humanize}
+  %p= pluralize(current_user.invitation_limit, 'invitation') + ' remaining.'
+  = bootstrap_form_for resource, as: resource_name, url: invitation_path(resource_name),
+    html: { method: :post, class: 'border border-secondary-subtle p-3' } do |f|
     .row
-      .small-12.columns
-        %h1
-          Invite New #{resource_name.to_s.humanize}
-        %p= pluralize(current_user.invitation_limit, 'invitation') + ' remaining.'
-    =form_for(resource, as: resource_name, url: invitation_path(resource_name), html: {method: :post}) do |f|
-      .callout
-        .row
-          .small-6.column
-            = f.text_field :first_name, autofocus: true, label: 'First Name'
-          .small-6.column
-            = f.text_field :last_name, label: 'Last Name'
-        .row
-          .small-12.column
-            = f.email_field :email
-        .row
-          .small-12.column
-            = f.submit 'Invite', class: 'expanded button'
-    .row
-      .small-12.column.text-right
-        = link_to 'Back', :back
+      .col-sm-6
+        = f.text_field :first_name, autofocus: true
+      .col-sm-6
+        = f.text_field :last_name
+    = f.email_field :email
+    .d-grid.gap-2
+      = f.submit 'Invite', class: 'btn btn-primary'
+  .mt-3.w-100.text-end
+    = link_to 'Back', :back
