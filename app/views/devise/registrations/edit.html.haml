@@ -1,64 +1,37 @@
 = content_for :title, resource.first_name
-.row
-  .small-8.columns.small-centered
+.container
+  %h1
+    Editing #{resource_name.to_s.humanize}
+  = bootstrap_form_for resource, as: resource_name, url: registration_path(resource_name),
+    html: { method: :put, class: 'border border-secondary-subtle p-3'} do |f|
     .row
-      .small-12.columns
-        %h1
-          Editing #{resource_name.to_s.humanize}
-    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-      .callout
-        .row
-          .small-6.column
-            = f.text_field :first_name, autofocus: true, label: 'First Name'
-          .small-6.column
-            = f.text_field :last_name, label: 'Last Name'
-        .row
-          .small-12.column
-            = f.email_field :email
-        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-          .row
-            .small-12.column
-              .callout.primary
-                Currently waiting confirmation for: #{resource.unconfirmed_email}
-        .row
-          .small-12.column
-            = f.check_box :email_updates, label: 'Email me occasional updates on Camp and this site'
-        .row
-          .small-12.column
-            %label{for: 'user_calendar_access_token'} Calendar Access Token
-            .input-group
-              = f.text_field :calendar_access_token,
-                readonly: true,
-                placeholder: "Will be Regenerated",
-                label: false,
-                class: "input-group-field"
-              .input-group-button
-                = button_tag icon('fas', 'sync'),
-                  id: 'token-button',
-                  class: 'button'
-        - if @oauth
-          .row
-            .small-12.column
-              .callout.secondary
-                Your login is associated with your #{@oauth} account.
-        - else
-          .row
-            .small-6.column
-              = f.label :password do
-                New Password
-                %small Leave blank if no change
-              = f.password_field :password, label: false
-            .small-6.column
-              = f.password_field :password_confirmation, label: 'Confirm New Password'
-          .row
-            .small-12.column
-              = f.label :current_password do
-                Current Password
-                %small We need your current password to confirm your changes
-              = f.password_field :current_password, label: false
-        .row
-          .small-12.column
-            = f.submit 'Update', class: 'expanded button'
-    .row
-      .small-12.column.text-right
-        = link_to 'Back', :back
+      .col-sm-6
+        = f.text_field :first_name, autofocus: true
+      .col-sm-6
+        = f.text_field :last_name
+
+    = f.email_field :email
+    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+      .card.text-bg-info.mb-3
+        .card-body
+          Currently awaiting confirmation for: #{resource.unconfirmed_email}
+
+    = f.check_box :email_updates, label: 'Email me occasional site updates'
+    = f.text_field :calendar_access_token, readonly: true, placeholder: "Will be Regenerated",
+      append: button_tag(icon('fas', 'sync'), id: 'token-button', class: 'btn btn-secondary')
+
+    - if @oauth
+      .card.text-bg-light.mb-3
+        .card-body
+          Your login is associated with your #{@oauth} account.
+    - else
+      .row
+        .col-sm-6
+          = f.password_field :password, label: 'New Password', help: 'Leave blank if no change'
+        .col-sm-6
+          = f.password_field :password_confirmation, label: 'Confirm New Password'
+      = f.password_field :current_password, help: 'We need your current password to confirm your changes'
+    .d-grid.gap-2
+      = f.submit 'Update', class: 'btn btn-primary'
+  .mt-3.w-100.text-end
+    = link_to 'Back', :back
