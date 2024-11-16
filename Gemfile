@@ -41,6 +41,7 @@ group :development do
   gem 'capistrano-pending',              require: false
   gem 'capistrano-rails',                require: false
   gem 'ed25519'
+  gem 'haml_lint',                       require: false
   gem 'listen'
   gem 'rubocop',                         require: false
   gem 'rubocop-rails',                   require: false
