@@ -1,0 +1,6 @@
+exclude:
+  - 'vendor/**/*'
+
+linters:
+  LineLength:
+    max: 120
