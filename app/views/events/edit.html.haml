@@ -1,12 +1,9 @@
 = content_for :title, @event&.valid? ? @event.full_title : 'Invalid event'
-.row
-  .small-8.small-centered.column
-    .row
-      .small-12.column
-        %h1 Editing Event
-    = render 'form'
-    .row
-      .small-6.column
-        = link_to 'Show', @event
-      .small-6.column.text-right
-        = link_to 'Back', events_path
+.container
+  %h1 Editing Event
+  = render 'form'
+  .row
+    .col-sm-6
+      = link_to 'Show', @event
+    .col-sm-6.text-end
+      = link_to 'Back', events_path

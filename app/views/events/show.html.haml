@@ -1,29 +1,21 @@
 = content_for :title, @event.full_title
-.row
-  .small-8.small-centered.column
-    .callout
-      .row
-        .small-12.column
-          %h3.subheader
-            = @event.display_title
-      .row
-        .small-6.column
-          %strong From:
-          = @event.start_date
-        .small-6.column
-          %strong To:
-          = @event.end_date
-      - if @event.description.present?
-        .row
-          .small-12.column
-            .event-description
-              = @event.description
+.container
+  %h1= @event.display_title
+  .border.border-secondary-subtle.p-3
     .row
-      .small-4.column
-        - if @owner
-          = link_to 'Edit', edit_event_path(@event)
-      .small-4.column.text-center
-        - if @owner
-          = link_to 'Delete', event_path(@event), method: :delete
-      .small-4.column.text-right
-        = link_to 'Back', events_path
+      .col-sm-6
+        %strong From:
+        = @event.start_date
+      .col-sm-6
+        %strong To:
+        = @event.end_date
+    - if @event.description.present?
+      .card.mt-3.text-background-light
+        .card-body
+          = @event.description
+  .d-flex.justify-content-between.mt-3
+    - if @owner
+      = link_to 'Edit', edit_event_path(@event)
+    - if @owner
+      = link_to 'Delete', event_path(@event), method: :delete
+    = link_to 'Back', events_path
