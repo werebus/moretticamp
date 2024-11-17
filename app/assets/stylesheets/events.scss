@@ -1,5 +1,7 @@
+@use "bootstrap/scss/bootstrap-utilities" as bootstrap;
+
 #nav-links{
-  @include media-breakpoint-only(sm) {
+  @include bootstrap.media-breakpoint-only(sm) {
     text-align: center;
 
     .nav-item {

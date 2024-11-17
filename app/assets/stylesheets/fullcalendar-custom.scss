@@ -1,10 +1,14 @@
+@use "bootstrap/scss/bootstrap";
+@use "@fortawesome/fontawesome-free/scss/fontawesome" as fa;
+@use "@fortawesome/fontawesome-free/scss/solid";
+
 #calendar.fc {
   .fc-daygrid-body {
-    background: $white;
+    background: bootstrap.$white;
   }
 
   tbody tr:nth-child(even) {
-    background: $gray-200;
+    background: bootstrap.$gray-200;
   }
 
   a.fc-event.has-tip {
@@ -14,9 +18,9 @@
 
     &::after {
       @extend .fas;
-      color: $white;
-      content: fa-content($fa-var-sticky-note);
-      margin-right: calc(0.25 * $spacer);
+      color: bootstrap.$white;
+      content: fa.fa-content(fa.$fa-var-sticky-note);
+      margin-right: calc(0.25 * bootstrap.$spacer);
     }
   }
 }

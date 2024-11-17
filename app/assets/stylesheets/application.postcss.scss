@@ -1,16 +1,19 @@
-$primary: hsl(130, 100%, 20%);
-$enable-rounded: false;
-@import "bootstrap/scss/bootstrap";
+@use "bootstrap/scss/bootstrap" with (
+  $primary: hsl(130, 100%, 20%),
+  $enable-rounded: false
+);
 
 $fa-font-path: ".";
-@import "@fortawesome/fontawesome-free/scss/fontawesome";
-@import "@fortawesome/fontawesome-free/scss/solid";
-@import "@fortawesome/fontawesome-free/scss/brands";
+@use "@fortawesome/fontawesome-free/scss/fontawesome" as fa with (
+  $fa-font-path: $fa-font-path
+);
+@use "@fortawesome/fontawesome-free/scss/solid" as fas with (
+  $fa-font-path: $fa-font-path
+);
+@use "@fortawesome/fontawesome-free/scss/brands" as fab with (
+  $fa-font-path: $fa-font-path
+);
 
-@import "fullcalendar-custom";
-
-@import "global";
-@import "events";
-
-@import "font-face";
-@include font-face(danielregular, 'daniel-webfont', $asset-pipeline: false);
+@use "global" as *;
+@use "events";
+@use "fullcalendar-custom";
