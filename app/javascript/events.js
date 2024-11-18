@@ -1,4 +1,4 @@
-import { Calendar, formatDate } from '@fullcalendar/core';
+import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import bootstrap5Plugin from '@fullcalendar/bootstrap5';
 import { Tooltip } from 'bootstrap';
