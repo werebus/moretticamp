@@ -19,7 +19,7 @@
     &::after {
       @extend .fas;
       color: bootstrap.$white;
-      content: fa.fa-content(fa.$fa-var-sticky-note);
+      content: fa.fa-content(fa.$fa-var-note-sticky);
       margin-right: calc(0.25 * bootstrap.$spacer);
     }
   }

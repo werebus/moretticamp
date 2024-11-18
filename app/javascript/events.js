@@ -26,8 +26,8 @@ $(document).ready(function() {
       plugins: [ dayGridPlugin, bootstrap5Plugin ],
       themeSystem: 'bootstrap5',
       buttonIcons: {
-        prev: 'fa fa fa-chevron-left',
-        next: 'fa fa fa-chevron-right'
+        prev: 'fa fa-solid fa-chevron-left',
+        next: 'fa fa-solid fa-chevron-right'
       },
       eventSources: [
         {
