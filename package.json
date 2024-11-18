@@ -13,7 +13,7 @@
     "esbuild": "^0.24.0",
     "jquery": "^3.7.1",
     "postcss": "^8.4.49",
-    "postcss-cli": "^10.1.0",
+    "postcss-cli": "^11.0.0",
     "postcss-nesting": "^13.0.1",
     "postcss-scss": "^4.0.9",
     "run-pty": "^5.0.0",
