@@ -19,7 +19,7 @@
     = f.check_box :email_updates, label: 'Email me occasional site updates'
 
     - sync_button = capture do
-      = button_tag icon('fas', 'sync'), id: 'token-button', class: 'btn btn-secondary'
+      = button_tag icon('solid', 'arrows-rotate'), id: 'token-button', class: 'btn btn-secondary'
     = f.text_field :calendar_access_token, readonly: true, placeholder: 'Will be Regenerated', append: sync_button
 
     - if @oauth

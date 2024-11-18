@@ -2,7 +2,7 @@
   .btn-group.d-grid.mt-3
     -# rubocop:disable Rails/FindEach
     - OauthProvider.all.each do |oap|
-      = link_to oap.icon.present? ? icon('fab', oap.icon) : oap.name.first,
+      = link_to oap.icon.present? ? icon('brands', oap.icon) : oap.name.first,
                 omniauth_authorize_path(resource_name, oap.label),
                 method: :post,
                 title: "Sign in with #{oap.name}",

@@ -48,7 +48,8 @@ module ApplicationHelper
   end
 
   def icon(style, name, text = nil)
-    tag.i(nil, class: [style, "fa-#{name}"]).then do |html|
+    klass = [style, name].map { |n| "fa-#{n}" }
+    tag.i(nil, class: klass).then do |html|
       html + " #{text}".presence
     end
   end

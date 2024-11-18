@@ -10,6 +10,9 @@ $fa-font-path: ".";
 @use "@fortawesome/fontawesome-free/scss/solid" as fas with (
   $fa-font-path: $fa-font-path
 );
+@use "@fortawesome/fontawesome-free/scss/regular" as far with (
+  $fa-font-path: $fa-font-path
+);
 @use "@fortawesome/fontawesome-free/scss/brands" as fab with (
   $fa-font-path: $fa-font-path
 );
