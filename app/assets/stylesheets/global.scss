@@ -33,7 +33,7 @@ body {
     font-family: 'danielregular', 'Monotype Corsiva', 'Apple Chancery', 'ITC Zapf Chancery', 'URW Chancery L', cursive;
   }
 
-  a {
+  a, button {
     color: $tan;
     &:hover, &:focus {
       color: color.scale($tan, $lightness: -15%);

@@ -19,4 +19,4 @@
           %td= season.end_date
           %td= link_to 'Edit', edit_season_path(season)
           %td= button_to 'Destroy', season, method: :delete, class: 'btn btn-danger',
-                                            data: { confirm: 'Are you sure?' }
+                                            data: { turbo_confirm: 'Are you sure?' }
