@@ -9,7 +9,7 @@ RSpec.describe Event do
   describe EventSeasonValidator do
     context 'without a season' do
       it 'is invalid' do
-        expect(build(:event)).to be_invalid
+        expect(build(:event)).not_to be_valid
       end
 
       it 'adds errors to base' do
@@ -28,13 +28,13 @@ RSpec.describe Event do
       it 'requires events to not start before the current season' do
         event = build :event, start_date: season_start - 1.day,
                               end_date: season_start + 2.days
-        expect(event).to be_invalid
+        expect(event).not_to be_valid
       end
 
       it 'requires events to not end after the current season' do
         event = build :event, start_date: season_start + 1.day,
                               end_date: season_end + 1.day
-        expect(event).to be_invalid
+        expect(event).not_to be_valid
       end
 
       it 'allows events within the season' do

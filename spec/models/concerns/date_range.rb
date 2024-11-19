@@ -7,11 +7,11 @@ RSpec.shared_examples_for 'date_range' do
   let(:factory) { model.to_s.underscore.to_sym }
 
   it 'needs a start date' do
-    expect(build(factory, start_date: nil)).to be_invalid
+    expect(build(factory, start_date: nil)).not_to be_valid
   end
 
   it 'needs an end date' do
-    expect(build(factory, end_date: nil)).to be_invalid
+    expect(build(factory, end_date: nil)).not_to be_valid
   end
 
   context 'with an negative length' do
@@ -20,7 +20,7 @@ RSpec.shared_examples_for 'date_range' do
                      end_date: Date.new(2020, 3, 1)
     end
 
-    it('is invalid') { expect(invalid).to be_invalid }
+    it('is invalid') { expect(invalid).not_to be_valid }
 
     it 'adds an error to the end date' do
       invalid.validate

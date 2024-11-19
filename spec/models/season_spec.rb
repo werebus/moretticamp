@@ -16,7 +16,7 @@ RSpec.describe Season do
     before { create :season }
 
     it 'prohibits overlapping seasons' do
-      expect(other).to be_invalid
+      expect(other).not_to be_valid
     end
 
     it 'adds errors to base' do
