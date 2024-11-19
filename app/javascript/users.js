@@ -1,8 +1,9 @@
-import $ from 'jquery';
+window.addEventListener('turbo:load', () => {
+  const tokenButton = document.getElementById('token-button');
+  if (!tokenButton) return;
 
-$(document).ready(() =>
-  $('#token-button').click(function(event){
+  tokenButton.addEventListener('click', (event) => {
     event.preventDefault();
-    $('#user_calendar_access_token').val('');
-  })
-);
+    document.getElementById('user_calendar_access_token').value = '';
+  });
+});

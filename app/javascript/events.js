@@ -4,7 +4,7 @@ import bootstrap5Plugin from '@fullcalendar/bootstrap5';
 import { Tooltip } from 'bootstrap';
 import $ from 'jquery';
 
-$(document).ready(function() {
+window.addEventListener('turbo:load', () => {
   const caldate = function() {
     const date = Number(window.location.hash.slice(1)) ||
       $('#calendar').data('date') * 1000;
