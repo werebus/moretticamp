@@ -2,14 +2,15 @@ import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import bootstrap5Plugin from '@fullcalendar/bootstrap5';
 import { Tooltip } from 'bootstrap';
-import $ from 'jquery';
 
 window.addEventListener('turbo:load', () => {
+  const calEl = document.getElementById('calendar')
+
   const caldate = function() {
-    const date = Number(window.location.hash.slice(1)) ||
-      $('#calendar').data('date') * 1000;
+    const date = Number(window.location.hash.slice(1)) || Number(calEl.dataset.date) * 1000;
     return new Date(date);
   };
+
   const updateTitleFormat = function(cal) {
     const bsMedium = window.getComputedStyle(document.documentElement).getPropertyValue("--bs-breakpoint-md")
     if (window.matchMedia("(min-width: " + bsMedium + ")").matches) {
@@ -19,8 +20,6 @@ window.addEventListener('turbo:load', () => {
     }
   };
 
-
-  const calEl = document.getElementById('calendar')
   if(calEl) {
     const calendar = new Calendar(calEl, {
       plugins: [ dayGridPlugin, bootstrap5Plugin ],
@@ -41,8 +40,8 @@ window.addEventListener('turbo:load', () => {
       ],
       initialDate: caldate(),
       validRange: {
-        start: new Date( $('#calendar').data('start-date') * 1000),
-        end: new Date( $('#calendar').data('end-date') * 1000)
+        start: new Date( Number(calEl.dataset.startDate) * 1000),
+        end: new Date( Number(calEl.dataset.endDate) * 1000)
       },
       views: {
         dayGridMonth: {
