@@ -11,8 +11,8 @@
     = favicon_link_tag 'apple-touch-icon.png', rel: 'apple-touch-icon', type: 'image/png'
     %link{ rel: 'manifest', href: pwa_manifest_path(format: :json) }
 
-    = stylesheet_link_tag 'application'
-    = javascript_include_tag 'application', nonce: true, type: 'module'
+    = stylesheet_link_tag 'application', data: { turbolinks_track: 'reload' }
+    = javascript_include_tag 'application', nonce: true, type: 'module', data: { turbolinks_track: 'reload' }
 
     = csrf_meta_tags
     = csp_meta_tag
@@ -27,7 +27,7 @@
           %h2.sr-only#topnav Account Actions
           %ul.navbar-nav{ aria: { labeledby: 'topnav' } }
             %li.nav-item= link_to current_user.full_name, edit_user_registration_path, class: 'nav-link'
-            %li.nav-item= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-link'
+            %li.nav-item= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-link'
       .row.d-flex.justify-content-center
         .col-md-8
           = display_flash_messages

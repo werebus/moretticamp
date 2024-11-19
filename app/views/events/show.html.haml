@@ -15,5 +15,5 @@
           = @event.description
   .d-flex.justify-content-between.mt-3
     = link_to 'Edit', edit_event_path(@event) if @owner.present?
-    = link_to 'Delete', event_path(@event), method: :delete if @owner.present?
+    = link_to 'Delete', event_path(@event), data: { turbo_method: :delete } if @owner.present?
     = link_to 'Back', events_path

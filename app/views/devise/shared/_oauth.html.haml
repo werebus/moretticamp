@@ -1,0 +1,10 @@
+- if devise_mapping.omniauthable?
+  .btn-group.d-grid.row-gap-2.d-md-flex.mt-3
+    -# rubocop:disable Rails/FindEach
+    - OauthProvider.all.each do |oap|
+      = button_to oap.icon.present? ? icon('brands', oap.icon) : oap.name.first,
+                  omniauth_authorize_path(resource_name, oap.label),
+                  title: "Sign in with #{oap.name}",
+                  form: { class: 'flex-fill', data: { turbo: false } },
+                  class: 'btn btn-primary w-100'
+    -# rubocop:enable Rails/FindEach

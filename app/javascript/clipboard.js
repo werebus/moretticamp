@@ -2,7 +2,7 @@ import { Tooltip } from 'bootstrap';
 import Clipboard from 'clipboard/src/clipboard';
 import $ from 'jquery';
 
-$(function() {
+window.addEventListener('turbo:load', () => {
   const clipboard_selector = 'button.clip';
   const clipboard_button = document.querySelector(clipboard_selector);
   const clipboard = new Clipboard(clipboard_selector);
