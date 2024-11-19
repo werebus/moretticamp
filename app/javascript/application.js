@@ -1,4 +1,4 @@
-import { Alert } from 'bootstrap';
+import { default as Alert } from 'bootstrap/js/src/alert.js';
 import "@hotwired/turbo-rails"
 
 import './clipboard';

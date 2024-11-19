@@ -22,6 +22,6 @@
   },
   "scripts": {
     "build:css": "postcss ./app/assets/stylesheets/application.postcss.scss -o ./app/assets/builds/application.css",
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets --loader:.css=empty"
+    "build": "esbuild app/javascript/application.js --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets --loader:.css=empty"
   }
 }

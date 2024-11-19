@@ -1,7 +1,7 @@
 import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import bootstrap5Plugin from '@fullcalendar/bootstrap5';
-import { Tooltip } from 'bootstrap';
+import { default as Tooltip } from 'bootstrap/js/src/tooltip.js';
 
 window.addEventListener('turbo:load', () => {
   const calEl = document.getElementById('calendar')
