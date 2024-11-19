@@ -1,4 +1,4 @@
-import { default as Tooltip } from 'bootstrap/js/src/tooltip.js';
+import { Tooltip } from './bootstrap';
 
 window.addEventListener('turbo:load', () => {
   const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
