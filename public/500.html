@@ -5,98 +5,143 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>We're sorry, but something went wrong (500)</title>
   <style>
-    html {
-      min-height: 100vh;
-      font-size: 100%;
+    *, *::before, *::after {
       box-sizing: border-box;
     }
+
     body {
       margin: 0;
-      padding: 0;
-      font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
-      font-weight: normal;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans",
+                   "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+                   "Segoe UI Symbol", "Noto Color Emoji";
+      font-size: 1rem;
+      font-weight: 400;
       line-height: 1.5;
-      color: #0a0a0a;
-      background: #fefefe;
+      color: #212529;
+      text-align: left;
+      background-color: #fff;
+      -webkit-text-size-adjust: 100%;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
     }
-    #pusher {
-      float: left;
-      height: 50%;
-      height: 50vh;
-      margin-bottom: -200px;
+
+    #top-spacer, #bottom-spacer {
+      flex-grow: 1;
     }
-    @media screen and (max-width: 39.9375em) {
-      #pusher {
-        display: none !important;
+
+    #top-spacer {
+      display: none;
+    }
+
+    #content {
+      flex 0 0 100%;
+      max-width: 100%;
+    }
+
+    @media (min-width: 768px) {
+      #top-spacer {
+        display: block;
+      }
+
+      .left-right-spacer {
+        flex: 0 0 25%;
+        max-width: 25%;
+      }
+
+      #content {
+        flex 0 0 50%;
+        max-width: 50%;
       }
     }
-    .dialog {
-      clear: both;
-      position: relative;
-    }
-    .row {
-      max-width: 75rem;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .small-8 {
-      width: 66.66667%;
-    }
-    .small-centered {
-      float: none;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .columns {
-      padding-left: 0.9375rem;
-      padding-right: 0.9375rem;
-    }
-    .callout {
-      margin: 0 0 1rem 0;
-      padding: 1rem;
-      border: 1px solid rgba(10, 10, 10, 0.25);
-      border-radius: 0;
-      position: relative;
-      color: #0a0a0a;
-      background-color: white;
-    }
+
     h1 {
-      font-size: 1.5rem;
-      font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
-      font-weight: normal;
-      font-style: normal;
-      color: inherit;
-      text-rendering: optimizeLegibility;
       margin-top: 0;
       margin-bottom: 0.5rem;
-      line-height: 1.4;
+      font-weight: 500;
+      line-height: 1.2;
+      color: inherit;
+      font-size: calc(1.3rem + 0.6vw);
     }
-    a, a:visited {
-      color: #006611;
-      text-decoration: none;
-      line-height: inherit;
-      cursor: pointer;
+
+    @media (min-width: 1200px) {
+      h1, {
+        font-size: 1.75rem;
+      }
     }
-    a:hover, a:focus {
-      color: #00580f;
+
+    p {
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+
+    a {
+      color: hsl(120, 100%, 20%);
       text-decoration: underline;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 0;
+      margin-right: -0.75rem;
+      margin-left: -0.75rem;
+      width: 100%;
+    }
+
+    .row > * {
+      flex-shrink: 0;
+      width: 100%;
+      max-width: 100%;
+      padding-right: 0.75rem;
+      padding-left: 0.75rem;
+      margin-top: 0;
+    }
+
+    .card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      word-wrap: break-word;
+      border: 1px solid #dee2e6;
+    }
+
+    .card-body {
+      flex: 1 1 auto;
+      padding: 1rem;
+    }
+
+    .card-header {
+      padding: 0.5rem 1rem;
+      margin-bottom: 0;
+      background-color: rgba(33, 37, 41, 0.03);
+      border-bottom: 1px solid #dee2e6;
     }
   </style>
 </head>
 
 <body>
   <!-- This file lives in public/500.html -->
-  <div id="pusher"></div>
-  <div class="row dialog">
-    <div class="small-8 small-centered columns">
-      <div class="callout">
-        <h1>We're sorry, but something went wrong.</h1>
-        <p>If you continue to receive this error, please
-        <a href="https://github.com/werebus/moretticamp/issues/new">
-        open an issue</a> or contact <a href="mailto:matt@moretti.camp">
-        matt@moretti.camp</a> for help.</p>
+  <div id="top-spacer"></div>
+  <div class="row">
+    <div class="left-right-spacer"></div>
+    <div id="content">
+      <div class="card">
+        <div class="card-header">500</div>
+        <div class="card-body">
+          <h1>We're sorry, but something went wrong.</h1>
+          <p>
+            If you continue to receive this error, please
+            <a href="https://github.com/werebus/moretticamp/issues/new">open an issue</a> or contact
+            <a href="mailto:matt@moretti.camp">matt@moretti.camp</a> for help.
+          </p>
+        </div>
       </div>
     </div>
   </div>
+  <div id="bottom-spacer"></div>
 </body>
 </html>
