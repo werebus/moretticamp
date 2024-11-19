@@ -23,9 +23,9 @@ RSpec.describe 'EventsController#index' do
   context 'without a season' do
     it { is_expected.to have_content('Season Not Open') }
 
-    it { is_expected.not_to have_css('#calendar') }
+    it { is_expected.to have_no_css('#calendar') }
 
-    it { is_expected.not_to have_link('New Event') }
+    it { is_expected.to have_no_link('New Event') }
   end
 
   context 'with a season' do
@@ -42,9 +42,9 @@ RSpec.describe 'EventsController#index' do
   end
 
   context 'when then user is not an admin' do
-    it { is_expected.not_to have_link('Manage Seasons') }
+    it { is_expected.to have_no_link('Manage Seasons') }
 
-    it { is_expected.not_to have_link('Send Notification') }
+    it { is_expected.to have_no_link('Send Notification') }
   end
 
   context 'when the user is an admin' do
@@ -56,7 +56,7 @@ RSpec.describe 'EventsController#index' do
   end
 
   context 'without invitations' do
-    it { is_expected.not_to have_link 'Invite New User' }
+    it { is_expected.to have_no_link 'Invite New User' }
   end
 
   context 'with invitations' do

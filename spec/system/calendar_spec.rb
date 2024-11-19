@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'EventsController#index - calendar', js: true do
+RSpec.describe 'EventsController#index - calendar', :js do
   let!(:season) { create :season, :now }
   let!(:event) { create :event, :now, title: 'LADYBUGS' }
 

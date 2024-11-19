@@ -18,7 +18,7 @@ RSpec.describe NotificationSenderJob do
       expect { call }.to have_enqueued_job.on_queue('default')
     end
 
-    context 'when performing the job', perform_enqueued: true do
+    context 'when performing the job', :perform_enqueued do
       it 'wraps the body in a Kramdown Document' do
         allow(Kramdown::Document).to receive(:new).and_call_original
         call
