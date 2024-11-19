@@ -317,7 +317,7 @@ GEM
     parser (3.3.6.0)
       ast (~> 2.4.1)
       racc
-    pdf-core (0.9.0)
+    pdf-core (0.10.0)
     pdf-inspector (1.3.0)
       pdf-reader (>= 1.0, < 3.0.a)
     pdf-reader (2.11.0)
@@ -327,9 +327,10 @@ GEM
       ruby-rc4
       ttfunk
     pg (1.5.9)
-    prawn (2.4.0)
-      pdf-core (~> 0.9.0)
-      ttfunk (~> 1.7)
+    prawn (2.5.0)
+      matrix (~> 0.4)
+      pdf-core (~> 0.10.0)
+      ttfunk (~> 1.8)
     prawn-table (0.2.2)
       prawn (>= 1.3.0, < 3.0.0)
     propshaft (1.1.0)
@@ -499,7 +500,8 @@ GEM
     tilt (2.4.0)
     timecop (0.9.10)
     timeout (0.4.1)
-    ttfunk (1.7.0)
+    ttfunk (1.8.0)
+      bigdecimal (~> 3.1)
     turbo-rails (2.0.11)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
@@ -550,7 +552,6 @@ DEPENDENCIES
   jsbundling-rails
   kramdown
   listen
-  matrix
   omniauth
   omniauth-google-oauth2
   omniauth-rails_csrf_protection
