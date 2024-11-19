@@ -1,4 +1,4 @@
-import * as bootstrap from 'bootstrap';
+import { Alert } from 'bootstrap';
 import "@hotwired/turbo-rails"
 
 import './clipboard';
