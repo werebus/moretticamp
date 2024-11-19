@@ -550,7 +550,6 @@ DEPENDENCIES
   jsbundling-rails
   kramdown
   listen
-  matrix
   omniauth
   omniauth-google-oauth2
   omniauth-rails_csrf_protection
