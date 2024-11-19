@@ -24,7 +24,7 @@ gem 'prawn-table'
 gem 'propshaft'
 gem 'puma'
 gem 'rack-attack'
-gem 'rails', '~> 7.1.3'
+gem 'rails', '~> 7.2.2'
 gem 'turbo-rails'
 gem 'twilio-ruby', '~> 7.3'
 
