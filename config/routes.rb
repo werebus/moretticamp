@@ -35,5 +35,5 @@ Rails.application.routes.draw do
     get "/#{action}", to: "pages##{action}", as: "#{action}_page"
   end
 
-  get '/manifest.json', to: 'rails/pwa#manifest', as: 'pwa_manifest'
+  get '/manifest', to: 'rails/pwa#manifest', as: 'pwa_manifest'
 end
