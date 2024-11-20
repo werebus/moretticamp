@@ -65,6 +65,5 @@ group :test do
 end
 
 group :production do
-  gem 'resque'
   gem 'solid_queue'
 end

@@ -23,7 +23,6 @@ append :linked_dirs,
 set :passenger_restart_with_touch, true
 set :solid_queue_systemd_unit_name, 'solid_queue.service'
 
-after 'deploy:published', 'resque:restart'
 after 'deploy:starting', 'solid_queue:quiet'
 after 'deploy:updated', 'solid_queue:stop'
 after 'deploy:published', 'solid_queue:start'
