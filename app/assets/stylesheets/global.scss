@@ -1,7 +1,4 @@
-@use "bootstrap/scss/bootstrap-utilities" as bootstrap with (
-  $primary: hsl(130, 100%, 20%),
-  $enable-rounded: false
-);
+@use "bootstrap";
 @use "sass:color";
 
 $tan: #f0dfd0;

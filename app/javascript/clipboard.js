@@ -1,4 +1,4 @@
-import { Tooltip } from 'bootstrap';
+import { Tooltip } from './bootstrap';
 import Clipboard from 'clipboard/src/clipboard';
 
 window.addEventListener('turbo:load', () => {

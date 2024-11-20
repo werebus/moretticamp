@@ -1,4 +1,4 @@
-@use "bootstrap/scss/bootstrap" with (
+@use "bootstrap" with (
   $primary: hsl(130, 100%, 20%),
   $enable-rounded: false
 );
