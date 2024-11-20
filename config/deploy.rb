@@ -20,7 +20,6 @@ append :linked_dirs,
        'vendor/bundle',
        'public/system'
 
-set :assets_prefix, 'packs'
 set :passenger_restart_with_touch, true
 
 after 'deploy:published', 'resque:restart'
