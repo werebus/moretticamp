@@ -25,7 +25,6 @@ gem 'propshaft'
 gem 'puma'
 gem 'rack-attack'
 gem 'rails', '~> 7.2.2'
-gem 'solid_queue'
 gem 'turbo-rails'
 gem 'twilio-ruby', '~> 7.3'
 
@@ -67,4 +66,5 @@ end
 
 group :production do
   gem 'resque'
+  gem 'solid_queue'
 end
