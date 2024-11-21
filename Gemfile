@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 ruby file: '.ruby-version'
 
-gem 'aws-sdk-rails', '~> 4.2'
+gem 'aws-actionmailer-ses'
 gem 'bootsnap'
 gem 'bootstrap_form', '~> 5.4'
 gem 'cssbundling-rails'
