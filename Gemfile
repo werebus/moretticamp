@@ -28,7 +28,7 @@ gem 'rack-attack'
 gem 'rails', '~> 7.2.2'
 # TODO: Remove when Rails 7.2.3 is released
 # see rails/rails#53850
-gem 'securerandom', '~> 0.3.2'
+gem 'securerandom', '~> 0.4.0'
 gem 'turbo-rails'
 gem 'twilio-ruby', '~> 7.3'
 
