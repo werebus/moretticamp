@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 ruby file: '.ruby-version'
 
 gem 'aws-actionmailer-ses'
+gem 'aws-sdk-rails', '~> 5.0'
 gem 'bootsnap'
 gem 'bootstrap_form', '~> 5.4'
 gem 'cssbundling-rails'
