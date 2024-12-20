@@ -542,7 +542,6 @@ DEPENDENCIES
   rubocop-rails
   rubocop-rspec
   rubocop-rspec_rails
-  securerandom (~> 0.4.1)
   selenium-webdriver
   simplecov
   solid_queue
