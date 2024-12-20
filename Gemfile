@@ -27,7 +27,7 @@ gem 'puma'
 gem 'rack-attack'
 gem 'rails', '~> 7.2.2'
 gem 'turbo-rails'
-gem 'twilio-ruby', '~> 7.3'
+gem 'twilio-ruby', '~> 7.4'
 
 group :development, :test do
   gem 'pry'
