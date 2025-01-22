@@ -6,6 +6,7 @@ module Users
 
     def edit
       session[:invitation_token] = params[:invitation_token]
+      resource.email_updates = true
       super
     end
 
