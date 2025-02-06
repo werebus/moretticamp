@@ -8,18 +8,6 @@ class EventsController < ApplicationController
 
   skip_before_action :authenticate_user!, only: :feed
 
-  def index
-    @season = Season.current_or_next
-    @events = EventsService.find(params)
-
-    respond_to do |format|
-      format.html { html_index }
-      format.json
-      format.ics { ics_index }
-      format.pdf { pdf_index }
-    end
-  end
-
   def show
     @owner = current_user.admin || @event.user == current_user
   end
