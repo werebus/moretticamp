@@ -1,18 +1,29 @@
 # frozen_string_literal: true
 
 class VoiceController < ApplicationController
-  include Webhookable
+  before_action :require_valid_source
+  skip_before_action :verify_authenticity_token, :authenticate_user!
 
   def events
     @event = Event.where.not(id: exclude).next_after(Time.zone.today)
-    twiml_response = event_twiml
 
     session[:exclude] = exclude
     session[:event] = @event.try :id
-    render_twiml twiml_response
+    render xml: event_twiml.to_xml
   end
 
   private
+
+  def require_valid_source
+    return if Rails.env.development? || valid_call?
+
+    render xml: Twilio::TwiML::VoiceResponse.new.reject.to_xml
+  end
+
+  def valid_call?
+    params.permit(%i[AccountSid From]).to_h.values ==
+      [Rails.application.credentials.twilio_account_sid, Rails.application.credentials.camp_phone_number]
+  end
 
   def exclude
     @exclude ||= session[:exclude] || [0]
