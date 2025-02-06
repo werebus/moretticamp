@@ -6,7 +6,7 @@ require_relative 'concerns/webhookable'
 RSpec.describe VoiceController do
   include_context 'with twilio'
 
-  let(:webhook_path) { voice_events_path }
+  let(:webhook_path) { voice_events_path(format: :xml) }
   let(:first_speech) { response_document.css('Say').first.text }
   let!(:season) { create :season }
   let(:says) { response_document.css('Say') }

@@ -13,10 +13,8 @@ Rails.application.routes.draw do
              }
 
   as :user do
-    get 'users/edit' => 'users/registrations#edit',
-        as: 'edit_user_registration'
-    put 'users' => 'users/registrations#update',
-        as: 'user_registration'
+    get 'users/edit' => 'users/registrations#edit', as: 'edit_user_registration'
+    put 'users' => 'users/registrations#update', as: 'user_registration'
   end
 
   authenticated :user do
@@ -28,7 +26,7 @@ Rails.application.routes.draw do
   get 'feed/:token' => 'events#feed', as: 'events_feed'
 
   # Twilio route
-  post 'voice/events' => 'voice#events'
+  post 'voice/events' => 'voice#events', defaults: { format: 'xml' }
 
   # Static pages
   PagesController.action_methods.each do |action|
