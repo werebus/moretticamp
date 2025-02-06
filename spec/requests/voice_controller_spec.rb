@@ -1,15 +1,22 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-require_relative 'concerns/webhookable'
+require 'nokogiri'
 
 RSpec.describe VoiceController do
-  include_context 'with twilio'
+  def response_content(css)
+    Nokogiri::XML(response.body).css(css)
+  end
 
-  let(:webhook_path) { voice_events_path }
-  let(:first_speech) { response_document.css('Say').first.text }
+  let :valid_call_params do
+    { AccountSid: 'AC0123456789abcdef0123456789abcdef',
+      From: '+15005550006' }
+  end
+
+  let(:webhook_path) { voice_events_path(format: :xml) }
+  let(:params) { valid_call_params }
+  let(:first_speech) { response_content('Say').first.text }
   let!(:season) { create :season }
-  let(:says) { response_document.css('Say') }
 
   around do |example|
     date = Time.zone.now.to_date.change(month: 4, day: 15)
@@ -17,16 +24,50 @@ RSpec.describe VoiceController do
   end
 
   before do
+    Rails.application.credentials.twilio_account_sid = valid_call_params[:AccountSid]
+    Rails.application.credentials.camp_phone_number = valid_call_params[:From]
     FactoryBot.reload
     create_list :event, 5, :sequenced
-    post webhook_path, params: valid_call_params
+    post webhook_path, params:
   end
 
-  it_behaves_like 'a webhookable controller'
+  it 'allows unauthenticated access' do
+    expect(response).to have_http_status(:ok)
+  end
+
+  it 'sets the content type to XML' do
+    expect(response.media_type).to eq 'application/xml'
+  end
+
+  it 'has a root <Response> element' do
+    expect(response_content('Response')).to be_present
+  end
+
+  it 'allows calls from the configured number' do
+    expect(response_content('Response > *').first.name).not_to eq 'Reject'
+  end
+
+  context 'when the call is from another number' do
+    let(:params) { valid_call_params.merge(From: '+15005550001') }
+
+    it 'rejects calls' do
+      expect(response_content('Response > *').first.name).to eq 'Reject'
+    end
+  end
+
+  context 'when the call is from another Twillio account' do
+    let(:params) do
+      valid_call_params.merge(AccountSid: 'ACbad555bad555bad555bad555bad555bd')
+    end
+
+    it 'rejects calls' do
+      expect(response_content('Response > *').first.name).to eq 'Reject'
+    end
+  end
 
   { /repeat/ => '1', /next event/ => '2', /start over/ => '3' }.each do |item, n|
     it "has a menu item for #{item}" do
-      item = says.find { |say| say.text =~ item && say.text =~ /press #{n}/ }
+      item = response_content('Say').find { |say| say.text =~ item && say.text =~ /press #{n}/ }
       expect(item).to be_present
     end
   end
@@ -69,12 +110,12 @@ RSpec.describe VoiceController do
   end
 
   it 'says goodbye' do
-    goodbye = response_document.css('Say').select { |tag| tag.text =~ /Goodbye/ }
+    goodbye = response_content('Say').select { |tag| tag.text =~ /Goodbye/ }
     expect(goodbye).to be_present
   end
 
   it 'hangs up' do
-    hangup = response_document.css('Hangup')
+    hangup = response_content('Hangup')
     expect(hangup).to be_present
   end
 end

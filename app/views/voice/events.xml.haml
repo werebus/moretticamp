@@ -1,0 +1,14 @@
+!!! XML
+%Response
+  - if pressed?(nil, 1, 2, 3)
+    %Gather{ numDigits: 1 }
+      - if @event.present?
+        %Say{ voice: 'alice' }= voice_event_description(@event, first: exclude.length <= 1)
+        %Pause
+        %Say{ voice: 'alice' } To repeat that, press 1.
+        %Say{ voice: 'alice' } To hear the next event, press 2.
+      - else
+        %Say{ voice: 'alice' } There are no further events scheduled.
+      %Say{ voice: 'alice' } To start over, press 3.
+  %Say{ voice: 'alice' } Goodbye!
+  %Hangup
