@@ -5,7 +5,7 @@ class UserMailer < ApplicationMailer
     @user = user
     @reason = invited_reason || oauth_reason
 
-    mail to: user.email, subject: 'Password reset not performed'
+    mail to: user.email
   end
 
   private

@@ -22,10 +22,6 @@ AllCops:
     - node_modules/**/*
   NewCops: enable
 
-Layout/ExtraSpacing:
-  Exclude:
-    - Gemfile
-
 Metrics/AbcSize:
   CountRepeatedAttributes: false
 
@@ -35,9 +31,6 @@ Metrics/MethodLength:
     - array
     - hash
     - heredoc
-
-Rails/I18nLocaleTexts:
-  Enabled: false
 
 RSpec/DescribeClass:
   Exclude:

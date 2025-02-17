@@ -31,7 +31,7 @@ module EventsIndex
                 filename: 'camp_calendar.pdf',
                 type: 'application/pdf'
     else
-      redirect_to events_url, alert: 'No calendar to print.'
+      redirect_to events_url, alert: t('.no_season')
     end
   end
 end

@@ -12,9 +12,7 @@ class User < ApplicationRecord
 
   before_save :regenerate_calendar_access_token, if: -> { calendar_access_token.blank? }
 
-  validates :first_name,
-            presence: { message: "can't be blank if Last Name is blank" },
-            if: -> { last_name.blank? }
+  validates :first_name, presence: true, if: -> { last_name.blank? }
   validates :calendar_access_token, uniqueness: { case_sensitive: true }
 
   def self.find_for_oauth(auth)

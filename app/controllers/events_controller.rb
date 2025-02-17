@@ -24,9 +24,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html do
-          redirect_to @event, notice: 'Event was successfully created.'
-        end
+        format.html { redirect_to @event, notice: t('.success') }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }
@@ -40,9 +38,7 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
-        format.html do
-          redirect_to @event, notice: 'Event was successfully updated.'
-        end
+        format.html { redirect_to @event, notice: t('.success') }
         format.json { render :show, status: :ok, location: @event }
       else
         format.html { render :edit }
@@ -56,9 +52,7 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
     respond_to do |format|
-      format.html do
-        redirect_to events_url, notice: 'Event was successfully destroyed.'
-      end
+      format.html { redirect_to events_url, notice: t('.success') }
       format.json { head :no_content }
     end
   end
