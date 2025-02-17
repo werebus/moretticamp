@@ -20,8 +20,6 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    @event.user = current_user unless current_user.admin
-
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: t('.success') }
@@ -73,7 +71,9 @@ class EventsController < ApplicationController
 
   def event_params
     permitted = %i[id start_date end_date title description user_id]
-    params.require(:event).permit(permitted)
+    params.require(:event).permit(permitted).tap do |p|
+      p[:user_id] = current_user.id unless current_user.admin
+    end
   end
 
   def valid_token?(token)
