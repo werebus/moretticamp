@@ -22,16 +22,6 @@ AllCops:
     - node_modules/**/*
   NewCops: enable
 
-Metrics/AbcSize:
-  CountRepeatedAttributes: false
-
-Metrics/MethodLength:
-  Max: 15
-  CountAsOne:
-    - array
-    - hash
-    - heredoc
-
 RSpec/DescribeClass:
   Exclude:
     - spec/{requests,system}/**/*
