@@ -2,7 +2,7 @@
 
 class EventSeasonValidator < ActiveModel::Validator
   def validate(event)
-    return if event.start_date.blank? || event.end_date.blank?
+    return if event.start_date.blank? || event.end_date.blank? || event.date_range.count.zero?
 
     no_season(event) and return if season.blank?
 
