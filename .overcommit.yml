@@ -1,0 +1,19 @@
+PreCommit:
+  ForbiddenBranches:
+    enabled: true
+    branch_patterns: ["master", "main"]
+  HamlLint:
+    enabled: true
+    on_warn: fail
+    required_executable: bundle
+    command: ["bundle", "exec", "haml-lint"]
+  RuboCop:
+    enabled: true
+    on_warn: fail
+    required_executable: bundle
+    command: ["bundle", "exec", "rubocop"]
+PrePush:
+  Brakeman:
+    enabled: true
+    required_executable: bundle
+    command: ["bundle", "exec", "brakeman", "--no-pager"]

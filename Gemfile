@@ -44,6 +44,7 @@ group :development do
   gem 'ed25519'
   gem 'haml_lint', require: false
   gem 'listen'
+  gem 'overcommit', require: false
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
