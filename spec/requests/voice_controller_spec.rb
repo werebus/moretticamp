@@ -110,7 +110,7 @@ RSpec.describe VoiceController do
   end
 
   it 'says goodbye' do
-    goodbye = response_content('Say').select { |tag| tag.text =~ /Goodbye/ }
+    goodbye = response_content('Say').select { |tag| tag.text.include? 'Goodbye' }
     expect(goodbye).to be_present
   end
 
