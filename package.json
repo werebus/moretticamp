@@ -18,7 +18,7 @@
     "postcss-nesting": "^13.0.1",
     "postcss-scss": "^4.0.9",
     "run-pty": "^5.0.0",
-    "sass": "^1.85.1"
+    "sass": "^1.86.0"
   },
   "scripts": {
     "build:css": "postcss ./app/assets/stylesheets/application.postcss.scss -o ./app/assets/builds/application.css",
