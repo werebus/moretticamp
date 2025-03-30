@@ -6,7 +6,7 @@ require_relative 'concerns/date_range'
 RSpec.describe Season do
   it_behaves_like 'date_range'
 
-  describe SeasonValidator do
+  describe 'validation' do
     let(:other) do
       start_date = Time.zone.now.change(month: 3).to_date
       end_date = Time.zone.now.change(month: 10).to_date
