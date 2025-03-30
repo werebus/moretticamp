@@ -49,6 +49,10 @@ class User < ApplicationRecord
     invitation_limit.present? && invitation_limit.positive?
   end
 
+  def lifetime_invitation_count
+    User.where(invited_by: self).count + (invitation_limit || 0)
+  end
+
   def provider_name
     OauthProvider[provider]&.name
   end

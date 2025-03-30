@@ -22,6 +22,9 @@
             %li.nav-item
               = link_to new_notification_path, class: 'nav-link' do
                 = icon 'solid', 'envelope-open', 'Send Notification'
+            %li.nav-item
+              = link_to to_grant_invitations_path, class: 'nav-link' do
+                = icon 'solid', 'ticket', 'Grant Invitations'
 
       .mb-4
         %label.form-label{ for: 'feed-url-field' }

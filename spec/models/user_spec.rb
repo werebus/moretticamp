@@ -3,6 +3,32 @@
 require 'rails_helper'
 
 RSpec.describe User do
+  describe '.active' do
+    subject(:call) { described_class.active }
+
+    let!(:user) { create :user }
+
+    before { create :season, :now }
+
+    it 'excludes users with no events' do
+      expect(call).to be_empty
+    end
+
+    it 'excludes users with events older than 5 years' do
+      Timecop.freeze(6.years.ago) do
+        create :season, :now
+        create :event, :now, user: user
+      end
+      expect(call).to be_empty
+    end
+
+    it 'excludes users who have not accepted an invitation' do
+      invited_user = create :user, :invited
+      create :event, :now, user: invited_user
+      expect(call).to be_empty
+    end
+  end
+
   describe '.find_for_oauth' do
     let!(:user) { create :user, :oauth }
     let(:auth) { Hashie::Mash.new(provider: 'test', uid: 'user@test.local') }
@@ -69,6 +95,16 @@ RSpec.describe User do
       user = create :user, invitation_limit: 2
       expect(user.invitations?).to be true
     end
+  end
+
+  describe '#lifetime_invitation_count' do
+    subject(:call) { user.lifetime_invitation_count }
+
+    let(:user) { create :user, invitation_limit: 2 }
+
+    before { create_list :user, 3, invited_by: user }
+
+    it { is_expected.to eq(5) }
   end
 
   describe '#provider_name' do
