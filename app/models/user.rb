@@ -15,16 +15,22 @@ class User < ApplicationRecord
   validates :first_name, presence: true, if: -> { last_name.blank? }
   validates :calendar_access_token, uniqueness: { case_sensitive: true }
 
-  def self.find_for_oauth(auth)
-    find_by(provider: auth.provider, uid: auth.uid)
-  end
+  class << self
+    def active
+      invitation_accepted.joins(:events).where(events: { start_date: (5.years.ago..) }).distinct
+    end
 
-  def self.to_notify(override: false)
-    override ? all : where(email_updates: true)
+    def find_for_oauth(auth)
+      find_by(provider: auth.provider, uid: auth.uid)
+    end
+
+    def to_notify(override: false)
+      override ? all : where(email_updates: true)
+    end
   end
 
   def full_name
-    "#{first_name} #{last_name}"
+    [first_name, last_name].join(' ').strip
   end
 
   def invitation_limit
