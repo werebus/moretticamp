@@ -1,0 +1,18 @@
+= content_for :title, 'Grant Invitations'
+.container
+  %h1 Grant Invitations
+  .card.mb-3
+    .card-body
+      %p
+        The following active users have not yet been granted invitations and will be
+        granted their invitations upon submission of the form below.
+      %ul
+        - @users.each do |user|
+          %li= user.full_name
+  = bootstrap_form_with model: @invitation_granter, url: grant_invitations_path,
+                        local: true, class: 'border border-secondary-subtle p-3' do |f|
+    - @users.each_with_index do |user, i|
+      = f.hidden_field :user_ids, id: "invitation_granter_user_ids_#{i}", multiple: true, value: user.id
+    = f.number_field :quantity, required: true, min: 1
+    .d-grid.gap-2
+      = f.submit 'Grant', class: 'btn btn-primary'

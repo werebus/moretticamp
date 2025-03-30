@@ -14,6 +14,12 @@ Rails.application.routes.draw do
   as :user do
     get 'users/edit' => 'users/registrations#edit', as: 'edit_user_registration'
     put 'users' => 'users/registrations#update', as: 'user_registration'
+    as :invitation do
+      devise_scope :user do
+        get 'users/invitation/grant' => 'users/invitations#to_grant', as: 'to_grant_invitations'
+        post 'users/invitation/grant' => 'users/invitations#grant', as: 'grant_invitations'
+      end
+    end
   end
 
   authenticated :user do

@@ -29,3 +29,9 @@ en:
   user_mailer:
     no_reset:
       subject: "Password Reset not performed"
+  users:
+    invitations:
+      grant:
+        success:
+          one: "Granted %{quantity} invitations to one user."
+          other: "Granted %{quantity} invitations each to %{count} users."

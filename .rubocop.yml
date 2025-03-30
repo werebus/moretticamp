@@ -21,12 +21,16 @@ AllCops:
     - node_modules/**/*
   NewCops: enable
 
+FactoryBot/ConsistentParenthesesStyle:
+  EnforcedStyle: omit_parentheses
+
+Metrics/BlockLength:
+  AllowedMethods:
+    - draw
+
 RSpec/DescribeClass:
   Exclude:
     - spec/{requests,system}/**/*
-
-FactoryBot/ConsistentParenthesesStyle:
-  EnforcedStyle: omit_parentheses
 
 RSpec/NestedGroups:
   Max: 4
