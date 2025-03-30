@@ -20,6 +20,14 @@ class User < ApplicationRecord
       invitation_accepted.joins(:events).where(events: { start_date: (5.years.ago..) }).distinct
     end
 
+    # :nocov:
+    def dev_login_options
+      order(:first_name, :last_name).group_by { |u| u.admin? ? 'Admins' : 'Non-Admins' }.transform_values do |users|
+        users.map { |u| [u.full_name, u.id] }
+      end
+    end
+    # :nocov:
+
     def find_for_oauth(auth)
       find_by(provider: auth.provider, uid: auth.uid)
     end
@@ -28,14 +36,6 @@ class User < ApplicationRecord
       override ? all : where(email_updates: true)
     end
   end
-
-  # :nocov:
-  def self.dev_login_options
-    order(:first_name, :last_name).group_by { |u| u.admin? ? 'Admins' : 'Non-Admins' }.transform_values do |users|
-      users.map { |u| [u.full_name, u.id] }
-    end
-  end
-  # :nocov:
 
   def full_name
     [first_name, last_name].join(' ').strip
