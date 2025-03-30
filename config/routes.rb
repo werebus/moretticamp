@@ -5,12 +5,11 @@ Rails.application.routes.draw do
   resources :seasons
   resources :notifications, only: %i[new create]
 
-  devise_for :users,
-             skip: [:registrations],
-             controllers: {
-               omniauth_callbacks: 'users/omniauth_callbacks',
-               invitations: 'users/invitations'
-             }
+  devise_for :users, skip: [:registrations],
+                     controllers: { omniauth_callbacks: 'users/omniauth_callbacks',
+                                    invitations: 'users/invitations' }
+
+  post '/dev_login', to: 'dev_login#create', as: 'dev_login' if Rails.env.development?
 
   as :user do
     get 'users/edit' => 'users/registrations#edit', as: 'edit_user_registration'

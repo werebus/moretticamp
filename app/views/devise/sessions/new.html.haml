@@ -5,3 +5,9 @@
   .d-grid.gap-2
     = f.submit 'Sign In', class: 'btn btn-primary'
 = render partial: 'devise/shared/oauth'
+- if Rails.env.development?
+  %hr.my-4
+  = bootstrap_form_with url: dev_login_path, local: true do |f|
+    = f.select :id, User.dev_login_options, label: 'Developer Login'
+    .d-grid.gap-2
+      = f.submit 'Dev Login', class: 'btn btn-secondary'
