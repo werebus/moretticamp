@@ -1,7 +1,7 @@
 = content_for :title, @event.full_title
 .container
   %h1= @event.display_title
-  .border.border-secondary-subtle.p-3
+  .card.p-3
     .row
       .col-sm-6
         %strong From:
@@ -10,9 +10,7 @@
         %strong To:
         = @event.end_date
     - if @event.description.present?
-      .card.mt-3.text-background-light
-        .card-body
-          = @event.description
+      %p.border.my-3.p-3= @event.description
   .d-flex.justify-content-between.mt-3
     = link_to 'Edit', edit_event_path(@event) if @owner.present?
     = link_to 'Delete', event_path(@event), data: { turbo_method: :delete } if @owner.present?
