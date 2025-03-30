@@ -23,6 +23,14 @@ class User < ApplicationRecord
     override ? all : where(email_updates: true)
   end
 
+  # :nocov:
+  def self.dev_login_options
+    order(:first_name, :last_name).group_by { |u| u.admin? ? 'Admins' : 'Non-Admins' }.transform_values do |users|
+      users.map { |u| [u.full_name, u.id] }
+    end
+  end
+  # :nocov:
+
   def full_name
     "#{first_name} #{last_name}"
   end
