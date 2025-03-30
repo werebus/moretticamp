@@ -13,7 +13,6 @@ set :log_level, :info
 append :linked_files, 'config/database.yml', 'config/master.key'
 append :linked_dirs,
        'log',
-       'node_modules',
        'tmp/pids',
        'tmp/cache',
        'tmp/sockets',
