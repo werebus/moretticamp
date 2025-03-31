@@ -58,6 +58,6 @@ class SeasonsController < ApplicationController
   end
 
   def season_params
-    params.require(:season).permit(:start_date, :end_date)
+    params.require(:season).permit(:start_date, :end_date, :available)
   end
 end

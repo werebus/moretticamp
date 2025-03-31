@@ -31,6 +31,7 @@ module Moretticamp
     end
 
     config.middleware.use Rack::Attack
+    config.time_zone = 'America/New_York'
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.

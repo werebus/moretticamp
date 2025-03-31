@@ -6,6 +6,7 @@ FactoryBot.define do
 
     start_date { Date.new(year, 1, 1) }
     end_date { Date.new(year, 12, 31) }
+    available { start_date }
 
     trait :now do
       start_date { 40.days.ago.to_date }
