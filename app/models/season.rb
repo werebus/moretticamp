@@ -2,6 +2,7 @@
 
 class Season < ApplicationRecord
   include DateRange
+  validates :available, presence: true
   validate :no_overlaps
 
   def months
