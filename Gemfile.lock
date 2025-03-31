@@ -114,7 +114,6 @@ GEM
     brakeman (7.0.0)
       racc
     builder (3.3.0)
-    byebug (11.1.3)
     capistrano (3.19.2)
       airbrussh (>= 1.0.0)
       i18n
@@ -140,13 +139,15 @@ GEM
       xpath (~> 3.2)
     childprocess (5.1.0)
       logger (~> 1.5)
-    coderay (1.1.3)
     concurrent-ruby (1.3.5)
     connection_pool (2.5.0)
     crass (1.0.6)
     cssbundling-rails (1.4.3)
       railties (>= 6.0.0)
     date (3.4.1)
+    debug (1.10.0)
+      irb (~> 1.10)
+      reline (>= 0.3.8)
     devise (4.9.4)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -241,7 +242,6 @@ GEM
       net-smtp
     marcel (1.0.4)
     matrix (0.4.2)
-    method_source (1.0.0)
     mini_mime (1.1.5)
     mini_portile2 (2.8.8)
     minitest (5.25.5)
@@ -325,12 +325,6 @@ GEM
       activesupport (>= 7.0.0)
       rack
       railties (>= 7.0.0)
-    pry (0.14.2)
-      coderay (~> 1.1)
-      method_source (~> 1.0)
-    pry-byebug (3.10.1)
-      byebug (~> 11.0)
-      pry (>= 0.13, < 0.15)
     psych (5.2.3)
       date
       stringio
@@ -530,6 +524,7 @@ DEPENDENCIES
   capistrano-rails
   capybara
   cssbundling-rails
+  debug
   devise (~> 4.9.4)
   devise_invitable
   ed25519
@@ -539,6 +534,7 @@ DEPENDENCIES
   haml-rails
   haml_lint
   icalendar
+  irb
   jbuilder
   jsbundling-rails
   kramdown
@@ -552,8 +548,6 @@ DEPENDENCIES
   prawn
   prawn-table
   propshaft
-  pry
-  pry-byebug
   puma
   rack-attack
   rails (~> 7.2.2)
