@@ -1,7 +1,7 @@
 = content_for :title, 'Send Notification'
 .container
   %h1 Send Notification
-  = bootstrap_form_with url: notifications_path, class: 'border border-secondary-subtle p-3' do |f|
+  = bootstrap_form_with url: notifications_path, class: 'card p-3' do |f|
     = f.text_field :subject, autofocus: true, required: true
     = f.text_area :body, rows: 6, required: true, help: 'Markdown allowed'
     = f.check_box :override, label: 'Ignore user email preference'
