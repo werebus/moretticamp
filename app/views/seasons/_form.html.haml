@@ -1,4 +1,4 @@
-= bootstrap_form_for season, html: { class: 'border border-secondary-subtle p-3' } do |f|
+= bootstrap_form_for season, html: { class: 'card p-3' } do |f|
   = alert season.errors[:base].to_sentence, 'danger', closable: false if season.errors[:base].any?
   .row
     .col-sm-6

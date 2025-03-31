@@ -3,7 +3,7 @@
   %h1
     Editing #{resource_name.to_s.humanize}
   = bootstrap_form_for resource, as: resource_name, url: registration_path(resource_name),
-                                 html: { method: :put, class: 'border border-secondary-subtle p-3' } do |f|
+                                 html: { method: :put, class: 'card p-3' } do |f|
     .row
       .col-sm-6
         = f.text_field :first_name, autofocus: true
