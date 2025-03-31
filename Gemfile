@@ -13,6 +13,7 @@ gem 'devise_invitable'
 gem 'exception_notification'
 gem 'haml-rails'
 gem 'icalendar'
+gem 'irb'
 gem 'jbuilder'
 gem 'jsbundling-rails'
 gem 'kramdown'
@@ -29,8 +30,7 @@ gem 'rails', '~> 7.2.2'
 gem 'turbo-rails'
 
 group :development, :test do
-  gem 'pry'
-  gem 'pry-byebug'
+  gem 'debug'
 end
 
 group :development do
