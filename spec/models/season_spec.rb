@@ -6,6 +6,26 @@ require_relative 'concerns/date_range'
 RSpec.describe Season do
   it_behaves_like 'date_range'
 
+  describe 'current_or_next' do
+    subject(:call) { described_class.current_or_next }
+
+    context 'when there is no current season' do
+      it { is_expected.to be_nil }
+    end
+
+    context 'when there is a current, non-available season' do
+      before { create :season, :now, available: 1.day.from_now }
+
+      it { is_expected.to be_nil }
+    end
+
+    context 'when there is a current, available season' do
+      let!(:season) { create :season, :now }
+
+      it { is_expected.to eq(season) }
+    end
+  end
+
   describe 'validation' do
     let(:other) do
       start_date = Time.zone.now.change(month: 3).to_date

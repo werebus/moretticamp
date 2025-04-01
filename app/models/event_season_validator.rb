@@ -12,7 +12,7 @@ class EventSeasonValidator < ActiveModel::Validator
   private
 
   def no_season(event)
-    event.errors.add :base, 'There is no current season defined'
+    event.errors.add :base, 'There is no current available season'
   end
 
   def not_in_season(event)
