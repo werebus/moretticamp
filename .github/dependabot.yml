@@ -14,6 +14,10 @@ updates:
     directory: /
     schedule:
       interval: daily
+    groups:
+      fullcalendar-packages:
+        patterns:
+          - "@fullcalendar/*"
   - package-ecosystem: github-actions
     directory: /
     schedule:
