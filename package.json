@@ -2,7 +2,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.7.2",
     "@fullcalendar/bootstrap5": "^6.1.15",
-    "@fullcalendar/core": "^6.1.15",
+    "@fullcalendar/core": "^6.1.17",
     "@fullcalendar/daygrid": "^6.1.15",
     "@hotwired/turbo-rails": "^8.0.13",
     "@popperjs/core": "^2.11.8",
