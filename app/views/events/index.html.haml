@@ -46,8 +46,13 @@
                       start_date: @season.start_date.to_fs(:unix),
                       end_date: (@season.end_date + 1.day).to_fs(:unix) }
         #calendar{ data: caldata }
+      - elsif @pending_season.present? && !@pending_season.available?
+        .card.w-75.mx-auto.text-bg-light
+          .card-body
+            %h5.card-title Season Pending
+            %p.card-text The next Camp season will be available #{l @pending_season.available, format: :long}.
       - else
         .card.w-75.mx-auto.text-bg-light
           .card-body
             %h5.card-title Season Not Open
-            %p.card-text The dates for the next Camp "season" aren't defined yet. Stay tuned.
+            %p.card-text The dates for the next Camp season aren't defined yet. Stay tuned.

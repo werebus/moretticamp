@@ -3,6 +3,7 @@
 module EventsIndex
   def index
     @season = Season.current_or_next
+    @pending_season = Season.current || Season.next if @season.blank?
     @events = EventsService.find(params)
 
     respond_to do |format|
