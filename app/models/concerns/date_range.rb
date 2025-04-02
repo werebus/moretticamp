@@ -30,6 +30,10 @@ module DateRange
     end
   end
 
+  def current?
+    self == self.class.current
+  end
+
   def date_range
     (start_date..end_date)
   end
@@ -44,5 +48,9 @@ module DateRange
     else
       "from #{start_date.to_fs(:long_ordinal)}, until #{end_date.to_fs(:long_ordinal)}"
     end
+  end
+
+  def next?
+    self == self.class.next
   end
 end
