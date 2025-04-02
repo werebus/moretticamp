@@ -5,6 +5,16 @@ class Season < ApplicationRecord
   validates :available, presence: true
   validate :no_overlaps
 
+  def self.current_or_next
+    return if (season = super).blank?
+
+    season.available? ? season : nil
+  end
+
+  def available?
+    available <= Time.zone.now
+  end
+
   def months
     firsts = date_range.select { |date| date.day == 1 }
     firsts.unshift start_date.beginning_of_month
