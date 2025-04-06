@@ -26,6 +26,9 @@ en:
       success: "Season was successfully updated."
     destroy:
       success: "Season was successfully deleted."
+  time:
+    formats:
+      long: "%A, %B %e, %Y at %-I:%M %P"
   user_mailer:
     no_reset:
       subject: "Password Reset not performed"

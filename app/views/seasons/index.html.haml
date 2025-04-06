@@ -18,7 +18,7 @@
         %tr{ class: "table-#{season_bootstrap_class(season)}" }
           %td= season.start_date
           %td= season.end_date
-          %td{ class: season.available? ? nil : 'fw-bold' }= season.available&.strftime('%Y-%m-%d %H:%M')
+          %td{ class: season.available? ? nil : 'fw-bold' }= l season.available, format: :long
           %td= link_to 'Edit', edit_season_path(season)
           %td= button_to 'Destroy', season, method: :delete, class: 'btn btn-danger',
                                             data: { turbo_confirm: 'Are you sure?' }
