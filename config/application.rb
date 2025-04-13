@@ -33,6 +33,10 @@ module Moretticamp
     config.middleware.use Rack::Attack
     config.time_zone = 'America/New_York'
 
+    mail_previews = Rails.root.join('app/mailers/previews')
+    config.action_mailer.preview_paths << mail_previews
+    config.eager_load_paths << mail_previews
+
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
