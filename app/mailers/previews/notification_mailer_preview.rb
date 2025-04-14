@@ -11,9 +11,11 @@ class NotificationMailerPreview < ActionMailer::Preview
 
   def body
     Array.new(5) do
-      case rand(5)
+      case rand(6)
       when 0
         Faker::Markdown.random('table')
+      when 1
+        '[Link](https://example.com)'
       else
         Faker::Lorem.paragraph
       end

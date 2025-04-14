@@ -1,6 +1,57 @@
+:ruby
+  colors = {
+    blue:   '#0d6efd',
+    indigo: '#6610f2',
+    purple: '#6f42c1',
+    pink:   '#d63384',
+    red:    '#dc3545',
+    orange: '#fd7e14',
+    yellow: '#ffc107',
+    green:  '#198754',
+    teal:   '#20c997',
+    cyan:   '#0dcaf0'
+  }
+
+  grays = {
+    white:    '#fff',
+    gray_100: '#f8f9fa',
+    gray_200: '#e9ecef',
+    gray_300: '#dee2e6',
+    gray_400: '#ced4da',
+    gray_500: '#adb5bd',
+    gray_600: '#6c757d',
+    gray_700: '#495057',
+    gray_800: '#343a40',
+    gray_900: '#212529',
+    black:    '#000'
+  }
+
+  theme = {
+    primary:   '#006611',
+    secondary: grays[:gray_600],
+    success:   colors[:green],
+    info:      colors[:cyan],
+    warning:   colors[:yellow],
+    danger:    colors[:red],
+    light:     grays[:gray_100],
+    dark:      grays[:gray_900]
+  }
+
 %mjml
   %mj-head
-  %mj-body
-    %mj-section
+    %mj-style
+      a { color: #{theme[:primary]}; }
+  %mj-body{ 'background-color': grays[:gray_500] }
+    - if local_assigns[:title]
+      %mj-section{ 'background-color': grays[:gray_200] }
+        %mj-column
+          %mj-text{ 'font-size': '20px', 'font-weight': 'bold' }= local_assigns[:title]
+    %mj-section{ 'background-color': grays[:gray_100] }
       %mj-column
         %mj-text= yield
+    %mj-section{ 'background-color': grays[:gray_200] }
+      %mj-column{ width: '80%' }
+        %mj-text
+          This is an automated message. Please do not reply to this address.
+      %mj-column{ width: '20%' }
+        %mj-image{ src: attachments['hemlockcone.png'].url, alt: 'Hemlock Cone', align: 'right', width: '100px'}
