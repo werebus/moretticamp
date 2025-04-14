@@ -245,6 +245,7 @@ GEM
     mini_mime (1.1.5)
     mini_portile2 (2.8.8)
     minitest (5.25.5)
+    mjml-rails (4.15.1)
     msgpack (1.7.5)
     multi_xml (0.7.1)
       bigdecimal (~> 3.1)
@@ -539,6 +540,7 @@ DEPENDENCIES
   jsbundling-rails
   kramdown
   listen
+  mjml-rails
   omniauth
   omniauth-google-oauth2
   omniauth-rails_csrf_protection
