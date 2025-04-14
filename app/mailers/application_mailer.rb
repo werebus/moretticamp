@@ -2,4 +2,5 @@
 
 class ApplicationMailer < ActionMailer::Base
   default from: 'noreply@moretti.camp'
+  layout 'mailer'
 end
