@@ -32,6 +32,16 @@ module Users
 
     private
 
+    # This is a method overrid for Devise::InvitationsController
+    # rubocop:disable Naming/PredicateName, Style/ReturnNilInPredicateMethodDefinition
+    def has_invitations_left?
+      return if current_inviter.nil? || current_inviter.has_invitations_left?
+
+      set_flash_message :alert, :no_invitations_remaining if is_flashing_format?
+      redirect_to root_path
+    end
+    # rubocop:enable Naming/PredicateName, Style/ReturnNilInPredicateMethodDefinition
+
     def set_users
       @users = User.active.select { |user| user.lifetime_invitation_count.zero? }
     end
