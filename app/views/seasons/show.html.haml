@@ -1,0 +1,18 @@
+= content_for :title, "Season #{@season.date_range_words}"
+.container
+  .card.p-3
+    .m-3.row.alert{ class: "alert-#{season_bootstrap_class @season}" }
+      .col
+        %strong Available:
+        = @season.available
+    .row
+      .col-sm-6
+        %strong From:
+        = @season.start_date
+      .col-sm-6
+        %strong To:
+        = @season.end_date
+  .d-flex.justify-content-between.mt-3
+    = link_to 'Edit', edit_season_path(@season)
+    = link_to 'Delete', season_path(@season), data: { turbo_method: :delete }
+    = link_to 'Back', seasons_path
