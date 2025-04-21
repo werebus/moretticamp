@@ -5,4 +5,9 @@
 # routes in the application.  The call to "render" is technically
 # optional
 class PagesController < ApplicationController
+  def broken_ruby
+    raise 'This is a broken Ruby page'
+  end
+
+  def broken_js; end
 end
