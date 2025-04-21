@@ -2,7 +2,10 @@ import * as esbuild from 'esbuild'
 
 const isProduction = process.env.RAILS_ENV === 'production';
 const config = {
-  entryPoints: ['app/javascript/application.js'],
+  entryPoints: [
+    'app/javascript/sentry.js',
+    'app/javascript/application.js'
+  ],
   bundle: true,
   sourcemap: true,
   format: 'esm',

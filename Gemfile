@@ -27,6 +27,8 @@ gem 'propshaft'
 gem 'puma'
 gem 'rack-attack'
 gem 'rails', '~> 7.2.2'
+gem 'sentry-rails'
+gem 'sentry-ruby'
 gem 'turbo-rails'
 
 group :development, :test do
