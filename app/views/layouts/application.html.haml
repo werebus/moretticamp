@@ -12,6 +12,7 @@
     %link{ rel: 'manifest', href: pwa_manifest_path(format: :json) }
 
     = stylesheet_link_tag 'application', data: { turbolinks_track: 'reload' }
+    = javascript_include_tag 'sentry', nonce: true, type: 'module', data: { turbolinks_track: 'reload' }
     = javascript_include_tag 'application', nonce: true, type: 'module', data: { turbolinks_track: 'reload' }
 
     = csrf_meta_tags

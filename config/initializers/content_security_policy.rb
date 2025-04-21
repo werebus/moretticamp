@@ -13,6 +13,7 @@ Rails.application.configure do
     policy.script_src  :self
     policy.style_src   :self
     policy.connect_src :self
+    policy.worker_src  :self, :blob
     # Specify URI for violation reports
     # policy.report_uri "/csp-violation-report-endpoint"
   end
