@@ -16,6 +16,7 @@
 
     = csrf_meta_tags
     = csp_meta_tag
+    = Sentry.get_trace_propagation_meta.html_safe # rubocop:disable Rails/OutputSafety
   %body
     - if content_for?(:body)
       = yield(:body)
