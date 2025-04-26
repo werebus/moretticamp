@@ -5,11 +5,24 @@ class SeasonsController < ApplicationController
   before_action :require_admin, except: :index
 
   def index
-    @seasons = Season.order(start_date: :desc)
-    @current_season = Season.current_or_next
+    respond_to do |format|
+      format.html do
+        @seasons = Season.order(start_date: :desc)
+      end
+      format.json do
+        render 'show', locals: { season: Season.current_or_next }
+      end
+    end
   end
 
-  def show; end
+  def show
+    respond_to do |format|
+      format.html
+      format.json do
+        render locals: { season: @season }
+      end
+    end
+  end
 
   def new
     @season = Season.new

@@ -2,8 +2,6 @@
 .container
   %h1 Editing Event
   = render 'form', event: @event
-  .row
-    .col-sm-6
-      = link_to 'Show', @event
-    .col-sm-6.text-end
-      = link_to 'Back', events_path
+  .d-flex.justify-content-between.mt-3
+    = link_to 'Show', @event
+    = link_to 'Back', events_path
