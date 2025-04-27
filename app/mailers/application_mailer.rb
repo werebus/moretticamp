@@ -3,9 +3,12 @@
 class ApplicationMailer < ActionMailer::Base
   default from: 'noreply@moretti.camp'
   layout 'mailer'
-  before_action :attach_hemlock
+  helper_method :hemlock_src
 
-  def attach_hemlock
+  private
+
+  def hemlock_src
     attachments['hemlockcone.png'] = Rails.root.join('app/assets/images/hemlockcone.png').read
+    attachments['hemlockcone.png'].url
   end
 end

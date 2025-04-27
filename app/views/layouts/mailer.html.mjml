@@ -54,4 +54,4 @@
         %mj-text
           This is an automated message. Please do not reply to this address.
       %mj-column{ width: '20%' }
-        %mj-image{ src: attachments['hemlockcone.png'].url, alt: 'Hemlock Cone', align: 'right', width: '100px'}
+        %mj-image{ src: hemlock_src, alt: 'Hemlock Cone', align: 'right', width: '100px'}
