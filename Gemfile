@@ -17,6 +17,8 @@ gem 'irb'
 gem 'jbuilder'
 gem 'jsbundling-rails'
 gem 'kramdown'
+gem 'mjml-rails'
+gem 'mrml'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
@@ -33,6 +35,7 @@ gem 'turbo-rails'
 
 group :development, :test do
   gem 'debug'
+  gem 'factory_bot_rails'
   gem 'faker'
 end
 
@@ -60,7 +63,6 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'factory_bot_rails'
   gem 'pdf-inspector', require: 'pdf/inspector'
   gem 'rspec-rails'
   gem 'selenium-webdriver'

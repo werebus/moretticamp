@@ -1,0 +1,12 @@
+%p
+  Hello
+  = succeed ',' do
+    = @user.first_name
+
+%p
+  Someone requested a password reset for your account on moretti.camp.
+  However, we did not reset your password.
+%p= @reason
+%p
+  If you did not request a password reset, you can safely disregard this
+  message. Your password has not changed.

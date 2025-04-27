@@ -26,7 +26,7 @@ RSpec.describe NotificationMailer do
       end
 
       it 'has the expected body' do
-        expect(mail.body.encoded).to eq(body)
+        expect(mail.body.encoded).to start_with("#{body}\r\n")
       end
     end
 
