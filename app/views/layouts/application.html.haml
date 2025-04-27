@@ -12,12 +12,13 @@
     %link{ rel: 'manifest', href: pwa_manifest_path(format: :json) }
 
     = stylesheet_link_tag 'application', data: { turbolinks_track: 'reload' }
-    = javascript_include_tag 'sentry', nonce: true, type: 'module', data: { turbolinks_track: 'reload' }
+    - if Rails.env.production?
+      = javascript_include_tag 'sentry', nonce: true, type: 'module', data: { turbolinks_track: 'reload' }
+      = Sentry.get_trace_propagation_meta.html_safe # rubocop:disable Rails/OutputSafety
     = javascript_include_tag 'application', nonce: true, type: 'module', data: { turbolinks_track: 'reload' }
 
     = csrf_meta_tags
     = csp_meta_tag
-    = Sentry.get_trace_propagation_meta.html_safe # rubocop:disable Rails/OutputSafety
   %body
     - if content_for?(:body)
       = yield(:body)
