@@ -34,6 +34,7 @@ gem 'turbo-rails'
 
 group :development, :test do
   gem 'debug'
+  gem 'factory_bot_rails'
   gem 'faker'
 end
 
@@ -61,7 +62,6 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'factory_bot_rails'
   gem 'pdf-inspector', require: 'pdf/inspector'
   gem 'rspec-rails'
   gem 'selenium-webdriver'
