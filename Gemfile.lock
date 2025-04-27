@@ -248,6 +248,8 @@ GEM
     mini_portile2 (2.8.8)
     minitest (5.25.5)
     mjml-rails (4.15.1)
+    mrml (1.7.0)
+      rb_sys
     msgpack (1.7.5)
     multi_xml (0.7.1)
       bigdecimal (~> 3.1)
@@ -381,9 +383,12 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.2.1)
+    rake-compiler-dock (1.9.1)
     rb-fsevent (0.11.2)
     rb-inotify (0.11.1)
       ffi (~> 1.0)
+    rb_sys (0.9.111)
+      rake-compiler-dock (= 1.9.1)
     rdoc (6.13.1)
       psych (>= 4.0.0)
     regexp_parser (2.10.0)
@@ -549,6 +554,7 @@ DEPENDENCIES
   kramdown
   listen
   mjml-rails
+  mrml
   omniauth
   omniauth-google-oauth2
   omniauth-rails_csrf_protection
