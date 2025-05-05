@@ -71,6 +71,6 @@ class SeasonsController < ApplicationController
   end
 
   def season_params
-    params.require(:season).permit(:start_date, :end_date, :available)
+    params.expect(season: %i[start_date end_date available])
   end
 end
