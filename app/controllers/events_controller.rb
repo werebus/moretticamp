@@ -70,8 +70,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    permitted = %i[id start_date end_date title description user_id]
-    params.require(:event).permit(permitted).tap do |p|
+    params.expect(event: %i[id start_date end_date title description user_id]).tap do |p|
       p[:user_id] = current_user.id unless current_user.admin
     end
   end

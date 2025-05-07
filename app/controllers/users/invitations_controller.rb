@@ -21,8 +21,7 @@ module Users
     end
 
     def grant
-      invitation_params = params.require(:invitation_granter).permit(:quantity, user_ids: [])
-      @invitation_granter = InvitationGranter.new(invitation_params)
+      @invitation_granter = InvitationGranter.new params.expect(invitation_granter: [:quantity, { user_ids: [] }])
       @invitation_granter.grant!
       redirect_to root_path, notice: t('.success', **@invitation_granter.status)
     rescue ActiveRecord::RecordInvalid, ActiveModel::ValidationError
