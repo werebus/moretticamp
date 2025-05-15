@@ -106,7 +106,7 @@ GEM
     bcrypt_pbkdf (1.1.1)
     benchmark (0.4.0)
     bigdecimal (3.1.9)
-    bootsnap (1.18.4)
+    bootsnap (1.18.6)
       msgpack (~> 1.2)
     bootstrap_form (5.4.0)
       actionpack (>= 6.1)
@@ -252,7 +252,7 @@ GEM
     mrml (1.7.0)
       rb_sys
     mrml (1.7.0-x86_64-linux)
-    msgpack (1.7.5)
+    msgpack (1.8.0)
     multi_xml (0.7.1)
       bigdecimal (~> 3.1)
     net-http (0.6.0)
@@ -619,7 +619,7 @@ CHECKSUMS
   bcrypt_pbkdf (1.1.1) sha256=2f9077dde837d1f0dd2eb0f9e5327c6871c68ebc8eba88870fb6b7956e1e2b13
   benchmark (0.4.0) sha256=0f12f8c495545e3710c3e4f0480f63f06b4c842cc94cec7f33a956f5180e874a
   bigdecimal (3.1.9) sha256=2ffc742031521ad69c2dfc815a98e426a230a3d22aeac1995826a75dabfad8cc
-  bootsnap (1.18.4) sha256=ac4c42af397f7ee15521820198daeff545e4c360d2772c601fbdc2c07d92af55
+  bootsnap (1.18.6) sha256=0ae2393c1e911e38be0f24e9173e7be570c3650128251bf06240046f84a07d00
   bootstrap_form (5.4.0) sha256=b0e6c2b4233b746df0590a339f4582bc684b8c530beeba149cc65cb8ad55c832
   brakeman (7.0.2) sha256=b602d91bcec6c5ce4d4bc9e081e01f621c304b7a69f227d1e58784135f333786
   builder (3.3.0) sha256=497918d2f9dca528fdca4b88d84e4ef4387256d984b8154e9d5d3fe5a9c8835f
@@ -685,7 +685,7 @@ CHECKSUMS
   mjml-rails (4.15.1) sha256=719d5f513b7c61a5b09c89b352bb89ec0724fa76c2c6280206a41c5704b4909b
   mrml (1.7.0) sha256=2500189673079dcecbb8dd9c33d07c7ab7b769906e3c9f9e08be75180b551c87
   mrml (1.7.0-x86_64-linux) sha256=4e995d6d851cd597913b190cad35a3791968ca3cbe6202ad02da08a82e1f1457
-  msgpack (1.7.5) sha256=ffb04979f51e6406823c03abe50e1da2c825c55a37dee138518cdd09d9d3aea8
+  msgpack (1.8.0) sha256=e64ce0212000d016809f5048b48eb3a65ffb169db22238fb4b72472fecb2d732
   multi_xml (0.7.1) sha256=4fce100c68af588ff91b8ba90a0bb3f0466f06c909f21a32f4962059140ba61b
   net-http (0.6.0) sha256=9621b20c137898af9d890556848c93603716cab516dc2c89b01a38b894e259fb
   net-imap (0.5.7) sha256=d5c0247832439b62298c0935ba67d8bc02fdb476d7a3e099d6f75b3daf498b91
