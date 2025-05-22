@@ -42,10 +42,7 @@
 
     .col-12.col-md-9.order-md-1
       - if @season
-        - caldata = { date: @date.to_fs(:unix),
-                      start_date: @season.start_date.to_fs(:unix),
-                      end_date: (@season.end_date + 1.day).to_fs(:unix) }
-        #calendar{ data: caldata }
+        #calendar{ data: { start_date: @season.start_date, end_date: 1.day.after(@season.end_date) } }
       - elsif @pending_season.present? && !@pending_season.available?
         .card.w-75.mx-auto.text-bg-light
           .card-body
