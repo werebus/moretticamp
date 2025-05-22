@@ -1,6 +1,6 @@
 import neostandard from 'neostandard'
 
-export default [
-  { ignores: ['app/assets/builds/*'] },
-  ...neostandard({env: ['browser']}),
-]
+export default neostandard({
+  env: ['browser'],
+  ignores: ['node_modules', 'app/assets', 'coverage'],
+})
