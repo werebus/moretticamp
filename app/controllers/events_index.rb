@@ -7,17 +7,11 @@ module EventsIndex
     @events = EventsService.find(params)
 
     respond_to do |format|
-      format.html { html_index }
+      format.html
       format.json
       format.ics { ics_index }
       format.pdf { pdf_index }
     end
-  end
-
-  def html_index
-    return unless @season
-
-    @date = [@season.start_date, Time.zone.today].max
   end
 
   def ics_index

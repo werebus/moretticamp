@@ -5,10 +5,8 @@ import { Tooltip } from './bootstrap'
 
 window.addEventListener('turbo:load', () => {
   const calEl = document.getElementById('calendar')
-
-  const caldate = function () {
-    const date = Number(window.location.hash.slice(1)) || Number(calEl.dataset.date) * 1000
-    return new Date(date)
+  if (!calEl) {
+    return
   }
 
   const updateTitleFormat = function (cal) {
@@ -20,52 +18,54 @@ window.addEventListener('turbo:load', () => {
     }
   }
 
-  if (calEl) {
-    const calendar = new Calendar(calEl, {
-      plugins: [dayGridPlugin, bootstrap5Plugin],
-      themeSystem: 'bootstrap5',
-      buttonIcons: {
-        prev: 'fa fa-solid fa-chevron-left',
-        next: 'fa fa-solid fa-chevron-right'
-      },
-      eventSources: [
-        {
-          url: '/events.json',
-          error (e) {
-            if (e.status === 401) { window.location.reload(false) }
-          }
-        }, {
-          url: '/seasons.json'
+  const calendar = new Calendar(calEl, {
+    plugins: [dayGridPlugin, bootstrap5Plugin],
+    themeSystem: 'bootstrap5',
+    buttonIcons: {
+      prev: 'fa fa-solid fa-chevron-left',
+      next: 'fa fa-solid fa-chevron-right'
+    },
+    eventSources: [
+      {
+        url: '/events.json',
+        error (e) {
+          if (e.status === 401) { window.location.reload(false) }
         }
-      ],
-      initialDate: caldate(),
-      validRange: {
-        start: new Date(Number(calEl.dataset.startDate) * 1000),
-        end: new Date(Number(calEl.dataset.endDate) * 1000)
+      }, {
+        url: '/seasons.json'
+      }
+    ],
+    datesSet: function (dateInfo) {
+      localStorage.setItem('eventCalendarCurrentDate', dateInfo.view.currentStart.toISOString())
+    },
+    initialDate: localStorage.getItem('eventCalendarCurrentDate') !== null
+      ? localStorage.getItem('eventCalendarCurrentDate')
+      : new Date(),
+    validRange: {
+      start: calEl.dataset.startDate,
+      end: calEl.dataset.endDate
+    },
+    views: {
+      dayGridMonth: {
+        titleFormat: { month: 'numeric', year: '2-digit' }
       },
-      views: {
-        dayGridMonth: {
-          titleFormat: { month: 'numeric', year: '2-digit' }
-        },
-        desktopDayGridMonth: {
-          type: 'dayGridMonth',
-          titleFormat: { month: 'long', year: 'numeric' }
-        }
-      },
+      desktopDayGridMonth: {
+        type: 'dayGridMonth',
+        titleFormat: { month: 'long', year: 'numeric' }
+      }
+    },
+    eventDidMount: function (info) {
+      const desc = info.event.extendedProps.description
 
-      eventDidMount: function (info) {
-        const desc = info.event.extendedProps.description
+      if (desc) {
+        // eslint-disable-next-line no-new
+        new Tooltip(info.el, { title: desc })
+      }
+    },
 
-        if (desc) {
-          // eslint-disable-next-line no-new
-          new Tooltip(info.el, { title: desc })
-        }
-      },
+    windowResize: function () { updateTitleFormat(this) }
+  })
 
-      windowResize: function () { updateTitleFormat(this) }
-    })
-
-    updateTitleFormat(calendar)
-    calendar.render()
-  }
+  updateTitleFormat(calendar)
+  calendar.render()
 })
