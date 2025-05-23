@@ -57,7 +57,8 @@ window.addEventListener('turbo:load', () => {
         const desc = info.event.extendedProps.description
 
         if (desc) {
-          const tip = new Tooltip(info.el, { title: desc })
+          // eslint-disable-next-line no-new
+          new Tooltip(info.el, { title: desc })
         }
       },
 

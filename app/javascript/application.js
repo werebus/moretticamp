@@ -1,6 +1,6 @@
-import { Alert } from './bootstrap'
 import '@hotwired/turbo-rails'
 
+import './bootstrap'
 import './clipboard'
 import './events'
 import './tooltips'
