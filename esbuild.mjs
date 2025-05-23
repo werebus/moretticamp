@@ -1,6 +1,6 @@
 import * as esbuild from 'esbuild'
 
-const isProduction = process.env.RAILS_ENV === 'production';
+const isProduction = process.env.RAILS_ENV === 'production'
 const config = {
   entryPoints: [
     'app/javascript/sentry.js',
@@ -19,8 +19,8 @@ const config = {
 }
 
 if (process.argv.includes('--watch')) {
-  let context = await esbuild.context(config);
-  context.watch();
+  const context = await esbuild.context(config)
+  context.watch()
 } else {
-  await esbuild.build(config);
+  await esbuild.build(config)
 }

@@ -1,15 +1,15 @@
-import { Tooltip } from './bootstrap';
-import Clipboard from 'clipboard/src/clipboard';
+import { Tooltip } from './bootstrap'
+import Clipboard from 'clipboard/src/clipboard'
 
 window.addEventListener('turbo:load', () => {
-  const clipboard_button = document.querySelector('button.clip');
-  if (!clipboard_button) return;
+  const clipboardButton = document.querySelector('button.clip')
+  if (!clipboardButton) return
 
-  const clipboard = new Clipboard(clipboard_button);
+  const clipboard = new Clipboard(clipboardButton)
 
   clipboard.on('success', () => {
-    const tip = new Tooltip(clipboard_button, {title: 'Copied!'});
-    tip.show();
-    setTimeout(() => { tip.dispose() } , 2000);
-  });
-});
+    const tip = new Tooltip(clipboardButton, { title: 'Copied!' })
+    tip.show()
+    setTimeout(() => { tip.dispose() }, 2000)
+  })
+})

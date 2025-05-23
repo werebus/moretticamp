@@ -12,6 +12,10 @@ PreCommit:
     on_warn: fail
     required_executable: bundle
     command: ["bundle", "exec", "rubocop"]
+  Eslint:
+    enabled: true
+    required_executable: npm
+    command: ["npm", "run", "lint"]
 PrePush:
   Brakeman:
     enabled: true

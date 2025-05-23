@@ -1,7 +1,7 @@
-import { Alert } from './bootstrap';
-import "@hotwired/turbo-rails"
+import '@hotwired/turbo-rails'
 
-import './clipboard';
-import './events';
-import './tooltips';
-import './users';
+import './bootstrap'
+import './clipboard'
+import './events'
+import './tooltips'
+import './users'
