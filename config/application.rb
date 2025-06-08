@@ -22,7 +22,7 @@ module Moretticamp
   class Application < Rails::Application
     require 'oauth_provider'
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.2
+    config.load_defaults 8.0
 
     config.before_initialize do
       OauthProvider.new :google_oauth2, 'Google', 'google',
