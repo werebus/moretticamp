@@ -31,7 +31,7 @@ module Users
 
     private
 
-    # This is a method overrid for Devise::InvitationsController
+    # This is a method override for Devise::InvitationsController
     # rubocop:disable Naming/PredicatePrefix, Style/ReturnNilInPredicateMethodDefinition
     def has_invitations_left?
       return if current_inviter.nil? || current_inviter.has_invitations_left?
