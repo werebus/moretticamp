@@ -168,11 +168,11 @@ GEM
     exception_notification (5.0.0)
       actionmailer (>= 7.1, < 9)
       activesupport (>= 7.1, < 9)
-    factory_bot (6.5.0)
-      activesupport (>= 5.0.0)
-    factory_bot_rails (6.4.4)
+    factory_bot (6.5.4)
+      activesupport (>= 6.1.0)
+    factory_bot_rails (6.5.0)
       factory_bot (~> 6.5)
-      railties (>= 5.0.0)
+      railties (>= 6.1.0)
     faker (3.5.1)
       i18n (>= 1.8.11, < 2)
     faraday (2.12.2)
@@ -421,7 +421,7 @@ GEM
       rspec-mocks (~> 3.13)
       rspec-support (~> 3.13)
     rspec-support (3.13.3)
-    rubocop (1.76.0)
+    rubocop (1.76.1)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -432,7 +432,7 @@ GEM
       rubocop-ast (>= 1.45.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 4.0)
-    rubocop-ast (1.45.0)
+    rubocop-ast (1.45.1)
       parser (>= 3.3.7.2)
       prism (~> 1.4)
     rubocop-capybara (2.22.1)
@@ -648,8 +648,8 @@ CHECKSUMS
   erubi (1.13.1) sha256=a082103b0885dbc5ecf1172fede897f9ebdb745a4b97a5e8dc63953db1ee4ad9
   et-orbi (1.2.11) sha256=d26e868cc21db88280a9ec1a50aa3da5d267eb9b2037ba7b831d6c2731f5df64
   exception_notification (5.0.0) sha256=cfc91ebcafcf81ec2bb678f21c329d1ce3b1320db7dc5654939a4bb21e5d595c
-  factory_bot (6.5.0) sha256=6374b3a3593b8077ee9856d553d2e84d75b47b912cc24eafea4062f9363d2261
-  factory_bot_rails (6.4.4) sha256=139e17caa2c50f098fddf5e5e1f29e8067352024e91ca1186d018b36589e5c88
+  factory_bot (6.5.4) sha256=4707fb7d80a7c14d71feb069460587bfc342e4ff1ef28097e0ad69d5ddfce613
+  factory_bot_rails (6.5.0) sha256=4a7b61635424a57cc60412a18b72b9dcfb02fabfce2c930447a01dce8b37c0a2
   faker (3.5.1) sha256=1ad1fbea279d882f486059c23fe3ddb816ccd1d7052c05a45014b4450d859bfc
   faraday (2.12.2) sha256=157339c25c7b8bcb739f5cf1207cb0cefe8fa1c65027266bcbc34c90c84b9ad6
   faraday-net_http (3.4.0) sha256=a1f1e4cd6a2cf21599c8221595e27582d9936819977bbd4089a601f24c64e54a
@@ -752,8 +752,8 @@ CHECKSUMS
   rspec-mocks (3.13.3) sha256=be08abadfe28e932d03b8e70215cd5972bd7693e0f1a45c7479b11e9a773c3c2
   rspec-rails (8.0.0) sha256=977a508cd94d152db2068c6585470db5d0cd47eef56d5410b9531034fb9d97bf
   rspec-support (3.13.3) sha256=2a61e393f6e18b7228726e0c6869c5d5a1419d37206116c4d917d145276b3f43
-  rubocop (1.76.0) sha256=b7515398e1280b3cb7e3e0c429933ca3597ea43b7d0f03cb3c2d97719851c411
-  rubocop-ast (1.45.0) sha256=0b4ade77d15f25b9e07214fb42fa98164f5316accea525e14e44bbb8f06f78d7
+  rubocop (1.76.1) sha256=e15a2d750794cf2157d2de8b1b403dfa71b8dc3957a22ae6043b1bdf21e7e0e7
+  rubocop-ast (1.45.1) sha256=94042e49adc17f187ba037b33f941ba7398fede77cdf4bffafba95190a473a3e
   rubocop-capybara (2.22.1) sha256=ced88caef23efea53f46e098ff352f8fc1068c649606ca75cb74650970f51c0c
   rubocop-factory_bot (2.27.1) sha256=9d744b5916778c1848e5fe6777cc69855bd96548853554ec239ba9961b8573fe
   rubocop-performance (1.25.0) sha256=6f7d03568a770054117a78d0a8e191cefeffb703b382871ca7743831b1a52ec1
