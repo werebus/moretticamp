@@ -1,0 +1,73 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 2,
+      "fingerprint": "24276e040f5827fa5fa5c8baf624efa62229303dc1bd43cefd506991c9a38c39",
+      "check_name": "CrossSiteScripting",
+      "message": "Unescaped model attribute",
+      "file": "app/views/events/index.html.haml",
+      "line": 45,
+      "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
+      "code": "::Haml::AttributeBuilder.build_data(true, \"'\", :start_date => Season.current_or_next.start_date, :end_date => 1.day.after(Season.current_or_next.end_date))",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "EventsController",
+          "method": "index",
+          "line": 10,
+          "file": "app/controllers/events_index.rb",
+          "rendered": {
+            "name": "events/index",
+            "file": "app/views/events/index.html.haml"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "events/index"
+      },
+      "user_input": "Season.current_or_next.start_date",
+      "confidence": "Weak",
+      "cwe_id": [
+        79
+      ],
+      "note": "Haml does, in fact, sanitize values used for data: and aria: attributes"
+    },
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 2,
+      "fingerprint": "9567b11bd2a972db1ed09d634b8e27494992c9a6b65a16ef664e56040c47d4fe",
+      "check_name": "CrossSiteScripting",
+      "message": "Unescaped model attribute",
+      "file": "app/views/seasons/show.html.haml",
+      "line": 4,
+      "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
+      "code": "::Haml::AttributeBuilder.build_class(true, \"m-3 row alert\", \"alert-#{season_bootstrap_class(Season.new(season_params))}\")",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "SeasonsController",
+          "method": "create",
+          "line": 39,
+          "file": "app/controllers/seasons_controller.rb",
+          "rendered": {
+            "name": "seasons/show",
+            "file": "app/views/seasons/show.html.haml"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "seasons/show"
+      },
+      "user_input": "Season.new(season_params)",
+      "confidence": "Weak",
+      "cwe_id": [
+        79
+      ],
+      "note": "`season_bootstrap_class` helper method only outputs static strings. The attributes of the season aren't in the view"
+    }
+  ],
+  "brakeman_version": "7.1.0"
+}
