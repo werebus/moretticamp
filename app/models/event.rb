@@ -2,6 +2,7 @@
 
 class Event < ApplicationRecord
   include DateRange
+
   validates_with EventSeasonValidator
 
   belongs_to :user, optional: true
