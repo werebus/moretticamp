@@ -2,7 +2,7 @@
   .row
     .col-12.col-md-3.order-md-2
       %nav.mb-md-5{ aria: { labeledby: 'eventnav' } }
-        %h2.sr-only#eventnav Event Navigation
+        %h2.visually-hidden#eventnav Event Navigation
         %ul.nav.flex-md-column.justify-content-around#nav-links
           - if @season
             %li.nav-item
@@ -37,7 +37,7 @@
           = button_tag data: { clipboard_target: '#feed-url-field',
                                disable_hover: true, click_open: false, tabindex: 2 },
                        class: 'btn btn-secondary clip' do
-            %span.sr-only Copy feed URL to the clipboard
+            %span.visually-hidden Copy feed URL to the clipboard
             = icon 'regular', 'clipboard'
 
     .col-12.col-md-9.order-md-1

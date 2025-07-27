@@ -27,7 +27,7 @@
         .container-fluid
           %h1= link_to 'Il Campo Moretti', authenticated_root_path, class: 'nav-link'
 
-          %h2.sr-only#topnav Account Actions
+          %h2.visually-hidden#topnav Account Actions
           %ul.navbar-nav{ aria: { labeledby: 'topnav' } }
             %li.nav-item= link_to current_user.full_name, edit_user_registration_path, class: 'nav-link'
             %li.nav-item= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-link'
