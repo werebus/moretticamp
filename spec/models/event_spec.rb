@@ -6,7 +6,7 @@ require_relative 'concerns/date_range'
 RSpec.describe Event do
   it_behaves_like 'date_range'
 
-  describe EventSeasonValidator do
+  describe Event::SeasonValidator do
     context 'without a season' do
       it 'is invalid' do
         expect(build(:event)).not_to be_valid
