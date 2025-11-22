@@ -5,7 +5,7 @@
     "@fullcalendar/bootstrap5": "^6.1.19",
     "@fullcalendar/core": "^6.1.15",
     "@fullcalendar/daygrid": "^6.1.19",
-    "@hotwired/turbo-rails": "^8.0.18",
+    "@hotwired/turbo-rails": "^8.0.20",
     "@popperjs/core": "^2.11.8",
     "@sentry/browser": "^10.22.0",
     "bootstrap": "^5.3.8",
