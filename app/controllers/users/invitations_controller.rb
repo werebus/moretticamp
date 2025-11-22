@@ -26,7 +26,7 @@ module Users
       redirect_to root_path, notice: t('.success', **@invitation_granter.status)
     rescue ActiveRecord::RecordInvalid, ActiveModel::ValidationError
       flash.now[:alert] = @invitation_granter.errors.full_messages.to_sentence
-      render :to_grant, status: :unprocessable_entity
+      render :to_grant, status: :unprocessable_content
     end
 
     private
