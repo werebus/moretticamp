@@ -1,4 +1,5 @@
 exclude:
+  - '.bundle/**/*'
   - 'vendor/**/*'
 
 linters:
