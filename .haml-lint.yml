@@ -1,5 +1,6 @@
 exclude:
   - '.bundle/**/*'
+  - 'vendor/**/*'
 
 linters:
   LineLength:
