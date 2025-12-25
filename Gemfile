@@ -41,7 +41,7 @@ end
 group :development do
   gem 'bcrypt_pbkdf'
   gem 'brakeman', require: false
-  gem 'capistrano', '~> 3.11', require: false
+  gem 'capistrano', '~> 3.20', require: false
   gem 'capistrano-bundler', require: false
   gem 'capistrano-passenger', require: false
   gem 'capistrano-pending', require: false
