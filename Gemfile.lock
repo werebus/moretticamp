@@ -254,9 +254,9 @@ GEM
     minitest (6.0.1)
       prism (~> 1.5)
     mjml-rails (4.16.0)
-    mrml (1.8.1)
+    mrml (1.10.0)
       rb_sys
-    mrml (1.8.1-x86_64-linux)
+    mrml (1.10.0-x86_64-linux)
     msgpack (1.8.0)
     multi_xml (0.7.1)
       bigdecimal (~> 3.1)
@@ -391,12 +391,12 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.3.1)
-    rake-compiler-dock (1.9.1)
+    rake-compiler-dock (1.11.0)
     rb-fsevent (0.11.2)
     rb-inotify (0.11.1)
       ffi (~> 1.0)
-    rb_sys (0.9.117)
-      rake-compiler-dock (= 1.9.1)
+    rb_sys (0.9.124)
+      rake-compiler-dock (= 1.11.0)
     rdoc (7.1.0)
       erb
       psych (>= 4.0.0)
@@ -692,8 +692,8 @@ CHECKSUMS
   mini_portile2 (2.8.9) sha256=0cd7c7f824e010c072e33f68bc02d85a00aeb6fce05bb4819c03dfd3c140c289
   minitest (6.0.1) sha256=7854c74f48e2e975969062833adc4013f249a4b212f5e7b9d5c040bf838d54bb
   mjml-rails (4.16.0) sha256=9da65572f8edca05091e6ab1d81b3ae0800ddcf1a10dbfff29265fbb53d75630
-  mrml (1.8.1) sha256=a13d29da6591f4147b556c93ec34adb58bf8b0539d674898c1d714846c272c66
-  mrml (1.8.1-x86_64-linux) sha256=f1a4839f77fd35ce1f602225e18ed57f1e74af35f37b1aa011f57d60483cae7a
+  mrml (1.10.0) sha256=cc9b71c712888e23bd5060db8bc9aa31af3da7de9192cea97f35b616d653d68d
+  mrml (1.10.0-x86_64-linux) sha256=4c4740121fd25440019ee72e48f021c35b5176e1011b86543bed5ba5f6951a4b
   msgpack (1.8.0) sha256=e64ce0212000d016809f5048b48eb3a65ffb169db22238fb4b72472fecb2d732
   multi_xml (0.7.1) sha256=4fce100c68af588ff91b8ba90a0bb3f0466f06c909f21a32f4962059140ba61b
   net-http (0.6.0) sha256=9621b20c137898af9d890556848c93603716cab516dc2c89b01a38b894e259fb
@@ -744,10 +744,10 @@ CHECKSUMS
   railties (8.1.2) sha256=1289ece76b4f7668fc46d07e55cc992b5b8751f2ad85548b7da351b8c59f8055
   rainbow (3.1.1) sha256=039491aa3a89f42efa1d6dec2fc4e62ede96eb6acd95e52f1ad581182b79bc6a
   rake (13.3.1) sha256=8c9e89d09f66a26a01264e7e3480ec0607f0c497a861ef16063604b1b08eb19c
-  rake-compiler-dock (1.9.1) sha256=e73720a29aba9c114728ce39cc0d8eef69ba61d88e7978c57bac171724cd4d53
+  rake-compiler-dock (1.11.0) sha256=eab51f2cd533eb35cea6b624a75281f047123e70a64c58b607471bb49428f8c2
   rb-fsevent (0.11.2) sha256=43900b972e7301d6570f64b850a5aa67833ee7d87b458ee92805d56b7318aefe
   rb-inotify (0.11.1) sha256=a0a700441239b0ff18eb65e3866236cd78613d6b9f78fea1f9ac47a85e47be6e
-  rb_sys (0.9.117) sha256=755feaf6c640baceca7a9362dfb0ae87ff4ff16e3566d9ef86533896eb85cb59
+  rb_sys (0.9.124) sha256=513476557b12eaf73764b3da9f8746024558fe8699bda785fb548c9aa3877ae7
   rdoc (7.1.0) sha256=494899df0706c178596ca6e1d50f1b7eb285a9b2aae715be5abd742734f17363
   regexp_parser (2.11.3) sha256=ca13f381a173b7a93450e53459075c9b76a10433caadcb2f1180f2c741fc55a4
   reline (0.6.3) sha256=1198b04973565b36ec0f11542ab3f5cfeeec34823f4e54cebde90968092b1835
