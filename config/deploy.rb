@@ -20,6 +20,7 @@ append :linked_dirs,
        'public/system'
 
 set :bundle_config, { deployment: true, clean: true }
+set :bundle_version, 4
 
 set :passenger_restart_with_touch, true
 set :solid_queue_systemd_unit_name, 'solid_queue.service'
