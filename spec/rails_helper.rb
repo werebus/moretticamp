@@ -22,9 +22,4 @@ RSpec.configure do |config|
   config.before(:each, :js, type: :system) do
     driven_by :selenium, using: :headless_firefox
   end
-
-  # TODO: heartcombo/devise#5728
-  config.before(:suite) do
-    Rails.application.reload_routes_unless_loaded
-  end
 end
