@@ -6,6 +6,7 @@ CI.run do
   step "Style: Ruby", "bin/rubocop"
   step "Style: Haml", "bin/haml-lint"
   step "Style: JS", "npm run lint"
+  step "Style: CSS", "npm run lint:css"
 
   step "Security: Brakeman code analysis", "bin/brakeman --quiet --no-pager --exit-on-warn --exit-on-error"
 

@@ -4,11 +4,11 @@
 $tan: #f0dfd0;
 
 :root {
-  --color-tan: $tan;
+  --color-tan: #{$tan};
 }
 
 @font-face {
-  font-family: 'danielregular';
+  font-family: danielregular;
   src: url('daniel-webfont.eot');
   src: url('daniel-webfont.eot?#iefix') format('embedded-opentype'),
        url('daniel-webfont.woff') format('woff'),
@@ -27,11 +27,12 @@ body {
   color: $tan;
 
   h1 {
-    font-family: 'danielregular', 'Monotype Corsiva', 'Apple Chancery', 'ITC Zapf Chancery', 'URW Chancery L', cursive;
+    font-family: danielregular, 'Monotype Corsiva', 'Apple Chancery', 'ITC Zapf Chancery', 'URW Chancery L', cursive;
   }
 
   a, button {
     color: $tan;
+
     &:hover, &:focus {
       color: color.scale($tan, $lightness: -15%);
     }
