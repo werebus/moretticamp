@@ -18,6 +18,7 @@
 
     &::after {
       @include fas.icon(fa.$var-note-sticky);
+
       content: fa.fa-content(fa.$var-note-sticky);
       color: bootstrap.$white;
       margin-right: calc(0.25 * bootstrap.$spacer);
