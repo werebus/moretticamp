@@ -30,6 +30,7 @@
   "scripts": {
     "build:css": "postcss ./app/assets/stylesheets/application.postcss.scss -o ./app/assets/builds/application.css",
     "build": "node ./esbuild.mjs",
-    "lint": "eslint"
+    "lint": "eslint",
+    "lint:css": "stylelint '**/*.{scss,css}'"
   }
 }
