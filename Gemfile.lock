@@ -82,27 +82,30 @@ GEM
     airbrussh (1.6.0)
       sshkit (>= 1.6.1, != 1.7.0)
     ast (2.4.3)
-    aws-actionmailer-ses (1.0.0)
+    aws-actionmailer-ses (1.1.0)
       actionmailer (>= 7.1.0)
       aws-sdk-ses (~> 1, >= 1.50.0)
       aws-sdk-sesv2 (~> 1, >= 1.34.0)
-    aws-eventstream (1.3.0)
-    aws-partitions (1.1018.0)
-    aws-sdk-core (3.214.0)
+    aws-eventstream (1.4.0)
+    aws-partitions (1.1233.0)
+    aws-sdk-core (3.244.0)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.992.0)
       aws-sigv4 (~> 1.9)
+      base64
+      bigdecimal
       jmespath (~> 1, >= 1.6.1)
+      logger
     aws-sdk-rails (5.1.0)
       aws-sdk-core (~> 3)
       railties (>= 7.1.0)
-    aws-sdk-ses (1.78.0)
-      aws-sdk-core (~> 3, >= 3.210.0)
+    aws-sdk-ses (1.97.0)
+      aws-sdk-core (~> 3, >= 3.244.0)
       aws-sigv4 (~> 1.5)
-    aws-sdk-sesv2 (1.66.0)
-      aws-sdk-core (~> 3, >= 3.210.0)
+    aws-sdk-sesv2 (1.97.0)
+      aws-sdk-core (~> 3, >= 3.244.0)
       aws-sigv4 (~> 1.5)
-    aws-sigv4 (1.10.1)
+    aws-sigv4 (1.12.1)
       aws-eventstream (~> 1, >= 1.0.2)
     base64 (0.3.0)
     bcrypt (3.1.22)
@@ -254,7 +257,7 @@ GEM
     matrix (0.4.2)
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
-    minitest (6.0.2)
+    minitest (6.0.3)
       drb (~> 2.0)
       prism (~> 1.5)
     mjml-rails (4.16.0)
@@ -621,14 +624,14 @@ CHECKSUMS
   afm (0.2.2) sha256=c83e698e759ab0063331ff84ca39c4673b03318f4ddcbe8e90177dd01e4c721a
   airbrussh (1.6.0) sha256=7e2cf581f2319d2c2b2b672c9fc486efb4dfcfed4bd2dadbef5f10b8b2a000d0
   ast (2.4.3) sha256=954615157c1d6a382bc27d690d973195e79db7f55e9765ac7c481c60bdb4d383
-  aws-actionmailer-ses (1.0.0) sha256=0a16f1413dba0bf96a6bb065ebf353c7c8a107534af5146a31b8243b9e4d4c18
-  aws-eventstream (1.3.0) sha256=f1434cc03ab2248756eb02cfa45e900e59a061d7fbdc4a9fd82a5dd23d796d3f
-  aws-partitions (1.1018.0) sha256=b2915082fc0b25299d375b7e5f501be9b8efd8731d0a7618184177c240cabafb
-  aws-sdk-core (3.214.0) sha256=24f2a0f29dc3b5d9ee38d6ff8341a66fba48a4ebca2424688f7bac9952d8488b
+  aws-actionmailer-ses (1.1.0) sha256=daa3b0c32b3d485bfd8fe32eee804486e223cfc2b304b7018f7d22220229948c
+  aws-eventstream (1.4.0) sha256=116bf85c436200d1060811e6f5d2d40c88f65448f2125bc77ffce5121e6e183b
+  aws-partitions (1.1233.0) sha256=928d3486082db11659397eb4c957f41e33fac8848bf87eb42fd921bbb96213c2
+  aws-sdk-core (3.244.0) sha256=3e458c078b0c5bdee95bc370c3a483374b3224cf730c1f9f0faf849a5d9a18ea
   aws-sdk-rails (5.1.0) sha256=8cffd3b60142e12a6747c91a7a609f668276b1082fc0c10810d5da3d14b13189
-  aws-sdk-ses (1.78.0) sha256=833d054e45b368bb8a6a03c0da72a34f3a4e588ee269eecead52a7216eaf4241
-  aws-sdk-sesv2 (1.66.0) sha256=687e9355b2e9576ffe350cf4232d28e6714d073ae96a62f60a9515407428dae4
-  aws-sigv4 (1.10.1) sha256=8a140753f34de18125686b11e7adaed4ca3db06dfb50a478993bd437f7a203bb
+  aws-sdk-ses (1.97.0) sha256=d8b8dd21b1d2550aa58cff37ae562a4d435b289af9bcbc5c4325509712c63b95
+  aws-sdk-sesv2 (1.97.0) sha256=039879fd3ee81a3cc7a036719021941ad333dfe8a3747e59de79428a6601ed78
+  aws-sigv4 (1.12.1) sha256=6973ff95cb0fd0dc58ba26e90e9510a2219525d07620c8babeb70ef831826c00
   base64 (0.3.0) sha256=27337aeabad6ffae05c265c450490628ef3ebd4b67be58257393227588f5a97b
   bcrypt (3.1.22) sha256=1f0072e88c2d705d94aff7f2c5cb02eb3f1ec4b8368671e19112527489f29032
   bcrypt_pbkdf (1.1.2) sha256=c2414c23ce66869b3eb9f643d6a3374d8322dfb5078125c82792304c10b94cf6
@@ -696,7 +699,7 @@ CHECKSUMS
   matrix (0.4.2) sha256=71083ccbd67a14a43bfa78d3e4dc0f4b503b9cc18e5b4b1d686dc0f9ef7c4cc0
   mini_mime (1.1.5) sha256=8681b7e2e4215f2a159f9400b5816d85e9d8c6c6b491e96a12797e798f8bccef
   mini_portile2 (2.8.9) sha256=0cd7c7f824e010c072e33f68bc02d85a00aeb6fce05bb4819c03dfd3c140c289
-  minitest (6.0.2) sha256=db6e57956f6ecc6134683b4c87467d6dd792323c7f0eea7b93f66bd284adbc3d
+  minitest (6.0.3) sha256=88ac8a1de36c00692420e7cb3cc11a0773bbcb126aee1c249f320160a7d11411
   mjml-rails (4.16.0) sha256=9da65572f8edca05091e6ab1d81b3ae0800ddcf1a10dbfff29265fbb53d75630
   mrml (1.10.0) sha256=cc9b71c712888e23bd5060db8bc9aa31af3da7de9192cea97f35b616d653d68d
   mrml (1.10.0-x86_64-linux) sha256=4c4740121fd25440019ee72e48f021c35b5176e1011b86543bed5ba5f6951a4b
