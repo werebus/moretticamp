@@ -260,7 +260,7 @@ GEM
     minitest (6.0.4)
       drb (~> 2.0)
       prism (~> 1.5)
-    mjml-rails (4.16.0)
+    mjml-rails (5.0.0)
     mrml (1.10.0)
       rb_sys
     mrml (1.10.0-x86_64-linux)
@@ -700,7 +700,7 @@ CHECKSUMS
   mini_mime (1.1.5) sha256=8681b7e2e4215f2a159f9400b5816d85e9d8c6c6b491e96a12797e798f8bccef
   mini_portile2 (2.8.9) sha256=0cd7c7f824e010c072e33f68bc02d85a00aeb6fce05bb4819c03dfd3c140c289
   minitest (6.0.4) sha256=df1304664589d40f46089247fdc451f866b0ce0d7cae1457a15fc1eb7d48dca1
-  mjml-rails (4.16.0) sha256=9da65572f8edca05091e6ab1d81b3ae0800ddcf1a10dbfff29265fbb53d75630
+  mjml-rails (5.0.0) sha256=93efdd03a0ca2865e777ec151c88a159f72d1b393a70de6477c93b04cf639bfb
   mrml (1.10.0) sha256=cc9b71c712888e23bd5060db8bc9aa31af3da7de9192cea97f35b616d653d68d
   mrml (1.10.0-x86_64-linux) sha256=4c4740121fd25440019ee72e48f021c35b5176e1011b86543bed5ba5f6951a4b
   msgpack (1.8.0) sha256=e64ce0212000d016809f5048b48eb3a65ffb169db22238fb4b72472fecb2d732
