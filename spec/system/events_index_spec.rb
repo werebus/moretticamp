@@ -21,7 +21,7 @@ RSpec.describe 'EventsController#index' do
   end
 
   context 'without a season' do
-    it { is_expected.to have_content('Season Not Open') }
+    it { is_expected.to have_text('Season Not Open') }
 
     it { is_expected.to have_no_css('#calendar') }
 
