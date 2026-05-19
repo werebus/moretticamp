@@ -67,7 +67,7 @@ class SeasonsController < ApplicationController
   private
 
   def set_season
-    @season = Season.find(params[:id])
+    @season = Season.find(params.expect(:id))
   end
 
   def season_params
