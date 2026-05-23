@@ -12,7 +12,7 @@ Rails.application.configure do
     policy.object_src  :none
     policy.script_src  :self
     policy.style_src   :self
-    policy.connect_src :self
+    policy.connect_src :self, 'https://*.ingest.us.sentry.io/'
     policy.worker_src  :self, :blob
     # Specify URI for violation reports
     # policy.report_uri "/csp-violation-report-endpoint"
