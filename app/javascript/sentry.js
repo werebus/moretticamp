@@ -10,6 +10,6 @@ Sentry.init({
   tracesSampleRate: 1.0,
   tracePropagationTargets: [
     'localhost',
-    /^https:\/\/moretti.camp/
+    'https://moretti.camp'
   ]
 })
