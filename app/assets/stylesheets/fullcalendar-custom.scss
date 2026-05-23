@@ -24,4 +24,9 @@
       margin-right: calc(0.25 * bootstrap.$spacer);
     }
   }
+
+  a.fc-event:focus {
+    outline: 0;
+    box-shadow: bootstrap.$focus-ring-box-shadow;
+  }
 }
