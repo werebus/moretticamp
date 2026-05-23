@@ -1,3 +1,4 @@
+- content_for :main_target, 'event-content'
 .container-fluid
   .row
     .col-12.col-md-3.order-md-2
@@ -40,7 +41,7 @@
             %span.visually-hidden Copy feed URL to the clipboard
             = icon 'regular', 'clipboard'
 
-    .col-12.col-md-9.order-md-1
+    .col-12.col-md-9.order-md-1#event-content
       - if @season
         #calendar{ data: { start_date: @season.start_date, end_date: 1.day.after(@season.end_date) } }
       - elsif @pending_season.present? && !@pending_season.available?

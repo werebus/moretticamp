@@ -23,6 +23,8 @@
     - if content_for?(:body)
       = yield(:body)
     - else
+      = link_to 'Skip to main content', "##{content_for(:main_target) || 'main-content'}",
+                class: 'visually-hidden-focusable'
       %nav.navbar.navbar-expand.bg-dark.mb-3#main-nav
         .container-fluid
           %h1= link_to 'Il Campo Moretti', authenticated_root_path, class: 'nav-link'
@@ -35,5 +37,5 @@
         .row.d-flex.justify-content-center
           .col-md-8
             = display_flash_messages
-      = yield
+      %main#main-content= yield
       = comment_lines poem
