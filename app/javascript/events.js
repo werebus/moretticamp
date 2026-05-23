@@ -59,8 +59,8 @@ window.addEventListener('turbo:load', () => {
       const desc = info.event.extendedProps.description
 
       if (desc) {
-        // eslint-disable-next-line no-new
-        new Tooltip(info.el, { title: desc })
+        const tip = new Tooltip(info.el, { title: desc })
+        window.addEventListener('turbo:before-cache', () => { tip.dispose() })
 
         info.el.addEventListener('long-press', function (e) {
           e.target.closest('a').focus()
