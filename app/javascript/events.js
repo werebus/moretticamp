@@ -2,6 +2,7 @@ import { Calendar } from '@fullcalendar/core'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import bootstrap5Plugin from '@fullcalendar/bootstrap5'
 import { Tooltip } from './bootstrap'
+import 'long-press-event'
 
 window.addEventListener('turbo:load', () => {
   const calEl = document.getElementById('calendar')
@@ -60,6 +61,10 @@ window.addEventListener('turbo:load', () => {
       if (desc) {
         // eslint-disable-next-line no-new
         new Tooltip(info.el, { title: desc })
+
+        info.el.addEventListener('long-press', function (e) {
+          e.target.closest('a').focus()
+        })
       }
     },
 
