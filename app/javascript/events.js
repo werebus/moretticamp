@@ -59,8 +59,10 @@ window.addEventListener('turbo:load', () => {
       const desc = info.event.extendedProps.description
 
       if (desc) {
-        const tip = new Tooltip(info.el, { title: desc })
-        window.addEventListener('turbo:before-cache', () => { tip.dispose() })
+        const tip = new Tooltip(info.el, { title: desc, container: calEl })
+        window.addEventListener('turbo:before-cache', () => {
+          if (tip.tip) { tip.dispose() }
+        })
 
         info.el.addEventListener('long-press', function (e) {
           e.target.closest('a').focus()
