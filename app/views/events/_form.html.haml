@@ -8,6 +8,6 @@
       = f.date_field :start_date, label: 'First Date'
     .col-sm-6
       = f.date_field :end_date, label: 'Last Date'
-  = f.text_area :description, label: 'Notes'
+  = f.text_area :description, label: 'Notes', help: 'Optional'
   .d-grid.gap-2
     = f.submit class: 'btn btn-primary'
