@@ -24,7 +24,7 @@ RSpec.shared_examples_for 'date_range' do
 
     it 'adds an error to the end date' do
       invalid.validate
-      expect(invalid.errors[:end_date].join).to match(/be on or after/)
+      expect(invalid.errors[:end_date].join).to include('be on or after')
     end
   end
 
@@ -76,11 +76,11 @@ RSpec.shared_examples_for 'date_range' do
     end
 
     it 'has a "word" date range with the start date' do
-      expect(multi_day.date_range_words).to match(/Nov 1st/)
+      expect(multi_day.date_range_words).to include('Nov 1st')
     end
 
     it 'has a "word" date range with the end date' do
-      expect(multi_day.date_range_words).to match(/Nov 7th/)
+      expect(multi_day.date_range_words).to include('Nov 7th')
     end
 
     it 'describes a 1-day event as "on" a date' do
