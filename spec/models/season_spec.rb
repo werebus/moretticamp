@@ -41,7 +41,7 @@ RSpec.describe Season do
 
     it 'adds errors to base' do
       other.validate
-      expect(other.errors[:base].join).to match(/overlaps/)
+      expect(other.errors[:base].join).to include('overlaps')
     end
   end
 

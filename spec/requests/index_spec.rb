@@ -22,7 +22,7 @@ RSpec.describe 'Index page' do
     end
 
     it 'displays the events index' do
-      expect(response.body).to match(/Season Not Open/)
+      expect(response.body).to include('Season Not Open')
     end
   end
 end

@@ -16,7 +16,7 @@ RSpec.describe UserMailer do
       let(:user) { create :user, :invited }
 
       it 'says why in the body' do
-        expect(mail.body.encoded).to match(/haven't yet accepted your invitation/)
+        expect(mail.body.encoded).to include("haven't yet accepted your invitation")
       end
     end
 

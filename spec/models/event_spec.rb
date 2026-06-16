@@ -15,7 +15,7 @@ RSpec.describe Event do
       it 'adds errors to base' do
         event = build :event
         event.validate
-        expect(event.errors[:base].join).to match(/no current available season/)
+        expect(event.errors[:base].join).to include('no current available season')
       end
     end
 
@@ -47,7 +47,7 @@ RSpec.describe Event do
         event = build :event, start_date: season_start - 1.day,
                               end_date: season_start + 2.days
         event.validate
-        expect(event.errors[:base].join).to match(/occur durring/)
+        expect(event.errors[:base].join).to include('occur durring')
       end
     end
   end
@@ -73,11 +73,11 @@ RSpec.describe Event do
 
   describe '#display_title' do
     it 'shows a title if it is present and there is no user' do
-      expect(build(:event, :titled, :unowned).display_title).to match(/Fun/)
+      expect(build(:event, :titled, :unowned).display_title).to include('Fun')
     end
 
     it 'shows a title if it is present even if there is a user' do
-      expect(build(:event, :titled).display_title).to match(/Fun/)
+      expect(build(:event, :titled).display_title).to include('Fun')
     end
 
     it "shows the user's first name if no title" do
