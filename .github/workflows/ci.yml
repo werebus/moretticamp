@@ -11,33 +11,33 @@ jobs:
   haml-lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/setup
       - run: bundle exec haml-lint
   eslint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/setup
       - run: npm install
       - run: npm run lint
   stylelint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/setup
       - run: npm install
       - run: npm run lint:css
   rubocop:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/setup
       - run: bundle exec rubocop
   brakeman:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/setup
       - run: bundle exec brakeman --no-pager
   rspec:
@@ -54,7 +54,7 @@ jobs:
       RAILS_ENV: test
       DATABASE_URL: postgres://moretticamp_test:PG-PASSWORD@localhost:5432/moretticamp_test
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/setup
       - run: bin/setup
       - run: bin/rails test:prepare
