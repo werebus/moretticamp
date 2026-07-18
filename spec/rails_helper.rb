@@ -5,6 +5,7 @@ ENV['RAILS_ENV'] ||= 'test'
 require 'simplecov'
 SimpleCov.start 'rails' do
   enable_coverage :branch
+  skip 'app/mailers/previews'
 end
 
 require 'spec_helper'
