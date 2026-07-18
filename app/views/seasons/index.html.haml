@@ -15,7 +15,7 @@
         %th{ colspan: 2 }
     %tbody
       - @seasons.each do |season|
-        %tr{ class: "table-#{season_bootstrap_class(season)}" }
+        %tr{ class: "table-#{season_bootstrap_class(season)}", data: { season_id: season.id } }
           %td= season.start_date
           %td= season.end_date
           %td{ class: season.available? ? nil : 'fw-bold' }= l season.available, format: :long
