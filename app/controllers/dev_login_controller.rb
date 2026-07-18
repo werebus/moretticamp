@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# :nocov:
+# simplecov:disable
 class DevLoginController < ApplicationController
   skip_before_action :authenticate_user!
 
@@ -14,4 +14,4 @@ class DevLoginController < ApplicationController
     end
   end
 end
-# :nocov:
+# simplecov:enable

@@ -20,13 +20,13 @@ class User < ApplicationRecord
       invitation_accepted.joins(:events).where(events: { start_date: (5.years.ago..) }).distinct
     end
 
-    # :nocov:
+    # simplecov:disable
     def dev_login_options
       order(:first_name, :last_name).group_by { |u| u.admin? ? 'Admins' : 'Non-Admins' }.transform_values do |users|
         users.map { |u| [u.full_name, u.id] }
       end
     end
-    # :nocov:
+    # simplecov:enable
 
     def find_for_oauth(auth)
       find_by(provider: auth.provider, uid: auth.uid)
