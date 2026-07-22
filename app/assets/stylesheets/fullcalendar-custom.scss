@@ -1,7 +1,10 @@
 @use "bootstrap";
 @use "@fortawesome/fontawesome-free/scss/fa" as fa;
 @use "@fortawesome/fontawesome-free/scss/solid" as fas;
+@use "fullcalendar/skeleton";
+@use "@fullcalendar/bootstrap5/theme";
 
+/*
 #calendar.fc {
   .fc-daygrid-body {
     background: bootstrap.$white;
@@ -30,3 +33,4 @@
     box-shadow: bootstrap.$focus-ring-box-shadow;
   }
 }
+*/
