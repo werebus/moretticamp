@@ -13,6 +13,7 @@ window.addEventListener('turbo:load', () => {
   const calendar = new Calendar(calEl, {
     plugins: [themePlugin, dayGridPlugin],
     toolbarTitleClass: 'cal-title',
+    tableBodyClass: 'cal-day-grid',
     dayRowClass: 'cal-day-row',
     eventClass: 'cal-event',
     eventAfterClass: 'cal-event-after',
