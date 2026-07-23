@@ -8,4 +8,4 @@ json.allDay true
 json.recurring false
 json.url event_url(event)
 json.color('var(--bs-primary)')
-json.classNames 'has-tip' if event.description.present?
+json.className 'has-tip' if event.description.present?

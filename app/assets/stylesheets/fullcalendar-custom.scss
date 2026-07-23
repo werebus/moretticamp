@@ -4,33 +4,24 @@
 @use "fullcalendar/skeleton";
 @use "@fullcalendar/bootstrap5/theme";
 
-/*
-#calendar.fc {
-  .fc-daygrid-body {
-    background: bootstrap.$white;
+#calendar {
+  .cal-title {
+    @include bootstrap.rfs(bootstrap.$h2-font-size);
+
+    font-weight: bootstrap.$headings-font-weight;
   }
 
-  tbody tr:nth-child(even) {
+  .cal-day-row:nth-child(even) {
     background: bootstrap.$gray-200;
   }
 
-  a.fc-event.has-tip .fc-event-main-frame {
-    display: flex;
+  a.cal-event {
     align-items: center;
-    justify-content: space-between;
 
-    &::after {
+    &.has-tip .cal-event-after {
       @include fas.icon(fa.$var-note-sticky);
 
-      content: fa.fa-content(fa.$var-note-sticky);
       color: bootstrap.$white;
-      margin-right: calc(0.25 * bootstrap.$spacer);
     }
   }
-
-  a.fc-event:focus {
-    outline: 0;
-    box-shadow: bootstrap.$focus-ring-box-shadow;
-  }
 }
-*/

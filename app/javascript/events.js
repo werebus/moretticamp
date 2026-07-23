@@ -12,9 +12,17 @@ window.addEventListener('turbo:load', () => {
 
   const calendar = new Calendar(calEl, {
     plugins: [themePlugin, dayGridPlugin],
+    toolbarTitleClass: 'cal-title',
+    dayRowClass: 'cal-day-row',
+    eventClass: 'cal-event',
+    eventAfterClass: 'cal-event-after',
     headerToolbar: {
       start: 'title',
       end: 'today prev,next'
+    },
+    buttons: {
+      prev: { iconClass: 'fa-solid fa-chevron-left' },
+      next: { iconClass: 'fa-solid fa-chevron-right' }
     },
     eventSources: [
       '/events.json',
