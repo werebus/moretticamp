@@ -1,6 +1,6 @@
-import { Calendar } from '@fullcalendar/core'
-import dayGridPlugin from '@fullcalendar/daygrid'
-import bootstrap5Plugin from '@fullcalendar/bootstrap5'
+import { Calendar } from 'fullcalendar'
+import dayGridPlugin from 'fullcalendar/daygrid'
+import themePlugin from '@fullcalendar/bootstrap5'
 import { Tooltip } from './bootstrap'
 import 'long-press-event'
 
@@ -10,32 +10,28 @@ window.addEventListener('turbo:load', () => {
     return
   }
 
-  const updateTitleFormat = function (cal) {
-    const bsMedium = window.getComputedStyle(document.documentElement).getPropertyValue('--bs-breakpoint-md')
-    if (window.matchMedia('(min-width: ' + bsMedium + ')').matches) {
-      cal.changeView('desktopDayGridMonth')
-    } else {
-      cal.changeView('dayGridMonth')
-    }
-  }
-
   const calendar = new Calendar(calEl, {
-    plugins: [dayGridPlugin, bootstrap5Plugin],
-    themeSystem: 'bootstrap5',
-    buttonIcons: {
-      prev: 'fa fa-solid fa-chevron-left',
-      next: 'fa fa-solid fa-chevron-right'
+    plugins: [themePlugin, dayGridPlugin],
+    toolbarTitleClass: 'cal-title',
+    tableBodyClass: 'cal-day-grid',
+    dayRowClass: 'cal-day-row',
+    eventClass: 'cal-event',
+    eventAfterClass: 'cal-event-after',
+    headerToolbar: {
+      start: 'title',
+      end: 'today prev,next'
+    },
+    buttons: {
+      prev: { iconClass: 'fa-solid fa-chevron-left' },
+      next: { iconClass: 'fa-solid fa-chevron-right' }
     },
     eventSources: [
-      {
-        url: '/events.json',
-        error (e) {
-          if (e.status === 401) { window.location.reload(false) }
-        }
-      }, {
-        url: '/seasons.json'
-      }
+      '/events.json',
+      '/seasons.json'
     ],
+    eventSourceFailure (e) {
+      if (e.response.status === 401) { window.location.reload(false) }
+    },
     datesSet: function (dateInfo) {
       localStorage.setItem('eventCalendarCurrentDate', dateInfo.view.currentStart.toISOString())
     },
@@ -65,14 +61,26 @@ window.addEventListener('turbo:load', () => {
         })
 
         info.el.addEventListener('long-press', function (e) {
-          e.target.closest('a').focus()
+          e.target.focus()
         })
       }
-    },
-
-    windowResize: function () { updateTitleFormat(this) }
+    }
   })
 
-  updateTitleFormat(calendar)
+  const resizeObserver = new ResizeObserver((entries) => {
+    for (const entry of entries) {
+      if (entry.borderBoxSize) {
+        const bsSmall = window.getComputedStyle(document.documentElement).getPropertyValue('--bs-breakpoint-sm')
+        const borderBoxSize = entry.contentBoxSize[0]
+        if (borderBoxSize.inlineSize < parseInt(bsSmall)) {
+          calendar.changeView('dayGridMonth')
+        } else {
+          calendar.changeView('desktopDayGridMonth')
+        }
+      }
+    }
+  })
+  resizeObserver.observe(calEl)
+
   calendar.render()
 })

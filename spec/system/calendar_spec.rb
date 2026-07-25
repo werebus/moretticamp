@@ -16,46 +16,46 @@ RSpec.describe 'EventsController#index - calendar', :js do
   end
 
   it 'starts on the current month' do
-    header = find('#calendar .fc-header-toolbar h2')
+    header = find('#calendar .cal-title')
     expect(header).to have_text(Time.zone.today.strftime('%B %Y'))
   end
 
   it 'has an event on it' do
-    within '#calendar .fc-daygrid-body' do
+    within '#calendar .cal-day-grid' do
       expect(page).to have_text(event.display_title)
     end
   end
 
   it 'has an link to the event on it' do
-    within '#calendar .fc-daygrid-body' do
+    within '#calendar .cal-day-grid' do
       expect(page).to have_link(href: /#{event_path(event)}/)
     end
   end
 
   it 'limits navigation back to the season start' do
     with_calendar_buttons do
-      click_on 'Previous' until page.has_css? 'button.fc-prev-button[disabled]'
+      click_on 'Previous Month' until page.has_css? 'button[aria-label="Previous Month"][disabled]'
     end
     expect(page).to have_text(season.start_date.strftime('%B %Y'))
   end
 
   it 'limits navigation forward to the season end' do
     with_calendar_buttons do
-      click_on 'Next' until page.has_css? 'button.fc-next-button[disabled]'
+      click_on 'Next Month' until page.has_css? 'button[aria-label="Next Month"][disabled]'
     end
     expect(page).to have_text(season.end_date.strftime('%B %Y'))
   end
 
   it 'has a Camp open event on it' do
     with_calendar_buttons do
-      click_on 'Previous' until page.has_css? 'button.fc-prev-button[disabled]'
+      click_on 'Previous Month' until page.has_css? 'button[aria-label="Previous Month"][disabled]'
     end
     expect(page).to have_text('Camp Opens')
   end
 
   it 'has a Camp close event on it' do
     with_calendar_buttons do
-      click_on 'Next' until page.has_css? 'button.fc-next-button[disabled]'
+      click_on 'Next Month' until page.has_css? 'button[aria-label="Next Month"][disabled]'
     end
     expect(page).to have_text('Camp Closes')
   end

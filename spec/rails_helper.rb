@@ -16,6 +16,7 @@ Rails.root.join('spec/support').glob('**/*.rb').sort.each { |f| require f }
 
 ActiveRecord::Migration.maintain_test_schema!
 Capybara.server = :puma, { Silent: true }
+Capybara.enable_aria_label = true
 
 RSpec.configure do |config|
   config.use_transactional_fixtures = true
