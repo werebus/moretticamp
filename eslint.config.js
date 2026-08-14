@@ -1,12 +1,15 @@
 import neostandard from 'neostandard'
+import { globalIgnores } from 'eslint/config'
 
-export default neostandard({
-  env: ['browser'],
-  ignores: [
-    '.bundle',
-    'app/assets',
+export default [
+  globalIgnores([
+    '.bundle/',
+    'app/assets/',
     'coverage',
-    'node_modules',
-    'vendor',
-  ],
-})
+    'vendor/',
+  ]),
+
+  ...neostandard({
+    env: ['browser'],
+  }),
+]
