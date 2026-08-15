@@ -194,7 +194,8 @@ GEM
       raabro (~> 1.4)
     globalid (1.4.0)
       activesupport (>= 6.1)
-    haml (7.2.0)
+    haml (7.3.0)
+      prism (>= 1.1.0)
       temple (>= 0.8.2)
       thor
       tilt
@@ -203,7 +204,7 @@ GEM
       activesupport (>= 5.1)
       haml (>= 4.0.6)
       railties (>= 5.1)
-    haml_lint (0.76.0)
+    haml_lint (0.77.0)
       haml (>= 5.0)
       parallel (>= 1.10)
       rainbow
@@ -314,10 +315,10 @@ GEM
       omniauth (~> 2.0)
     orm_adapter (0.5.0)
     ostruct (0.6.3)
-    overcommit (0.71.0)
+    overcommit (0.72.0)
       childprocess (>= 0.6.3, < 6)
       iniparse (~> 1.4)
-      rexml (>= 3.3.9)
+      rexml (>= 3.4.2)
     parallel (2.1.0)
     parser (3.3.12.0)
       ast (~> 2.4.1)
@@ -437,7 +438,7 @@ GEM
       rspec-mocks (>= 3.13.0, < 5.0.0)
       rspec-support (>= 3.13.0, < 5.0.0)
     rspec-support (3.13.7)
-    rubocop (1.88.2)
+    rubocop (1.89.0)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -479,7 +480,7 @@ GEM
     ruby-rc4 (0.1.5)
     rubyzip (3.4.1)
     securerandom (0.4.1)
-    selenium-webdriver (4.46.0)
+    selenium-webdriver (4.47.0)
       base64 (~> 0.2)
       logger (~> 1.4)
       rexml (~> 3.2, >= 3.2.5)
@@ -492,7 +493,7 @@ GEM
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.0.2)
       logger
-    simplecov (1.0.2)
+    simplecov (1.1.0)
     snaky_hash (2.0.7)
       hashie (>= 0.1.0, < 6)
       version_gem (~> 1.1, >= 1.1.14)
@@ -512,7 +513,7 @@ GEM
       net-ssh (>= 2.8.0)
       ostruct
     sysexits (1.2.0)
-    temple (0.10.4)
+    temple (0.10.6)
     thor (1.5.0)
     tilt (2.8.0)
     timecop (0.9.11)
@@ -672,9 +673,9 @@ CHECKSUMS
   ffi (1.17.3-x86_64-linux-gnu) sha256=3746b01f677aae7b16dc1acb7cb3cc17b3e35bdae7676a3f568153fb0e2c887f
   fugit (1.13.0) sha256=a4f093fce740da52f216740a5041e2a594ea763cdb89e8b2754ca4399634ab18
   globalid (1.4.0) sha256=037f12fbf1d9d7a014d501c2d5c77356fd4ddd96d7a7991d6700bba96706f427
-  haml (7.2.0) sha256=87fd2b71f7feab1724337b090a7d767f5ab2d42f08c974f3ead673f18cfcd55a
+  haml (7.3.0) sha256=4383cb90bb0b525d4025dcb9721fec085edda1c43525043fc327c80127f6cf37
   haml-rails (3.1.0) sha256=4366474d973e4b9d5326cb216f2073150cfeff4c2a3c07fadb49a490ffdf610b
-  haml_lint (0.76.0) sha256=ba63a2a13645ff600f0b9c08146f5bb323521a65f8613fda0b6187e573387d82
+  haml_lint (0.77.0) sha256=d6c3ead412ed40872272f6ef6d4114ecc2afaf63ac94ce97cafd550fe1ae575d
   hashery (2.1.2) sha256=d239cc2310401903f6b79d458c2bbef5bf74c46f3f974ae9c1061fb74a404862
   hashie (5.1.0) sha256=c266471896f323c446ea8207f8ffac985d2718df0a0ba98651a3057096ca3870
   i18n (1.15.2) sha256=00f9eb62412fe593b2a65a97daa75300d37abb8f7202ec748e94b6d46a9dd1b5
@@ -722,7 +723,7 @@ CHECKSUMS
   omniauth-oauth2 (1.9.0) sha256=ed15f6d9d20991807ce114cc5b9c1453bce3645b64e51c68c90cff5ff153fee8
   orm_adapter (0.5.0) sha256=aa5d0be5d540cbb46d3a93e88061f4ece6a25f6e97d6a47122beb84fe595e9b9
   ostruct (0.6.3) sha256=95a2ed4a4bd1d190784e666b47b2d3f078e4a9efda2fccf18f84ddc6538ed912
-  overcommit (0.71.0) sha256=6cc72a5359673d9aa96447e25c924d92857216f5595a87ee2404e4687360b216
+  overcommit (0.72.0) sha256=1cb8e39639e2f203ced5a303c2ac1e24ce49824ead52fa3204f954f936a63a3e
   parallel (2.1.0) sha256=b35258865c2e31134c5ecb708beaaf6772adf9d5efae28e93e99260877b09356
   parser (3.3.12.0) sha256=21a6d7f755d5a24dfbdc6e6b772e4e879a52e7631a88bc5a3a134606052c9828
   pdf-core (0.10.0) sha256=0a5d101e2063c01e3f941e1ee47cbb97f1adfc1395b58372f4f65f1300f3ce91
@@ -767,7 +768,7 @@ CHECKSUMS
   rspec-mocks (3.13.8) sha256=086ad3d3d17533f4237643de0b5c42f04b66348c28bf6b9c2d3f4a3b01af1d47
   rspec-rails (8.0.4) sha256=06235692fc0892683d3d34977e081db867434b3a24ae0dd0c6f3516bad4e22df
   rspec-support (3.13.7) sha256=0640e5570872aafefd79867901deeeeb40b0c9875a36b983d85f54fb7381c47c
-  rubocop (1.88.2) sha256=8def251c90cd955feb4daa3edc0ab56893250c4ce90ef81e6c80c03f9a939bbf
+  rubocop (1.89.0) sha256=4dee8e3ee9c45e474834efd9e8d6fd031e8331c8dacdff0de4ad65ae0a6faae7
   rubocop-ast (1.50.0) sha256=b9ca88300da0803ee222ad20cdb30494c0a784eed06fdc35d254b06d662788db
   rubocop-capybara (3.0.0) sha256=7a64655238acda7f8f3c87e37ac825a64c615a79c17c253f1a28270dc3768c4b
   rubocop-factory_bot (2.28.0) sha256=4b17fc02124444173317e131759d195b0d762844a71a29fe8139c1105d92f0cb
@@ -779,16 +780,16 @@ CHECKSUMS
   ruby-rc4 (0.1.5) sha256=00cc40a39d20b53f5459e7ea006a92cf584e9bc275e2a6f7aa1515510e896c03
   rubyzip (3.4.1) sha256=0a79e745b5c25872ebd148457df5665da8530ed8626c993b01457128f173ca02
   securerandom (0.4.1) sha256=cc5193d414a4341b6e225f0cb4446aceca8e50d5e1888743fac16987638ea0b1
-  selenium-webdriver (4.46.0) sha256=cb6cfa6f79eac041749df0b14cdcb0e9fe5df3715a64c77bfaa56b345b99f957
+  selenium-webdriver (4.47.0) sha256=67f915b8223d2133bbaa13e92fd98854175394f086e2036a9eff4f5561fd69e4
   sentry-rails (6.7.0) sha256=d295dc5aa239eb91d4fb123c55d9ff2d3c40e7c29921539c5b4ae684b1490293
   sentry-ruby (6.7.0) sha256=b4b915d79a0395ad02106d4012aa1914641456e042ce36393f15bd1630d8db42
-  simplecov (1.0.2) sha256=c6459434efe4b948b46477cc2df2faa73ab365f83a33c7c17f81262f4f7f1244
+  simplecov (1.1.0) sha256=30f12f31a659c377ef402d5463a50eaf9037035fe1fac3d263cb389682cae1b4
   snaky_hash (2.0.7) sha256=7d02c70012a3f932e48860cd024577908300c9aa615e0cb9b450aaa749cbcb4d
   solid_queue (1.6.0) sha256=b5fc3bb34162e09d8f960df6400d0f9304dc80fe66c2cfface31c32b228de6a1
   spring (4.7.0) sha256=f81bf6d41f05518ed5d0128ce5c75fb6dd9c6153f158129c8b85c4461ca0b72c
   sshkit (1.25.0) sha256=c8c6543cdb60f91f1d277306d585dd11b6a064cb44eab0972827e4311ff96744
   sysexits (1.2.0) sha256=598241c4ae57baa403c125182dfdcc0d1ac4c0fb606dd47fbed57e4aaf795662
-  temple (0.10.4) sha256=b7a1e94b6f09038ab0b6e4fe0126996055da2c38bec53a8a336f075748fff72c
+  temple (0.10.6) sha256=0f2ed8a885a81ef5b13b1d99a02948e36da34f2212390f0a0228bfd0412c400a
   thor (1.5.0) sha256=e3a9e55fe857e44859ce104a84675ab6e8cd59c650a49106a05f55f136425e73
   tilt (2.8.0) sha256=ba472eb2716fe1e04112d6d219a9dae938ec09a6a1e2ad3ecc7922e79bde3721
   timecop (0.9.11) sha256=41284dc6e5041f2184f781ace766f942108c842f8d8c1386a26e6343decc7542
