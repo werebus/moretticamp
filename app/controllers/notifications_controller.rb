@@ -3,14 +3,24 @@
 class NotificationsController < ApplicationController
   before_action :require_admin
 
-  def create
-    params.require %i[subject body]
-    permitted = params.permit(%i[subject body override]).to_h.symbolize_keys.tap do |p|
-      p[:override] = p[:override] == '1'
-    end
+  def new
+    @notification = Notification.new
+  end
 
-    NotificationSenderJob.perform_later(**permitted)
-    flash.notice = 'Notifications queued for delivery'
-    redirect_to root_path
+  def create
+    @notification = Notification.new(notification_params)
+
+    if @notification.valid?
+      NotificationSenderJob.perform_later(**@notification.attributes.symbolize_keys)
+      redirect_to root_path, notice: t('.success')
+    else
+      render :new, status: :unprocessable_content
+    end
+  end
+
+  private
+
+  def notification_params
+    params.expect(notification: %i[subject body override])
   end
 end

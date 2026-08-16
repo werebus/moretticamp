@@ -19,6 +19,9 @@ en:
     destroy:
       success: "Event was successfully deleted."
     no_season: "No calendar to print."
+  notifications:
+    create:
+      success: "Notifications queued for delivery."
   seasons:
     create:
       success: "Season was successfully created."
