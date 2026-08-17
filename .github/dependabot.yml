@@ -22,6 +22,8 @@ updates:
         patterns:
           - "@fullcalendar/*"
   - package-ecosystem: github-actions
-    directory: /
+    directories:
+      - "/"
+      - ".gihub/actions/**"
     schedule:
       interval: weekly
