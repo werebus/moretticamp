@@ -11,7 +11,7 @@ class NotificationsController < ApplicationController
     @notification = Notification.new(notification_params)
 
     if @notification.valid?
-      NotificationSenderJob.perform_later(**@notification.attributes.symbolize_keys)
+      NotificationSenderJob.perform_later(@notification.serializable_hash)
       redirect_to root_path, notice: t('.success')
     else
       render :new, status: :unprocessable_content
