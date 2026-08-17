@@ -89,8 +89,8 @@ GEM
       aws-sdk-ses (~> 1, >= 1.50.0)
       aws-sdk-sesv2 (~> 1, >= 1.34.0)
     aws-eventstream (1.4.0)
-    aws-partitions (1.1252.0)
-    aws-sdk-core (3.248.0)
+    aws-partitions (1.1281.0)
+    aws-sdk-core (3.254.1)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.992.0)
       aws-sigv4 (~> 1.9)
@@ -98,7 +98,7 @@ GEM
       bigdecimal
       jmespath (~> 1, >= 1.6.1)
       logger
-    aws-sdk-rails (5.1.0)
+    aws-sdk-rails (5.2.0)
       aws-sdk-core (~> 3)
       railties (>= 7.1.0)
     aws-sdk-ses (1.100.0)
@@ -549,7 +549,7 @@ PLATFORMS
 
 DEPENDENCIES
   aws-actionmailer-ses
-  aws-sdk-rails (~> 5.0)
+  aws-sdk-rails (~> 5.2)
   bcrypt_pbkdf
   bootsnap
   bootstrap_form (~> 5.6)
@@ -627,9 +627,9 @@ CHECKSUMS
   auth-sanitizer (0.2.3) sha256=db10aac92cfbe4c64ab637eebcbe1d67395d1694798041362173370f59933e3c
   aws-actionmailer-ses (1.2.0) sha256=e01ccfcc5bf1449abb91bb8b15e7945e97310144c7f67fee8d9b76de2e89107f
   aws-eventstream (1.4.0) sha256=116bf85c436200d1060811e6f5d2d40c88f65448f2125bc77ffce5121e6e183b
-  aws-partitions (1.1252.0) sha256=b44c74136ebd634d35f3fb8fd37def5214db21b9375f22c6954dbe7a7f2a449d
-  aws-sdk-core (3.248.0) sha256=3e40f3e0ccd812c6ac4934964901298d1639c7122a3f2d2b3415170ea6eab293
-  aws-sdk-rails (5.1.0) sha256=8cffd3b60142e12a6747c91a7a609f668276b1082fc0c10810d5da3d14b13189
+  aws-partitions (1.1281.0) sha256=97fcc7d6a068ab790a1efcd8c6587c08fb108b4bed7ff1409cb47e0d642782ec
+  aws-sdk-core (3.254.1) sha256=518089e32134c3478cd4ec63d07fb966546a45e9e4cbf5f80d2cf16d5699d29b
+  aws-sdk-rails (5.2.0) sha256=639b168a3fdfae4b6ac3c714fabdb5c390f0246f73740502273447958b30e8b4
   aws-sdk-ses (1.100.0) sha256=692cc2dd6df86123f1c849712f10a0f9a457e19b2fc0430937bbaba4fada0f17
   aws-sdk-sesv2 (1.100.0) sha256=a76a4a8f270eaacd0103cb766ffdb650f53f31f9969b87deb624e21d0bd2124d
   aws-sigv4 (1.12.1) sha256=6973ff95cb0fd0dc58ba26e90e9510a2219525d07620c8babeb70ef831826c00
