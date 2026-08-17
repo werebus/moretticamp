@@ -14,7 +14,7 @@ RSpec.describe 'sending notifications' do
     allow(NotificationSenderJob).to receive(:perform_later).and_call_original
     click_on 'Send'
     expect(NotificationSenderJob).to have_received(:perform_later)
-      .with(hash_including(subject: 'A Notification', body: 'A *body*.'))
+      .with(hash_including('subject' => 'A Notification', 'body' => 'A *body*.'))
   end
 
   it 'redirects to root and tells you notifications were queued' do
@@ -32,6 +32,6 @@ RSpec.describe 'sending notifications' do
     check 'Ignore'
     click_on 'Send'
     expect(NotificationSenderJob).to have_received(:perform_later)
-      .with(hash_including(:override))
+      .with(hash_including('override' => true))
   end
 end

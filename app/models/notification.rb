@@ -3,6 +3,7 @@
 class Notification
   include ActiveModel::Model
   include ActiveModel::Attributes
+  include ActiveModel::Serialization
 
   attribute :subject, :string
   attribute :body, :string
