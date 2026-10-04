@@ -27,11 +27,10 @@ module ApplicationHelper
   def comment_lines(text)
     # Each individual line is escaped, the remainder of the output are static
     # strings defined in this method. `.html_safe` is safe in this context.
-    # rubocop:disable Rails/OutputSafety
+    # rubocop:disable-next Rails/OutputSafety
     text.each_line.map do |line|
       "<!-- #{escape_once(line.chomp)} -->"
     end.join("\n").html_safe
-    # rubocop:enable Rails/OutputSafety
   end
 
   def display_flash_messages(closable: true, key_matching: {})

@@ -22,7 +22,7 @@ class Event < ApplicationRecord
     "#{display_title} (#{date_range_words})"
   end
 
-  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable-next Metrics/AbcSize
   def ical
     Icalendar::Event.new.tap do |e|
       e.uid = "#{id}@moretti.camp"
@@ -35,5 +35,4 @@ class Event < ApplicationRecord
       e.last_modified = updated_at.to_fs(:ics)
     end
   end
-  # rubocop:enable Metrics/AbcSize
 end
