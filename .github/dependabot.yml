@@ -20,7 +20,9 @@ updates:
     groups:
       fullcalendar-packages:
         patterns:
+          - "fullcalendar"
           - "@fullcalendar/*"
+          - "@full-ui/*"
   - package-ecosystem: github-actions
     directories:
       - "/"
