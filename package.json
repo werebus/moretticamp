@@ -20,7 +20,7 @@
     "neostandard": "^0.14.0-next.1",
     "postcss": "^8.5.26",
     "postcss-cli": "^11.0.1",
-    "postcss-nesting": "^14.0.1",
+    "postcss-nesting": "^14.0.2",
     "postcss-scss": "^4.0.9",
     "run-pty": "^6.0.2",
     "sass": "^1.104.0",
