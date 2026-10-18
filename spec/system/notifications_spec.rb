@@ -11,9 +11,7 @@ RSpec.describe 'sending notifications' do
   end
 
   it 'passes params along to the NotificationSenderJob' do
-    allow(NotificationSenderJob).to receive(:perform_later).and_call_original
-    click_on 'Send'
-    expect(NotificationSenderJob).to have_received(:perform_later)
+    expect { click_on 'Send' }.to enqueue_job(NotificationSenderJob)
       .with(hash_including('subject' => 'A Notification', 'body' => 'A *body*.'))
   end
 
@@ -28,10 +26,8 @@ RSpec.describe 'sending notifications' do
   end
 
   it 'Allows you to ignore user notification preference' do
-    allow(NotificationSenderJob).to receive(:perform_later).and_call_original
     check 'Ignore'
-    click_on 'Send'
-    expect(NotificationSenderJob).to have_received(:perform_later)
+    expect { click_on 'Send' }.to enqueue_job(NotificationSenderJob)
       .with(hash_including('override' => true))
   end
 end
