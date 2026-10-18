@@ -17,7 +17,8 @@ Season.create! available: 2.years.ago, start_date: 1.year.ago, end_date: 1.year.
 15.times do
   start_date = Faker::Date.between(from: 6.months.ago, to: 6.months.from_now)
   end_date = start_date + [0, 0, 0, 0, 0, 1, 2, 3, 4, 7].sample.days
-  Event.create! start_date:, end_date:, user: users.sample
+  description = rand(5) == 0 ? Faker::Lorem.sentence(word_count: 6) : nil
+  Event.create! start_date:, end_date:, description:, user: users.sample
 end
 
 3.times do
