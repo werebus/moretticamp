@@ -3,8 +3,8 @@
 class User < ApplicationRecord
   devise :invitable, :database_authenticatable, :omniauthable, :recoverable,
          :registerable, :rememberable, :timeoutable, :trackable, :validatable,
-         validate_on_invite: true,
-         omniauth_providers: OauthProvider.labels
+         omniauth_providers: OauthProvider.labels,
+         create_resource_on_invitation: true, validate_on_invite: true
   has_secure_token :calendar_access_token
 
   has_many :events, dependent: :nullify
