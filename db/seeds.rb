@@ -7,9 +7,9 @@ User.create! email: 'admin@example.com', password: 'Password1', password_confirm
 
 users = Array.new(10) do
   password = Faker::Internet.password(min_length: 8)
-  User.create! email: Faker::Internet.unique.email,
+  User.invite!(email: Faker::Internet.unique.email,
                password:, password_confirmation: password,
-               first_name: Faker::Name.first_name, last_name: Faker::Name.last_name
+               first_name: Faker::Name.first_name, last_name: Faker::Name.last_name).tap(&:accept_invitation!)
 end
 
 Season.create! available: 2.years.ago, start_date: 1.year.ago, end_date: 1.year.from_now

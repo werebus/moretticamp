@@ -100,9 +100,12 @@ RSpec.describe User do
   describe '#lifetime_invitation_count' do
     subject(:call) { user.lifetime_invitation_count }
 
-    let(:user) { create :user, invitation_limit: 2 }
+    let(:user) { create :user }
 
-    before { create_list :user, 3, invited_by: user }
+    before do
+      create_list :user, 3, :invited, inviter: user
+      user.update invitation_limit: 2
+    end
 
     it { is_expected.to eq(5) }
   end

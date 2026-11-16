@@ -3,13 +3,11 @@
 class User < ApplicationRecord
   devise :invitable, :database_authenticatable, :omniauthable, :recoverable,
          :registerable, :rememberable, :timeoutable, :trackable, :validatable,
-         validate_on_invite: true,
-         omniauth_providers: OauthProvider.labels
+         omniauth_providers: OauthProvider.labels,
+         create_resource_on_invitation: true, validate_on_invite: true
   has_secure_token :calendar_access_token
 
   has_many :events, dependent: :nullify
-  has_many :invitations, class_name: 'User', as: :invited_by, dependent: :nullify
-
   before_save :regenerate_calendar_access_token, if: -> { calendar_access_token.blank? }
 
   validates :first_name, presence: true, if: -> { last_name.blank? }
@@ -50,7 +48,7 @@ class User < ApplicationRecord
   end
 
   def lifetime_invitation_count
-    User.where(invited_by: self).count + (invitation_limit || 0)
+    sent_invitations.count + (invitation_limit || 0)
   end
 
   def provider_name
