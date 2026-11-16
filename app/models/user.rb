@@ -8,8 +8,6 @@ class User < ApplicationRecord
   has_secure_token :calendar_access_token
 
   has_many :events, dependent: :nullify
-  has_many :invitations, class_name: 'User', as: :invited_by, dependent: :nullify
-
   before_save :regenerate_calendar_access_token, if: -> { calendar_access_token.blank? }
 
   validates :first_name, presence: true, if: -> { last_name.blank? }
@@ -50,7 +48,7 @@ class User < ApplicationRecord
   end
 
   def lifetime_invitation_count
-    User.where(invited_by: self).count + (invitation_limit || 0)
+    sent_invitations.count + (invitation_limit || 0)
   end
 
   def provider_name
