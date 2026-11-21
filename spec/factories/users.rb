@@ -12,10 +12,13 @@ FactoryBot.define do
     trait :invited do
       encrypted_password { 'x' }
 
-      after(:create) do |user|
-        user.invite! do |u|
-          u.skip_invitation = true
-        end
+      transient do
+        inviter { association :user }
+      end
+
+      to_create do |user, evaluator|
+        user.skip_invitation = true
+        user.invite! evaluator.inviter
       end
     end
 
